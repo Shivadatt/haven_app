@@ -44,8 +44,15 @@ final class AuthStateSnapshot {
 
 /// User-facing identity operations.
 abstract interface class UserAuth {
-  Future<Result<AuthSession>> signInWithPassword({required String email, required String password});
-  Future<Result<AuthSession>> register({required String email, required String password, required String displayName});
+  Future<Result<AuthSession>> signInWithPassword({
+    required String email,
+    required String password,
+  });
+  Future<Result<AuthSession>> register({
+    required String email,
+    required String password,
+    required String displayName,
+  });
 
   /// Exchange a Firebase ID token for a Supabase session through Third-Party Auth.
   /// Implemented only once the approved bridge exists; otherwise returns `blocked(...)`.
@@ -65,7 +72,11 @@ abstract interface class ProfileStore {
 
 /// Device-lane credential: separate from [UserAuth] and never converted into it.
 final class DeviceCredential {
-  const DeviceCredential({required this.deviceId, required this.secret, required this.storedSecurely});
+  const DeviceCredential({
+    required this.deviceId,
+    required this.secret,
+    required this.storedSecurely,
+  });
 
   final String deviceId;
 
@@ -77,7 +88,20 @@ final class DeviceCredential {
   final bool storedSecurely;
 }
 
+/// Platform secret storage, injected so this package stays free of a storage
+/// plugin dependency. Implemented over `flutter_secure_storage` in the app.
+abstract interface class SecretVault {
+  /// False when the platform keystore is unusable; [write] is then a no-op that
+  /// reports failure rather than falling back to plaintext.
+  bool get available;
+
+  Future<String?> read(String key);
+  Future<bool> write(String key, String value);
+  Future<void> delete(String key);
+}
+
 abstract interface class DeviceIdentity {
+  /// `null` when nothing is stored: unpaired, not "pairing failed".
   Future<Result<DeviceCredential?>> credential();
   Future<Result<DeviceCredential>> issue(DeviceCredential credential);
   Future<Result<void>> clear();
@@ -85,9 +109,11 @@ abstract interface class DeviceIdentity {
 
 /// FCM transport: capture and refresh of the device token.
 abstract interface class PushTransport {
-  Future<Result<String?>> registrationToken();
-  Future<Result<void>> clearToken();
-  Stream<String> get tokenChanges;
+  /// The direct-send target FCM reports for this app instance (its Installation
+  /// ID). Null-safe: a device that never registered is not "registered".
+  Future<Result<String?>> registrationTarget();
+  Future<Result<void>> clearRegistration();
+  Stream<String> get registrationChanges;
 
   /// Notification permission, reported as the OS states it — never assumed.
   Future<bool> requestPermission();

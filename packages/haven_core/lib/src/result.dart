@@ -11,14 +11,14 @@ sealed class Result<T> {
   bool get isErr => this is Err<T>;
 
   T? get valueOrNull => switch (this) {
-        Ok<T>(:final value) => value,
-        Err<T> _ => null,
-      };
+    Ok<T>(:final value) => value,
+    Err<T> _ => null,
+  };
 
   HavenFailure? get failureOrNull => switch (this) {
-        Ok<T> _ => null,
-        Err<T>(:final failure) => failure,
-      };
+    Ok<T> _ => null,
+    Err<T>(:final failure) => failure,
+  };
 
   R map<R>(R Function(T value) onOk, R Function(HavenFailure failure) onErr) =>
       switch (this) {

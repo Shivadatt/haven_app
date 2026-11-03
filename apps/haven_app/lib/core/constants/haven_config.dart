@@ -9,7 +9,8 @@ import 'package:haven_api/haven_api.dart';
 final class HavenConfig {
   const HavenConfig({required this.endpoints, this.channel = 'staging'});
 
-  const HavenConfig.unconfigured() : this(endpoints: BackendEndpoints.unconfigured);
+  const HavenConfig.unconfigured()
+    : this(endpoints: BackendEndpoints.unconfigured);
 
   factory HavenConfig.fromDefines(
     String supabaseUrl,
@@ -17,16 +18,15 @@ final class HavenConfig {
     String firebaseProjectId,
     String firebaseAppId,
     String firebaseApiKey,
-  ) =>
-      HavenConfig(
-        endpoints: BackendEndpoints(
-          supabaseUrl: supabaseUrl,
-          supabaseAnonKey: supabaseAnonKey,
-          firebaseProjectId: firebaseProjectId,
-          firebaseAppId: firebaseAppId,
-          firebaseApiKey: firebaseApiKey,
-        ),
-      );
+  ) => HavenConfig(
+    endpoints: BackendEndpoints(
+      supabaseUrl: supabaseUrl,
+      supabaseAnonKey: supabaseAnonKey,
+      firebaseProjectId: firebaseProjectId,
+      firebaseAppId: firebaseAppId,
+      firebaseApiKey: firebaseApiKey,
+    ),
+  );
 
   final BackendEndpoints endpoints;
 
@@ -40,10 +40,10 @@ final class HavenConfig {
 
   /// Names of defines that are absent. Values are never included.
   List<String> missingDefines() => [
-        if (!endpoints.hasSupabase) 'HAVEN_SUPABASE_URL',
-        if (!endpoints.hasSupabase) 'HAVEN_SUPABASE_ANON_KEY',
-        if (!endpoints.hasFirebase) 'HAVEN_FIREBASE_PROJECT_ID',
-        if (!endpoints.hasFirebase) 'HAVEN_FIREBASE_APP_ID',
-        if (!endpoints.hasFirebase) 'HAVEN_FIREBASE_API_KEY',
-      ];
+    if (!endpoints.hasSupabase) 'HAVEN_SUPABASE_URL',
+    if (!endpoints.hasSupabase) 'HAVEN_SUPABASE_ANON_KEY',
+    if (!endpoints.hasFirebase) 'HAVEN_FIREBASE_PROJECT_ID',
+    if (!endpoints.hasFirebase) 'HAVEN_FIREBASE_APP_ID',
+    if (!endpoints.hasFirebase) 'HAVEN_FIREBASE_API_KEY',
+  ];
 }

@@ -1,7 +1,9 @@
 // ============================================================================
 // Edge Function: device-command           TARGET: dzonzgngwxclhfnvxtvu (STAGING ONLY)
-// Production (parent-control-prod / hhqgreaoqulmfwfwarhc) is NOT a target of this file
-// and was not contacted. Deployment is BLOCKED by unsigned A7-R / A8-R.
+// The production project's ref is deliberately NOT written in this artefact (owner rule: the
+// staging project is the only project ref that may appear in code, comments or config).
+// Production is not a target of this file and was not contacted. Deployment is BLOCKED by
+// unsigned A7-R / A8-R.
 //
 // STATUS: RE-AUTHORED FROM SPECIFICATION — NO PARITY VERIFICATION
 //   capture:59-60: MINIFIED BUNDLE, 18124 chars / 2 lines, sha256 4e31901a.... No source

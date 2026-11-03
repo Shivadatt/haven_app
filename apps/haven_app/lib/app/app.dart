@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../core/constants/haven_config.dart';
 import 'bindings/initial_bindings.dart';
 import 'routes/app_pages.dart';
+import 'routes/app_routes.dart';
 import 'theme/haven_theme.dart';
 
 /// Root widget: one `GetMaterialApp`, named routes, one theme, one binding set.
@@ -24,6 +25,7 @@ final class HavenApp extends StatelessWidget {
       initialBinding: InitialBindings(),
       initialRoute: AppRoutes.splash,
       getPages: AppPages.pages,
+      unknownRoute: AppPages.unknown,
     );
   }
 }

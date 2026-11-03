@@ -14,11 +14,8 @@ sealed class HavenFailure {
 
 /// No usable session, or the backend rejected the bearer token.
 final class AuthFailure extends HavenFailure {
-  const AuthFailure(
-    super.message, {
-    super.detail,
-    this.signedOut = false,
-  }) : super(retryable: false);
+  const AuthFailure(super.message, {super.detail, this.signedOut = false})
+    : super(retryable: false);
 
   /// True when the session is gone, not merely stale: go back to sign-in.
   final bool signedOut;
@@ -77,11 +74,7 @@ final class ValidationFailure extends HavenFailure {
 /// Surfaced instead of a fabricated success path, per the brief: an unspecified
 /// feature stays blocked and says so.
 final class BlockedFailure extends HavenFailure {
-  const BlockedFailure(
-    super.message, {
-    super.detail,
-    required this.missing,
-  });
+  const BlockedFailure(super.message, {super.detail, required this.missing});
 
   /// What is missing: a spec section, a signed approval, a schema column.
   final String missing;

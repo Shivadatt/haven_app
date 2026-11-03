@@ -28,7 +28,11 @@ abstract interface class RowReader {
 /// `service_role`-only, so writes normally go through [RpcCaller] or [EdgeCaller].
 abstract interface class RowWriter {
   Future<Result<void>> insert(String table, Map<String, Object?> row);
-  Future<Result<void>> update(String table, Map<String, Object?> row, {required Map<String, Object?> eq});
+  Future<Result<void>> update(
+    String table,
+    Map<String, Object?> row, {
+    required Map<String, Object?> eq,
+  });
 }
 
 /// Calls a definer function captured in `g1-q7-20261029.json` (`RpcName`).
@@ -65,12 +69,16 @@ abstract interface class EdgeCaller {
 
 /// Change notifications for the four Realtime-enabled tables.
 abstract interface class ChangeFeed {
-  /// Emits the full re-read of [query] whenever a relevant row changes.
-  /// A missed event is recoverable by re-reading, per `docs/stage1/02-architecture.md:23`.
-  Stream<void> changes({
+  /// Emits on a captured change to a matching row. The payload is a hint only:
+  /// the caller re-reads, because a missed event must be recoverable by refetch
+  /// (`docs/stage1/02-architecture.md:23`).
+  Stream<Map<String, Object?>> changes({
     required String table,
     Map<String, Object?> eq = const {},
   });
+
+  /// Releases every channel. Called from a controller's `onClose`.
+  void dispose();
 }
 
 /// Read-only composite used by dashboards: one call per screen section.

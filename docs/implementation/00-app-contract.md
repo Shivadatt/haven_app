@@ -53,7 +53,7 @@ Already written by the orchestrator — keep these public names, extend around t
   `SnapshotSource`, `UserAuth{signInWithPassword,register,signInWithFirebaseToken,currentSession,refresh,signOut,states}`,
   `AuthSession{userId,email,accessToken,role,expiresAt,hasProfile}`, `AuthStateSnapshot`, `AuthStatusKind`,
   `ProfileStore{load,updateDisplayName}`, `DeviceCredential{deviceId,secret,storedSecurely}`,
-  `DeviceIdentity{credential,issue,clear}`, `PushTransport{registrationToken,clearToken,tokenChanges,requestPermission,granted,taps,foregroundMessages}`.
+  `DeviceIdentity{credential,issue,clear}`, `PushTransport{registrationTarget,clearRegistration,registrationChanges,requestPermission,granted,taps,foregroundMessages}`.
   Everything returns `Result<...>` from `haven_core` — never a raw throw, never a bare `null` "success".
   **Feature agents code against these interfaces only.** They do not construct SDK objects.
 - app: `main.dart` (reads five `HAVEN_*` defines), `app/app.dart` (`HavenApp(config:)`),

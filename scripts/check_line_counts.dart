@@ -37,8 +37,12 @@ const List<String> ignoredDirParts = <String>[
   '/Generated/',
 ];
 
+/// Windows-native paths are normalised so the directory filters work on
+/// every platform this script runs on.
+String normalize(String path) => path.replaceAll(r'\', '/');
+
 bool isGenerated(String path) {
-  final String lower = path.toLowerCase();
+  final String lower = normalize(path).toLowerCase();
   return lower.contains('.g.dart') ||
       lower.contains('.freezed.dart') ||
       lower.contains('.mocks.dart') ||
@@ -46,77 +50,72 @@ bool isGenerated(String path) {
       ignoredDirParts.any(lower.contains);
 }
 
-bool shouldScan(String path) {
-  if (!sourceExtensions.any(path.endsWith)) return false;
-  return !isGenerated(path);
+bool inIgnoredDir(String path) {
+  final lower = normalize(path).toLowerCase();
+  return ignoredDirParts.any(lower.contains);
 }
 
-List<String> collectFiles() {
-  final List<String> found = <String>[];
+/// One walk, partitioned into hand-written sources and generated sources.
+({List<String> handWritten, List<String> generated}) collectFiles() {
+  final List<String> handWritten = <String>[];
+  final List<String> generated = <String>[];
   for (final String root in scannedRoots) {
     if (!Directory(root).existsSync()) continue;
-    for (final FileSystemEntity entity
-        in Directory(root).listSync(recursive: true, followLinks: false)) {
+    for (final FileSystemEntity entity in Directory(
+      root,
+    ).listSync(recursive: true, followLinks: false)) {
       if (entity is! File) continue;
-      if (shouldScan(entity.path)) found.add(entity.path);
+      final String path = normalize(entity.path);
+      if (!sourceExtensions.any(path.endsWith)) continue;
+      if (isGenerated(path)) {
+        // Skip descending into build output: it is reported only when the file
+        // itself is a checked-in generated source.
+        if (!inIgnoredDir(path)) generated.add(path);
+      } else {
+        handWritten.add(path);
+      }
     }
   }
-  found.sort();
-  return found;
+  return (handWritten: handWritten..sort(), generated: generated..sort());
 }
 
 void main(List<String> args) {
-  final List<String> files = collectFiles();
+  final files = collectFiles();
   final List<String> violations = <String>[];
   final List<String> overlongGenerated = <String>[];
 
-  for (final String path in files) {
+  for (final String path in files.handWritten) {
     final int count = countLines(File(path));
     if (count > maxLines) violations.add('$path  $count');
   }
 
-  for (final String path in collectGenerated()) {
+  for (final String path in files.generated) {
     final int count = countLines(File(path));
     if (count > maxLines) overlongGenerated.add('$path  $count');
   }
 
   stdout.writeln('line-count rule: max $maxLines lines per source file');
-  stdout.writeln('hand-written source files scanned: ${files.length}');
+  stdout.writeln(
+    'hand-written source files scanned: ${files.handWritten.length}',
+  );
   stdout.writeln('violations: ${violations.length}');
   for (final String v in violations) stdout.writeln('  OVER LIMIT  $v');
   if (overlongGenerated.isNotEmpty) {
     stdout.writeln('generated files over the limit (reported, not defects):');
-    for (final String g in overlongGenerated) stdout.writeln('  GENERATED   $g');
+    for (final String g in overlongGenerated)
+      stdout.writeln('  GENERATED   $g');
   }
   if (violations.isNotEmpty) exitCode = 1;
 }
 
+/// Counts LF terminators, plus one when the file ends without a newline.
 int countLines(File file) {
+  final List<int> bytes = file.readAsBytesSync();
+  if (bytes.isEmpty) return 0;
   int lines = 0;
-  final RandomAccessFile raf = file.openSync();
-  try {
-    for (final int byte in raf.read(raf.lengthSync())) {
-      if (byte == 0x0A) lines++;
-    }
-    final int size = raf.lengthSync();
-    if (size > 0 && raf.readByteSync(size - 1) != 0x0A) lines++;
-  } finally {
-    raf.closeSync();
+  for (final int byte in bytes) {
+    if (byte == 0x0A) lines++;
   }
+  if (bytes.last != 0x0A) lines++;
   return lines;
-}
-
-List<String> collectGenerated() {
-  final List<String> found = <String>[];
-  for (final String root in scannedRoots) {
-    if (!Directory(root).existsSync()) continue;
-    for (final FileSystemEntity entity
-        in Directory(root).listSync(recursive: true, followLinks: false)) {
-      if (entity is! File) continue;
-      final String lower = entity.path.toLowerCase();
-      final bool ext = sourceExtensions.any(lower.endsWith);
-      if (ext && isGenerated(lower)) found.add(entity.path);
-    }
-  }
-  return found..sort();
 }

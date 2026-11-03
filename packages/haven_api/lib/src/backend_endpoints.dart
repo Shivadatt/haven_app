@@ -30,7 +30,9 @@ final class BackendEndpoints {
 
   bool get hasSupabase => supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty;
   bool get hasFirebase =>
-      firebaseProjectId.isNotEmpty && firebaseAppId.isNotEmpty && firebaseApiKey.isNotEmpty;
+      firebaseProjectId.isNotEmpty &&
+      firebaseAppId.isNotEmpty &&
+      firebaseApiKey.isNotEmpty;
 
   bool get isConfigured => hasSupabase && hasFirebase;
 }
@@ -60,6 +62,40 @@ abstract final class TableName {
   static const safetyAlerts = 'safety_alerts';
   static const usageDaily = 'usage_daily';
   static const webrtcSignals = 'webrtc_signals';
+
+  static const all = [
+    auditLogs,
+    childContactIds,
+    deviceApps,
+    deviceCommands,
+    devicePairingTokens,
+    devicePolicies,
+    devices,
+    families,
+    familyMembers,
+    locationEvents,
+    pairingAttempts,
+    pairingRequests,
+    profiles,
+    remoteSessions,
+    safeZoneStates,
+    safeZones,
+    safetyAlerts,
+    usageDaily,
+    webrtcSignals,
+  ];
+
+  /// Local guard: a table name outside the captured set cannot reach the SDK, so
+  /// an invented table fails in review instead of at runtime against staging.
+  static void assertKnown(String table) {
+    if (!all.contains(table)) {
+      throw ArgumentError.value(
+        table,
+        'table',
+        'not one of the 19 captured tables',
+      );
+    }
+  }
 }
 
 /// RPC names captured in `docs/stage1/evidence/g1-q7-20261029.json`.
@@ -82,6 +118,33 @@ abstract final class RpcName {
   static const respondPairingRequest = 'respond_pairing_request';
   static const revokeDevice = 'revoke_device';
   static const unlinkChild = 'unlink_child';
+
+  static const all = [
+    applyPolicyVersion,
+    createFamilyWithOwner,
+    createPairingInvite,
+    createPairingRequest,
+    detectOfflineDevices,
+    expireStaleCommands,
+    expireStaleSessions,
+    pollDeviceCommands,
+    replaceDeviceApps,
+    requestDeviceRecovery,
+    requestRemoteSession,
+    respondPairingRequest,
+    revokeDevice,
+    unlinkChild,
+  ];
+
+  static void assertKnown(String name) {
+    if (!all.contains(name)) {
+      throw ArgumentError.value(
+        name,
+        'name',
+        'not one of the 14 captured public RPCs',
+      );
+    }
+  }
 }
 
 /// Edge Function slugs captured in
@@ -100,4 +163,29 @@ abstract final class EdgeFunctionName {
   static const familyAdmin = 'family-admin';
   static const pairing = 'pairing';
   static const remoteSession = 'remote-session';
+
+  static const all = [
+    authBootstrap,
+    cron,
+    deviceCommand,
+    devicePolicy,
+    deviceRegister,
+    deviceTelemetry,
+    familyAdmin,
+    pairing,
+    remoteSession,
+  ];
+
+  /// Only these nine slugs existed in the 2026-10-30 capture. Anything else —
+  /// including `notification-cron`, `register-token` and `verify-firebase-token`,
+  /// which were never present — fails here rather than at runtime.
+  static void assertKnown(String slug) {
+    if (!all.contains(slug)) {
+      throw ArgumentError.value(
+        slug,
+        'slug',
+        'not one of the 9 captured Edge Functions',
+      );
+    }
+  }
 }

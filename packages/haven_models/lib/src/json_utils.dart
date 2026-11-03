@@ -5,38 +5,41 @@
 library json_utils;
 
 DateTime? asDate(Object? v) => switch (v) {
-      final String s when s.isNotEmpty => DateTime.tryParse(s)?.toUtc(),
-      DateTime d => d.toUtc(),
-      _ => null,
-    };
+  final String s when s.isNotEmpty => DateTime.tryParse(s)?.toUtc(),
+  DateTime d => d.toUtc(),
+  _ => null,
+};
 
 double? asDouble(Object? v) => switch (v) {
-      final num n => n.toDouble(),
-      final String s => double.tryParse(s),
-      _ => null,
-    };
+  final num n => n.toDouble(),
+  final String s => double.tryParse(s),
+  _ => null,
+};
 
 int? asInt(Object? v) => switch (v) {
-      final num n => n.toInt(),
-      final String s => int.tryParse(s),
-      _ => null,
-    };
+  final num n => n.toInt(),
+  final String s => int.tryParse(s),
+  _ => null,
+};
 
 bool? asBool(Object? v) => switch (v) {
-      final bool b => b,
-      final String s => s == 'true' ? true : (s == 'false' ? false : null),
-      final int i when i == 0 || i == 1 => i == 1,
-      _ => null,
-    };
+  final bool b => b,
+  final String s => s == 'true' ? true : (s == 'false' ? false : null),
+  final int i when i == 0 || i == 1 => i == 1,
+  _ => null,
+};
 
 String? asText(Object? v) => switch (v) {
-      final String s => s,
-      final num n => '$n',
-      _ => null,
-    };
+  final String s => s,
+  final num n => '$n',
+  _ => null,
+};
 
-Map<String, Object?> asMap(Object? v) =>
-    v is Map ? Map<String, Object?>.fromEntries(v.entries.map((e) => MapEntry('${e.key}', e.value))) : const {};
+Map<String, Object?> asMap(Object? v) => v is Map
+    ? Map<String, Object?>.fromEntries(
+        v.entries.map((e) => MapEntry('${e.key}', e.value)),
+      )
+    : const {};
 
 List<Object?> asList(Object? v) => v is List ? v : const [];
 

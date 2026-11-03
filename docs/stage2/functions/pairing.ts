@@ -1,7 +1,9 @@
 // ============================================================================
 // Edge Function: pairing                 TARGET: dzonzgngwxclhfnvxtvu (STAGING ONLY)
-// Production (parent-control-prod / hhqgreaoqulmfwfwarhc) is NOT a target of this file
-// and was not contacted. Deployment is BLOCKED by unsigned A7-R / A8-R.
+// The production project's ref is deliberately NOT written in this artefact (owner rule: the
+// staging project is the only project ref that may appear in code, comments or config).
+// Production is not a target of this file and was not contacted. Deployment is BLOCKED by
+// unsigned A7-R / A8-R.
 //
 // STATUS: RE-AUTHORED FROM SPECIFICATION — NO PARITY VERIFICATION
 //   (mandatory label, docs/stage2/approval-package-v3-implementation-instruments.md §7.)

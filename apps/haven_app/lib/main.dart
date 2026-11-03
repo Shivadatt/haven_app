@@ -5,7 +5,7 @@ import 'package:haven_app/core/constants/haven_config.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  const config = HavenConfig.fromDefines(
+  final HavenConfig config = HavenConfig.fromDefines(
     String.fromEnvironment('HAVEN_SUPABASE_URL'),
     String.fromEnvironment('HAVEN_SUPABASE_ANON_KEY'),
     String.fromEnvironment('HAVEN_FIREBASE_PROJECT_ID'),
