@@ -1,0 +1,959 @@
+-- ============================================================================
+-- A3b-functions-triggers-candidate.sql
+-- ============================================================================
+-- PURPOSE
+--   Candidate DDL for the 9 functions whose captured bodies gate 25 of the 29
+--   blocked dependents (17 RLS policies + 8 triggers) of the Haven
+--   (parent-control-prod) offline reconstruction. This file unblocks the
+--   largest single dependency in the programme IF — and only IF — the owner
+--   rules that call-site + body derivation of return types is admissible.
+--
+-- STATUS: PREPARED — NOT EXECUTED — DERIVATION ADMISSIBILITY REQUIRED
+--
+-- EXACT OWNER RULING REQUIRED TO ACTIVATE ANYTHING IN THIS FILE
+--   "Is call-site + body derivation admissible under A0 as amended?"
+--   (framing per S2-EXEC-FINAL.md:233-237 — "an inference the programme's
+--   rules currently forbid as a guess ... requires an explicit owner ruling
+--   on admissibility — not a new capture, not a production read"; and
+--   S2-A3-database-audit.md:173-177 — "`boolean` is *implied* by the body
+--   shape and by policy semantics ... The honest state is: 17 policies are
+--   one return-type decision away, not 17 unrecoverable objects.")
+--
+-- LOADABILITY
+--   0 of these 9 functions is currently loadable. Every CREATE FUNCTION,
+--   CREATE POLICY and CREATE TRIGGER statement below is COMMENTED OUT and
+--   non-executing. Loading this file as-is executes nothing.
+--
+-- STANDING PROHIBITIONS HONOURED (owner rule, restated)
+--   1. A return type is never invented. Each RETURNS clause below is a
+--      DERIVED CANDIDATE carrying an explicit evidence chain, a confidence
+--      class (STRUCTURALLY FORCED / STRONGLY INDICATED / AMBIGUOUS), and the
+--      single catalogue row that would confirm it. None is emitted active.
+--   2. A missing body is never stubbed, guessed, or replaced with an
+--      always-true/always-success function. The 24 absent bodies (§4) get a
+--      register row, not a body. Verdict for all 24: UNRECOVERABLE OFFLINE.
+--   3. No cloud access was used to build this file: no dashboard, no SQL, no
+--      CLI, no REST, no DB connection. Every input is a local evidence file;
+--      production reference hhqgreaoqulmfwfwarhc was contacted 0 times here.
+--   4. No secret values, no PII.
+--
+-- EVIDENCE BASE (all local, all read-only)
+--   g1-b3b-20261029.json   38-function inventory + 14 captured bodies + the
+--                          remote_sessions trigger row (D:\control\docs\stage1\evidence)
+--   g1-q2-20261029.json    21 policy predicate rows (the call sites)
+--   g1-q3-20261029.json    7 trigger definitions (verbatim CREATE TRIGGER text)
+--   g1-q3b-20261029.json   1 auth.users trigger definition
+--   g1-q10-20261029.json   security properties of the 14 PUBLIC functions
+--                          (schema-less rows — UNATTRIBUTABLE to private,
+--                          S2-EXEC-04-function-coverage-register.md:329 U-1)
+--   g1-q8-20261029.json    183 columns + data types (argument/result typing)
+--   functions-and-triggers.md  dashboard-derived narrative; its `Returns`
+--                          column (ft.md:34-49) covers only the 14 PUBLIC
+--                          names. It is a pre-B3b transcription, NOT a
+--                          catalogue capture — that is why it was never
+--                          upgraded to SOURCE VERIFIED (S2-EXEC-FINAL.md:228).
+--                          NONE of the 9 gating functions is a public twin,
+--                          so ft.md contributes 0 of the 9 candidate types.
+--   Adjudications: S2-EXEC-04-function-coverage-register.md (:102, :161-172,
+--   :182-204, :283-286, :319-323, :329-330), S2-EXEC-05-function-body-
+--   coverage-register.md (:27, :124, :149-154, §5 :160-180+),
+--   S2-A3-database-audit.md rows X-1..X-6 (:87-92, :161-176),
+--   S2-EXEC-FINAL.md §7 (:219-244).
+--
+-- CITATION CONVENTION
+--   file:line for multi-line files; file JSON-field / array index for the
+--   single-line g1-q*.json captures. Lines marked DERIVED are reasoning over
+--   cited evidence, not text read from a file.
+-- ============================================================================
+
+
+-- ============================================================================
+-- SECTION 1 — REGISTER OF THE 9 GATING FUNCTIONS (candidate return types)
+-- ============================================================================
+-- Common facts: all 9 are in the 38-function inventory with a captured body
+-- (S2-EXEC-05:154 "all 9 are PRESENT — SOURCE VERIFIED bodies"; S2-A3 X-5
+-- :87-92). For all 9 the return type "exists in no form in any evidence
+-- file" (S2-EXEC-FINAL.md:226). prolang, provolatile, proisstrict and
+-- argument modes were never captured for any function
+-- (S2-EXEC-04:319-320; S2-EXEC-FINAL.md:238) — disclosed per row below.
+--
+-- Trigger-contract lemma used in §1.4-§1.9 (DERIVED, from documented
+-- PostgreSQL semantics): a row-level trigger function fired by a table
+-- trigger MUST be declared RETURNS trigger. The record/setof-record
+-- allowances exist only for INSTEAD OF triggers on views; all 8 evidenced
+-- triggers are BEFORE/AFTER on real tables (g1-q3[0..6], g1-q3b[0], every
+-- "FOR EACH ROW EXECUTE FUNCTION" there), so no alternative return type is
+-- consistent with a live, enabled ("enabled_flag":"O") production trigger.
+-- Where a rowtype alternative is mentioned it fails this lemma; §1.4
+-- additionally fails it on multi-table reuse alone.
+-- The single piece of evidence that confirms any row in this section:
+-- one row from the never-executed catalogue query already authored in
+-- S2-P01-e2-f8.sql:33-42 — pg_proc.prorettype::regtype per function
+-- (S2-EXEC-04:283-286: "With that one result the 14 read bodies become
+-- emittable (unblocking all 8 triggers and the 17 policies)").
+
+-- ----------------------------------------------------------------------------
+-- 1.1 private.is_family_parent(p_family_id uuid)
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "p_family_id uuid" — g1-b3b:55 .arguments
+--   (modes never captured; IN assumed at authoring — DERIVED, disclosed).
+-- Captured body (VERIFIED, g1-b3b.bodies[1] "body", g1-b3b:95 — verbatim):
+--
+--     select exists (
+--       select 1
+--       from public.family_members m
+--       join public.families f on f.id = m.family_id
+--       where m.family_id = p_family_id
+--         and m.user_id = auth.uid()
+--         and m.role = 'parent'
+--         and m.status = 'active'
+--         and f.deleted_at is null
+--     );
+--
+-- CANDIDATE RETURN TYPE: boolean
+-- Confidence: STRUCTURALLY FORCED. This is not a guess; it is the only type
+-- consistent with the evidence. Derivation chain:
+--   a. The whole prosrc is one `SELECT EXISTS (...)` (g1-b3b:95). The SQL
+--      EXISTS predicate operator yields type boolean (documented PostgreSQL
+--      semantics — DERIVED); it yields nothing else, and the body has no
+--      other expression.
+--   b. All 13 policy call sites consume the value as a scalar boolean with
+--      NO comparison operator applied: bare qual as the whole predicate,
+--      e.g. safe_zones_delete_parent g1-q2[13]
+--      `private.is_family_parent(family_id)` and safe_zones_insert_parent
+--      WITH CHECK g1-q2[14]; AND-embedded g1-q2[0]
+--      audit_logs_select_family_parent; USING+CHECK both g1-q2[16]
+--      safe_zones_update_parent; or as an operand of `OR`
+--      (`(private.is_family_parent(family_id) OR (EXISTS ...))`,
+--      g1-q2[1..4],[8],[9],[12],[17],[18]). An OR operand must be a scalar
+--      boolean (DERIVED) — a setof/record return could not sit there.
+--      (13 sites measured: S2-EXEC-04:204.)
+--   c. Internal call site corroborates: private.realtime_topic_allowed
+--      `return private.is_family_parent(s.family_id)` (g1-b3b:143) inside a
+--      function whose other RETURN arms return the literal `false`.
+--   d. Column types make the subquery well-typed, none of it the result:
+--      family_members.role text, .status text, g1-q8 rows
+--      {family_members/role/text}, {family_members/status/text};
+--      families.deleted_at timestamptz nullable {families/deleted_at/
+--      timestamp with time zone} (g1-q8). The outer node is EXISTS ⇒ boolean.
+-- What would confirm it: prorettype::regtype for this oid (the one-row
+--   catalogue result; see §1 common facts).
+-- Language note (DERIVED): prolang uncaptured. A body that is a bare
+--   `select exists` without RETURN is valid LANGUAGE sql; if production
+--   used plpgsql the prosrc would carry a RETURN clause. Candidate DDL in
+--   §3 therefore states `LANGUAGE sql` flagged DERIVED and must be owner-
+--   ruled together with the return type. Volatility/strictness: never
+--   captured (S2-EXEC-FINAL.md:238) — omitted below, load-defaults to
+--   VOLATILE/NOT STRICT; disclose at load, do not silently bake STABLE.
+
+-- ----------------------------------------------------------------------------
+-- 1.2 private.is_family_member(p_family_id uuid)
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "p_family_id uuid" — g1-b3b:54 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[0] "body", g1-b3b:89 — verbatim):
+--
+--     select exists (
+--       select 1
+--       from public.family_members m
+--       join public.families f on f.id = m.family_id
+--       where m.family_id = p_family_id
+--         and m.user_id = auth.uid()
+--         and m.status = 'active'
+--         and f.deleted_at is null
+--     );
+--
+-- CANDIDATE RETURN TYPE: boolean — STRUCTURALLY FORCED.
+-- Chain: identical shape to §1.1 (single SELECT EXISTS, g1-b3b:89); 3 policy
+-- call sites in scalar boolean position — g1-q2[5] families_select_members
+-- `((deleted_at IS NULL) AND private.is_family_member(id))`, g1-q2[7]
+-- family_members_select_family `private.is_family_member(family_id)`,
+-- g1-q2[15] safe_zones_select_family `private.is_family_member(family_id)`;
+-- plus internal `return private.is_family_member(v_uuid)` in
+-- realtime_topic_allowed (g1-b3b:143) feeding a boolean RETURN arm.
+-- (3-site fan-out measured: S2-EXEC-04:204.)
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- ----------------------------------------------------------------------------
+-- 1.3 private.shares_active_family(p_user_id uuid)
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "p_user_id uuid" — g1-b3b:66 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[2] "body", g1-b3b:101 — verbatim):
+--
+--     select exists (
+--       select 1
+--       from public.family_members mine
+--       join public.family_members theirs on theirs.family_id = mine.family_id
+--       join public.families f on f.id = mine.family_id
+--       where mine.user_id = auth.uid()
+--         and theirs.user_id = p_user_id
+--         and mine.status = 'active'
+--         and theirs.status = 'active'
+--         and f.deleted_at is null
+--     );
+--
+-- CANDIDATE RETURN TYPE: boolean — STRUCTURALLY FORCED.
+-- Chain: single SELECT EXISTS (g1-b3b:101); the one policy call site is an
+-- OR operand — g1-q2[10] profiles_select_self_or_family
+-- `((id = auth.uid()) OR private.shares_active_family(id))` — which forces a
+-- scalar boolean (DERIVED; fan-out 1 per S2-EXEC-04:204). Self-join on
+-- family_members on family_id uuid / user_id uuid columns (g1-q8
+-- {family_members/family_id/uuid}, {family_members/user_id/uuid}) — typing
+-- consistent, result node is EXISTS ⇒ boolean.
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- ----------------------------------------------------------------------------
+-- 1.4 private.set_updated_at()
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "" (zero args) — g1-b3b:65 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[8] "body", g1-b3b:137 — verbatim):
+--
+--     begin
+--       new.updated_at := now();
+--       return new;
+--     end;
+--
+-- CANDIDATE RETURN TYPE: trigger — STRUCTURALLY FORCED (no alternative
+-- survives, and this is the file's strongest case stated plainly):
+--   a. Fired by THREE evidenced row triggers: g1-q3[1]
+--      devices_set_updated_at BEFORE UPDATE ON public.devices; g1-q3[3]
+--      families_set_updated_at BEFORE UPDATE ON public.families; g1-q3[6]
+--      safe_zone_states_set_updated_at BEFORE UPDATE ON
+--      public.safe_zone_states — each "FOR EACH ROW EXECUTE FUNCTION
+--      private.set_updated_at()", enabled ("enabled_flag":"O"). By the
+--      trigger-contract lemma (§1 header) each site forces RETURNS trigger.
+--   b. Independently: a single function cannot return three concrete
+--      rowtypes (devices/families/safe_zone_states) at once, so even the
+--      hypothetical per-table rowtype escape is closed here
+--      (DERIVED from a+b; column types per g1-q8).
+--   c. Body references NEW — a trigger-context variable — and assigns
+--      new.updated_at := now(); updated_at is
+--      "timestamp with time zone" NOT NULL on devices/families (g1-q8
+--      {devices/updated_at}, {families/updated_at}).
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- ----------------------------------------------------------------------------
+-- 1.5 private.handle_new_user()
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "" (zero args) — g1-b3b:53 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[3] "body", g1-b3b:107 — verbatim):
+--
+--     declare
+--       v_name text;
+--     begin
+--       v_name := left(
+--         coalesce(
+--           nullif(btrim(coalesce(new.raw_user_meta_data ->> 'display_name', '')), ''),
+--           nullif(split_part(coalesce(new.email, ''), '@', 1), ''),
+--           'User'
+--         ),
+--         60
+--       );
+--       if v_name is null or char_length(v_name) = 0 then
+--         v_name := 'User';
+--       end if;
+--       insert into public.profiles (id, role, display_name)
+--       values (new.id, 'unset', v_name)
+--       on conflict (id) do nothing;
+--       return new;
+--     end;
+--
+-- CANDIDATE RETURN TYPE: trigger — STRUCTURALLY FORCED. Chain:
+--   a. Call site is a real, enabled row trigger: g1-q3b[0] verbatim
+--      "CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR
+--      EACH ROW EXECUTE FUNCTION private.handle_new_user()",
+--      enabled_flag "O". Trigger-contract lemma (§1) ⇒ RETURNS trigger; an
+--      AFTER trigger has no rowtype-return escape at all even in versions
+--      that toyed with one (DERIVED).
+--   b. Body shape confirms trigger context: NEW is an auth.users record
+--      (new.raw_user_meta_data, new.email, new.id — g1-q3b[0] table_schema
+--      "auth", table_name "users"), and `return new;` at the end is only
+--      meaningful in the trigger protocol.
+--   c. Write target matches profiles columns: profiles.id uuid NOT NULL,
+--      .role text NOT NULL default 'unset', .display_name text NOT NULL
+--      (g1-q8 {profiles/id}, {profiles/role}, {profiles/display_name}); the
+--      body's 'unset' literal equals the column default — corroboration of
+--      body↔schema fit, not of a different return type.
+--   d. ft.md §2 narrative independently predicted exactly this ("A profiles
+--      trigger ... Q3b later found exactly one: on_auth_user_created →
+--      private.handle_new_user()", functions-and-triggers.md:71).
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- ----------------------------------------------------------------------------
+-- 1.6 private.audit_logs_append_only()
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "" — g1-b3b:45 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[7] "body", g1-b3b:131 — verbatim):
+--
+--     begin
+--       if tg_op in ('UPDATE', 'DELETE')
+--          and not (
+--            current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')
+--            or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'
+--          ) then
+--         raise exception 'audit_logs is append-only' using errcode = '42501';
+--       end if;
+--       if tg_op = 'DELETE' then
+--         return old;
+--       end if;
+--       return new;
+--     end;
+--
+-- CANDIDATE RETURN TYPE: trigger — STRUCTURALLY FORCED. Chain:
+--   a. Call site: g1-q3[0] verbatim "CREATE TRIGGER audit_logs_append_only
+--      BEFORE DELETE OR UPDATE ON public.audit_logs FOR EACH ROW EXECUTE
+--      FUNCTION private.audit_logs_append_only()", enabled_flag "O".
+--      Trigger-contract lemma (§1) ⇒ RETURNS trigger.
+--   b. Body reads TG_OP and returns OLD/NEW — trigger-protocol-only
+--      constructs (g1-b3b:131; DERIVED semantics).
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- ----------------------------------------------------------------------------
+-- 1.7 private.families_before_update()
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "" — g1-b3b:52 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[6] "body", g1-b3b:125 — verbatim):
+--
+--     begin
+--       if new.owner_id is distinct from old.owner_id
+--          and not (
+--            current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')
+--            or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'
+--          ) then
+--         raise exception 'family owner is immutable' using errcode = '42501';
+--       end if;
+--       return new;
+--     end;
+--
+-- CANDIDATE RETURN TYPE: trigger — STRUCTURALLY FORCED. Chain:
+--   a. Call site: g1-q3[2] verbatim "CREATE TRIGGER families_before_update
+--      BEFORE UPDATE ON public.families FOR EACH ROW EXECUTE FUNCTION
+--      private.families_before_update()", enabled "O" ⇒ lemma §1.
+--   b. Body references OLD/NEW (owner_id, families.owner_id uuid NOT NULL,
+--      g1-q8 {families/owner_id}); `return new;` is the BEFORE-UPDATE
+--      replacement-row protocol.
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- ----------------------------------------------------------------------------
+-- 1.8 private.profiles_before_update()
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "" — g1-b3b:57 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[5] "body", g1-b3b:119 — verbatim):
+--
+--     begin
+--       if new.id is distinct from old.id then
+--         raise exception 'profile id is immutable' using errcode = '42501';
+--       end if;
+--       if new.role is distinct from old.role then
+--         if old.role <> 'unset'
+--            and not (
+--              current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')
+--              or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'
+--            ) then
+--           raise exception 'profile role is immutable' using errcode = '42501';
+--         end if;
+--       end if;
+--       new.updated_at := now();
+--       return new;
+--     end;
+--
+-- CANDIDATE RETURN TYPE: trigger — STRUCTURALLY FORCED. Chain:
+--   a. Call site: g1-q3[4] verbatim "CREATE TRIGGER profiles_before_update
+--      BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE FUNCTION
+--      private.profiles_before_update()", enabled "O" ⇒ lemma §1.
+--   b. Body references OLD/NEW and sets new.updated_at := now()
+--      (profiles.id uuid, .role text, .updated_at timestamptz — g1-q8
+--      {profiles/id}, {profiles/role}, {profiles/updated_at}).
+--   c. Behaviour note (already adjudicated): the 'unset' bootstrap role
+--      bypasses the role guard (functions-and-triggers.md amendment
+--      :22-24; F3) — carried as a hazard pointer, no impact on the type.
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- ----------------------------------------------------------------------------
+-- 1.9 private.remote_session_transition_guard()
+-- ----------------------------------------------------------------------------
+-- Evidenced arguments (VERIFIED): "" — g1-b3b:60 .arguments.
+-- Captured body (VERIFIED, g1-b3b.bodies[4] "body", g1-b3b:113 — verbatim):
+--
+--     begin
+--       if OLD.status in ('declined', 'ended', 'expired', 'failed')
+--          and NEW.status in ('requested', 'accepted', 'active') then
+--         raise exception 'session_terminal' using errcode = 'P0001';
+--       end if;
+--       return NEW;
+--     end;
+--
+-- CANDIDATE RETURN TYPE: trigger — STRUCTURALLY FORCED. Chain:
+--   a. Call sites agree: g1-q3[5] verbatim "CREATE TRIGGER
+--      remote_sessions_transition_guard BEFORE UPDATE OF status ON
+--      public.remote_sessions FOR EACH ROW EXECUTE FUNCTION
+--      private.remote_session_transition_guard()", enabled "O"; and
+--      g1-b3b.remote_session_triggers (g1-b3b:171) same trigger,
+--      "timing":"BEFORE UPDATE FOR EACH ROW". Lemma §1 ⇒ RETURNS trigger.
+--   b. Body compares OLD.status/NEW.status against text literals;
+--      remote_sessions.status is "text" NOT NULL default 'requested'
+--      (g1-q8 {remote_sessions/status}) — consistent, result is the
+--      trigger protocol's NEW.
+--   c. SECURITY HAZARD (not a type issue): this function is SECURITY
+--      DEFINER with acl "(null = default PUBLIC EXECUTE)" and anon_exec
+--      true (g1-b3b:60) — any anon caller can call the guard directly.
+--      See §5; a future CREATE FUNCTION must decide
+--      REVOKE ... FROM PUBLIC explicitly rather than inherit the default.
+-- Confirming evidence: prorettype::regtype row for this function.
+
+-- CLASS TALLY for §1: STRUCTURALLY FORCED 9/9 · STRONGLY INDICATED 0 ·
+-- AMBIGUOUS 0. The forced classes are forced by (i) EXISTS-as-whole-body
+-- plus scalar-boolean call syntax (§1.1-§1.3) and (ii) the live-trigger
+-- contract (§1.4-§1.9, lemma §1) — not by preference or convention. What
+-- remains NOT forced anywhere: LANGUAGE, volatility, strictness, argument
+-- modes (never captured; S2-EXEC-FINAL.md:238-239) — these are authored as
+-- flagged candidates, and the honest weakest link in this file's chain is
+-- that the trigger lemma relies on the catalogue having stored exactly the
+-- type CREATE TRIGGER validates, with prorettype itself never seen.
+
+-- ============================================================================
+-- SECTION 2 — CANDIDATE CREATE FUNCTION DDL (ALL COMMENTED — NON-EXECUTING)
+-- ============================================================================
+-- Gate: uncomment ONLY after the owner rules "call-site + body derivation
+-- admissible under A0 as amended". Each block repeats its confidence class.
+-- Bodies are transcribed from g1-b3b.bodies "body" fields; the JSON field is
+-- canonical (digests: S2-EXEC-04-function-coverage-register.md:137).
+-- Disclosed at load for every block (S2-EXEC-FINAL.md:238-239): PROVOLATILE,
+-- PROISSTRICT and argument modes were NEVER captured; clauses omitted here
+-- take PostgreSQL load-time defaults (VOLATILE, non-strict, IN) which may
+-- differ from production. This disclosure must ship with the load, not be
+-- discovered later.
+
+-- ---- 2.1 private.is_family_parent — RETURNS boolean [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:95; args g1-b3b:55.
+-- -- LANGUAGE sql is DERIVED from bare-SELECT prosrc shape (see §1.1 note);
+-- -- SECURITY DEFINER + search_path + grants evidenced at g1-b3b:55.
+-- -- CREATE OR REPLACE FUNCTION private.is_family_parent(IN p_family_id uuid)
+-- -- RETURNS boolean
+-- -- LANGUAGE sql
+-- -- SECURITY DEFINER
+-- -- SET search_path TO public, private, pg_temp
+-- -- AS $$
+-- --   select exists (
+-- --     select 1
+-- --     from public.family_members m
+-- --     join public.families f on f.id = m.family_id
+-- --     where m.family_id = p_family_id
+-- --       and m.user_id = auth.uid()
+-- --       and m.role = 'parent'
+-- --       and m.status = 'active'
+-- --       and f.deleted_at is null
+-- --   );
+-- -- $$;
+-- -- REVOKE ALL ON FUNCTION private.is_family_parent(uuid) FROM PUBLIC;
+-- -- GRANT EXECUTE ON FUNCTION private.is_family_parent(uuid) TO authenticated;
+-- -- (grant shape reproduces g1-b3b:55 acl "postgres=X/postgres,
+-- --  authenticated=X/postgres"; anon_exec=false, service_exec=false)
+
+-- ---- 2.2 private.is_family_member — RETURNS boolean [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:89; args g1-b3b:54.
+-- -- CREATE OR REPLACE FUNCTION private.is_family_member(IN p_family_id uuid)
+-- -- RETURNS boolean
+-- -- LANGUAGE sql
+-- -- SECURITY DEFINER
+-- -- SET search_path TO public, private, pg_temp
+-- -- AS $$
+-- --   select exists (
+-- --     select 1
+-- --     from public.family_members m
+-- --     join public.families f on f.id = m.family_id
+-- --     where m.family_id = p_family_id
+-- --       and m.user_id = auth.uid()
+-- --       and m.status = 'active'
+-- --       and f.deleted_at is null
+-- --   );
+-- -- $$;
+-- -- REVOKE ALL ON FUNCTION private.is_family_member(uuid) FROM PUBLIC;
+-- -- GRANT EXECUTE ON FUNCTION private.is_family_member(uuid) TO authenticated;
+-- -- (acl g1-b3b:54)
+
+-- ---- 2.3 private.shares_active_family — RETURNS boolean [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:101; args g1-b3b:66.
+-- -- CREATE OR REPLACE FUNCTION private.shares_active_family(IN p_user_id uuid)
+-- -- RETURNS boolean
+-- -- LANGUAGE sql
+-- -- SECURITY DEFINER
+-- -- SET search_path TO public, private, pg_temp
+-- -- AS $$
+-- --   select exists (
+-- --     select 1
+-- --     from public.family_members mine
+-- --     join public.family_members theirs on theirs.family_id = mine.family_id
+-- --     join public.families f on f.id = mine.family_id
+-- --     where mine.user_id = auth.uid()
+-- --       and theirs.user_id = p_user_id
+-- --       and mine.status = 'active'
+-- --       and theirs.status = 'active'
+-- --       and f.deleted_at is null
+-- --   );
+-- -- $$;
+-- -- REVOKE ALL ON FUNCTION private.shares_active_family(uuid) FROM PUBLIC;
+-- -- GRANT EXECUTE ON FUNCTION private.shares_active_family(uuid) TO authenticated;
+-- -- (acl g1-b3b:66)
+
+-- ---- 2.4 private.set_updated_at — RETURNS trigger [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:137; forced by g1-q3[1],[3],[6].
+-- -- LANGUAGE plpgsql DERIVED from begin/end + assignment prosrc shape.
+-- -- CREATE OR REPLACE FUNCTION private.set_updated_at()
+-- -- RETURNS trigger
+-- -- LANGUAGE plpgsql
+-- -- AS $$
+-- -- begin
+-- --   new.updated_at := now();
+-- --   return new;
+-- -- end;
+-- -- $$;
+-- -- SECURITY INVOKER per g1-b3b:65 security_definer=false (default; stated
+-- -- for the record). Production proconfig pins search_path
+-- -- "public, private, pg_temp" (g1-b3b:65 settings) but a bare plpgsql
+-- -- SECURITY INVOKER function with NO SET clause reproduces "no pinned
+-- -- search_path"; to reproduce the CAPTURED row the SET clause belongs on
+-- -- the function:
+-- -- -- SET search_path TO public, private, pg_temp
+-- -- (acl g1-b3b:65: "postgres=X/postgres" only — emit no GRANT to PUBLIC /
+-- --  authenticated / anon; the trigger engine executes as the table owner,
+-- --  so absence of grants is the evidenced state.)
+
+-- ---- 2.5 private.handle_new_user — RETURNS trigger [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:107; forced by g1-q3b[0].
+-- -- CREATE OR REPLACE FUNCTION private.handle_new_user()
+-- -- RETURNS trigger
+-- -- LANGUAGE plpgsql
+-- -- SECURITY DEFINER                                -- g1-b3b:53 true
+-- -- SET search_path TO public, private, pg_temp     -- g1-b3b:53 settings
+-- -- AS $$
+-- -- declare
+-- --   v_name text;
+-- -- begin
+-- --   v_name := left(
+-- --     coalesce(
+-- --       nullif(btrim(coalesce(new.raw_user_meta_data ->> 'display_name', '')), ''),
+-- --       nullif(split_part(coalesce(new.email, ''), '@', 1), ''),
+-- --       'User'
+-- --     ),
+-- --     60
+-- --   );
+-- --   if v_name is null or char_length(v_name) = 0 then
+-- --     v_name := 'User';
+-- --   end if;
+-- --   insert into public.profiles (id, role, display_name)
+-- --   values (new.id, 'unset', v_name)
+-- --   on conflict (id) do nothing;
+-- --   return new;
+-- -- end;
+-- -- $$;
+-- -- (acl g1-b3b:53: "postgres=X/postgres" only — no EXECUTE to any app role,
+-- --  evidenced. Do not add one.)
+
+-- ---- 2.6 private.audit_logs_append_only — RETURNS trigger [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:131; forced by g1-q3[0].
+-- -- CREATE OR REPLACE FUNCTION private.audit_logs_append_only()
+-- -- RETURNS trigger
+-- -- LANGUAGE plpgsql
+-- -- AS $$
+-- -- begin
+-- --   if tg_op in ('UPDATE', 'DELETE')
+-- --      and not (
+-- --        current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')
+-- --        or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'
+-- --      ) then
+-- --     raise exception 'audit_logs is append-only' using errcode = '42501';
+-- --   end if;
+-- --   if tg_op = 'DELETE' then
+-- --     return old;
+-- --   end if;
+-- --   return new;
+-- -- end;
+-- -- $$;
+-- -- SECURITY INVOKER per g1-b3b:45 security_definer=false; pin
+-- -- -- SET search_path TO public, private, pg_temp
+-- -- reproduces g1-b3b:45 settings. acl "postgres=X/postgres" — no grants.
+
+-- ---- 2.7 private.families_before_update — RETURNS trigger [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:125; forced by g1-q3[2].
+-- -- CREATE OR REPLACE FUNCTION private.families_before_update()
+-- -- RETURNS trigger
+-- -- LANGUAGE plpgsql
+-- -- AS $$
+-- -- begin
+-- --   if new.owner_id is distinct from old.owner_id
+-- --      and not (
+-- --        current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')
+-- --        or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'
+-- --      ) then
+-- --     raise exception 'family owner is immutable' using errcode = '42501';
+-- --   end if;
+-- --   return new;
+-- -- end;
+-- -- $$;
+-- -- SECURITY INVOKER per g1-b3b:52 false; -- SET search_path TO public, private, pg_temp
+-- -- (g1-b3b:52 settings). acl "postgres=X/postgres" — no grants.
+
+-- ---- 2.8 private.profiles_before_update — RETURNS trigger [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:119; forced by g1-q3[4].
+-- -- CREATE OR REPLACE FUNCTION private.profiles_before_update()
+-- -- RETURNS trigger
+-- -- LANGUAGE plpgsql
+-- -- AS $$
+-- -- begin
+-- --   if new.id is distinct from old.id then
+-- --     raise exception 'profile id is immutable' using errcode = '42501';
+-- --   end if;
+-- --   if new.role is distinct from old.role then
+-- --     if old.role <> 'unset'
+-- --        and not (
+-- --          current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')
+-- --          or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'
+-- --        ) then
+-- --       raise exception 'profile role is immutable' using errcode = '42501';
+-- --     end if;
+-- --   end if;
+-- --   new.updated_at := now();
+-- --   return new;
+-- -- end;
+-- -- $$;
+-- -- SECURITY INVOKER per g1-b3b:57 false; -- SET search_path TO public, private, pg_temp
+-- -- (g1-b3b:57 settings). acl "postgres=X/postgres" — no grants.
+
+-- ---- 2.9 private.remote_session_transition_guard — RETURNS trigger [STRUCTURALLY FORCED] --
+-- -- Candidate; body verbatim g1-b3b:113; forced by g1-q3[5] + g1-b3b:171.
+-- -- HAZARD (g1-b3b:60): SECURITY DEFINER with acl NULL = default PUBLIC
+-- -- EXECUTE and anon_exec=TRUE. The authored DDL must make the PUBLIC
+-- -- decision EXPLICIT. Two lines are provided; choosing between them is an
+-- -- owner decision — this file does not pre-select.
+-- -- CREATE OR REPLACE FUNCTION private.remote_session_transition_guard()
+-- -- RETURNS trigger
+-- -- LANGUAGE plpgsql
+-- -- SECURITY DEFINER                                -- g1-b3b:60 true
+-- -- SET search_path TO public, pg_temp              -- g1-b3b:60 settings —
+-- --   NOTE: this one omits private (with public.request_remote_session the
+-- --   only two of 38; functions-and-triggers.md amendment :20-21, F5/F8).
+-- --   Reproduced exactly; do not "fix" it silently.
+-- -- AS $$
+-- -- begin
+-- --   if OLD.status in ('declined', 'ended', 'expired', 'failed')
+-- --      and NEW.status in ('requested', 'accepted', 'active') then
+-- --     raise exception 'session_terminal' using errcode = 'P0001';
+-- --   end if;
+-- --   return NEW;
+-- -- end;
+-- -- $$;
+-- -- OPTION A (reproduce captured production ACL, incl. the hazard): emit
+-- --   nothing — leave default PUBLIC EXECUTE. (Matches g1-b3b:60.)
+-- -- OPTION B (hardening, changes the evidenced state): 
+-- --   REVOKE ALL ON FUNCTION private.remote_session_transition_guard() FROM PUBLIC;
+-- --   — then the guard is callable only via the trigger; requires P01/P02
+-- --   review (E2/F8 remediation track).
+
+-- ============================================================================
+-- SECTION 3 — DEPENDENT OBJECTS UNLOCKED BY SECTION 2 (ALL COMMENTED)
+-- ============================================================================
+-- 3.1 The 21 policies (from g1-q2, all PERMISSIVE, all TO authenticated —
+-- "All roles: authenticated" per row "roles" field; S2-A3:155 count 21).
+-- Predicates are the pg_get_expr qual/with_check text VERBATIM from g1-q2
+-- (single-line file; cited by array index). Rendering rule (DERIVED):
+-- qual -> USING, with_check -> WITH CHECK, null qual on INSERT/UPDATE ->
+-- omit USING (this is the X-4/D-6 fix for the artefact's `USING (None)`
+-- defect, S2-A3-database-audit.md:90).
+-- The four auth.uid()-only policies [6],[11],[19],[20] need NO derivation
+-- ruling (X-5/X-4: "4 of 21 policies are offline-emittable today",
+-- S2-A3:166-171; the artefact over-suppressed them) — kept commented here
+-- only so this whole file stays non-executing; they may be lifted verbatim
+-- into any load the owner authorises.
+
+-- ---- gated by private.is_family_parent (§1.1 / §2.1) — 13 policies ----
+-- CREATE POLICY audit_logs_select_family_parent ON public.audit_logs
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING ((family_id IS NOT NULL) AND private.is_family_parent(family_id));
+--   -- g1-q2[0]
+-- CREATE POLICY device_apps_select_parent_or_child ON public.device_apps
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_parent(family_id) OR (EXISTS ( SELECT 1
+--      FROM devices d
+--     WHERE ((d.id = device_apps.device_id) AND (d.child_user_id = auth.uid())))));
+--   -- g1-q2[1]
+-- CREATE POLICY device_commands_select_parent_or_child ON public.device_commands
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_parent(family_id) OR (EXISTS ( SELECT 1
+--      FROM devices d
+--     WHERE ((d.id = device_commands.device_id) AND (d.child_user_id = auth.uid())))));
+--   -- g1-q2[2]
+-- CREATE POLICY device_policies_select_parent_or_child ON public.device_policies
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_parent(family_id) OR (EXISTS ( SELECT 1
+--      FROM devices d
+--     WHERE ((d.id = device_policies.device_id) AND (d.child_user_id = auth.uid())))));
+--   -- g1-q2[3]
+-- CREATE POLICY devices_select_parent_or_child ON public.devices
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_parent(family_id) OR (child_user_id = auth.uid()));
+--   -- g1-q2[4]
+-- CREATE POLICY location_events_select_parent_or_child ON public.location_events
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_parent(family_id) OR (EXISTS ( SELECT 1
+--      FROM devices d
+--     WHERE ((d.id = location_events.device_id) AND (d.child_user_id = auth.uid())))));
+--   -- g1-q2[8]
+-- CREATE POLICY pairing_requests_select_participants ON public.pairing_requests
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING ((child_user_id = auth.uid()) OR (parent_user_id = auth.uid()) OR private.is_family_parent(family_id));
+--   -- g1-q2[9]
+-- CREATE POLICY remote_sessions_select_participants ON public.remote_sessions
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING ((parent_user_id = auth.uid()) OR (child_user_id = auth.uid()) OR private.is_family_parent(family_id));
+--   -- g1-q2[12]
+-- CREATE POLICY safe_zones_delete_parent ON public.safe_zones
+--   AS PERMISSIVE FOR DELETE TO authenticated
+--   USING (private.is_family_parent(family_id));
+--   -- g1-q2[13]
+-- CREATE POLICY safe_zones_insert_parent ON public.safe_zones
+--   AS PERMISSIVE FOR INSERT TO authenticated
+--   WITH CHECK (private.is_family_parent(family_id));
+--   -- g1-q2[14]; qual null -> NO USING clause (X-4 rendering rule above)
+-- CREATE POLICY safe_zones_update_parent ON public.safe_zones
+--   AS PERMISSIVE FOR UPDATE TO authenticated
+--   USING (private.is_family_parent(family_id))
+--   WITH CHECK (private.is_family_parent(family_id));
+--   -- g1-q2[16]
+-- CREATE POLICY safety_alerts_select_parent_or_child ON public.safety_alerts
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_parent(family_id) OR (EXISTS ( SELECT 1
+--      FROM devices d
+--     WHERE ((d.id = safety_alerts.device_id) AND (d.child_user_id = auth.uid())))));
+--   -- g1-q2[17]
+-- CREATE POLICY usage_daily_select_parent_or_child ON public.usage_daily
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_parent(family_id) OR (EXISTS ( SELECT 1
+--      FROM devices d
+--     WHERE ((d.id = usage_daily.device_id) AND (d.child_user_id = auth.uid())))));
+--   -- g1-q2[18]
+
+-- ---- gated by private.is_family_member (§1.2 / §2.2) — 3 policies ----
+-- CREATE POLICY families_select_members ON public.families
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING ((deleted_at IS NULL) AND private.is_family_member(id));
+--   -- g1-q2[5]
+-- CREATE POLICY family_members_select_family ON public.family_members
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_member(family_id));
+--   -- g1-q2[7]
+-- CREATE POLICY safe_zones_select_family ON public.safe_zones
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (private.is_family_member(family_id));
+--   -- g1-q2[15]
+
+-- ---- gated by private.shares_active_family (§1.3 / §2.3) — 1 policy ----
+-- CREATE POLICY profiles_select_self_or_family ON public.profiles
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING ((id = auth.uid()) OR private.shares_active_family(id));
+--   -- g1-q2[10]
+
+-- ---- NOT gated on the 9; blocked only on built-in auth.uid() — 4 policies ----
+-- CREATE POLICY families_update_owner ON public.families
+--   AS PERMISSIVE FOR UPDATE TO authenticated
+--   USING ((owner_id = auth.uid()) AND (deleted_at IS NULL))
+--   WITH CHECK (owner_id = auth.uid());
+--   -- g1-q2[6]
+-- CREATE POLICY profiles_update_self ON public.profiles
+--   AS PERMISSIVE FOR UPDATE TO authenticated
+--   USING (id = auth.uid())
+--   WITH CHECK (id = auth.uid());
+--   -- g1-q2[11]
+-- CREATE POLICY webrtc_signals_insert_participant ON public.webrtc_signals
+--   AS PERMISSIVE FOR INSERT TO authenticated
+--   WITH CHECK ((from_user_id = auth.uid()) AND (EXISTS ( SELECT 1
+--      FROM remote_sessions s
+--     WHERE ((s.id = webrtc_signals.session_id) AND (s.status = ANY (ARRAY['accepted'::text, 'active'::text])) AND ((s.parent_user_id = auth.uid()) OR (s.child_user_id = auth.uid()))))));
+--   -- g1-q2[19]; qual null -> NO USING (this line IS the X-4/D-6 repair of
+--   -- the artefact's `USING (None)` rendering, S2-A3-database-audit.md:90)
+-- CREATE POLICY webrtc_signals_select_participant ON public.webrtc_signals
+--   AS PERMISSIVE FOR SELECT TO authenticated
+--   USING (EXISTS ( SELECT 1
+--      FROM remote_sessions s
+--     WHERE ((s.id = webrtc_signals.session_id) AND (s.status = ANY (ARRAY['accepted'::text, 'active'::text])) AND ((s.parent_user_id = auth.uid()) OR (s.child_user_id = auth.uid())))));
+--   -- g1-q2[20]
+
+-- 3.2 The 8 triggers (from g1-q3[0..6] and g1-q3b[0], definition fields
+-- VERBATIM). Every string below is the captured definition text itself —
+-- "the trigger DDL itself needs no invention" (X-6, S2-A3:92). Each is
+-- emittable the moment its function (§2) is accepted.
+--
+-- ---- function: private.audit_logs_append_only (§1.6 / §2.6) ----
+-- CREATE TRIGGER audit_logs_append_only BEFORE DELETE OR UPDATE ON public.audit_logs FOR EACH ROW EXECUTE FUNCTION private.audit_logs_append_only();
+--   -- g1-q3[0].definition; enabled_flag "O"; security_definer false agrees
+--   -- with g1-b3b:45 (S2-EXEC-04:172 "8/8 concordant")
+--
+-- ---- function: private.set_updated_at (§1.4 / §2.4) — 3 triggers ----
+-- CREATE TRIGGER devices_set_updated_at BEFORE UPDATE ON public.devices FOR EACH ROW EXECUTE FUNCTION private.set_updated_at();
+--   -- g1-q3[1].definition
+-- CREATE TRIGGER families_set_updated_at BEFORE UPDATE ON public.families FOR EACH ROW EXECUTE FUNCTION private.set_updated_at();
+--   -- g1-q3[3].definition
+-- CREATE TRIGGER safe_zone_states_set_updated_at BEFORE UPDATE ON public.safe_zone_states FOR EACH ROW EXECUTE FUNCTION private.set_updated_at();
+--   -- g1-q3[6].definition
+--
+-- ---- function: private.families_before_update (§1.7 / §2.7) ----
+-- CREATE TRIGGER families_before_update BEFORE UPDATE ON public.families FOR EACH ROW EXECUTE FUNCTION private.families_before_update();
+--   -- g1-q3[2].definition
+--
+-- ---- function: private.profiles_before_update (§1.8 / §2.8) ----
+-- CREATE TRIGGER profiles_before_update BEFORE UPDATE ON public.profiles FOR EACH ROW EXECUTE FUNCTION private.profiles_before_update();
+--   -- g1-q3[4].definition
+--
+-- ---- function: private.remote_session_transition_guard (§1.9 / §2.9) ----
+-- CREATE TRIGGER remote_sessions_transition_guard BEFORE UPDATE OF status ON public.remote_sessions FOR EACH ROW EXECUTE FUNCTION private.remote_session_transition_guard();
+--   -- g1-q3[5].definition; second copy g1-b3b:171 (remote_session_triggers);
+--   -- security_definer true matches g1-b3b:60
+--
+-- ---- function: private.handle_new_user (§1.5 / §2.5) ----
+-- CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION private.handle_new_user();
+--   -- g1-q3b[0].definition; enabled "O"; function_settings pinned per
+--   -- g1-q3b[0].function_settings matches g1-b3b:53
+--
+-- Note (DERIVED): these triggers fire on auth.users and public tables; on
+-- staging they load only after the §2 functions exist and the `private`
+-- schema USAGE grants for the executing context exist — the schema-usage
+-- precondition is tracked separately (g1-b3b.schema_usage: anon=false,
+-- authenticated=true, service_role=true; S2-A3 H-1/H-3 rows, :528).
+
+-- ============================================================================
+-- SECTION 4 — THE 24 ABSENT BODIES (12 public + 12 private)
+-- ============================================================================
+-- CORRECTION CHECK — SHOUTED RESULT: none. Repo-wide search performed for
+-- this file (Grep "CREATE (OR REPLACE )?FUNCTION" over D:\control, plus the
+-- prior searches at S2-EXEC-05 §5 :160-180: no migrations, no
+-- supabase/functions dir — supabase/ holds only config.toml + .gitignore,
+-- g1-b3b edge-capture records functions_directory "absent") found NO body
+-- for any of the 24 that the prior registers missed. The 24 remain
+-- "0 of 24 ... recoverable" (S2-EXEC-FINAL.md:242-243). The only
+-- create-or-replace texts in the repo are: S2-P01/P02 patches restating
+-- ALREADY-captured bodies (private.request_device_recovery,
+-- private.unlink_child, public.request_remote_session), and
+-- S2-P03's private.remote_session_insert_guard() — a NEW proposed guard
+-- (patch post-image), not in the 38-row production inventory, so not a
+-- recovered body. Verdict column below: UNRECOVERABLE OFFLINE for all 24.
+-- No body is written for any of them here. Prohibition honoured: stubbing,
+-- guessing, always-true replacements are all forbidden and none appears.
+--
+-- Signature source: g1-b3b inventory .arguments (VERIFIED, schema-attributed
+-- per row note g1-b3b:38-39). Return types: 0 raw; `NARR ft.md:NN` =
+-- narrative public-only table, unattributable to the private twin (U-1,
+-- S2-EXEC-04:329). Call sites: RPC names appear caller-side in the Edge
+-- capture (S2-EXEC-05:162) — that corroborates arity, never a definition.
+--
+-- PRIVATE (12) — all: security props VERIFIED g1-b3b; no return type in ANY
+-- form (S2-EXEC-FINAL.md:226-227); trigger/policy dependents: NONE (X-5/
+-- S2-EXEC-05:154 "None of the 24 absent bodies has a captured trigger or
+-- policy dependent").
+-- 1. private.apply_policy_version(4 args)          g1-b3b:44  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 2. private.create_family_with_owner(2 args)      g1-b3b:46  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 3. private.create_pairing_invite(5 args)         g1-b3b:47  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 4. private.create_pairing_request(5 args)        g1-b3b:48  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 5. private.detect_offline_devices()              g1-b3b:49  calls: Edge RPC (cron slug) verdict UNRECOVERABLE OFFLINE
+-- 6. private.expire_stale_commands(p_device_id)    g1-b3b:50  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 7. private.expire_stale_sessions()               g1-b3b:51  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 8. private.poll_device_commands(uuid,integer)    g1-b3b:56  calls: Edge RPC; sig conflict b3b "p_limit integer" vs ft.md:43 "default 20" (S2-EXEC-05 §1.3.2) — never emit both variants  verdict UNRECOVERABLE OFFLINE
+-- 9. private.record_audit(7 args)                  g1-b3b:59  calls: INSIDE two captured bodies — private.request_device_recovery (g1-b3b:149) and private.unlink_child (g1-b3b:167). TRANSITIVE DEPENDENT BLOCKER: until this body exists, §2's captured-body RPC chain is incomplete (S2-EXEC-05:100, U-5 :333).  verdict UNRECOVERABLE OFFLINE
+-- 10. private.replace_device_apps(3 args)          g1-b3b:61  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 11. private.respond_pairing_request(3 args)      g1-b3b:63  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+-- 12. private.revoke_device(2 args)                g1-b3b:64  calls: Edge RPC  verdict UNRECOVERABLE OFFLINE
+--
+-- PUBLIC (12) — return types exist ONLY as narrative (ft.md:34-49), bodies
+-- absent; owner/security_definer/search_path/acl VERIFIED at g1-q10
+-- (schema-less rows; twins make schema UNATTRIBUTABLE to private —
+-- S2-EXEC-04:329 U-1) and independently at the schema-tagged g1-b3b rows.
+-- 13. public.apply_policy_version      g1-b3b:68  ft.md:36 jsonb     verdict UNRECOVERABLE OFFLINE
+-- 14. public.create_family_with_owner  g1-b3b:69  ft.md:37 jsonb     verdict UNRECOVERABLE OFFLINE
+-- 15. public.create_pairing_invite     g1-b3b:70  ft.md:38 jsonb     verdict UNRECOVERABLE OFFLINE
+-- 16. public.create_pairing_request    g1-b3b:71  ft.md:39 jsonb     verdict UNRECOVERABLE OFFLINE
+-- 17. public.detect_offline_devices    g1-b3b:72  ft.md:40 integer   verdict UNRECOVERABLE OFFLINE
+-- 18. public.expire_stale_commands     g1-b3b:73  ft.md:41 integer   verdict UNRECOVERABLE OFFLINE
+-- 19. public.expire_stale_sessions     g1-b3b:74  ft.md:42 integer   verdict UNRECOVERABLE OFFLINE
+-- 20. public.poll_device_commands      g1-b3b:75  ft.md:43 jsonb (+default-20 conflict) verdict UNRECOVERABLE OFFLINE
+-- 21. public.replace_device_apps       g1-b3b:76  ft.md:44 integer   verdict UNRECOVERABLE OFFLINE
+-- 22. public.respond_pairing_request   g1-b3b:79  ft.md:47 jsonb     verdict UNRECOVERABLE OFFLINE
+-- 23. public.revoke_device             g1-b3b:80  ft.md:48 jsonb     verdict UNRECOVERABLE OFFLINE
+-- 24. public.unlink_child              g1-b3b:81  ft.md:49 jsonb     verdict UNRECOVERABLE OFFLINE
+--     (P02 forbids touching public.unlink_child — S2-EXEC-05:122)
+--
+-- Also-blocked-but-not-in-the-24 (bodies captured, return types absent,
+-- no policy/trigger dependent): private.realtime_topic_allowed (g1-b3b:58,
+-- :143 — candidate boolean derivable by the SAME §1.1-1.3 chain: all RETURN
+-- arms are `false`/is_family_* calls; STRONGLY INDICATED only because no
+-- policy/trigger call site exists to force scalar context — 1 of only 2
+-- internal sites), private.request_device_recovery (g1-b3b:62; jsonb is
+-- NARRATIVE-ONLY, U-2 S2-EXEC-04:330), private.unlink_child (g1-b3b:67,
+-- body g1-b3b:167; U-2), public.request_device_recovery + public.request_
+-- remote_session wrappers (bodies g1-b3b:155, g1-b3b:161; wrapper return
+-- types follow their private twins, still unfixed). These stay blocked
+-- even after the §1 ruling until their own derivation is separately ruled.
+
+-- ============================================================================
+-- SECTION 5 — SECURITY PROPERTIES TO CARRY INTO ANY AUTHORED DDL
+-- ============================================================================
+-- Source split: g1-q10 supplies owner/security_definer/settings/per-role
+-- EXECUTE/acl/extension_owned for the 14 PUBLIC functions — its rows carry
+-- NO schema_name, so they are UNATTRIBUTED for the private set
+-- (S2-EXEC-04:329 U-1). For all 9 gating functions (every one `private`)
+-- the authoritative security evidence is the schema-tagged g1-b3b inventory
+-- rows themselves (schema proven per row, g1-b3b:38-39).
+--
+-- Per gating function (all fields from the cited g1-b3b row):
+--   is_family_parent   :55  DEFINER  sp=public,private,pg_temp  anon=F auth=T svc=F  acl: postgres,X + authenticated,X
+--   is_family_member   :54  DEFINER  sp=public,private,pg_temp  anon=F auth=T svc=F  acl: postgres,X + authenticated,X
+--   shares_active_family :66 DEFINER  sp=public,private,pg_temp  anon=F auth=T svc=F  acl: postgres,X + authenticated,X
+--   handle_new_user    :53  DEFINER  sp=public,private,pg_temp  anon=F auth=F svc=F  acl: postgres ONLY (no app-role EXECUTE — evidenced)
+--   set_updated_at     :65  INVOKER  sp=public,private,pg_temp  all F              acl: postgres ONLY
+--   audit_logs_append_only :45 INVOKER sp=public,private,pg_temp all F             acl: postgres ONLY
+--   families_before_update :52 INVOKER sp=public,private,pg_temp all F             acl: postgres ONLY
+--   profiles_before_update :57 INVOKER sp=public,private,pg_temp all F             acl: postgres ONLY
+--   remote_session_transition_guard :60 DEFINER  sp=public,pg_temp (NO private!)
+--                      anon=T auth=T svc=T  acl: NULL = default PUBLIC EXECUTE
+--
+-- KNOWN HAZARD, restated as required: private.remote_session_transition_guard
+-- is SECURITY DEFINER with default PUBLIC EXECUTE and anon=True (g1-b3b:60) —
+-- the E2/F8 hazard pattern. Any future CREATE FUNCTION must DECIDE
+-- `REVOKE ... FROM PUBLIC` EXPLICITLY (§2.9 Option A/B) rather than inherit
+-- the Postgres default; silently matching the hole and silently closing it
+-- are both disallowed — it is a named owner decision at activation time.
+-- UNATTRIBUTED flags: g1-q10 owner "postgres" and q10 rows are NOT applied
+-- to any private function (U-1); they evidence only the 14 public RPC
+-- functions' security properties, per the brief.
+-- Never-captured dimensions that must be disclosed at load for every §2
+-- object: prolang, provolatile, proisstrict, argument modes
+-- (S2-EXEC-FINAL.md:238-239; S2-EXEC-04:319-320).
+
+-- ============================================================================
+-- SECTION 6 — WHAT THIS UNLOCKS (arithmetic)
+-- ============================================================================
+-- If, and only if, the owner rules the §1 derivations admissible (and
+-- §2/§3 are then uncommented):
+--   * Policies: emittable today 4 of 21 (X-4: 4 in principle, 3 as-written
+--     — webrtc_signals_insert_participant needs the USING(None) fix first,
+--     S2-A3:90) -> 21 of 21. Delta +17 (13 + 3 + 1 per g1-q2 fan-out,
+--     S2-EXEC-04:204).
+--   * Triggers: 0 of 8 -> 8 of 8 (S2-EXEC-04:172; X-6 S2-A3:92; §3.2 above).
+--   * Total blocked dependents: 25 of 29 cleared (S2-EXEC-FINAL.md:233).
+--   * Bonus from the same ruling: nothing further is forced — the remaining
+--     captured-body functions (realtime_topic_allowed, request_device_
+--     recovery, unlink_child, the two public wrappers) still wait on their
+--     own return types (end of §4).
+-- STILL BLOCKED AFTERWARDS (unchanged by this file):
+--   * The 24 absent bodies (§4) — unrecoverable offline, any return type;
+--     A5/D-06 prosrc-hash validation unsatisfiable for them
+--     (S2-EXEC-FINAL.md:244).
+--   * The 4 captured-but-unforced return types above (U-2 chain).
+--   * Extensions and publications (0 executable statements; CF-08 /
+--     S2-EXEC-04-independent-g3-audit-report.md:32; not functions' domain).
+--   * Default-privilege / ACL block incl. the X-1 count correction
+--     (S2-A3:87).
+--   * auth.uid()/auth schema availability in staging (prerequisite for all
+--     21 policies; not authored here).
+-- Activation order implied (DERIVED): §2.1-§2.3 then §3.1-17; §2.4-§2.9
+-- then §3.2; private schema + USAGE first (g1-b3b.schema_usage), else the
+-- policy predicates fail to resolve.
+
+-- ============================ END OF FILE ===================================

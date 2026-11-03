@@ -1,0 +1,50 @@
+# secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.jks
+*.keystore
+*.bks
+service-account*.json
+*-firebase-adminsdk-*.json
+keystore.properties
+signing.properties
+google-services.json
+GoogleService-Info.plist
+
+# tooling state
+supabase/.temp/
+supabase/.branches/
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+.idea/
+.vscode/
+
+# flutter / dart (added 2026-11-03 when the app build began)
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+*.iml
+.metadata
+coverage/
+*.js.deps
+*.js.map
+
+# fvm: pin file is committed (.fvmrc); the SDK directory and version links are not
+.fvm/flutter_sdk
+.fvm/versions/
+.fvm/fvm_config.json
+
+# android
+android/.gradle/
+android/local.properties
+android/app/debug/
+android/app/profile/
+android/app/release/
+*.aab
+*.apk

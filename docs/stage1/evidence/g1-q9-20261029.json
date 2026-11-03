@@ -1,0 +1,93 @@
+{
+  "source": {
+    "endpoint": "dashboard Advisor page (Security Advisor) for project hhqgreaoqulmfwfwarhc; response of the page's own run-lints call",
+    "retrieved": "2026-10-29",
+    "operation": "read-only; GET-only linter run triggered by the page Refresh control; no SQL, DDL or DML issued",
+    "note": "Extract, not the full payload: verbatim detail prose lives in the project's advisor data and is reproducible with Refresh. Every finding is listed; strings are parsed into object identifiers.",
+    "displayed_counts": { "errors": 0, "warnings": 1, "suggestions": 4 },
+    "raw_row_counts": { "total": 33, "WARN": 15, "INFO": 18 }
+  },
+  "findings": [
+    {
+      "name": "auth_leaked_password_protection",
+      "title": "Leaked Password Protection Disabled",
+      "level": "WARN",
+      "facing": "EXTERNAL",
+      "categories": ["SECURITY"],
+      "description": "Leaked password protection is currently disabled.",
+      "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+      "count": 1
+    },
+    {
+      "name": "auth_rls_initplan",
+      "title": "Auth RLS Initialization Plan",
+      "level": "WARN",
+      "facing": "EXTERNAL",
+      "categories": ["PERFORMANCE"],
+      "description": "Detects if calls to current_setting() and auth.<function>() in RLS policies are being unnecessarily re-evaluated for each row",
+      "count": 14,
+      "items": [
+        ["profiles", "profiles_select_self_or_family"],
+        ["profiles", "profiles_update_self"],
+        ["families", "families_update_owner"],
+        ["devices", "devices_select_parent_or_child"],
+        ["pairing_requests", "pairing_requests_select_participants"],
+        ["device_policies", "device_policies_select_parent_or_child"],
+        ["device_commands", "device_commands_select_parent_or_child"],
+        ["usage_daily", "usage_daily_select_parent_or_child"],
+        ["location_events", "location_events_select_parent_or_child"],
+        ["device_apps", "device_apps_select_parent_or_child"],
+        ["safety_alerts", "safety_alerts_select_parent_or_child"],
+        ["remote_sessions", "remote_sessions_select_participants"],
+        ["webrtc_signals", "webrtc_signals_select_participant"],
+        ["webrtc_signals", "webrtc_signals_insert_participant"]
+      ]
+    },
+    {
+      "name": "rls_enabled_no_policy",
+      "title": "RLS Enabled No Policy",
+      "level": "INFO",
+      "facing": "EXTERNAL",
+      "categories": ["SECURITY"],
+      "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+      "count": 4,
+      "items": ["child_contact_ids", "device_pairing_tokens", "pairing_attempts", "safe_zone_states"]
+    },
+    {
+      "name": "unindexed_foreign_keys",
+      "title": "Unindexed foreign keys",
+      "level": "INFO",
+      "facing": "EXTERNAL",
+      "categories": ["PERFORMANCE"],
+      "description": "Identifies foreign key constraints without a covering index, which can impact database performance.",
+      "count": 12,
+      "items": [
+        ["audit_logs", "audit_logs_device_id_fkey"],
+        ["device_commands", "device_commands_created_by_fkey"],
+        ["device_commands", "device_commands_family_id_fkey"],
+        ["device_pairing_tokens", "device_pairing_tokens_created_by_fkey"],
+        ["device_pairing_tokens", "device_pairing_tokens_redeemed_by_fkey"],
+        ["device_policies", "device_policies_created_by_fkey"],
+        ["remote_sessions", "remote_sessions_ended_by_fkey"],
+        ["remote_sessions", "remote_sessions_parent_user_id_fkey"],
+        ["safe_zone_states", "safe_zone_states_device_id_fkey"],
+        ["safe_zones", "safe_zones_created_by_fkey"],
+        ["safety_alerts", "safety_alerts_acknowledged_by_fkey"],
+        ["webrtc_signals", "webrtc_signals_from_user_id_fkey"]
+      ]
+    },
+    {
+      "name": "unused_index",
+      "title": "Unused Index",
+      "level": "INFO",
+      "facing": "EXTERNAL",
+      "categories": ["PERFORMANCE"],
+      "description": "Detects if an index has never been used and may be a candidate for removal.",
+      "count": 2,
+      "items": [
+        ["device_pairing_tokens", "device_pairing_tokens_child_purpose_idx"],
+        ["device_commands", "device_commands_expires_idx"]
+      ]
+    }
+  ]
+}

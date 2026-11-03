@@ -1,0 +1,1 @@
+[{"table_schema":"auth","table_name":"users","trigger_name":"on_auth_user_created","definition":"CREATE TRIGGER on_auth_user_created AFTER INSERT ON auth.users FOR EACH ROW EXECUTE FUNCTION private.handle_new_user()","enabled_flag":"O","function_schema":"private","function_name":"handle_new_user","security_definer":true,"function_settings":"search_path=public, private, pg_temp"}]

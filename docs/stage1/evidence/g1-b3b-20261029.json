@@ -1,0 +1,177 @@
+{
+  "capture": {
+    "project": "parent-control-prod",
+    "ref": "hhqgreaoqulmfwfwarhc",
+    "captured": "2026-10-30 (read-only follow-up to the 2026-10-29 G1 run)",
+    "method": "Supabase Dashboard SQL Editor; begin transaction read only; set local statement_timeout = '20s'; ... commit;",
+    "statements": 3,
+    "failure": "none",
+    "ddl_dml": "none",
+    "sanitisation": "catalogue metadata and function source only; no table rows were read; no email address, connection string, key, token or coordinate literal is present",
+    "exposure_read": "Data API settings page (project dashboard) read once on 2026-10-30; no Save was pressed and the page's Save button was disabled throughout"
+  },
+  "transaction_read_only": "on",
+  "schema_usage": {
+    "note": "has_schema_privilege on schema private",
+    "anon": false,
+    "authenticated": true,
+    "service_role": true
+  },
+  "data_api_exposure": {
+    "source": "dashboard page /integrations/data_api/settings, rendered state with Save disabled",
+    "schemas_exposed_chips": ["public", "extensions"],
+    "schemas_offered": ["graphql_public", "private", "public"],
+    "schemas_exposed_count": "2 of 3",
+    "tables_exposed": "0 of 19",
+    "functions_exposed": "0 of 38",
+    "auto_expose_new_tables": false,
+    "extra_search_path": "public extensions",
+    "max_rows": 1000,
+    "interpretation_limits": "The effect of the 0-of-19 / 0-of-38 toggles on live REST reachability was NOT exercised; no request was made against the API. Only the rendered setting values are recorded."
+  },
+  "authenticator_role_config": {
+    "rolsuper": false,
+    "rolbypassrls": false,
+    "rolconfig": ["session_preload_libraries=supautils, safeupdate", "statement_timeout=8s", "lock_timeout=8s"],
+    "pgrst_db_schemas_in_session": null
+  },
+  "inventory": {
+    "note": "all non-auth helper functions of pg_proc in schemas public and private; auth.email/jwt/role/uid excluded as Supabase-internal. schema_name is selected per row, so membership is proven by the result and not by the WHERE clause alone",
+    "count": 38,
+    "public_count": 14,
+    "private_count": 24,
+    "rows": [
+      {"schema_name": "private", "function_name": "apply_policy_version", "arguments": "p_device_id uuid, p_policy jsonb, p_actor uuid, p_idempotency_key text", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "audit_logs_append_only", "arguments": "", "security_definer": false, "anon_exec": false, "auth_exec": false, "service_exec": false, "acl": "postgres=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "create_family_with_owner", "arguments": "p_owner uuid, p_name text", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "create_pairing_invite", "arguments": "p_child_user_id uuid, p_family_id uuid, p_parent_user_id uuid, p_code_hash text, p_expires_at timestamp with time zone", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "create_pairing_request", "arguments": "p_child_user_id uuid, p_family_id uuid, p_parent_user_id uuid, p_token_id uuid, p_expires_at timestamp with time zone", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "detect_offline_devices", "arguments": "", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "expire_stale_commands", "arguments": "p_device_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "expire_stale_sessions", "arguments": "", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "families_before_update", "arguments": "", "security_definer": false, "anon_exec": false, "auth_exec": false, "service_exec": false, "acl": "postgres=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "handle_new_user", "arguments": "", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": false, "acl": "postgres=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "is_family_member", "arguments": "p_family_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": true, "service_exec": false, "acl": "postgres=X/postgres,authenticated=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "is_family_parent", "arguments": "p_family_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": true, "service_exec": false, "acl": "postgres=X/postgres,authenticated=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "poll_device_commands", "arguments": "p_device_id uuid, p_limit integer", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "profiles_before_update", "arguments": "", "security_definer": false, "anon_exec": false, "auth_exec": false, "service_exec": false, "acl": "postgres=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "realtime_topic_allowed", "arguments": "p_topic text", "security_definer": true, "anon_exec": false, "auth_exec": true, "service_exec": false, "acl": "postgres=X/postgres,authenticated=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "record_audit", "arguments": "p_family_id uuid, p_actor_user_id uuid, p_device_id uuid, p_event_type text, p_target_type text, p_target_id text, p_metadata jsonb", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "remote_session_transition_guard", "arguments": "", "security_definer": true, "anon_exec": true, "auth_exec": true, "service_exec": true, "acl": "(null = default PUBLIC EXECUTE)", "settings": ["search_path=public, pg_temp"]},
+      {"schema_name": "private", "function_name": "replace_device_apps", "arguments": "p_device_id uuid, p_family_id uuid, p_apps jsonb", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "request_device_recovery", "arguments": "p_device_id uuid, p_actor_user_id uuid", "security_definer": true, "anon_exec": true, "auth_exec": true, "service_exec": true, "acl": "(null = default PUBLIC EXECUTE)", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "respond_pairing_request", "arguments": "p_request_id uuid, p_child_user_id uuid, p_approve boolean", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "revoke_device", "arguments": "p_device_id uuid, p_actor_user_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "set_updated_at", "arguments": "", "security_definer": false, "anon_exec": false, "auth_exec": false, "service_exec": false, "acl": "postgres=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "shares_active_family", "arguments": "p_user_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": true, "service_exec": false, "acl": "postgres=X/postgres,authenticated=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "private", "function_name": "unlink_child", "arguments": "p_family_id uuid, p_child_user_id uuid, p_actor_user_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "apply_policy_version", "arguments": "p_device_id uuid, p_policy jsonb, p_actor uuid, p_idempotency_key text", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "create_family_with_owner", "arguments": "p_owner uuid, p_name text", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "create_pairing_invite", "arguments": "p_child_user_id uuid, p_family_id uuid, p_parent_user_id uuid, p_code_hash text, p_expires_at timestamp with time zone", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "create_pairing_request", "arguments": "p_child_user_id uuid, p_family_id uuid, p_parent_user_id uuid, p_token_id uuid, p_expires_at timestamp with time zone", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "detect_offline_devices", "arguments": "", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "expire_stale_commands", "arguments": "p_device_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "expire_stale_sessions", "arguments": "", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "poll_device_commands", "arguments": "p_device_id uuid, p_limit integer", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "replace_device_apps", "arguments": "p_device_id uuid, p_family_id uuid, p_apps jsonb", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "request_device_recovery", "arguments": "p_device_id uuid, p_actor_user_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "request_remote_session", "arguments": "p_device_id uuid, p_parent_user_id uuid, p_kind text", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, pg_temp"]},
+      {"schema_name": "public", "function_name": "respond_pairing_request", "arguments": "p_request_id uuid, p_child_user_id uuid, p_approve boolean", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "revoke_device", "arguments": "p_device_id uuid, p_actor_user_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]},
+      {"schema_name": "public", "function_name": "unlink_child", "arguments": "p_family_id uuid, p_child_user_id uuid, p_actor_user_id uuid", "security_definer": true, "anon_exec": false, "auth_exec": false, "service_exec": true, "acl": "postgres=X/postgres,service_role=X/postgres", "settings": ["search_path=public, private, pg_temp"]}
+    ]
+  },
+  "bodies": [
+    {
+      "schema_name": "private",
+      "function_name": "is_family_member",
+      "arguments": "p_family_id uuid",
+      "body": "\n  select exists (\n    select 1\n    from public.family_members m\n    join public.families f on f.id = m.family_id\n    where m.family_id = p_family_id\n      and m.user_id = auth.uid()\n      and m.status = 'active'\n      and f.deleted_at is null\n  );\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "is_family_parent",
+      "arguments": "p_family_id uuid",
+      "body": "\n  select exists (\n    select 1\n    from public.family_members m\n    join public.families f on f.id = m.family_id\n    where m.family_id = p_family_id\n      and m.user_id = auth.uid()\n      and m.role = 'parent'\n      and m.status = 'active'\n      and f.deleted_at is null\n  );\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "shares_active_family",
+      "arguments": "p_user_id uuid",
+      "body": "\n  select exists (\n    select 1\n    from public.family_members mine\n    join public.family_members theirs on theirs.family_id = mine.family_id\n    join public.families f on f.id = mine.family_id\n    where mine.user_id = auth.uid()\n      and theirs.user_id = p_user_id\n      and mine.status = 'active'\n      and theirs.status = 'active'\n      and f.deleted_at is null\n  );\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "handle_new_user",
+      "arguments": "",
+      "body": "\ndeclare\n  v_name text;\nbegin\n  v_name := left(\n    coalesce(\n      nullif(btrim(coalesce(new.raw_user_meta_data ->> 'display_name', '')), ''),\n      nullif(split_part(coalesce(new.email, ''), '@', 1), ''),\n      'User'\n    ),\n    60\n  );\n  if v_name is null or char_length(v_name) = 0 then\n    v_name := 'User';\n  end if;\n  insert into public.profiles (id, role, display_name)\n  values (new.id, 'unset', v_name)\n  on conflict (id) do nothing;\n  return new;\nend;\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "remote_session_transition_guard",
+      "arguments": "",
+      "body": "\nbegin\n  if OLD.status in ('declined', 'ended', 'expired', 'failed')\n     and NEW.status in ('requested', 'accepted', 'active') then\n    raise exception 'session_terminal' using errcode = 'P0001';\n  end if;\n  return NEW;\nend;\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "profiles_before_update",
+      "arguments": "",
+      "body": "\r\nbegin\r\n  if new.id is distinct from old.id then\r\n    raise exception 'profile id is immutable' using errcode = '42501';\r\n  end if;\r\n  if new.role is distinct from old.role then\r\n    if old.role <> 'unset'\r\n       and not (\r\n         current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')\r\n         or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'\r\n       ) then\r\n      raise exception 'profile role is immutable' using errcode = '42501';\r\n    end if;\r\n  end if;\r\n  new.updated_at := now();\r\n  return new;\r\nend;\r\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "families_before_update",
+      "arguments": "",
+      "body": "\r\nbegin\r\n  if new.owner_id is distinct from old.owner_id\r\n     and not (\r\n       current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')\r\n       or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'\r\n     ) then\r\n    raise exception 'family owner is immutable' using errcode = '42501';\r\n  end if;\r\n  return new;\r\nend;\r\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "audit_logs_append_only",
+      "arguments": "",
+      "body": "\r\nbegin\r\n  if tg_op in ('UPDATE', 'DELETE')\r\n     and not (\r\n       current_user in ('service_role', 'postgres', 'supabase_admin', 'supabase_auth_admin')\r\n       or coalesce(current_setting('request.jwt.claim.role', true), '') = 'service_role'\r\n     ) then\r\n    raise exception 'audit_logs is append-only' using errcode = '42501';\r\n  end if;\r\n  if tg_op = 'DELETE' then\r\n    return old;\r\n  end if;\r\n  return new;\r\nend;\r\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "set_updated_at",
+      "arguments": "",
+      "body": "\r\nbegin\r\n  new.updated_at := now();\r\n  return new;\r\nend;\r\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "realtime_topic_allowed",
+      "arguments": "p_topic text",
+      "body": "\r\ndeclare\r\n  v_kind text;\r\n  v_id text;\r\n  v_uuid uuid;\r\nbegin\r\n  if p_topic is null or p_topic = '' then\r\n    return false;\r\n  end if;\r\n  v_kind := split_part(p_topic, ':', 1);\r\n  v_id := split_part(p_topic, ':', 2);\r\n  if v_id !~* '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$' then\n    return false;\n  end if;\n  v_uuid := v_id::uuid;\n\n  if v_kind in ('safety-alerts', 'remote-session-family') then\n    return private.is_family_member(v_uuid);\n  end if;\n\n  if v_kind in ('remote-session', 'webrtc-signals') then\n    return exists (\n      select 1\n      from public.remote_sessions s\n      where s.id = v_uuid\n        and (s.child_user_id = auth.uid() or private.is_family_parent(s.family_id))\n    );\n  end if;\n\n  return false;\nend;\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "request_device_recovery",
+      "arguments": "p_device_id uuid, p_actor_user_id uuid",
+      "body": "\ndeclare\n  v_device public.devices;\n  v_result jsonb;\nbegin\n  select * into v_device\n  from public.devices\n  where id = p_device_id\n  for update;\n  if not found then\n    raise exception 'device_not_found' using errcode = 'P0002';\n  end if;\n\n  if p_actor_user_id is null or not exists (\n    select 1 from public.family_members\n    where family_id = v_device.family_id\n      and user_id = p_actor_user_id\n      and role = 'parent'\n      and status = 'active'\n  ) then\n    raise exception 'forbidden' using errcode = '42501';\n  end if;\n\n  v_result := private.unlink_child(\n    v_device.family_id,\n    v_device.child_user_id,\n    p_actor_user_id\n  );\n\n  perform private.record_audit(\n    v_device.family_id,\n    p_actor_user_id,\n    v_device.id,\n    'device_recovery_started',\n    'device',\n    v_device.id::text,\n    jsonb_build_object(\n      'child_user_id', v_device.child_user_id,\n      'devices_revoked', v_result ->> 'devices_revoked',\n      'already_unlinked', coalesce((v_result ->> 'already_removed')::boolean, false)\n    )\n  );\n\n  return v_result || jsonb_build_object(\n    'recovery', 'started',\n    'old_device_id', v_device.id\n  );\nend;\n"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "request_device_recovery",
+      "arguments": "p_device_id uuid, p_actor_user_id uuid",
+      "body": "\n  select private.request_device_recovery(p_device_id, p_actor_user_id);\n"
+    },
+    {
+      "schema_name": "public",
+      "function_name": "request_remote_session",
+      "arguments": "p_device_id uuid, p_parent_user_id uuid, p_kind text",
+      "body": "\ndeclare\n  v_device public.devices;\n  v_session public.remote_sessions;\nbegin\n  if p_kind is null or p_kind not in ('audio', 'video') then\n    raise exception 'invalid_kind';\n  end if;\n\n  perform pg_advisory_xact_lock(hashtextextended(p_device_id::text, 0));\n\n  select * into v_device\n  from public.devices\n  where id = p_device_id;\n\n  if not found then\n    raise exception 'device_not_found';\n  end if;\n  if v_device.status <> 'active' then\n    raise exception 'device_not_active';\n  end if;\n\n  update public.remote_sessions\n  set status = 'expired',\n      ended_at = now(),\n      ended_reason = 'expired'\n  where device_id = p_device_id\n    and status = 'requested'\n    and expires_at is not null\n    and expires_at <= now();\n\n  if exists (\n    select 1\n    from public.remote_sessions\n    where device_id = p_device_id\n      and status in ('requested', 'accepted', 'active')\n  ) then\n    raise exception 'session_in_progress' using errcode = 'P0001';\n  end if;\n\n  insert into public.remote_sessions (\n    family_id,\n    device_id,\n    parent_user_id,\n    child_user_id,\n    kind,\n    status,\n    requested_at,\n    expires_at,\n    consent_recorded\n  )\n  values (\n    v_device.family_id,\n    v_device.id,\n    p_parent_user_id,\n    v_device.child_user_id,\n    p_kind,\n    'requested',\n    now(),\n    now() + interval '10 minutes',\n    false\n  )\n  returning * into v_session;\n\n  return v_session;\nend;\n"
+    },
+    {
+      "schema_name": "private",
+      "function_name": "unlink_child",
+      "arguments": "p_family_id uuid, p_child_user_id uuid, p_actor_user_id uuid",
+      "body": "\ndeclare\n  v_membership public.family_members;\n  v_devices integer := 0;\n  v_sessions integer := 0;\nbegin\n  if p_actor_user_id is null then\n    raise exception 'forbidden' using errcode = '42501';\n  end if;\n  if p_actor_user_id <> p_child_user_id then\n    if not exists (\n      select 1 from public.family_members\n      where family_id = p_family_id\n        and user_id = p_actor_user_id\n        and role = 'parent'\n        and status = 'active'\n    ) then\n      raise exception 'forbidden' using errcode = '42501';\n    end if;\n  end if;\n\n  select * into v_membership\n  from public.family_members\n  where family_id = p_family_id\n    and user_id = p_child_user_id\n    and role = 'child'\n  for update;\n  if not found then\n    raise exception 'membership_not_found' using errcode = 'P0002';\n  end if;\n  if v_membership.status = 'removed' then\n    return jsonb_build_object(\n      'status', 'unlinked',\n      'family_id', p_family_id,\n      'child_user_id', p_child_user_id,\n      'already_removed', true,\n      'devices_revoked', 0,\n      'sessions_ended', 0\n    );\n  end if;\n\n  update public.family_members\n  set status = 'removed', removed_at = now()\n  where id = v_membership.id;\n\n  update public.devices\n  set status = 'revoked',\n      secret_hash = null,\n      credential_revoked_at = now()\n  where family_id = p_family_id\n    and child_user_id = p_child_user_id\n    and status <> 'revoked';\n  get diagnostics v_devices = row_count;\n\n  update public.remote_sessions\n  set status = 'ended',\n      ended_at = now(),\n      ended_by = p_actor_user_id,\n      ended_reason = coalesce(ended_reason, 'member_unlinked')\n  where family_id = p_family_id\n    and child_user_id = p_child_user_id\n    and status in ('requested', 'accepted', 'active');\n  get diagnostics v_sessions = row_count;\n\n  update public.device_pairing_tokens\n  set status = 'revoked'\n  where child_user_id = p_child_user_id\n    and status = 'active';\n\n  update public.pairing_requests\n  set status = 'cancelled', responded_at = now()\n  where child_user_id = p_child_user_id\n    and status = 'pending_child';\n\n  perform private.record_audit(\n    p_family_id,\n    p_actor_user_id,\n    null,\n    'member_removed',\n    'family_member',\n    v_membership.id::text,\n    jsonb_build_object('child_user_id', p_child_user_id)\n  );\n\n  return jsonb_build_object(\n    'status', 'unlinked',\n    'family_id', p_family_id,\n    'child_user_id', p_child_user_id,\n    'already_removed', false,\n    'devices_revoked', v_devices,\n    'sessions_ended', v_sessions\n  );\nend;\n"
+    }
+  ],
+  "remote_session_triggers": [
+    {"table": "remote_sessions", "trigger": "remote_sessions_transition_guard", "function": "private.remote_session_transition_guard()", "tgtype": 19, "timing": "BEFORE UPDATE FOR EACH ROW", "enabled": "O"}
+  ],
+  "dynamic_sql": {
+    "method": "manual review of every body listed above plus the inventory-level EXECUTE/format check",
+    "result": "no EXECUTE, no format(), no unqualified table reference that would resolve outside the pinned search_path"
+  }
+}

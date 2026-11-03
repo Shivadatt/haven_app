@@ -1,0 +1,178 @@
+{
+  "capture": {
+    "phase": "E",
+    "project": "parent-control-prod",
+    "ref": "hhqgreaoqulmfwfwarhc",
+    "captured": "2026-10-30",
+    "method": "Supabase dashboard Edge Functions Code view; Monaco model read in the page (window.monaco.editor.getModels()[0].getValue()). No file download, no CLI call, no request against the deployed endpoints.",
+    "operations_performed": [
+      "GET /dashboard/project/<ref>/functions/<slug>/code for all 9 functions",
+      "GET /dashboard/project/<ref>/functions/pairing/code and /auth-bootstrap/code, plus in-page selection of each _shared/*.ts entry in the file tree",
+      "in-page JS reads of the Monaco model text (no pointer input required)",
+      "local SHA-256 computed in the page via crypto.subtle over the exact model text"
+    ],
+    "operations_not_performed": [
+      "no cookie, localStorage, session token or credential read",
+      "no ZIP export, no supabase CLI login/link/download",
+      "no function deployment, edit, test invocation or log query",
+      "no SQL, no DDL/DML, no GRANT/REVOKE, no config change"
+    ],
+    "sanitisation": "Only function source and counts are recorded. No secret value, JWT, URL with key, connection string or row data appears in this file.",
+    "source_form_note": "Two functions are served as readable TypeScript. Seven are served as 2-line esbuild bundles with all imported modules inlined and identifiers minified. Line numbers are therefore only meaningful for the readable pair and for the shared modules as served under pairing/.",
+    "char_count_note": "len is JavaScript string length (UTF-16 code units) of the editor text, not bytes on disk."
+  },
+  "functions": [
+    {
+      "slug": "pairing",
+      "form": "readable TypeScript",
+      "len": 33993,
+      "lines": 972,
+      "sha256": "427d419d4f691cfbc50ccfbc63c500fdcb8f5838cbaa5105b4a58f8551424307",
+      "actions": ["get_contact_id","create","redeem","invite","pending_child","respond","cancel","list_family","unlink"],
+      "auth_model": "user JWT (all actions); parent or child role per action; family membership asserted per action",
+      "imports": ["_shared/audit.ts","_shared/auth.ts","_shared/cors.ts","_shared/envelope.ts","_shared/rate_limit.ts","_shared/validation.ts"],
+      "anchors": {
+        "ttl": ["41: CODE_TTL_MINUTES = 10", "43: INVITE_TTL_MINUTES = 24 * 60"],
+        "dispatch": "445: switch (action)",
+        "redeem": ["548: requireRole(auth.profile, \"parent\")", "551: assertFamilyParent", "562-564: comment - token row keeps plain SHA-256 for legacy compatibility", "565: codeHash = sha256Hex(normalized)", "566: attemptHash = identifierHash(normalized)", "567: assertPairingRedeemAllowed", "574-578: token lookup by code_hash", "585-599: status/expiry gate with uniform INVALID_IDENTIFIER", "668-674: rpc create_pairing_request with p_parent_user_id = auth.user.id"],
+        "invite": ["764: assertFamilyParent", "771-772: identifierHash + recordPairingAttempt", "378-383: rpc create_pairing_invite with p_parent_user_id = auth.user.id"],
+        "respond": ["814: requireRole(child)", "818-821: rpc respond_pairing_request with p_child_user_id = auth.user.id"],
+        "unlink": ["929-939: actor is child (self) or parent in the body family", "942-945: rpc unlink_child with p_actor_user_id = auth.user.id"]
+      }
+    },
+    {
+      "slug": "auth-bootstrap",
+      "form": "readable TypeScript",
+      "len": 4302,
+      "lines": 140,
+      "sha256": "34cf673247a61a91dbeda77c14c06d01184aad7a0724b5f7eaeb9d2f85b7383b",
+      "actions": ["set_role","create_family"],
+      "auth_model": "user JWT + verified email; set_role is self-only and one-time from 'unset'; create_family is parent-only",
+      "imports": ["_shared/audit.ts","_shared/auth.ts","_shared/cors.ts","_shared/envelope.ts","_shared/validation.ts"],
+      "anchors": {
+        "set_role": ["38: requireUser(requireVerifiedEmail)", "44-50: reject a different existing role", "53-58: profiles.update scoped .eq(id, auth.user.id)", "61-67: recordAudit role_set", "72-80: child_contact_ids upsert (best effort)"],
+        "create_family": ["93: requireRole(parent)", "96-109: one active family per owner", "111-114: rpc create_family_with_owner p_owner = auth.user.id"]
+      }
+    },
+    {
+      "slug": "device-command",
+      "form": "minified bundle",
+      "len": 18124,
+      "lines": 2,
+      "sha256": "4e31901a2891986bd62ac58c9a9af154b5d20f67be6aabc27e44b51cec406054",
+      "actions": ["create","poll","ack"],
+      "auth_model": "create: parent JWT + verified email + requireActiveDeviceForParent; poll/ack: device header credentials (x-device-id + x-device-secret)",
+      "inlined_modules": ["cors","envelope","auth","audit","validation"],
+      "anchors": {
+        "create": ["apply_policy -> rpc apply_policy_version {p_device_id, p_policy, p_actor:o.user.id, p_idempotency_key}", "idempotency_key min 1 max 128; ttl clamps 60..900", "device_commands select by device_id + idempotency_key before insert", "23505 -> re-read by idempotency key"],
+        "poll": ["rpc poll_device_commands {p_device_id:o.id, p_limit:20}"],
+        "ack": ["ie(): device_commands select .eq(id).eq(device_id, o.id)", "terminal status returns existing row", "update ... .in(status,[pending,delivered])", "apply_policy ack updates device_policies and devices.policy_version scoped to device"]
+      }
+    },
+    {
+      "slug": "device-register",
+      "form": "minified bundle",
+      "len": 9086,
+      "lines": 2,
+      "sha256": "712d46b076b11ced8992a0e91149ac953ea5b5a71f41dc755fd97beca97a4c27",
+      "actions": ["register"],
+      "auth_model": "child JWT + verified email + assertChildMembership(body family_id)",
+      "inlined_modules": ["cors","envelope","auth","audit","validation"],
+      "anchors": {
+        "register": ["single action guard: if(n!==\"register\") throw unknown_action", "readUuid(family_id), readInstallationId, readHex64(secret_hash)", "assertChildMembership(family_id from body)", "existing installation in family -> child mismatch = 409 device_exists", "revoked device + later approved pairing -> device_registration_blocked", "insert/update devices with secret_hash from client", "response strips secret_hash and installation_id (H())", "audit device_registered / device_recredentialed / device_registration_blocked with actorUserId = JWT user"]
+      }
+    },
+    {
+      "slug": "device-policy",
+      "form": "minified bundle",
+      "len": 11174,
+      "lines": 2,
+      "sha256": "3efdb19b7159fce8befc960b34d7af9ceaa756c81ea305a01c4f79bc7d332211",
+      "actions": ["update"],
+      "auth_model": "parent JWT + verified email + requireActiveDeviceForParent",
+      "inlined_modules": ["cors","envelope","auth","audit","validation"],
+      "anchors": {
+        "update": ["if(I(e)!==\"update\") throw unknown_action", "requireRole(parent); requireActiveDeviceForParent(device_id)", "strict key allowlists V/X/Z; arrays capped 200; app_rules 100", "policy JSON size cap 256*1024", "rpc apply_policy_version {p_device_id, p_policy, p_actor:o.user.id, p_idempotency_key}", "idempotent result skips audit"]
+      }
+    },
+    {
+      "slug": "device-telemetry",
+      "form": "minified bundle",
+      "len": 12461,
+      "lines": 2,
+      "sha256": "b3ca5221347a5f753de6bd7936d9efec2298b8362532c8752c258daaff1befbd",
+      "actions": ["heartbeat","usage_upload","location_upload","apps_upload"],
+      "auth_model": "device only (x-device-id + x-device-secret); device_id and family_id always taken from the authenticated device row",
+      "inlined_modules": ["cors","envelope","auth","validation"],
+      "anchors": {
+        "heartbeat": ["battery_level 0..100, is_charging, online, capabilities allowlist", "devices.update scoped .eq(id, device.id)", "low_battery alert deduped in a 6-hour window", "returns pending_policy_version"],
+        "usage_upload": ["entries max 500; day must be a real date and not beyond now+36h", "upsert usage_daily onConflict device_id,day,package_name", "rows carry device_id/family_id from the device row"],
+        "location_upload": ["lat -90..90, lng -180..180, accuracy_m 0..1e5", "recorded_at window: -7d .. +5min", "location_events insert with device-derived ids", "safe_zones evaluation -> safe_zone_states upsert + safety_alerts insert"],
+        "apps_upload": ["apps max 500; package regex", "rpc replace_device_apps {p_device_id:device.id, p_family_id:device.family_id, p_apps}"]
+      }
+    },
+    {
+      "slug": "family-admin",
+      "form": "minified bundle",
+      "len": 9386,
+      "lines": 2,
+      "sha256": "b6864fdda7ad52ffc75b2eff8f6f973f8b75a3a04065c9b6941b3638fe615de7",
+      "actions": ["revoke_device","recover_device","ack_alert","purge_data","update_retention"],
+      "auth_model": "parent JWT + verified email for every action; update_retention additionally owner-only",
+      "inlined_modules": ["cors","envelope","auth","audit","validation"],
+      "anchors": {
+        "revoke_device": ["rpc revoke_device {p_device_id, p_actor_user_id:i.user.id}"],
+        "recover_device": ["rpc request_device_recovery {p_device_id, p_actor_user_id:i.user.id}"],
+        "ack_alert": ["safety_alerts select by alert_id, family asserted before update", "audit alert_acknowledged"],
+        "purge_data": ["family asserted; retention defaults 30/90 days, floor = max(requested, configured)", "delete location_events and usage_daily scoped .eq(family_id)", "audit data_purged with counts"],
+        "update_retention": ["owner_required via O(); families.update settings", "audit settings_updated"]
+      }
+    },
+    {
+      "slug": "remote-session",
+      "form": "minified bundle",
+      "len": 12848,
+      "lines": 2,
+      "sha256": "85e30c3c6da5d279e5ecdd0cb962c759dbab5fe59b82ffa43b23f4723e987c0c",
+      "actions": ["request","pending_child","respond","start","end","ice"],
+      "auth_model": "user JWT + verified email; parent for request, child for pending_child/respond/start, either participant for end/ice",
+      "inlined_modules": ["cors","envelope","auth","audit","validation"],
+      "anchors": {
+        "request": ["requireRole(parent); requireActiveDeviceForParent(device_id)", "direct insert into remote_sessions (not the public.request_remote_session RPC)", "parent_user_id = JWT user, child_user_id = device.child_user_id, expires_at = now + 10 min, consent_recorded false", "audit session_requested"],
+        "pending_child": ["expire stale requested rows for the child, then list up to 50"],
+        "respond": ["child must equal session.child_user_id", "idempotent for accepted/declined repeats", ".eq(status,\"requested\") guard on update", "accept sets consent_recorded true, session_nonce randomUUID, expires_at now + 30 min"],
+        "start": ["child-only; requires status accepted and consent_recorded; .eq(status,\"accepted\") guard"],
+        "end": ["either participant; terminal states returned as-is; update .in(status,[requested,accepted,active])"],
+        "ice": ["participant; status accepted|active; consent_recorded required; TURN credential HMAC-SHA1 with TURN_SECRET, username '<expiry>:<user id>', TTL clamp 60..86400 default 600"]
+      }
+    },
+    {
+      "slug": "cron",
+      "form": "minified bundle",
+      "len": 3791,
+      "lines": 2,
+      "sha256": "4cb4bd11e28446236efd7e6e152953ad52df453cba078e543be7301955402258",
+      "actions": ["expire_sessions","detect_offline"],
+      "auth_model": "shared secret in x-cron-secret; CRON_SECRET must be at least 16 chars or the function returns 503",
+      "inlined_modules": ["cors","envelope"],
+      "anchors": {
+        "auth": ["CRON_SECRET length < 16 -> 503 cron_not_configured", "compare = SHA-256 of both sides then constant-time equal, case-insensitive hex", "missing/empty header or mismatch -> 401"],
+        "actions": ["rpc expire_stale_sessions()", "rpc detect_offline_devices()"]
+      }
+    }
+  ],
+  "shared": [
+    {"path": "_shared/audit.ts", "len": 1101, "lines": 38, "sha256": "649d277ed6358d11da994c7845cd8f9e040beffafcb241bc5cd7ac464cc017e7", "note": "recordAudit inserts audit_logs with a caller-supplied actor_user_id and throws audit_failed (500) on insert error."},
+    {"path": "_shared/auth.ts", "len": 9920, "lines": 338, "sha256": "34b46f5a302f5a6ad4330c2c7a13fa8dc4a3660371f51843606538435735c5f2", "note": "getServiceClient (service role), bearerToken, requireUser (db.auth.getUser), requireRole, assertFamilyMember/Parent/Child/Owner, requireActiveDeviceForParent, requireDevice (sha256 + constant-time)."},
+    {"path": "_shared/cors.ts", "len": 490, "lines": 13, "sha256": "33ec5b77c5f14bae7becf96fd4656014144227cf450827d2f8bc9dba5e136e1f", "note": "Access-Control-Allow-Origin: * and an allow-headers list that includes authorization, x-device-secret and x-cron-secret."},
+    {"path": "_shared/envelope.ts", "len": 3517, "lines": 112, "sha256": "cf4a69115b6fd94a4a9bf464cb5002a6d399bfdaec589bb45572b70ca19eed7c", "note": "ApiError, ok/fail, errorResponse (logs error.name only, generic 500), readJson (512 KB cap, object-only), requireAction, ensureNoError (logs error.code only)."},
+    {"path": "_shared/rate_limit.ts", "len": 7148, "lines": 211, "sha256": "754502ef27b6f29f589bc1438d069e141f785683a2f846e70e53f3b0b3a97dee", "note": "Pairing-only limits: 5 failed attempts per parent / 10 per identifier in 10 min, 5 live codes per 24 h, 10 creations per hour, 3 pending invites, 10 invites per 24 h. All counts are read-then-act."},
+    {"path": "_shared/validation.ts", "len": 12640, "lines": 419, "sha256": "3b81768322eb5aad589a2ba7d0627bc064915a392aff3fb5acaf23617ff09bb7", "note": "Regexes, typed readers, CSPRNG pairing code / Child ID, sha256Hex, identifierHash (HMAC with PAIRING_HASH_PEPPER, silent fallback to SHA-256), constant-time helpers."}
+  ],
+  "repository": {
+    "config_toml": "supabase/config.toml",
+    "functions_directory": "absent",
+    "note": "supabase/config.toml declares local API schemas [public, graphql_public]. The deployed project exposes [public, extensions] and offers private, so the local file is not a description of production.",
+    "import_map_or_deno_json": "absent"
+  }
+}
