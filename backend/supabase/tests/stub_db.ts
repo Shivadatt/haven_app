@@ -23,36 +23,17 @@
 //   rpc(name, args) -> awaitable.
 //   Every builder method returns a NEW builder sharing one recording, so chained calls
 //   like `q = q.eq(col, val)` in _shared/rate_limit.ts behave as the SDK does.
+//
+// LAYOUT: the builder itself is in ./stub_query.ts and the recorded shapes in
+//   ./stub_types.ts. Split at port time for the 200-line source rule; no behaviour, no
+//   recorded string and no comment changed. Nothing here opens a socket.
 // ============================================================================
 
-export interface StubReply {
-  data?: unknown;
-  count?: number;
-  error?: { code?: string; message?: string } | null;
-}
+import { FakeQuery } from "./stub_query.ts";
+import type { RecordedCall, StubReply } from "./stub_types.ts";
 
-export interface RecordedCall {
-  table: string;
-  op: string;
-  payload?: unknown;
-  /** Flat "col:op:value" strings, in the order the handler wrote them. */
-  predicates: string[];
-  opts?: unknown;
-}
-
-const FILTER_METHODS = [
-  "eq",
-  "neq",
-  "gt",
-  "gte",
-  "lt",
-  "lte",
-  "is",
-  "in",
-  "contains",
-  "order",
-  "limit",
-] as const;
+export { FakeQuery };
+export type { RecordedCall, StubReply };
 
 export class FakeClient {
   readonly calls: RecordedCall[] = [];
@@ -114,113 +95,6 @@ export class FakeClient {
     this.calls.push({ table, op, payload, predicates: [...predicates], opts });
     return this.take(table, op);
   }
-}
-
-class FakeQuery {
-  constructor(
-    private readonly client: FakeClient,
-    private readonly table: string,
-    private readonly op: string,
-    private readonly payload?: unknown,
-    private readonly predicates: string[] = [],
-    private readonly opts: Record<string, unknown> = {},
-  ) {}
-
-  select(columns?: string, opts?: unknown): FakeQuery {
-    // `select` is the default op; `{ count: "exact", head: true }` arrives here.
-    return new FakeQuery(this.client, this.table, this.op, this.payload, this.predicates, {
-      ...this.opts,
-      select: `${String(columns)}:${JSON.stringify(opts ?? null)}`,
-    });
-  }
-
-  insert(row: unknown): FakeQuery {
-    return new FakeQuery(this.client, this.table, "insert", row, this.predicates);
-  }
-
-  update(row: unknown): FakeQuery {
-    return new FakeQuery(this.client, this.table, "update", row, this.predicates);
-  }
-
-  upsert(row: unknown, opts?: unknown): FakeQuery {
-    return new FakeQuery(this.client, this.table, "upsert", row, this.predicates, {
-      upsert: opts,
-    });
-  }
-
-  delete(): FakeQuery {
-    return new FakeQuery(this.client, this.table, "delete", undefined, this.predicates);
-  }
-
-  eq(col: string, val: unknown): FakeQuery {
-    return this.filter("eq", col, val);
-  }
-  neq(col: string, val: unknown): FakeQuery {
-    return this.filter("neq", col, val);
-  }
-  gt(col: string, val: unknown): FakeQuery {
-    return this.filter("gt", col, val);
-  }
-  gte(col: string, val: unknown): FakeQuery {
-    return this.filter("gte", col, val);
-  }
-  lt(col: string, val: unknown): FakeQuery {
-    return this.filter("lt", col, val);
-  }
-  lte(col: string, val: unknown): FakeQuery {
-    return this.filter("lte", col, val);
-  }
-  is(col: string, val: unknown): FakeQuery {
-    return this.filter("is", col, val);
-  }
-  in(col: string, val: unknown): FakeQuery {
-    return this.filter("in", col, val);
-  }
-  contains(col: string, val: unknown): FakeQuery {
-    return this.filter("contains", col, val);
-  }
-  order(col: string, opts?: unknown): FakeQuery {
-    return this.filter("order", col, JSON.stringify(opts ?? null));
-  }
-  limit(n: number): FakeQuery {
-    return this.filter("limit", "n", n);
-  }
-
-  private filter(method: string, col: string, val: unknown): FakeQuery {
-    if (!(FILTER_METHODS as readonly string[]).includes(method)) {
-      throw new Error(`stub: unrecorded filter ${method}`);
-    }
-    return new FakeQuery(this.client, this.table, this.op, this.payload, [
-      ...this.predicates,
-      `${col}:${method}:${String(val)}`,
-    ]);
-  }
-
-  /** Terminal builders resolve the recorded reply; the predicates are captured first. */
-  maybeSingle(): Promise<StubReply> {
-    return Promise.resolve(this.resolve());
-  }
-
-  single(): Promise<StubReply> {
-    return Promise.resolve(this.resolve());
-  }
-
-  then<T>(onFulfilled: (reply: StubReply) => T): Promise<T> {
-    return Promise.resolve(this.resolve()).then(onFulfilled);
-  }
-
-  private resolve(): StubReply {
-    return this.client.record(this.table, this.op, this.predicates, this.payload, this.opts);
-  }
-
-}
-
-/** requireUser-shaped actor, so assertion tests do not need a real JWT. */
-export function actor(role: string, userId = "11111111-1111-4111-8111-111111111111"): {
-  userId: string;
-  role: string;
-} {
-  return { userId, role };
 }
 
 /** A POST with a JSON body, as the handlers receive it. */

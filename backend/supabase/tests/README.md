@@ -7,11 +7,17 @@ cd backend/supabase/tests
 deno test --allow-env --allow-read
 ```
 
-Verified on Deno **2.9.4** on 2026-11-04: **81 tests, 7 files, 0 failures**, with type checking
-on (no `--no-check`). `--allow-env` is needed because `identifierHash` reads `PAIRING_HASH_PEPPER`
-and one test checks whether the runner's environment already holds the staging secrets; the tests
-**never set, delete, or print a value**. `--allow-read` is needed by exactly one test that reads
-`device-policy/index.ts` as text (see §3).
+Verified on Deno **2.9.4** on 2026-11-04: **82 tests in 7 files** (plus `stub_db.ts`,
+`stub_query.ts`, `stub_types.ts` — 10 files, `deno lint` clean, `deno check` clean), 0 failures, with
+type checking on (no `--no-check`). `--allow-env` is needed because `identifierHash` reads
+`PAIRING_HASH_PEPPER` and one test checks whether the runner's environment already holds the staging
+secrets; the tests **never set, delete, or print a value**. `--allow-read` is needed by exactly one
+test that reads `device-policy/index.ts` as text (see §3).
+
+`@std/assert` is resolved through this directory's `deno.json` import map rather than written inline:
+`deno lint` enforces `no-import-prefix` and `no-unversioned-import`, so a bare `jsr:@std/assert` in a
+source file is a lint error. The functions lane imports nothing from `@std` — it has no tests of its
+own — so its `deno.json` carries no such entry.
 
 ## 1. What a pass means — and what it does not
 
@@ -27,7 +33,9 @@ constraints, triggers, RPC bodies, RLS — cannot be tested this way and is not 
 
 ## 2. How the handlers are reached
 
-`tests/stub_db.ts` implements a hand-written stand-in for the service-role client: a fluent,
+The stub (`tests/stub_db.ts`, with its builder in `tests/stub_query.ts` and its recorded shapes in
+`tests/stub_types.ts` — split only for the 200-line rule) is a hand-written stand-in for the
+service-role client: a fluent,
 thenable builder that records every predicate and payload and answers from a reply table. It exists
 because the functions run with `service_role`, so RLS does not apply to any of their queries
 (14:245-246) — **the predicates are the control**, and a test that only reads the status code
