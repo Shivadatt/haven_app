@@ -1,0 +1,962 @@
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\audit.ts[0m[0m[33m:32:24[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m32 | [0m  from(table: string): any;
+  [0m[38;5;12m | [0m                       [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\device_authority.ts[0m[0m[33m:26:7[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m26 | [0m  db: any,
+  [0m[38;5;12m | [0m      [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\device_authority.ts[0m[0m[33m:29:12[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m29 | [0m): Promise<any> {
+  [0m[38;5;12m | [0m           [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\device_authority.ts[0m[0m[33m:56:55[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m56 | [0mexport async function requireDevice(req: Request, db: any): Promise<any> {
+  [0m[38;5;12m | [0m                                                      [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\device_authority.ts[0m[0m[33m:56:69[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m56 | [0mexport async function requireDevice(req: Request, db: any): Promise<any> {
+  [0m[38;5;12m | [0m                                                                    [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\auth.ts[0m[0m[33m:96:24[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m96 | [0m  from(table: string): any;
+  [0m[38;5;12m | [0m                       [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+   [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\auth.ts[0m[0m[33m:102:54[0m
+   [0m[38;5;12m | [0m
+[0m[38;5;12m102 | [0m  rpc(name: string, args?: Record<string, unknown>): any;
+   [0m[38;5;12m | [0m                                                     [0m[1m[31m^^^[0m
+    [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+   [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\auth.ts[0m[0m[33m:104:53[0m
+   [0m[38;5;12m | [0m
+[0m[38;5;12m104 | [0m    getUser(token: string): Promise<{ data: { user: any } | null; error: any }>;
+   [0m[38;5;12m | [0m                                                    [0m[1m[31m^^^[0m
+    [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+   [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\auth.ts[0m[0m[33m:104:74[0m
+   [0m[38;5;12m | [0m
+[0m[38;5;12m104 | [0m    getUser(token: string): Promise<{ data: { user: any } | null; error: any }>;
+   [0m[38;5;12m | [0m                                                                         [0m[1m[31m^^^[0m
+    [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+   [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\auth.ts[0m[0m[33m:136:31[0m
+   [0m[38;5;12m | [0m
+[0m[38;5;12m136 | [0m): Promise<{ auth: Actor; db: any; profile: { role: string } }> {
+   [0m[38;5;12m | [0m                              [0m[1m[31m^^^[0m
+    [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`ApiError` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\validation.ts[0m[0m[33m:46:10[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m46 | [0mimport { ApiError } from "./envelope.ts";
+  [0m[38;5;12m | [0m         [0m[1m[31m^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `ApiError as _ApiError`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[require-await][0m: [0m[1mAsync function 'identifierHash' has no 'await' expression or 'await using' declaration.[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\validation.ts[0m[0m[33m:99:8[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m99 | [0mexport async function identifierHash(
+  [0m[38;5;12m | [0m       [0m[1m[31m^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Remove 'async' keyword from the function or use 'await' expression or 'await using' declaration inside.
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/require-await
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:21:35[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m21 | [0masync function loadLiveFamily(db: any, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                  [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:21:67[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m21 | [0masync function loadLiveFamily(db: any, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                                                  [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:37:41[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m37 | [0masync function loadActiveMembership(db: any, familyId: string, userId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                        [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:37:89[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m37 | [0masync function loadActiveMembership(db: any, familyId: string, userId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                                                                        [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:53:46[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m53 | [0mexport async function assertFamilyParent(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                             [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:53:94[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m53 | [0mexport async function assertFamilyParent(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                                                                             [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:63:46[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m63 | [0mexport async function assertFamilyMember(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                             [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:63:94[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m63 | [0mexport async function assertFamilyMember(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                                                                             [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:71:45[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m71 | [0mexport async function assertFamilyChild(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                            [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:71:93[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m71 | [0mexport async function assertFamilyChild(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                                                                            [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:83:45[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m83 | [0mexport async function assertFamilyOwner(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                            [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\family.ts[0m[0m[33m:83:93[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m83 | [0mexport async function assertFamilyOwner(db: any, userId: string, familyId: string): Promise<any> {
+  [0m[38;5;12m | [0m                                                                                            [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\quotas.ts[0m[0m[33m:31:7[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m31 | [0m  db: any,
+  [0m[38;5;12m | [0m      [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\quotas.ts[0m[0m[33m:74:52[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m74 | [0mexport async function assertInviteQuotaAllowed(db: any, childUserId: string): Promise<void> {
+  [0m[38;5;12m | [0m                                                   [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\identity.ts[0m[0m[33m:60:13[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m60 | [0m  authUser: any;
+  [0m[38;5;12m | [0m            [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\identity.ts[0m[0m[33m:78:57[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m78 | [0mexport async function resolveIdentity(req: Request, db: any): Promise<Actor> {
+  [0m[38;5;12m | [0m                                                        [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\identity.ts[0m[0m[33m:83:28[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m83 | [0m  let res: { data: { user: any } | null; error: any };
+  [0m[38;5;12m | [0m                           [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\identity.ts[0m[0m[33m:83:49[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m83 | [0m  let res: { data: { user: any } | null; error: any };
+  [0m[38;5;12m | [0m                                                [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[require-await][0m: [0m[1mAsync function 'resolveFirebaseIdentity' has no 'await' expression or 'await using' declaration.[0m
+   [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\identity.ts[0m[0m[33m:130:1[0m
+   [0m[38;5;12m | [0m
+[0m[38;5;12m130 | [0masync function resolveFirebaseIdentity(_req: Request, _db: any): Promise<Actor> {
+   [0m[38;5;12m | [0m[0m[1m[31m^^^^^[0m
+    [0m[38;5;12m=[0m [0m[1mhint[0m: Remove 'async' keyword from the function or use 'await' expression or 'await using' declaration inside.
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/require-await
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+   [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\identity.ts[0m[0m[33m:130:60[0m
+   [0m[38;5;12m | [0m
+[0m[38;5;12m130 | [0masync function resolveFirebaseIdentity(_req: Request, _db: any): Promise<Actor> {
+   [0m[38;5;12m | [0m                                                           [0m[1m[31m^^^[0m
+    [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\rate_limit.ts[0m[0m[33m:62:7[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m62 | [0m  db: any,
+  [0m[38;5;12m | [0m      [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\rate_limit.ts[0m[0m[33m:97:7[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m97 | [0m  db: any,
+  [0m[38;5;12m | [0m      [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-explicit-any][0m: [0m[1m`any` type is not allowed[0m
+   [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\_shared\rate_limit.ts[0m[0m[33m:121:7[0m
+   [0m[38;5;12m | [0m
+[0m[38;5;12m121 | [0m  db: any,
+   [0m[38;5;12m | [0m      [0m[1m[31m^^^[0m
+    [0m[38;5;12m=[0m [0m[1mhint[0m: Use a specific type other than `any`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertChildMembership` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:12:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m12 | [0m  assertChildMembership,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertChildMembership as _assertChildMembership`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertPairingRedeemAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:17:10[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m17 | [0mimport { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+  [0m[38;5;12m | [0m         [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertPairingRedeemAllowed as _assertPairingRedeemAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`recordPairingAttempt` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:17:38[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m17 | [0mimport { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+  [0m[38;5;12m | [0m                                     [0m[1m[31m^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `recordPairingAttempt as _recordPairingAttempt`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertInviteQuotaAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:19:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m19 | [0m  assertInviteQuotaAllowed,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertInviteQuotaAllowed as _assertInviteQuotaAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertPairingCodeCreationAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:20:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m20 | [0m  assertPairingCodeCreationAllowed,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertPairingCodeCreationAllowed as _assertPairingCodeCreationAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`CONTACT_ID_RE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:23:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m23 | [0m  CONTACT_ID_RE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `CONTACT_ID_RE as _CONTACT_ID_RE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`identifierHash` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:24:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m24 | [0m  identifierHash,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `identifierHash as _identifierHash`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`isContactIdForm` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:25:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m25 | [0m  isContactIdForm,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `isContactIdForm as _isContactIdForm`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`newContactId` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:26:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m26 | [0m  newContactId,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `newContactId as _newContactId`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`newPairingCode` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:27:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m27 | [0m  newPairingCode,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `newPairingCode as _newPairingCode`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`normalizeIdentifier` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:28:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m28 | [0m  normalizeIdentifier,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `normalizeIdentifier as _normalizeIdentifier`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`PAIRING_CODE_RE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:29:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m29 | [0m  PAIRING_CODE_RE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `PAIRING_CODE_RE as _PAIRING_CODE_RE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`sha256Hex` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:32:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m32 | [0m  sha256Hex,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `sha256Hex as _sha256Hex`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`CODE_TTL_MINUTES` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:35:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m35 | [0m  CODE_TTL_MINUTES,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `CODE_TTL_MINUTES as _CODE_TTL_MINUTES`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`INVITE_TTL_MINUTES` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:36:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m36 | [0m  INVITE_TTL_MINUTES,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `INVITE_TTL_MINUTES as _INVITE_TTL_MINUTES`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`MAX_ATTEMPTS_PER_CODE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:37:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m37 | [0m  MAX_ATTEMPTS_PER_CODE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `MAX_ATTEMPTS_PER_CODE as _MAX_ATTEMPTS_PER_CODE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`TOKEN_COLUMNS` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:40:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m40 | [0m  TOKEN_COLUMNS,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `TOKEN_COLUMNS as _TOKEN_COLUMNS`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`invalidIdentifier` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:41:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m41 | [0m  invalidIdentifier,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `invalidIdentifier as _invalidIdentifier`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`ttl` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:42:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m42 | [0m  ttl,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `ttl as _ttl`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`body` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\requests.ts[0m[0m[33m:49:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m49 | [0m  body: Record<string, unknown>,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, prefix it with an underscore like `_body`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertChildMembership` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:12:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m12 | [0m  assertChildMembership,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertChildMembership as _assertChildMembership`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertInviteQuotaAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:19:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m19 | [0m  assertInviteQuotaAllowed,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertInviteQuotaAllowed as _assertInviteQuotaAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertPairingCodeCreationAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:20:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m20 | [0m  assertPairingCodeCreationAllowed,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertPairingCodeCreationAllowed as _assertPairingCodeCreationAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`CONTACT_ID_RE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:23:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m23 | [0m  CONTACT_ID_RE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `CONTACT_ID_RE as _CONTACT_ID_RE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`newContactId` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:26:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m26 | [0m  newContactId,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `newContactId as _newContactId`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`newPairingCode` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:27:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m27 | [0m  newPairingCode,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `newPairingCode as _newPairingCode`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`readBoolean` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:30:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m30 | [0m  readBoolean,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `readBoolean as _readBoolean`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`INVITE_TTL_MINUTES` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:36:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m36 | [0m  INVITE_TTL_MINUTES,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `INVITE_TTL_MINUTES as _INVITE_TTL_MINUTES`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`MAX_ATTEMPTS_PER_CODE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:37:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m37 | [0m  MAX_ATTEMPTS_PER_CODE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `MAX_ATTEMPTS_PER_CODE as _MAX_ATTEMPTS_PER_CODE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`PENDING_LIST_LIMIT` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:38:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m38 | [0m  PENDING_LIST_LIMIT,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `PENDING_LIST_LIMIT as _PENDING_LIST_LIMIT`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`REQUEST_COLUMNS` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\redeem.ts[0m[0m[33m:39:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m39 | [0m  REQUEST_COLUMNS,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `REQUEST_COLUMNS as _REQUEST_COLUMNS`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertPairingRedeemAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:17:10[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m17 | [0mimport { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+  [0m[38;5;12m | [0m         [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertPairingRedeemAllowed as _assertPairingRedeemAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`recordPairingAttempt` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:17:38[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m17 | [0mimport { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+  [0m[38;5;12m | [0m                                     [0m[1m[31m^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `recordPairingAttempt as _recordPairingAttempt`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertInviteQuotaAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:19:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m19 | [0m  assertInviteQuotaAllowed,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertInviteQuotaAllowed as _assertInviteQuotaAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertPairingCodeCreationAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:20:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m20 | [0m  assertPairingCodeCreationAllowed,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertPairingCodeCreationAllowed as _assertPairingCodeCreationAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`CONTACT_ID_RE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:23:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m23 | [0m  CONTACT_ID_RE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `CONTACT_ID_RE as _CONTACT_ID_RE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`identifierHash` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:24:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m24 | [0m  identifierHash,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `identifierHash as _identifierHash`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`isContactIdForm` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:25:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m25 | [0m  isContactIdForm,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `isContactIdForm as _isContactIdForm`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`newContactId` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:26:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m26 | [0m  newContactId,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `newContactId as _newContactId`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`newPairingCode` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:27:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m27 | [0m  newPairingCode,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `newPairingCode as _newPairingCode`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`normalizeIdentifier` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:28:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m28 | [0m  normalizeIdentifier,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `normalizeIdentifier as _normalizeIdentifier`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`PAIRING_CODE_RE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:29:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m29 | [0m  PAIRING_CODE_RE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `PAIRING_CODE_RE as _PAIRING_CODE_RE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`readBoolean` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:30:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m30 | [0m  readBoolean,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `readBoolean as _readBoolean`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`sha256Hex` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:32:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m32 | [0m  sha256Hex,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `sha256Hex as _sha256Hex`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`CODE_TTL_MINUTES` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:35:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m35 | [0m  CODE_TTL_MINUTES,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `CODE_TTL_MINUTES as _CODE_TTL_MINUTES`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`INVITE_TTL_MINUTES` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:36:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m36 | [0m  INVITE_TTL_MINUTES,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `INVITE_TTL_MINUTES as _INVITE_TTL_MINUTES`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`MAX_ATTEMPTS_PER_CODE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:37:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m37 | [0m  MAX_ATTEMPTS_PER_CODE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `MAX_ATTEMPTS_PER_CODE as _MAX_ATTEMPTS_PER_CODE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`PENDING_LIST_LIMIT` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:38:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m38 | [0m  PENDING_LIST_LIMIT,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `PENDING_LIST_LIMIT as _PENDING_LIST_LIMIT`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`TOKEN_COLUMNS` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:40:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m40 | [0m  TOKEN_COLUMNS,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `TOKEN_COLUMNS as _TOKEN_COLUMNS`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`invalidIdentifier` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:41:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m41 | [0m  invalidIdentifier,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `invalidIdentifier as _invalidIdentifier`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`ttl` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\unlink.ts[0m[0m[33m:42:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m42 | [0m  ttl,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `ttl as _ttl`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertChildMembership` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:12:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m12 | [0m  assertChildMembership,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertChildMembership as _assertChildMembership`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`assertPairingRedeemAllowed` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:17:10[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m17 | [0mimport { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+  [0m[38;5;12m | [0m         [0m[1m[31m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `assertPairingRedeemAllowed as _assertPairingRedeemAllowed`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`isContactIdForm` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:25:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m25 | [0m  isContactIdForm,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `isContactIdForm as _isContactIdForm`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`PAIRING_CODE_RE` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:29:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m29 | [0m  PAIRING_CODE_RE,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `PAIRING_CODE_RE as _PAIRING_CODE_RE`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`readBoolean` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:30:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m30 | [0m  readBoolean,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `readBoolean as _readBoolean`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`PENDING_LIST_LIMIT` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:38:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m38 | [0m  PENDING_LIST_LIMIT,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `PENDING_LIST_LIMIT as _PENDING_LIST_LIMIT`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`REQUEST_COLUMNS` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:39:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m39 | [0m  REQUEST_COLUMNS,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `REQUEST_COLUMNS as _REQUEST_COLUMNS`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`TOKEN_COLUMNS` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:40:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m40 | [0m  TOKEN_COLUMNS,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^^^^^^^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, alias it with an underscore like `TOKEN_COLUMNS as _TOKEN_COLUMNS`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`body` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:49:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m49 | [0m  body: Record<string, unknown>,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, prefix it with an underscore like `_body`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+[0m[1m[31merror[no-unused-vars][0m: [0m[1m`body` is never used[0m
+  [0m[38;5;12m-->[0m [0m[36mD:\control\backend\supabase\functions\pairing\issuance.ts[0m[0m[33m:78:3[0m
+  [0m[38;5;12m | [0m
+[0m[38;5;12m78 | [0m  body: Record<string, unknown>,
+  [0m[38;5;12m | [0m  [0m[1m[31m^^^^[0m
+   [0m[38;5;12m=[0m [0m[1mhint[0m: If this is intentional, prefix it with an underscore like `_body`
+
+  [0m[38;5;12mdocs[0m: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+Found 96 problems
+Checked 40 files

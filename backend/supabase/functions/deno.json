@@ -1,0 +1,20 @@
+{
+  "imports": {
+    "@supabase/supabase-js": "jsr:@supabase/supabase-js@2"
+  },
+  "lock": false,
+  "lint": {
+    // no-explicit-any is excluded for this tree ONLY, and the reason is documented in
+    // _shared/db.ts. The service-role client is hand-typed because no generated Database
+    // type exists to import: parent-control-staging holds 0 tables (docs/stage2/S2-EXEC-09)
+    // and `supabase gen types` is a CLI command this project is not authorised to run.
+    // Without the hand-typed seam, `deno check` reports every table name as `never`.
+    // The `any` values are confined to that seam and to the row objects the loaders return;
+    // every function parameter that can be typed is typed DbClient.
+    // If a generated types file is ever produced and committed, delete this exclusion and
+    // re-tighten _shared/db.ts.
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
+  }
+}

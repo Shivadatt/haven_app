@@ -85,52 +85,6 @@ final class SupabaseRowReader implements RowReader {
   }
 }
 
-/// `RowWriter`. Most tables are `service_role`-only under RLS, so a direct client
-/// write is expected to be refused; that refusal is reported, not worked around.
-final class SupabaseRowWriter implements RowWriter {
-  SupabaseRowWriter(this._client);
-
-  final SupabaseClient _client;
-
-  @override
-  Future<Result<void>> insert(String table, Map<String, Object?> row) async {
-    try {
-      TableName.assertKnown(table);
-      await _client.from(table).insert(row);
-      return okVoid();
-    } catch (error) {
-      return Err(mapSupabaseError(error));
-    }
-  }
-
-  @override
-  Future<Result<void>> update(
-    String table,
-    Map<String, Object?> row, {
-    required Map<String, Object?> eq,
-  }) async {
-    try {
-      TableName.assertKnown(table);
-      var query = _client.from(table).update(row);
-      for (final entry in eq.entries) {
-        final value = entry.value;
-        if (value == null) {
-          throw ArgumentError.value(
-            null,
-            entry.key,
-            'equality filter needs a value',
-          );
-        }
-        query = query.eq(entry.key, value);
-      }
-      await query;
-      return okVoid();
-    } catch (error) {
-      return Err(mapSupabaseError(error));
-    }
-  }
-}
-
 /// `RpcCaller` over the 14 definer functions.
 ///
 /// **Return shapes are NOT VERIFIED**: `g1-q7-20261029.json` captured arguments,

@@ -14,19 +14,41 @@ import '../../data/dashboard_repository.dart';
 /// not blank the dashboard and it is never presented as an empty list, which a
 /// parent would read as "nothing is wrong".
 class AttentionCard extends StatelessWidget {
-  const AttentionCard({super.key, required this.data});
+  const AttentionCard({super.key, required this.data, this.onOpenAll});
 
   final DashboardData data;
+
+  /// Opens the reports screen, which reads the same table with a wider window.
+  final VoidCallback? onOpenAll;
 
   @override
   Widget build(BuildContext context) {
     return SectionCard(
       title: 'Needs attention',
-      subtitle:
-          'The ${data.alerts.length} most recent reports from the '
-          'backend, newest first.',
-      child: _body(context),
+      subtitle: _subtitle(),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _body(context),
+          if (onOpenAll != null) ...[
+            const SizedBox(height: HavenSpacing.sm),
+            HavenButton(
+              label: 'Open the full list',
+              primary: false,
+              onPressed: onOpenAll,
+            ),
+          ],
+        ],
+      ),
     );
+  }
+
+  /// Only counts what was read: a window of "0 most recent reports" next to a
+  /// failure would claim the read happened.
+  String? _subtitle() {
+    if (data.alertsFailure != null || !data.hasAlerts) return null;
+    return 'The ${data.alerts.length} most recent reports from the backend, '
+        'newest first.';
   }
 
   Widget _body(BuildContext context) {

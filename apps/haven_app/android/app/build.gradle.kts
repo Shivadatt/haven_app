@@ -32,6 +32,15 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+
+    sourceSets {
+        getByName("main") {
+            // The child-device native lane is repo-level code, not module code: it
+            // lives at android_native/child_services so it can be read, counted and
+            // reviewed beside the Dart it answers, and is compiled from there.
+            java.srcDir("../../../../android_native/child_services")
+        }
+    }
 }
 
 kotlin {

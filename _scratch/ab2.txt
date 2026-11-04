@@ -1,0 +1,5 @@
+[0m[1m[31merror[0m: SyntaxError: Expected ',', got '<eof>'
+    |
+117 |   assertEquals([body.ok, body.role, body.contact_id_prefix], [true, "child", "PC"]);
+    |                                                                                     ~
+    at file:///D:/control/backend/supabase/tests/auth_bootstrap_test.ts:117:85

@@ -38,10 +38,6 @@ final class FamilyController extends GetxController {
   final Rxn<BlockedFailure> inviteParent = Rxn<BlockedFailure>();
   final Rxn<BlockedFailure> removeParent = Rxn<BlockedFailure>();
 
-  /// The child whose removal is being confirmed, so a page can name them in the
-  /// question without holding a second copy of the list.
-  final RxnString removing = RxnString();
-
   @override
   void onInit() {
     super.onInit();
@@ -84,30 +80,8 @@ final class FamilyController extends GetxController {
     message.value = failure.message;
   }
 
-  /// Unlinking is the one membership edit with a captured contract. It is
-  /// reversible only by pairing again, so the page asks first; this method is
-  /// what runs after the parent says yes.
-  Future<void> unlinkChild(String childUserId) async {
-    if (busy.value) return;
-    message.value = null;
-    busy.value = true;
-    final HavenFailure? failure = (await _repository.unlinkChild(
-      childUserId,
-    )).failureOrNull;
-    if (isClosed) return;
-    busy.value = false;
-    removing.value = null;
-    if (failure != null) {
-      message.value = failure.message;
-      return;
-    }
-    await load();
-  }
-
-  void askToRemove(String childUserId) => removing.value = childUserId;
-
-  void cancelRemoval() => removing.value = null;
-
+  /// Removal lives on a child's own page, where the parent can see who they are
+  /// about to unlink.
   void goToChild(String childUserId) =>
       _push(AppRoutes.childProfile, childUserId);
 

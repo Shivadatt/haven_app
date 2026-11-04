@@ -1,0 +1,18 @@
+{
+  // Mirrors ../functions/deno.json so `deno test` can run this lane offline. The functions
+  // copy stays authoritative for deployment: Supabase bundles each function with the import
+  // map found at supabase/functions/deno.json.
+  // @std/assert lives in this map, not inline in the test files: `deno lint` enforces
+  // no-import-prefix (no bare jsr:/npm: specifiers in source) and no-unversioned-import.
+  // The functions lane never imports @std — it has no test files of its own.
+  "imports": {
+    "@std/assert": "jsr:@std/assert@^1",
+    "@supabase/supabase-js": "jsr:@supabase/supabase-js@2"
+  },
+  "lock": false,
+  "lint": {
+    "rules": {
+      "exclude": ["no-explicit-any"]
+    }
+  }
+}

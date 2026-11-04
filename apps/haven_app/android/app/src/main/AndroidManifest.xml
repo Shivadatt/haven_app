@@ -1,6 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+      Declared because the app's own network calls need it. Flutter adds this to a
+      debug build by itself, which is why a debug APK works without it here and a
+      release one would not.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
-        android:label="haven_app"
+        android:label="@string/app_name"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -25,6 +32,26 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <!--
+          The component the device-admin lane asks the operating system about.
+          Declared so that "is Haven an active admin?" is a question with an answer
+          rather than a name that does not exist; nothing here enrolls, and nothing
+          here enforces.
+        -->
+        <receiver
+            android:name="com.haven.haven_app.child_services.device_admin.HavenDeviceAdminReceiver"
+            android:label="@string/device_admin_label"
+            android:description="@string/device_admin_description"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/haven_device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

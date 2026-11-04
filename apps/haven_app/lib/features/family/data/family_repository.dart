@@ -2,18 +2,18 @@ import 'package:haven_api/haven_api.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 
+import '../../../core/errors/captured_gaps.dart';
 import 'family_models.dart';
 import 'family_scope.dart';
 
 /// The family screen's whole surface.
 ///
-/// `load`, `rename` and `unlinkChild` are the three things the captured
-/// contracts let a signed-in parent do: `families` and `family_members` are
-/// readable by a member, `authenticated` holds column UPDATE on
-/// `families(name, settings)` for the owner, and `unlink_child` is one of the 14
-/// captured RPCs (`docs/stage1/04-rls-matrix.md` §0a). Adding or removing an
-/// adult has neither a grant nor a captured function body, so it stays typed and
-/// answers `blocked(...)`.
+/// `load` and `rename` are the two things a signed-in parent may actually do:
+/// `families` and `family_members` are readable by a member, and `authenticated`
+/// holds column UPDATE on `families(name, settings)` for the owner
+/// (`docs/stage1/04-rls-matrix.md` §0a). Everything else is a typed refusal —
+/// adding or removing an adult has neither a grant nor a captured function body,
+/// and unlinking a child is a captured RPC that the app role cannot execute.
 abstract interface class FamilyRepository {
   /// A null payload is not a failure: it means this account has no family yet,
   /// which is the state first-run setup exists to fix.
@@ -21,6 +21,9 @@ abstract interface class FamilyRepository {
 
   Future<Result<void>> rename({required String name});
 
+  /// `unlink_child` exists in the capture, but the role this app signs in as
+  /// holds no EXECUTE on it, so the refusal is the honest answer rather than a
+  /// call that is documented to fail.
   Future<Result<void>> unlinkChild(String childUserId);
 
   Future<Result<void>> inviteParent();
@@ -33,14 +36,12 @@ final class HavenFamilyRepository implements FamilyRepository {
     required this._scope,
     required this._rows,
     required this._writer,
-    required this._rpc,
   });
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final FamilyScopeReader Function() _scope;
   final RowReader Function() _rows;
   final RowWriter Function() _writer;
-  final RpcCaller Function() _rpc;
 
   factory HavenFamilyRepository.live() {
     final FamilyScopeReader reader = FamilyScopeReader(
@@ -51,7 +52,6 @@ final class HavenFamilyRepository implements FamilyRepository {
       scope: () => reader,
       rows: () => HavenBackend.rows,
       writer: () => HavenBackend.writer,
-      rpc: () => HavenBackend.rpc,
     );
   }
 
@@ -136,25 +136,17 @@ final class HavenFamilyRepository implements FamilyRepository {
   }
 
   @override
-  Future<Result<void>> unlinkChild(String childUserId) async {
-    final Result<FamilyScope> scope = await _scope().resolve();
-    final FamilyScope? mine = scope.valueOrNull;
-    if (mine == null) return Err<void>(scope.failureOrNull!);
-
-    // NOT VERIFIED — RETURN SHAPE UNCAPPED: `g1-q7` captured no return type for
-    // `unlink_child`, so the absence of a mapped failure is the only
-    // confirmation this client can honestly get.
-    final Result<Object?> called = await _rpc().call(
-      RpcName.unlinkChild,
-      UnlinkChildArgs(
-        familyId: mine.familyId,
-        childUserId: childUserId,
-        actorUserId: mine.session.userId,
-      ).toParams(),
-    );
-    final HavenFailure? failure = called.failureOrNull;
-    return failure == null ? okVoid() : Err<void>(failure);
-  }
+  Future<Result<void>> unlinkChild(String childUserId) async => blocked(
+    // The child half of the pair is a captured RPC and a captured Edge Function
+    // action, and the app can reach neither: the RPC is not executable by this
+    // role, and the Edge contract stops at the `action` discriminator.
+    '${CapturedGaps.rpcLaneMissing}; the `pairing` Edge Function does have an '
+    '`unlink` action (capture-20261030.json:40) but only the `action` field of '
+    'its request body was ever captured, and staging has no Edge Functions '
+    'deployed',
+    requirement:
+        'Haven cannot remove a child from your family in this build yet.',
+  );
 
   @override
   Future<Result<void>> inviteParent() async => blocked(

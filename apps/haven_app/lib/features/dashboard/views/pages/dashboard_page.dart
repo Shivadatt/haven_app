@@ -9,6 +9,8 @@ import '../../../family/views/widgets/people_card.dart';
 import '../../controllers/dashboard_controller.dart';
 import '../../data/dashboard_repository.dart';
 import '../widgets/attention_card.dart';
+import '../widgets/device_records_card.dart';
+import '../widgets/safe_places_card.dart';
 
 /// The parent's first screen: the family, the children in it, and what has been
 /// reported lately. Everything here came from a read that happened.
@@ -83,16 +85,23 @@ class _Content extends GetView<DashboardController> {
             title: 'Your children',
             people: family.children,
             emptyLine:
-                'No children are in this family yet. A child joins when you '
-                'pair their device — pairing is not available in this build, so '
-                'check the Settings screen to see what this build is connected '
-                'to.',
+                'No children are in this family yet. A child joins when their '
+                'own device is paired — open Devices to see what pairing needs '
+                'before that can happen.',
             onTap: controller.goToChild,
           ),
           const SizedBox(height: HavenSpacing.md),
-          AttentionCard(data: data),
+          AttentionCard(data: data, onOpenAll: controller.goToNotifications),
           const SizedBox(height: HavenSpacing.md),
-          const _DeviceGap(),
+          SafePlacesCard(onOpen: controller.goToSafeZones),
+          const SizedBox(height: HavenSpacing.md),
+          DeviceRecordsCard(
+            onOpenCommands: controller.goToCommands,
+            onOpenPolicies: controller.goToPolicies,
+            onOpenSessions: controller.goToSessions,
+          ),
+          const SizedBox(height: HavenSpacing.md),
+          const _DevicesCard(),
           const SizedBox(height: HavenSpacing.md),
           ListTile(
             contentPadding: EdgeInsets.zero,
@@ -111,16 +120,40 @@ class _Content extends GetView<DashboardController> {
   }
 }
 
-class _DeviceGap extends GetView<DashboardController> {
-  const _DeviceGap();
+/// The device lane in one card: the refusal that says why no device is listed,
+/// and the two screens that can still read what devices reported.
+class _DevicesCard extends GetView<DashboardController> {
+  const _DevicesCard();
 
   @override
   Widget build(BuildContext context) => SectionCard(
     title: 'Devices',
     child: Obx(
-      () => controller.deviceGap.value == null
-          ? const SizedBox.shrink()
-          : BlockedNotice.fromFailure(controller.deviceGap.value!),
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (controller.deviceGap.value != null)
+            BlockedNotice.fromFailure(controller.deviceGap.value!),
+          const SizedBox(height: HavenSpacing.md),
+          HavenButton(
+            label: 'Open devices',
+            primary: false,
+            onPressed: controller.goToDevices,
+          ),
+          const SizedBox(height: HavenSpacing.sm),
+          HavenButton(
+            label: 'See reported app use',
+            primary: false,
+            onPressed: controller.goToActivity,
+          ),
+          const SizedBox(height: HavenSpacing.sm),
+          HavenButton(
+            label: 'See reported places',
+            primary: false,
+            onPressed: controller.goToLocation,
+          ),
+        ],
+      ),
     ),
   );
 }

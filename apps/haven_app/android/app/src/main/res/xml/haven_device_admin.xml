@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  The policies this build tells the operating system it might need.
+
+  Only force-lock is listed. It is the one rule a plain active device admin can
+  actually be held to on this phone, and it is the rule the documented parent
+  command "lock the screen" would need.
+
+  Disabling the camera, blocking installs and the rest of the restriction set are
+  deliberately absent: the OS gives those to a device or profile owner, this
+  install is neither, and declaring a policy the phone would ignore is how a
+  screen ends up claiming a restriction that was never in force.
+-->
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-policies>
+        <force-lock />
+    </uses-policies>
+</device-admin>

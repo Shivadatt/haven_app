@@ -33,6 +33,14 @@ abstract interface class RowWriter {
     Map<String, Object?> row, {
     required Map<String, Object?> eq,
   });
+
+  /// Removes matching rows.
+  ///
+  /// Only one table in the captured grant set lets a signed-in client delete at
+  /// all: `safe_zones`, parent-only (`docs/stage1/04-rls-matrix.md:33,149`). The
+  /// verb is here because that grant is proven, not because any other table
+  /// answers — everywhere else the database refuses, and the refusal is reported.
+  Future<Result<void>> delete(String table, {required Map<String, Object?> eq});
 }
 
 /// Calls a definer function captured in `g1-q7-20261029.json` (`RpcName`).

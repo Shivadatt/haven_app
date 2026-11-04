@@ -1,10 +1,14 @@
+import 'package:flutter/material.dart' show TextButton;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';
 import 'package:haven_app/app/theme/haven_theme.dart';
+import 'package:haven_app/core/permissions/native_device_state.dart';
 import 'package:haven_app/features/settings/controllers/settings_controller.dart';
 import 'package:haven_app/features/settings/data/settings_repository.dart';
 import 'package:haven_app/features/settings/views/pages/permission_status_page.dart';
+import 'package:haven_app/features/settings/views/widgets/device_state_card.dart';
 
+import '../permissions/fakes.dart';
 import 'fakes.dart';
 
 void main() {
@@ -13,10 +17,19 @@ void main() {
   Future<void> open(
     WidgetTester tester, {
     NotificationAccess access = NotificationAccess.denied,
+    DeviceStateReport? report,
   }) async {
     repository = FakeSettingsRepository(access: access);
     Get.put<SettingsController>(
-      SettingsController(repository: repository, applyTheme: (_) {}),
+      SettingsController(
+        repository: repository,
+        applyTheme: (_) {},
+        // A test host has no operating system behind the channel, so the lane is
+        // always handed here — otherwise the page never finishes loading.
+        deviceState: FakeNativeDeviceState(
+          report == null ? unavailable() : ok(report),
+        ),
+      ),
     );
     await tester.pumpWidget(
       GetMaterialApp(
@@ -84,4 +97,24 @@ void main() {
     // Nothing here pretends to know a device's state.
     expect(find.text('Granted'), findsNothing);
   });
+
+  testWidgets(
+    'what this phone answers is on the page that explains permissions',
+    (tester) async {
+      await open(tester, report: fullReport());
+
+      expect(find.text('What this phone answers'), findsOneWidget);
+      expect(find.text('Android 36'), findsOneWidget);
+      expect(find.byType(DeviceStateCard), findsOneWidget);
+      // The card is a report, not a control: it cannot offer a change this build
+      // is not allowed to make.
+      expect(
+        find.descendant(
+          of: find.byType(DeviceStateCard),
+          matching: find.byType(TextButton),
+        ),
+        findsNothing,
+      );
+    },
+  );
 }

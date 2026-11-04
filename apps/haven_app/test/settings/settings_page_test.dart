@@ -7,6 +7,7 @@ import 'package:haven_app/features/settings/data/settings_repository.dart';
 import 'package:haven_app/features/settings/views/pages/settings_page.dart';
 import 'package:haven_core/haven_core.dart';
 
+import '../permissions/fakes.dart';
 import 'fakes.dart';
 
 void main() {
@@ -21,7 +22,12 @@ void main() {
     repository = FakeSettingsRepository(access: access, theme: theme);
     applied = <ThemeMode>[];
     Get.put<SettingsController>(
-      SettingsController(repository: repository, applyTheme: applied.add),
+      SettingsController(
+        repository: repository,
+        applyTheme: applied.add,
+        // No operating system to ask in a widget test of a different screen.
+        deviceState: FakeNativeDeviceState(unavailable()),
+      ),
     );
     await tester.pumpWidget(
       GetMaterialApp(theme: HavenTheme.light, home: const SettingsPage()),

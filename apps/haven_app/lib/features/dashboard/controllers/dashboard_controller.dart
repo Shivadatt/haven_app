@@ -65,6 +65,37 @@ final class DashboardController extends GetxController {
 
   void goToSetup() => _replace(AppRoutes.onboarding, null);
   void goToFamily() => _push(AppRoutes.family, null);
+  void goToDevices() => _push(AppRoutes.devices, null);
+
+  /// App use is reachable even though the device list is not: `usage_daily`
+  /// carries a SELECT grant for a parent, `devices` does not (F6). Hiding this
+  /// behind the unreadable lane would throw away a read that works.
+  void goToActivity() => _push(AppRoutes.activity, null);
+
+  /// Places are the same case: `location_events` carries a SELECT grant for a
+  /// parent, so this read works while the device list does not.
+  void goToLocation() => _push(AppRoutes.location, null);
+
+  /// Named places read and write: `safe_zones` is the one table this build has a
+  /// proven UPDATE and DELETE grant on, so this screen leads somewhere a parent
+  /// can actually change.
+  void goToSafeZones() => _push(AppRoutes.safeZones, null);
+
+  /// The instruction log reads `device_commands`, which carries a SELECT grant
+  /// for a parent — the same case as app use and places.
+  void goToCommands() => _push(AppRoutes.commands, null);
+
+  /// Rule versions read `device_policies`, also selectable by a parent.
+  void goToPolicies() => _push(AppRoutes.policies, null);
+
+  /// Session records read `remote_sessions`, selectable for a parent, a child, or
+  /// a family parent (`04-rls-matrix.md:53`) — the read works even though the
+  /// device list does not.
+  void goToSessions() => _push(AppRoutes.remoteSessions, null);
+
+  /// Reports read `safety_alerts`, the same table this page's attention section
+  /// already reads; the screen gives the wider window.
+  void goToNotifications() => _push(AppRoutes.notifications, null);
   void goToChild(String childUserId) =>
       _push(AppRoutes.childProfile, childUserId);
   void goToSettings() => _push(AppRoutes.settings, null);

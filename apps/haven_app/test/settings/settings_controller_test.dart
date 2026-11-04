@@ -4,6 +4,7 @@ import 'package:haven_core/haven_core.dart';
 import 'package:haven_app/features/settings/controllers/settings_controller.dart';
 import 'package:haven_app/features/settings/data/settings_repository.dart';
 
+import '../permissions/fakes.dart';
 import 'fakes.dart';
 
 void main() {
@@ -15,6 +16,9 @@ void main() {
     final subject = SettingsController(
       repository: repo,
       applyTheme: applied.add,
+      // A unit-test host has no operating system to ask, which is the one answer
+      // these tests should not be about.
+      deviceState: FakeNativeDeviceState(unavailable()),
     );
     repo.access = access;
     return (subject, applied);

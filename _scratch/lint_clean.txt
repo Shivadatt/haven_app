@@ -1,0 +1,962 @@
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\audit.ts:32:24
+   | 
+32 |   from(table: string): any;
+   |                        ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\device_authority.ts:26:7
+   | 
+26 |   db: any,
+   |       ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\device_authority.ts:29:12
+   | 
+29 | ): Promise<any> {
+   |            ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\device_authority.ts:56:55
+   | 
+56 | export async function requireDevice(req: Request, db: any): Promise<any> {
+   |                                                       ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\device_authority.ts:56:69
+   | 
+56 | export async function requireDevice(req: Request, db: any): Promise<any> {
+   |                                                                     ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\auth.ts:96:24
+   | 
+96 |   from(table: string): any;
+   |                        ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+   --> D:\control\backend\supabase\functions\_shared\auth.ts:102:54
+    | 
+102 |   rpc(name: string, args?: Record<string, unknown>): any;
+    |                                                      ^^^
+    = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+   --> D:\control\backend\supabase\functions\_shared\auth.ts:104:53
+    | 
+104 |     getUser(token: string): Promise<{ data: { user: any } | null; error: any }>;
+    |                                                     ^^^
+    = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+   --> D:\control\backend\supabase\functions\_shared\auth.ts:104:74
+    | 
+104 |     getUser(token: string): Promise<{ data: { user: any } | null; error: any }>;
+    |                                                                          ^^^
+    = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+   --> D:\control\backend\supabase\functions\_shared\auth.ts:136:31
+    | 
+136 | ): Promise<{ auth: Actor; db: any; profile: { role: string } }> {
+    |                               ^^^
+    = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-unused-vars]: `ApiError` is never used
+  --> D:\control\backend\supabase\functions\_shared\validation.ts:46:10
+   | 
+46 | import { ApiError } from "./envelope.ts";
+   |          ^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `ApiError as _ApiError`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[require-await]: Async function 'identifierHash' has no 'await' expression or 'await using' declaration.
+  --> D:\control\backend\supabase\functions\_shared\validation.ts:99:8
+   | 
+99 | export async function identifierHash(
+   |        ^^^^^
+   = hint: Remove 'async' keyword from the function or use 'await' expression or 'await using' declaration inside.
+
+  docs: https://docs.deno.com/lint/rules/require-await
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:21:35
+   | 
+21 | async function loadLiveFamily(db: any, familyId: string): Promise<any> {
+   |                                   ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:21:67
+   | 
+21 | async function loadLiveFamily(db: any, familyId: string): Promise<any> {
+   |                                                                   ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:37:41
+   | 
+37 | async function loadActiveMembership(db: any, familyId: string, userId: string): Promise<any> {
+   |                                         ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:37:89
+   | 
+37 | async function loadActiveMembership(db: any, familyId: string, userId: string): Promise<any> {
+   |                                                                                         ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:53:46
+   | 
+53 | export async function assertFamilyParent(db: any, userId: string, familyId: string): Promise<any> {
+   |                                              ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:53:94
+   | 
+53 | export async function assertFamilyParent(db: any, userId: string, familyId: string): Promise<any> {
+   |                                                                                              ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:63:46
+   | 
+63 | export async function assertFamilyMember(db: any, userId: string, familyId: string): Promise<any> {
+   |                                              ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:63:94
+   | 
+63 | export async function assertFamilyMember(db: any, userId: string, familyId: string): Promise<any> {
+   |                                                                                              ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:71:45
+   | 
+71 | export async function assertFamilyChild(db: any, userId: string, familyId: string): Promise<any> {
+   |                                             ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:71:93
+   | 
+71 | export async function assertFamilyChild(db: any, userId: string, familyId: string): Promise<any> {
+   |                                                                                             ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:83:45
+   | 
+83 | export async function assertFamilyOwner(db: any, userId: string, familyId: string): Promise<any> {
+   |                                             ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\family.ts:83:93
+   | 
+83 | export async function assertFamilyOwner(db: any, userId: string, familyId: string): Promise<any> {
+   |                                                                                             ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\quotas.ts:31:7
+   | 
+31 |   db: any,
+   |       ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\quotas.ts:74:52
+   | 
+74 | export async function assertInviteQuotaAllowed(db: any, childUserId: string): Promise<void> {
+   |                                                    ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\identity.ts:60:13
+   | 
+60 |   authUser: any;
+   |             ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\identity.ts:78:57
+   | 
+78 | export async function resolveIdentity(req: Request, db: any): Promise<Actor> {
+   |                                                         ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\identity.ts:83:28
+   | 
+83 |   let res: { data: { user: any } | null; error: any };
+   |                            ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\identity.ts:83:49
+   | 
+83 |   let res: { data: { user: any } | null; error: any };
+   |                                                 ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[require-await]: Async function 'resolveFirebaseIdentity' has no 'await' expression or 'await using' declaration.
+   --> D:\control\backend\supabase\functions\_shared\identity.ts:130:1
+    | 
+130 | async function resolveFirebaseIdentity(_req: Request, _db: any): Promise<Actor> {
+    | ^^^^^
+    = hint: Remove 'async' keyword from the function or use 'await' expression or 'await using' declaration inside.
+
+  docs: https://docs.deno.com/lint/rules/require-await
+
+
+error[no-explicit-any]: `any` type is not allowed
+   --> D:\control\backend\supabase\functions\_shared\identity.ts:130:60
+    | 
+130 | async function resolveFirebaseIdentity(_req: Request, _db: any): Promise<Actor> {
+    |                                                            ^^^
+    = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\rate_limit.ts:62:7
+   | 
+62 |   db: any,
+   |       ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+  --> D:\control\backend\supabase\functions\_shared\rate_limit.ts:97:7
+   | 
+97 |   db: any,
+   |       ^^^
+   = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-explicit-any]: `any` type is not allowed
+   --> D:\control\backend\supabase\functions\_shared\rate_limit.ts:121:7
+    | 
+121 |   db: any,
+    |       ^^^
+    = hint: Use a specific type other than `any`
+
+  docs: https://docs.deno.com/lint/rules/no-explicit-any
+
+
+error[no-unused-vars]: `assertChildMembership` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:12:3
+   | 
+12 |   assertChildMembership,
+   |   ^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertChildMembership as _assertChildMembership`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertPairingRedeemAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:17:10
+   | 
+17 | import { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertPairingRedeemAllowed as _assertPairingRedeemAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `recordPairingAttempt` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:17:38
+   | 
+17 | import { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+   |                                      ^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `recordPairingAttempt as _recordPairingAttempt`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertInviteQuotaAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:19:3
+   | 
+19 |   assertInviteQuotaAllowed,
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertInviteQuotaAllowed as _assertInviteQuotaAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertPairingCodeCreationAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:20:3
+   | 
+20 |   assertPairingCodeCreationAllowed,
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertPairingCodeCreationAllowed as _assertPairingCodeCreationAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `CONTACT_ID_RE` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:23:3
+   | 
+23 |   CONTACT_ID_RE,
+   |   ^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `CONTACT_ID_RE as _CONTACT_ID_RE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `identifierHash` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:24:3
+   | 
+24 |   identifierHash,
+   |   ^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `identifierHash as _identifierHash`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `isContactIdForm` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:25:3
+   | 
+25 |   isContactIdForm,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `isContactIdForm as _isContactIdForm`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `newContactId` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:26:3
+   | 
+26 |   newContactId,
+   |   ^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `newContactId as _newContactId`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `newPairingCode` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:27:3
+   | 
+27 |   newPairingCode,
+   |   ^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `newPairingCode as _newPairingCode`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `normalizeIdentifier` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:28:3
+   | 
+28 |   normalizeIdentifier,
+   |   ^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `normalizeIdentifier as _normalizeIdentifier`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `PAIRING_CODE_RE` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:29:3
+   | 
+29 |   PAIRING_CODE_RE,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `PAIRING_CODE_RE as _PAIRING_CODE_RE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `sha256Hex` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:32:3
+   | 
+32 |   sha256Hex,
+   |   ^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `sha256Hex as _sha256Hex`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `CODE_TTL_MINUTES` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:35:3
+   | 
+35 |   CODE_TTL_MINUTES,
+   |   ^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `CODE_TTL_MINUTES as _CODE_TTL_MINUTES`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `INVITE_TTL_MINUTES` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:36:3
+   | 
+36 |   INVITE_TTL_MINUTES,
+   |   ^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `INVITE_TTL_MINUTES as _INVITE_TTL_MINUTES`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `MAX_ATTEMPTS_PER_CODE` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:37:3
+   | 
+37 |   MAX_ATTEMPTS_PER_CODE,
+   |   ^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `MAX_ATTEMPTS_PER_CODE as _MAX_ATTEMPTS_PER_CODE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `TOKEN_COLUMNS` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:40:3
+   | 
+40 |   TOKEN_COLUMNS,
+   |   ^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `TOKEN_COLUMNS as _TOKEN_COLUMNS`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `invalidIdentifier` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:41:3
+   | 
+41 |   invalidIdentifier,
+   |   ^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `invalidIdentifier as _invalidIdentifier`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `ttl` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:42:3
+   | 
+42 |   ttl,
+   |   ^^^
+   = hint: If this is intentional, alias it with an underscore like `ttl as _ttl`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `body` is never used
+  --> D:\control\backend\supabase\functions\pairing\requests.ts:49:3
+   | 
+49 |   body: Record<string, unknown>,
+   |   ^^^^
+   = hint: If this is intentional, prefix it with an underscore like `_body`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertChildMembership` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:12:3
+   | 
+12 |   assertChildMembership,
+   |   ^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertChildMembership as _assertChildMembership`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertInviteQuotaAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:19:3
+   | 
+19 |   assertInviteQuotaAllowed,
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertInviteQuotaAllowed as _assertInviteQuotaAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertPairingCodeCreationAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:20:3
+   | 
+20 |   assertPairingCodeCreationAllowed,
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertPairingCodeCreationAllowed as _assertPairingCodeCreationAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `CONTACT_ID_RE` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:23:3
+   | 
+23 |   CONTACT_ID_RE,
+   |   ^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `CONTACT_ID_RE as _CONTACT_ID_RE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `newContactId` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:26:3
+   | 
+26 |   newContactId,
+   |   ^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `newContactId as _newContactId`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `newPairingCode` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:27:3
+   | 
+27 |   newPairingCode,
+   |   ^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `newPairingCode as _newPairingCode`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `readBoolean` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:30:3
+   | 
+30 |   readBoolean,
+   |   ^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `readBoolean as _readBoolean`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `INVITE_TTL_MINUTES` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:36:3
+   | 
+36 |   INVITE_TTL_MINUTES,
+   |   ^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `INVITE_TTL_MINUTES as _INVITE_TTL_MINUTES`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `MAX_ATTEMPTS_PER_CODE` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:37:3
+   | 
+37 |   MAX_ATTEMPTS_PER_CODE,
+   |   ^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `MAX_ATTEMPTS_PER_CODE as _MAX_ATTEMPTS_PER_CODE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `PENDING_LIST_LIMIT` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:38:3
+   | 
+38 |   PENDING_LIST_LIMIT,
+   |   ^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `PENDING_LIST_LIMIT as _PENDING_LIST_LIMIT`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `REQUEST_COLUMNS` is never used
+  --> D:\control\backend\supabase\functions\pairing\redeem.ts:39:3
+   | 
+39 |   REQUEST_COLUMNS,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `REQUEST_COLUMNS as _REQUEST_COLUMNS`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertPairingRedeemAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:17:10
+   | 
+17 | import { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertPairingRedeemAllowed as _assertPairingRedeemAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `recordPairingAttempt` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:17:38
+   | 
+17 | import { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+   |                                      ^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `recordPairingAttempt as _recordPairingAttempt`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertInviteQuotaAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:19:3
+   | 
+19 |   assertInviteQuotaAllowed,
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertInviteQuotaAllowed as _assertInviteQuotaAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertPairingCodeCreationAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:20:3
+   | 
+20 |   assertPairingCodeCreationAllowed,
+   |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertPairingCodeCreationAllowed as _assertPairingCodeCreationAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `CONTACT_ID_RE` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:23:3
+   | 
+23 |   CONTACT_ID_RE,
+   |   ^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `CONTACT_ID_RE as _CONTACT_ID_RE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `identifierHash` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:24:3
+   | 
+24 |   identifierHash,
+   |   ^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `identifierHash as _identifierHash`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `isContactIdForm` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:25:3
+   | 
+25 |   isContactIdForm,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `isContactIdForm as _isContactIdForm`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `newContactId` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:26:3
+   | 
+26 |   newContactId,
+   |   ^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `newContactId as _newContactId`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `newPairingCode` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:27:3
+   | 
+27 |   newPairingCode,
+   |   ^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `newPairingCode as _newPairingCode`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `normalizeIdentifier` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:28:3
+   | 
+28 |   normalizeIdentifier,
+   |   ^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `normalizeIdentifier as _normalizeIdentifier`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `PAIRING_CODE_RE` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:29:3
+   | 
+29 |   PAIRING_CODE_RE,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `PAIRING_CODE_RE as _PAIRING_CODE_RE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `readBoolean` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:30:3
+   | 
+30 |   readBoolean,
+   |   ^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `readBoolean as _readBoolean`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `sha256Hex` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:32:3
+   | 
+32 |   sha256Hex,
+   |   ^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `sha256Hex as _sha256Hex`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `CODE_TTL_MINUTES` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:35:3
+   | 
+35 |   CODE_TTL_MINUTES,
+   |   ^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `CODE_TTL_MINUTES as _CODE_TTL_MINUTES`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `INVITE_TTL_MINUTES` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:36:3
+   | 
+36 |   INVITE_TTL_MINUTES,
+   |   ^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `INVITE_TTL_MINUTES as _INVITE_TTL_MINUTES`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `MAX_ATTEMPTS_PER_CODE` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:37:3
+   | 
+37 |   MAX_ATTEMPTS_PER_CODE,
+   |   ^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `MAX_ATTEMPTS_PER_CODE as _MAX_ATTEMPTS_PER_CODE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `PENDING_LIST_LIMIT` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:38:3
+   | 
+38 |   PENDING_LIST_LIMIT,
+   |   ^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `PENDING_LIST_LIMIT as _PENDING_LIST_LIMIT`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `TOKEN_COLUMNS` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:40:3
+   | 
+40 |   TOKEN_COLUMNS,
+   |   ^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `TOKEN_COLUMNS as _TOKEN_COLUMNS`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `invalidIdentifier` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:41:3
+   | 
+41 |   invalidIdentifier,
+   |   ^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `invalidIdentifier as _invalidIdentifier`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `ttl` is never used
+  --> D:\control\backend\supabase\functions\pairing\unlink.ts:42:3
+   | 
+42 |   ttl,
+   |   ^^^
+   = hint: If this is intentional, alias it with an underscore like `ttl as _ttl`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertChildMembership` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:12:3
+   | 
+12 |   assertChildMembership,
+   |   ^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertChildMembership as _assertChildMembership`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `assertPairingRedeemAllowed` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:17:10
+   | 
+17 | import { assertPairingRedeemAllowed, recordPairingAttempt } from "../_shared/rate_limit.ts";
+   |          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `assertPairingRedeemAllowed as _assertPairingRedeemAllowed`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `isContactIdForm` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:25:3
+   | 
+25 |   isContactIdForm,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `isContactIdForm as _isContactIdForm`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `PAIRING_CODE_RE` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:29:3
+   | 
+29 |   PAIRING_CODE_RE,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `PAIRING_CODE_RE as _PAIRING_CODE_RE`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `readBoolean` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:30:3
+   | 
+30 |   readBoolean,
+   |   ^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `readBoolean as _readBoolean`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `PENDING_LIST_LIMIT` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:38:3
+   | 
+38 |   PENDING_LIST_LIMIT,
+   |   ^^^^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `PENDING_LIST_LIMIT as _PENDING_LIST_LIMIT`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `REQUEST_COLUMNS` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:39:3
+   | 
+39 |   REQUEST_COLUMNS,
+   |   ^^^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `REQUEST_COLUMNS as _REQUEST_COLUMNS`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `TOKEN_COLUMNS` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:40:3
+   | 
+40 |   TOKEN_COLUMNS,
+   |   ^^^^^^^^^^^^^
+   = hint: If this is intentional, alias it with an underscore like `TOKEN_COLUMNS as _TOKEN_COLUMNS`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `body` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:49:3
+   | 
+49 |   body: Record<string, unknown>,
+   |   ^^^^
+   = hint: If this is intentional, prefix it with an underscore like `_body`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+error[no-unused-vars]: `body` is never used
+  --> D:\control\backend\supabase\functions\pairing\issuance.ts:78:3
+   | 
+78 |   body: Record<string, unknown>,
+   |   ^^^^
+   = hint: If this is intentional, prefix it with an underscore like `_body`
+
+  docs: https://docs.deno.com/lint/rules/no-unused-vars
+
+
+Found 96 problems
+Checked 40 files

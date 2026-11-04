@@ -65,44 +65,31 @@ class _Content extends GetView<ChildProfileController> {
           const SizedBox(height: HavenSpacing.md),
           _DeviceGap(),
           const SizedBox(height: HavenSpacing.md),
-          Obx(
-            () => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (controller.message.value != null) ...[
-                  Text(controller.message.value!, style: HavenText.body),
-                  const SizedBox(height: HavenSpacing.sm),
-                ],
-                HavenButton(
-                  label: 'Remove from this family',
-                  primary: false,
-                  expand: true,
-                  busy: controller.busy.value,
-                  onPressed: () => _askToRemove(context),
-                ),
-              ],
-            ),
-          ),
+          _RemovalGap(person.name),
         ],
       ),
     );
   }
+}
 
-  /// §12: a destructive action is confirmed first, in the words that make the
-  /// consequence clear — unlinking stops the reporting, and pairing again is the
-  /// only way back.
-  Future<void> _askToRemove(BuildContext context) async {
-    final bool yes = await ConfirmSheet.confirm(
-      context,
-      title: 'Remove ${person.name} from this family?',
-      body:
-          'Their device stops reporting to Haven, and any rule you set for '
-          'them stops applying. To bring them back you would pair their device '
-          'again.',
-      confirmLabel: 'Remove',
-    );
-    if (yes) controller.remove();
-  }
+/// §12 says a destructive action is confirmed first — but this build has no
+/// backend path that could carry one out, so the screen says what is missing
+/// instead of offering a button that would only ever fail.
+class _RemovalGap extends GetView<ChildProfileController> {
+  const _RemovalGap(this.name);
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) => SectionCard(
+    title: 'Removing $name',
+    subtitle: 'Taking a child out of the family stops their reporting.',
+    child: Obx(
+      () => controller.removalGap.value == null
+          ? const SizedBox.shrink()
+          : BlockedNotice.fromFailure(controller.removalGap.value!),
+    ),
+  );
 }
 
 class _DeviceGap extends GetView<ChildProfileController> {

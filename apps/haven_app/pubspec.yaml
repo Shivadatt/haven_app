@@ -46,7 +46,6 @@ dependencies:
   firebase_auth: ^7.0.1
   firebase_messaging: ^17.0.1
   flutter_secure_storage: ^11.2.0
-  permission_handler: ^13.0.2
   connectivity_plus: ^7.3.2
   geolocator: ^14.0.1
 

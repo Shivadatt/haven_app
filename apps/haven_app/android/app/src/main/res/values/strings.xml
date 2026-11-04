@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Haven</string>
+
+    <!--
+      The name a phone shows in Settings > Security > Device admin apps. It says
+      what the entry is for instead of letting a component class name stand in for
+      an explanation, because whoever holds the phone is the one who has to agree.
+    -->
+    <string name="device_admin_label">Haven device admin</string>
+    <string name="device_admin_description">
+        Lets Haven ask this phone to confirm a device rule instead of assuming it
+        took effect. Haven reports only what the operating system answers, and this
+        build has no rule it can send.
+    </string>
+</resources>

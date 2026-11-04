@@ -28,12 +28,14 @@ final class ChildProfileController extends GetxController {
 
   final RxBool isLoading = true.obs;
   final Rx<Result<FamilyPerson?>?> person = Rx<Result<FamilyPerson?>?>(null);
-  final RxBool busy = false.obs;
-  final RxnString message = RxnString();
 
   /// The device half of a child's page, which this build cannot answer. See
   /// [CapturedGaps] for why, and for the words the screen shows.
   final Rxn<BlockedFailure> deviceGap = Rxn<BlockedFailure>();
+
+  /// Removing a child is the one membership edit a parent would want here, and
+  /// the only screen that can say why it cannot offer it is this one.
+  final Rxn<BlockedFailure> removalGap = Rxn<BlockedFailure>();
 
   @override
   void onInit() {
@@ -45,6 +47,7 @@ final class ChildProfileController extends GetxController {
     isLoading.value = true;
     final Result<FamilyBundle?> bundle = await _repository.load();
     deviceGap.value = _blocked(await _deviceGap());
+    removalGap.value = _blocked(await _repository.unlinkChild(childUserId));
     if (isClosed) return;
     final FamilyBundle? value = bundle.valueOrNull;
     if (value == null) {
@@ -64,28 +67,6 @@ final class ChildProfileController extends GetxController {
       if (child.userId == childUserId) return child;
     }
     return null;
-  }
-
-  /// Removal is the one edit a parent may make to a child's membership, and it
-  /// only takes effect if the service accepts it; the screen asks first because
-  /// the way back is to pair again.
-  Future<void> remove() async {
-    if (busy.value) return;
-    message.value = null;
-    busy.value = true;
-    final HavenFailure? failure = (await _repository.unlinkChild(
-      childUserId,
-    )).failureOrNull;
-    if (isClosed) return;
-    busy.value = false;
-    if (failure != null) {
-      message.value = failure.message;
-      return;
-    }
-    // The page re-reads rather than announcing success: the family list is the
-    // authority on whether this child is still in it, and if the service did not
-    // remove them the screen says so instead of claiming it did.
-    await load();
   }
 
   void goToFamily() => _goTo(AppRoutes.family, null);

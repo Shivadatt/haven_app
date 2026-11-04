@@ -7,6 +7,7 @@ import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/settings_controller.dart';
 import '../../data/settings_repository.dart';
+import '../widgets/device_state_card.dart';
 
 /// What Haven asks the operating system for, and why — written for the parent,
 /// because a monitoring app that hides its permissions is not one a family can
@@ -57,6 +58,8 @@ final class PermissionStatusPage extends GetView<SettingsController> {
           padding: const EdgeInsets.symmetric(vertical: HavenSpacing.lg),
           children: [
             const _ThisPhone(),
+            const SizedBox(height: HavenSpacing.md),
+            const DeviceStateCard(),
             const SizedBox(height: HavenSpacing.md),
             SectionCard(
               title: 'On your child’s phone',

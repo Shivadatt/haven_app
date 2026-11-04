@@ -53,6 +53,12 @@ class UnconfiguredBackend
   }) async => _refusal();
 
   @override
+  Future<Result<void>> delete(
+    String table, {
+    required Map<String, Object?> eq,
+  }) async => _refusal();
+
+  @override
   Future<Result<Object?>> call(
     String name,
     Map<String, Object?> params,

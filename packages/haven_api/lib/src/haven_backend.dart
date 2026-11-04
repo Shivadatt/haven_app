@@ -12,6 +12,7 @@ import 'edge_caller_impl.dart';
 import 'offline_backends.dart';
 import 'push_transport_impl.dart';
 import 'supabase_data.dart';
+import 'supabase_write.dart';
 import 'supabase_profile_store.dart';
 import 'supabase_user_auth.dart';
 
