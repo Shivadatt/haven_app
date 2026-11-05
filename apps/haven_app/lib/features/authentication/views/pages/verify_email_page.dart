@@ -98,7 +98,15 @@ class _InfoRow extends StatelessWidget {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(label, style: HavenText.caption),
-      Text(value, style: HavenText.body),
+      const SizedBox(width: HavenSpacing.sm),
+      Flexible(
+        child: Text(
+          value,
+          style: HavenText.body,
+          textAlign: TextAlign.end,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ),
     ],
   );
 }

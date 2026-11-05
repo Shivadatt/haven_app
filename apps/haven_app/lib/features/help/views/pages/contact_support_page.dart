@@ -26,9 +26,9 @@ class ContactSupportPage extends GetView<SupportController> {
             children: [
               const _OfflineBanner(),
               const SizedBox(height: HavenSpacing.md),
-              Obx(() => _SupportForm(controller: controller)),
+              _SupportForm(controller: controller),
               const SizedBox(height: HavenSpacing.lg),
-              Obx(() => TicketHistoryCard(tickets: controller.tickets)),
+              Obx(() => TicketHistoryCard(tickets: controller.tickets.toList())),
             ],
           ),
         ),
@@ -66,10 +66,12 @@ class _SupportForm extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          HavenField(
-            label: 'Subject',
-            controller: controller.subjectController,
-            helper: controller.subjectError.value ?? 'Brief summary of the issue',
+          Obx(
+            () => HavenField(
+              label: 'Subject',
+              controller: controller.subjectController,
+              helper: controller.subjectError.value ?? 'Brief summary of the issue',
+            ),
           ),
           const SizedBox(height: HavenSpacing.md),
           DropdownButtonFormField<String>(
@@ -86,24 +88,27 @@ class _SupportForm extends StatelessWidget {
             },
           ),
           const SizedBox(height: HavenSpacing.md),
-          TextFormField(
-            controller: controller.descriptionController,
-            maxLines: 4,
-            style: HavenText.body,
-            decoration: InputDecoration(
-              labelText: 'Description',
-              helperText: controller.descriptionError.value ??
-                  'Please provide details on what happened or what you need',
-              border: const OutlineInputBorder(),
+          Obx(
+            () => TextFormField(
+              controller: controller.descriptionController,
+              maxLines: 4,
+              style: HavenText.body,
+              decoration: InputDecoration(
+                labelText: 'Description',
+                helperText: controller.descriptionError.value ??
+                    'Please provide details on what happened or what you need',
+                border: const OutlineInputBorder(),
+              ),
             ),
           ),
-          if (controller.statusMessage.value != null) ...[
-            const SizedBox(height: HavenSpacing.sm),
-            Text(
-              controller.statusMessage.value!,
-              style: HavenText.caption,
-            ),
-          ],
+          Obx(() {
+            final msg = controller.statusMessage.value;
+            if (msg == null) return const SizedBox.shrink();
+            return Padding(
+              padding: const EdgeInsets.only(top: HavenSpacing.sm),
+              child: Text(msg, style: HavenText.caption),
+            );
+          }),
           const SizedBox(height: HavenSpacing.lg),
           Row(
             children: [
@@ -116,10 +121,12 @@ class _SupportForm extends StatelessWidget {
               ),
               const SizedBox(width: HavenSpacing.md),
               Expanded(
-                child: HavenButton(
-                  label: 'Submit Ticket',
-                  busy: controller.isSubmitting.value,
-                  onPressed: controller.submit,
+                child: Obx(
+                  () => HavenButton(
+                    label: 'Submit Ticket',
+                    busy: controller.isSubmitting.value,
+                    onPressed: controller.submit,
+                  ),
                 ),
               ),
             ],
