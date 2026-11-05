@@ -126,13 +126,21 @@ class _FormError extends StatelessWidget {
 
 class _RegisterLink extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => Row(
-    mainAxisAlignment: MainAxisAlignment.center,
+  Widget build(BuildContext context) => Column(
     children: [
-      const Text('New to Haven?'),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('New to Haven?'),
+          TextButton(
+            onPressed: () => Get.toNamed(AppRoutes.register),
+            child: const Text('Create an account'),
+          ),
+        ],
+      ),
       TextButton(
-        onPressed: () => Get.toNamed(AppRoutes.register),
-        child: const Text('Create an account'),
+        onPressed: () => Get.toNamed(AppRoutes.forgotPassword),
+        child: const Text('Forgot password?'),
       ),
     ],
   );

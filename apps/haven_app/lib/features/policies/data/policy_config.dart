@@ -14,6 +14,7 @@ final class PolicyConfig {
     required this.appLimits,
     required this.allowedDomains,
     required this.blockedDomains,
+    this.safeSearchEnabled = true,
   });
 
   factory PolicyConfig.defaults() => PolicyConfig(
@@ -27,6 +28,7 @@ final class PolicyConfig {
     appLimits: const {'com.google.android.youtube': 30},
     allowedDomains: const ['wikipedia.org', 'khanacademy.org'],
     blockedDomains: const ['tiktok.com', 'gambling.com'],
+    safeSearchEnabled: true,
   );
 
   factory PolicyConfig.fromJson(Map<String, Object?> json) {
@@ -43,6 +45,7 @@ final class PolicyConfig {
     }
 
     final web = asMap(json['website_policies']);
+    final safeSearch = web['safe_search_enabled'];
 
     return PolicyConfig(
       dailyScreenTimeMinutes:
@@ -53,6 +56,7 @@ final class PolicyConfig {
       appLimits: limits,
       allowedDomains: asList(web['allowed_domains']).cast<String>().toList(),
       blockedDomains: asList(web['blocked_domains']).cast<String>().toList(),
+      safeSearchEnabled: safeSearch is bool ? safeSearch : true,
     );
   }
 
@@ -63,6 +67,7 @@ final class PolicyConfig {
   final Map<String, int> appLimits;
   final List<String> allowedDomains;
   final List<String> blockedDomains;
+  final bool safeSearchEnabled;
 
   Map<String, Object?> toJson() => <String, Object?>{
     'daily_screen_time_limit_minutes': dailyScreenTimeMinutes,
@@ -75,6 +80,7 @@ final class PolicyConfig {
     'website_policies': <String, Object?>{
       'allowed_domains': allowedDomains,
       'blocked_domains': blockedDomains,
+      'safe_search_enabled': safeSearchEnabled,
     },
   };
 
@@ -86,6 +92,7 @@ final class PolicyConfig {
     Map<String, int>? appLimits,
     List<String>? allowedDomains,
     List<String>? blockedDomains,
+    bool? safeSearchEnabled,
   }) => PolicyConfig(
     dailyScreenTimeMinutes:
         dailyScreenTimeMinutes ?? this.dailyScreenTimeMinutes,
@@ -95,6 +102,7 @@ final class PolicyConfig {
     appLimits: appLimits ?? this.appLimits,
     allowedDomains: allowedDomains ?? this.allowedDomains,
     blockedDomains: blockedDomains ?? this.blockedDomains,
+    safeSearchEnabled: safeSearchEnabled ?? this.safeSearchEnabled,
   );
 
   String? validate() {

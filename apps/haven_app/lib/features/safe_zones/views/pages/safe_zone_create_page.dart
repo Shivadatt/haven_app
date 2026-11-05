@@ -5,9 +5,11 @@ import 'package:haven_app/core/widgets/widgets.dart';
 import '../../../../app/theme/haven_spacing.dart';
 import '../../controllers/zone_create_controller.dart';
 import '../../data/safe_zone_rules.dart';
+import '../widgets/zone_boundary_preview.dart';
+import '../widgets/zone_child_selector.dart';
 import '../widgets/zone_editor_widgets.dart';
 
-/// Form to create a new safe zone. Converts refusal #12.
+/// Form to create a new safe zone with boundary preview and child selector.
 final class SafeZoneCreatePage extends GetView<SafeZoneCreateController> {
   const SafeZoneCreatePage({super.key});
 
@@ -38,7 +40,7 @@ final class SafeZoneCreatePage extends GetView<SafeZoneCreateController> {
                       maxLength: SafeZoneRules.nameMax,
                       helper: 'e.g. Home, School, Park',
                     ),
-                    Obx(() => _Error(controller.errors['name'])),
+                    Obx(() => _Error(controller.duplicateWarning ?? controller.errors['name'])),
                     HavenField(
                       label: 'Latitude',
                       controller: controller.lat,
@@ -56,6 +58,28 @@ final class SafeZoneCreatePage extends GetView<SafeZoneCreateController> {
                     const SizedBox(height: HavenSpacing.md),
                     _RadiusSelector(controller: controller),
                     Obx(() => _Error(controller.errors['radius_m'])),
+                    Obx(() {
+                      final double r = controller.radiusM.value;
+                      final double? curLat = double.tryParse(controller.lat.text.trim());
+                      final double? curLng = double.tryParse(controller.lng.text.trim());
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: HavenSpacing.xs),
+                        child: ZoneBoundaryPreviewCanvas(
+                          radiusM: r,
+                          lat: curLat,
+                          lng: curLng,
+                          onCoordinateSelected: controller.setCoordinates,
+                        ),
+                      );
+                    }),
+                    Obx(
+                      () => ZoneChildSelector(
+                        selectedChild: controller.associatedChild.value,
+                        options: controller.availableChildren,
+                        onChanged: (c) => controller.associatedChild.value = c,
+                      ),
+                    ),
+                    const SizedBox(height: HavenSpacing.sm),
                     Obx(
                       () => SwitchListTile(
                         contentPadding: EdgeInsets.zero,
@@ -108,7 +132,7 @@ class _RadiusSelector extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Radius: ${r.toStringAsFixed(0)} m'),
+              Text('Radius: ${r.round()} m'),
               Row(
                 children: [
                   IconButton(
@@ -130,7 +154,7 @@ class _RadiusSelector extends StatelessWidget {
             max: SafeZoneRules.radiusMax,
             divisions: 99,
             value: r,
-            label: '${r.toStringAsFixed(0)} m',
+            label: '${r.round()} m',
             onChanged: controller.setRadius,
           ),
         ],

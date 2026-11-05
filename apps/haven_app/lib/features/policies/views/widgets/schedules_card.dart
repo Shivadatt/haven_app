@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:haven_api/haven_api.dart' show LocalIds;
 import 'package:haven_app/core/widgets/widgets.dart';
 
+import '../../../../app/routes/app_routes.dart';
 import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/policies_controller.dart';
@@ -35,6 +36,15 @@ final class SchedulesCard extends GetView<PoliciesController> {
               ),
               const Divider(height: HavenSpacing.md),
             ],
+            const SizedBox(height: HavenSpacing.xs),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton.icon(
+                icon: const Icon(Icons.tune, size: 18),
+                label: const Text('Open Advanced Schedule Editor'),
+                onPressed: () => Get.toNamed(AppRoutes.schedulesEditor),
+              ),
+            ),
           ],
         ),
       );
@@ -156,7 +166,7 @@ class _ScheduleRow extends StatelessWidget {
             children: [
               Text(schedule.name, style: HavenText.body),
               Text(
-                '${schedule.startTime} - ${schedule.endTime} · ${schedule.formattedDays}',
+                '${schedule.formattedTimes} · ${schedule.formattedDays}',
                 style: HavenText.caption,
               ),
             ],

@@ -59,22 +59,28 @@ bool inIgnoredDir(String path) {
 ({List<String> handWritten, List<String> generated}) collectFiles() {
   final List<String> handWritten = <String>[];
   final List<String> generated = <String>[];
-  for (final String root in scannedRoots) {
-    if (!Directory(root).existsSync()) continue;
-    for (final FileSystemEntity entity in Directory(
-      root,
-    ).listSync(recursive: true, followLinks: false)) {
-      if (entity is! File) continue;
+
+  void scan(Directory dir) {
+    for (final FileSystemEntity entity in dir.listSync(followLinks: false)) {
       final String path = normalize(entity.path);
-      if (!sourceExtensions.any(path.endsWith)) continue;
-      if (isGenerated(path)) {
-        // Skip descending into build output: it is reported only when the file
-        // itself is a checked-in generated source.
-        if (!inIgnoredDir(path)) generated.add(path);
-      } else {
-        handWritten.add(path);
+      if (entity is Directory) {
+        if (!inIgnoredDir('$path/')) {
+          scan(entity);
+        }
+      } else if (entity is File) {
+        if (!sourceExtensions.any(path.endsWith)) continue;
+        if (isGenerated(path)) {
+          if (!inIgnoredDir(path)) generated.add(path);
+        } else {
+          handWritten.add(path);
+        }
       }
     }
+  }
+
+  for (final String root in scannedRoots) {
+    final Directory dir = Directory(root);
+    if (dir.existsSync()) scan(dir);
   }
   return (handWritten: handWritten..sort(), generated: generated..sort());
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haven_app/core/widgets/widgets.dart';
 
+import '../../../../app/routes/app_routes.dart';
 import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/policies_controller.dart';
@@ -55,6 +56,14 @@ final class WebsitePoliciesCard extends GetView<PoliciesController> {
                 )).toList(),
               ),
             ],
+            const SizedBox(height: HavenSpacing.sm),
+            SizedBox(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: () => Get.toNamed(AppRoutes.webFilter, arguments: controller.deviceId),
+                child: const Text('Manage Web Filters'),
+              ),
+            ),
           ],
         ),
       );

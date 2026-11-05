@@ -6,9 +6,13 @@ import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../../telemetry/views/widgets/trail_card.dart';
 import '../../controllers/device_detail_controller.dart';
+import '../widgets/device_child_card.dart';
 import '../widgets/device_detail_cards.dart';
+import '../widgets/device_hardware_card.dart';
+import '../widgets/device_setup_checklist_card.dart';
+import '../widgets/device_status_card.dart';
 
-/// One device, as much of it as this build can see.
+/// Comprehensive device detail page with specs, status, and setup checklist.
 final class DeviceDetailPage extends GetView<DeviceDetailController> {
   const DeviceDetailPage({super.key});
 
@@ -26,6 +30,14 @@ final class DeviceDetailPage extends GetView<DeviceDetailController> {
                 const _NoDeviceNamed()
               else ...[
                 const RecordCard(),
+                const SizedBox(height: HavenSpacing.md),
+                const DeviceChildCard(),
+                const SizedBox(height: HavenSpacing.md),
+                const DeviceStatusCard(),
+                const SizedBox(height: HavenSpacing.md),
+                const DeviceHardwareCard(),
+                const SizedBox(height: HavenSpacing.md),
+                const DeviceSetupChecklistCard(),
                 const SizedBox(height: HavenSpacing.md),
                 const ReportsCard(),
                 const SizedBox(height: HavenSpacing.md),

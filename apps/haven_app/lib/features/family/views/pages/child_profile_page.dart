@@ -8,6 +8,8 @@ import '../../../../core/utils/haven_time.dart';
 import '../../controllers/child_profile_controller.dart';
 import '../../data/family_models.dart';
 import '../dialogs/edit_child_dialog.dart';
+import '../widgets/child_devices_summary_card.dart';
+import '../widgets/child_summaries_card.dart';
 
 /// One child: who they are in this family, and what a parent may change.
 final class ChildProfilePage extends GetView<ChildProfileController> {
@@ -97,7 +99,9 @@ class _Content extends GetView<ChildProfileController> {
             ),
           ),
           const SizedBox(height: HavenSpacing.md),
-          _DeviceGap(),
+          const ChildDevicesSummaryCard(),
+          const SizedBox(height: HavenSpacing.md),
+          const ChildSummariesCard(),
           const SizedBox(height: HavenSpacing.md),
           _RemovalCard(person.name),
         ],
@@ -152,21 +156,6 @@ class _RemovalCard extends GetView<ChildProfileController> {
   );
 }
 
-class _DeviceGap extends GetView<ChildProfileController> {
-  @override
-  Widget build(BuildContext context) => SectionCard(
-    title: 'Devices',
-    subtitle: 'What this build can and cannot tell you about their phone.',
-    child: Obx(
-      () => controller.deviceGap.value == null
-          ? const SizedBox.shrink()
-          : BlockedNotice.fromFailure(controller.deviceGap.value!),
-    ),
-  );
-}
-
-/// Reached when the id in the route is no longer a child of this family — after
-/// a removal, or from a stale link.
 class _NotInFamily extends GetView<ChildProfileController> {
   const _NotInFamily();
 

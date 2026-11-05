@@ -59,7 +59,11 @@ final class LocalSchema {
     rules: <String, LocalTableRule>{
       TableName.families: LocalTableRule(),
       TableName.profiles: LocalTableRule(),
-      TableName.familyMembers: LocalTableRule(),
+      TableName.familyMembers: LocalTableRule(
+        uniqueComposites: <List<String>>[
+          <String>[familyIdColumn, 'user_id'],
+        ],
+      ),
       TableName.devices: LocalTableRule(),
       TableName.safeZones: LocalTableRule(
         uniqueComposites: <List<String>>[

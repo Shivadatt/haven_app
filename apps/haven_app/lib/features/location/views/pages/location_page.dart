@@ -7,6 +7,8 @@ import '../../../../app/theme/haven_text.dart';
 import '../../controllers/location_controller.dart';
 import '../../data/location_models.dart';
 import '../widgets/fix_card.dart';
+import '../widgets/interactive_map_canvas.dart';
+import '../widgets/map_info_panels.dart';
 
 /// The places the family's devices reported, and the boundaries of that read.
 final class LocationPage extends GetView<LocationController> {
@@ -43,6 +45,12 @@ class _Content extends GetView<LocationController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        const InteractiveMapCanvas(),
+        const SelectedZoneInfoPanel(),
+        const ChildDeviceInfoPanel(),
+        const SizedBox(height: HavenSpacing.sm),
+        const OfflineMapExplanationCard(),
+        const SizedBox(height: HavenSpacing.md),
         Obx(
           () => Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

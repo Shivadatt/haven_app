@@ -99,21 +99,25 @@ final class LocalTables {
     final failure = await _guard(table);
     if (failure != null) return Err<void>(failure);
     final current = _rowsOf(table);
-    final rebuilt = <Map<String, Object?>>[];
-    var changed = false;
-    for (final r in current) {
-      if (!LocalQueries.matches(r, eq)) {
-        rebuilt.add(r);
-        continue;
-      }
-      changed = true;
-      final candidate = <String, Object?>{...r, ...row};
-      final violation = _constraints.violationFor(table, candidate, rebuilt);
+    final indices = [
+      for (var i = 0; i < current.length; i++)
+        if (LocalQueries.matches(current[i], eq)) i,
+    ];
+    if (indices.isEmpty) return okVoid();
+    final updated = [
+      for (var i = 0; i < current.length; i++)
+        indices.contains(i)
+            ? <String, Object?>{...current[i], ...row}
+            : current[i],
+    ];
+    for (final i in indices) {
+      final others = [
+        for (var j = 0; j < updated.length; j++) if (j != i) updated[j],
+      ];
+      final violation = _constraints.violationFor(table, updated[i], others);
       if (violation != null) return Err<void>(violation);
-      rebuilt.add(candidate);
     }
-    if (!changed) return okVoid();
-    _write(table, rebuilt);
+    _write(table, updated);
     return flush();
   }
 

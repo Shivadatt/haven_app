@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:haven_api/haven_api.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 
@@ -10,28 +11,42 @@ final class DeviceDetailController extends GetxController {
   DeviceDetailController({
     required this.deviceId,
     required DevicesRepository repository,
+    RowReader Function()? rows,
     void Function(String route, Object? arg)? push,
     void Function()? back,
   }) : _repository = repository,
-        _push =
-           push ??
-           ((String route, Object? arg) => Get.toNamed(route, arguments: arg)),
+       _rows = rows ?? (() => HavenBackend.rows),
+       _push = push ?? ((String route, Object? arg) => Get.toNamed(route, arguments: arg)),
        _back = back ?? Get.back;
 
   final String deviceId;
   final DevicesRepository _repository;
+  final RowReader Function() _rows;
   final void Function(String route, Object? arg) _push;
   final void Function() _back;
 
   final RxBool isLoading = true.obs;
   final RxBool isUnlinking = false.obs;
   final Rx<Result<Device>?> device = Rx<Result<Device>?>(null);
+  final Rxn<Profile> assignedChild = Rxn<Profile>();
 
   final Rxn<BlockedFailure> revokeGap = Rxn<BlockedFailure>();
   final Rxn<BlockedFailure> recoveryGap = Rxn<BlockedFailure>();
 
   bool get hasDeviceId => deviceId.isNotEmpty;
   bool get canUnlink => revokeGap.value == null;
+
+  String get statusExplanation {
+    final d = device.value?.valueOrNull;
+    if (d == null) return 'No device record found.';
+    if (d.status == 'revoked' || d.credentialRevokedAt != null) {
+      return 'Revoked: Device credentials have been revoked. It can no longer communicate.';
+    }
+    if (d.status == 'active') {
+      return 'Active: Device is paired and actively enrolled in family protection.';
+    }
+    return 'Status: ${d.status ?? "Offline"}. Awaiting check-in.';
+  }
 
   @override
   void onInit() {
@@ -45,11 +60,21 @@ final class DeviceDetailController extends GetxController {
       return;
     }
     isLoading.value = true;
-    device.value = await _repository.device(deviceId);
-    revokeGap.value = _blocked(
-      await _repository.revoke(deviceId, execute: false),
-    );
+    final Result<Device> dRes = await _repository.device(deviceId);
+    device.value = dRes;
+    revokeGap.value = _blocked(await _repository.revoke(deviceId, execute: false));
     recoveryGap.value = _blocked(await _repository.requestRecovery(deviceId));
+
+    final Device? dev = dRes.valueOrNull;
+    if (dev != null && dev.childUserId.isNotEmpty) {
+      final Result<Map<String, Object?>?> pRes =
+          await _rows().first(TableName.profiles, eq: {'id': dev.childUserId});
+      final Map<String, Object?>? pRow = pRes.valueOrNull;
+      assignedChild.value = pRow != null ? Profile.fromRow(pRow) : null;
+    } else {
+      assignedChild.value = null;
+    }
+
     if (isClosed) return;
     isLoading.value = false;
   }

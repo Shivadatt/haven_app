@@ -56,6 +56,7 @@ FixLine fixLine({
   double accuracyM = 12,
   double lat = 37.7749,
   double lng = -122.4194,
+  String source = 'fused',
 }) => FixLine(
   LocationEvent(
     id: 'l-1',
@@ -66,7 +67,7 @@ FixLine fixLine({
     accuracyM: accuracyM,
     recordedAt: DateTime.parse(recordedAt),
     receivedAt: DateTime.parse(receivedAt),
-    source: 'fused',
+    source: source,
   ),
   deviceName: deviceName,
 );

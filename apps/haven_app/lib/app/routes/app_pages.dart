@@ -31,8 +31,16 @@ import '../../features/notifications/bindings/notifications_bindings.dart';
 import '../../features/notifications/views/pages/notifications_page.dart';
 import '../../features/onboarding/bindings/onboarding_bindings.dart';
 import '../../features/onboarding/views/pages/onboarding_page.dart';
+import '../../features/policies/bindings/app_limits_bindings.dart';
+import '../../features/policies/bindings/app_rules_bindings.dart';
 import '../../features/policies/bindings/policies_bindings.dart';
+import '../../features/policies/bindings/schedules_editor_bindings.dart';
+import '../../features/policies/bindings/web_filter_bindings.dart';
+import '../../features/policies/views/pages/app_limits_page.dart';
+import '../../features/policies/views/pages/app_rules_page.dart';
 import '../../features/policies/views/pages/policies_page.dart';
+import '../../features/policies/views/pages/schedules_editor_page.dart';
+import '../../features/policies/views/pages/web_filter_page.dart';
 import '../../features/remote_sessions/bindings/sessions_bindings.dart';
 import '../../features/remote_sessions/views/pages/remote_session_detail_page.dart';
 import '../../features/remote_sessions/views/pages/remote_sessions_page.dart';
@@ -45,6 +53,7 @@ import '../../features/settings/views/pages/about_page.dart';
 import '../../features/settings/views/pages/permission_status_page.dart';
 import '../../features/settings/views/pages/settings_page.dart';
 import 'app_routes.dart';
+import 'phase2_pages.dart';
 
 /// The route table. `AppRoutes` fixes the names; this list only grows once a
 /// page and its bindings exist.
@@ -125,62 +134,23 @@ abstract final class AppPages {
       page: () => const CommandsPage(),
       binding: CommandsBindings(),
     ),
-    GetPage(
-      name: AppRoutes.policies,
-      page: () => const PoliciesPage(),
-      binding: PoliciesBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.location,
-      page: () => const LocationPage(),
-      binding: LocationBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.safeZones,
-      page: () => const SafeZonesPage(),
-      binding: SafeZonesBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.safeZoneEditor,
-      page: () => const SafeZoneEditorPage(),
-      binding: ZoneEditorBindings(),
-    ),
+    GetPage(name: AppRoutes.policies, page: () => const PoliciesPage(), binding: PoliciesBindings()),
+    GetPage(name: AppRoutes.appLimits, page: () => const AppLimitsPage(), binding: AppLimitsBindings()),
+    GetPage(name: AppRoutes.appRules, page: () => const AppRulesPage(), binding: AppRulesBindings()),
+    GetPage(name: AppRoutes.webFilter, page: () => const WebFilterPage(), binding: WebFilterBindings()),
+    GetPage(name: AppRoutes.schedulesEditor, page: () => const SchedulesEditorPage(), binding: SchedulesEditorBindings()),
+    GetPage(name: AppRoutes.location, page: () => const LocationPage(), binding: LocationBindings()),
+    GetPage(name: AppRoutes.safeZones, page: () => const SafeZonesPage(), binding: SafeZonesBindings()),
+    GetPage(name: AppRoutes.safeZoneEditor, page: () => const SafeZoneEditorPage(), binding: ZoneEditorBindings()),
     GetPage(name: AppRoutes.safeZoneCreate, page: () => const SafeZoneCreatePage(), binding: ZoneCreateBindings()),
-    GetPage(
-      name: AppRoutes.remoteSessions,
-      page: () => const RemoteSessionsPage(),
-      binding: SessionsBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.remoteSessionDetail,
-      page: () => const RemoteSessionDetailPage(),
-      binding: SessionDetailBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.notifications,
-      page: () => const NotificationsPage(),
-      binding: NotificationsBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.account,
-      page: () => const AccountPage(),
-      binding: AccountBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.settings,
-      page: () => const SettingsPage(),
-      binding: SettingsBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.permissionStatus,
-      page: () => const PermissionStatusPage(),
-      binding: PermissionStatusBindings(),
-    ),
-    GetPage(
-      name: AppRoutes.about,
-      page: () => const AboutPage(),
-      binding: AboutBindings(),
-    ),
+    GetPage(name: AppRoutes.remoteSessions, page: () => const RemoteSessionsPage(), binding: SessionsBindings()),
+    GetPage(name: AppRoutes.remoteSessionDetail, page: () => const RemoteSessionDetailPage(), binding: SessionDetailBindings()),
+    GetPage(name: AppRoutes.notifications, page: () => const NotificationsPage(), binding: NotificationsBindings()),
+    GetPage(name: AppRoutes.account, page: () => const AccountPage(), binding: AccountBindings()),
+    GetPage(name: AppRoutes.settings, page: () => const SettingsPage(), binding: SettingsBindings()),
+    GetPage(name: AppRoutes.permissionStatus, page: () => const PermissionStatusPage(), binding: PermissionStatusBindings()),
+    GetPage(name: AppRoutes.about, page: () => const AboutPage(), binding: AboutBindings()),
+    ...phase2Pages,
   ];
 
   static GetPage<dynamic> get unknown =>

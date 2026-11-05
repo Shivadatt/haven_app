@@ -1,4 +1,5 @@
-import 'package:haven_models/haven_models.dart' show asBool, asInt, asList, asText;
+import 'package:haven_models/haven_models.dart'
+    show asBool, asInt, asList, asText;
 
 /// The category of time-based restriction.
 enum PolicyScheduleType {
@@ -24,6 +25,8 @@ final class PolicySchedule {
     required this.endTime,
     required this.days,
     this.isActive = true,
+    this.allowedApps = const <String>[],
+    this.category,
   });
 
   factory PolicySchedule.fromJson(Map<String, Object?> json) => PolicySchedule(
@@ -36,6 +39,8 @@ final class PolicySchedule {
         ? const [1, 2, 3, 4, 5, 6, 7]
         : asList(json['days']).map((d) => asInt(d) ?? 1).toList(),
     isActive: asBool(json['is_active']) ?? true,
+    allowedApps: asList(json['allowed_apps']).cast<String>().toList(),
+    category: asText(json['category']),
   );
 
   final String id;
@@ -45,6 +50,19 @@ final class PolicySchedule {
   final String endTime;
   final List<int> days;
   final bool isActive;
+  final List<String> allowedApps;
+  final String? category;
+
+  /// Whether the schedule spans midnight (e.g. 21:00 to 07:00).
+  bool get isOvernight {
+    final s = _toMinutes(startTime);
+    final e = _toMinutes(endTime);
+    if (s == null || e == null) return false;
+    return s > e;
+  }
+
+  String get formattedTimes =>
+      isOvernight ? '$startTime - $endTime (Next day)' : '$startTime - $endTime';
 
   Map<String, Object?> toJson() => <String, Object?>{
     'id': id,
@@ -54,6 +72,8 @@ final class PolicySchedule {
     'end_time': endTime,
     'days': days,
     'is_active': isActive,
+    'allowed_apps': allowedApps,
+    if (category != null) 'category': category,
   };
 
   PolicySchedule copyWith({
@@ -64,6 +84,8 @@ final class PolicySchedule {
     String? endTime,
     List<int>? days,
     bool? isActive,
+    List<String>? allowedApps,
+    String? category,
   }) => PolicySchedule(
     id: id ?? this.id,
     name: name ?? this.name,
@@ -72,7 +94,18 @@ final class PolicySchedule {
     endTime: endTime ?? this.endTime,
     days: days ?? this.days,
     isActive: isActive ?? this.isActive,
+    allowedApps: allowedApps ?? this.allowedApps,
+    category: category ?? this.category,
   );
+
+  static int? _toMinutes(String time) {
+    final parts = time.split(':');
+    if (parts.length != 2) return null;
+    final h = int.tryParse(parts[0]);
+    final m = int.tryParse(parts[1]);
+    if (h == null || m == null) return null;
+    return h * 60 + m;
+  }
 
   static bool isValidTime(String time) {
     final parts = time.split(':');
@@ -119,5 +152,6 @@ final class PolicySchedule {
     endTime: '15:00',
     days: [1, 2, 3, 4, 5],
     isActive: true,
+    allowedApps: ['com.android.calculator2', 'com.google.android.apps.docs'],
   );
 }

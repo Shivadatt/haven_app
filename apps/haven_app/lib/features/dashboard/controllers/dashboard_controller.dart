@@ -125,6 +125,13 @@ final class DashboardController extends GetxController {
   void goToChild(String childUserId) =>
       _push(AppRoutes.childProfile, childUserId);
   void goToSettings() => _push(AppRoutes.settings, null);
+  void goToAppLimits() => _push(AppRoutes.appLimits, null);
+  void goToAppRules() => _push(AppRoutes.appRules, null);
+  void goToWebFilter() => _push(AppRoutes.webFilter, null);
+  void goToSchedules() => _push(AppRoutes.schedulesEditor, null);
+  void goToApprovals() => _push(AppRoutes.appApprovals, null);
+  void goToExtensionRequests() => _push(AppRoutes.extensionRequests, null);
+  void goToHelp() => _push(AppRoutes.helpCenter, null);
 
   static BlockedFailure? _blocked(Result<void> result) {
     final HavenFailure? failure = result.failureOrNull;

@@ -6,6 +6,7 @@ import 'package:haven_app/core/widgets/widgets.dart';
 import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../../../core/constants/haven_config.dart';
+import '../widgets/about_legal_card.dart';
 
 /// What Haven does, what it refuses to do, and what this particular build is
 /// actually connected to — so a parent is never told "you're protected" when the
@@ -76,6 +77,8 @@ final class AboutPage extends StatelessWidget {
               ),
               const SizedBox(height: HavenSpacing.md),
               _Connectivity(cfg),
+              const SizedBox(height: HavenSpacing.md),
+              const AboutLegalCard(),
             ],
           ),
         ),

@@ -14,6 +14,8 @@ final class DeviceRouteArgs {
 
   /// Null for anything that is not this type, so a page opened from a stale or
   /// wrong route says so instead of reading a device that was never named.
-  static DeviceRouteArgs? tryParse(Object? argument) =>
-      argument is DeviceRouteArgs ? argument : null;
+  static DeviceRouteArgs? tryParse(Object? argument) {
+    if (argument is DeviceRouteArgs) return argument;
+    return null;
+  }
 }

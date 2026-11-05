@@ -133,6 +133,7 @@ final class LocalOnboardingRepository implements OnboardingRepository {
         'id': childId,
         'role': 'child',
         'display_name': trimmed,
+        'age_bracket': ageGroup,
         'age_group': ageGroup,
         'avatar': avatar ?? 'bear',
         'created_at': now,

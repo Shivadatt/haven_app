@@ -11,6 +11,7 @@ import '../../data/dashboard_repository.dart';
 import '../widgets/active_policies_card.dart';
 import '../widgets/attention_card.dart';
 import '../widgets/dashboard_devices_card.dart';
+import '../widgets/dashboard_quick_actions_card.dart';
 import '../widgets/demo_data_card.dart';
 import '../widgets/device_records_card.dart';
 import '../widgets/recent_activities_card.dart';
@@ -97,6 +98,8 @@ class _Content extends GetView<DashboardController> {
                 'before that can happen.',
             onTap: controller.goToChild,
           ),
+          const SizedBox(height: HavenSpacing.md),
+          DashboardQuickActionsCard(controller: controller),
           const SizedBox(height: HavenSpacing.md),
           AttentionCard(data: data, onOpenAll: controller.goToNotifications),
           const SizedBox(height: HavenSpacing.md),

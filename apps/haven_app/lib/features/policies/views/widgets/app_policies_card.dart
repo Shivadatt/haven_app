@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haven_app/core/widgets/widgets.dart';
 
+import '../../../../app/routes/app_routes.dart';
 import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/policies_controller.dart';
@@ -71,6 +72,24 @@ final class AppPoliciesCard extends GetView<PoliciesController> {
                   ),
                 ),
             ],
+            const SizedBox(height: HavenSpacing.sm),
+            Row(
+              children: [
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => Get.toNamed(AppRoutes.appRules, arguments: controller.deviceId),
+                    child: const Text('Manage Rules'),
+                  ),
+                ),
+                const SizedBox(width: HavenSpacing.xs),
+                Expanded(
+                  child: OutlinedButton(
+                    onPressed: () => Get.toNamed(AppRoutes.appLimits, arguments: controller.deviceId),
+                    child: const Text('Manage Limits'),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       );

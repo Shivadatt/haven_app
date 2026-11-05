@@ -144,7 +144,7 @@ final class LocalActivityRepository implements ActivityRepository {
     final now = DateTime.now().toUtc().toIso8601String();
     if (category == 'geofence') {
       return _writer().insert(TableName.locationEvents, <String, Object?>{
-        'id': 'loc_${DateTime.now().millisecondsSinceEpoch}',
+        'id': 'loc_${LocalIds.create()}',
         'family_id': familyId,
         'device_id': deviceId,
         'source': subtitle,
@@ -152,7 +152,7 @@ final class LocalActivityRepository implements ActivityRepository {
       });
     }
     return _writer().insert(TableName.safetyAlerts, <String, Object?>{
-      'id': 'alert_${DateTime.now().millisecondsSinceEpoch}',
+      'id': 'alert_${LocalIds.create()}',
       'family_id': familyId,
       'device_id': deviceId,
       'type': category,

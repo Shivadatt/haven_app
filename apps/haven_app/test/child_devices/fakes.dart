@@ -46,6 +46,7 @@ class FakeDevicesRepository implements DevicesRepository {
   HavenFailure? createFailWith;
   HavenFailure? renameFailWith;
   HavenFailure? assignFailWith;
+  HavenFailure? unlinkFailWith;
 
   final List<String> calls = [];
   final List<String> named = [];
@@ -90,7 +91,8 @@ class FakeDevicesRepository implements DevicesRepository {
     if (devices != null) {
       devices = devices!.where((d) => d.id != deviceId).toList();
     }
-    return _refused(revokeFailWith, 'unlinking a device');
+    final HavenFailure? failure = unlinkFailWith;
+    return failure == null ? okVoid() : Err<void>(failure);
   }
 
   @override

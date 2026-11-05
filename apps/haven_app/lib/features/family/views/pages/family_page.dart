@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:haven_app/core/widgets/widgets.dart';
 
+import '../../../../app/routes/app_routes.dart';
 import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/family_controller.dart';
 import '../../data/family_models.dart';
 import '../dialogs/add_child_dialog.dart';
+import '../widgets/family_gaps_card.dart';
 import '../widgets/people_card.dart';
 
 /// Who is in this family and what the family is called.
@@ -53,24 +55,34 @@ class _Content extends GetView<FamilyController> {
             emptyLine:
                 'No children are in this family yet. A child joins when you '
                 'pair their device or add their profile.',
-            trailing: TextButton.icon(
-              icon: const Icon(Icons.add, size: 18),
-              label: const Text('Add child'),
-              onPressed: () => AddChildDialog.show(
-                context,
-                onAdd: ({
-                  required String name,
-                  String? ageBracket,
-                  String? avatar,
-                }) async {
-                  final result = await controller.addChild(
-                    name: name,
-                    ageBracket: ageBracket,
-                    avatar: avatar,
-                  );
-                  return result.isOk;
-                },
-              ),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.add_circle_outline, size: 20),
+                  tooltip: 'Create child page',
+                  onPressed: () => Get.toNamed(AppRoutes.childCreate),
+                ),
+                TextButton.icon(
+                  icon: const Icon(Icons.add, size: 18),
+                  label: const Text('Add child'),
+                  onPressed: () => AddChildDialog.show(
+                    context,
+                    onAdd: ({
+                      required String name,
+                      String? ageBracket,
+                      String? avatar,
+                    }) async {
+                      final result = await controller.addChild(
+                        name: name,
+                        ageBracket: ageBracket,
+                        avatar: avatar,
+                      );
+                      return result.isOk;
+                    },
+                  ),
+                ),
+              ],
             ),
             onTap: controller.goToChild,
           ),
@@ -79,9 +91,14 @@ class _Content extends GetView<FamilyController> {
             title: 'Parents',
             people: bundle.parents,
             emptyLine: 'This family has no other parent.',
+            trailing: TextButton.icon(
+              icon: const Icon(Icons.person_add, size: 18),
+              label: const Text('Invite'),
+              onPressed: () => Get.toNamed(AppRoutes.familyInvite),
+            ),
           ),
           const SizedBox(height: HavenSpacing.md),
-          _Gaps(),
+          const FamilyGapsCard(),
         ],
       ),
     );
@@ -114,34 +131,6 @@ class _NameCard extends GetView<FamilyController> {
               busy: controller.busy.value,
               onPressed: controller.canSave ? controller.save : null,
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// The two membership changes this build cannot make, in the repository's own
-/// words — so the screen has no dead control and no invented promise.
-class _Gaps extends GetView<FamilyController> {
-  @override
-  Widget build(BuildContext context) {
-    return SectionCard(
-      title: 'Not available in Haven yet',
-      subtitle: 'These need a backend contract nobody has approved.',
-      child: Obx(
-        () => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (controller.inviteParent.value != null)
-              Padding(
-                padding: const EdgeInsets.only(bottom: HavenSpacing.sm),
-                child: BlockedNotice.fromFailure(
-                  controller.inviteParent.value!,
-                ),
-              ),
-            if (controller.removeParent.value != null)
-              BlockedNotice.fromFailure(controller.removeParent.value!),
           ],
         ),
       ),

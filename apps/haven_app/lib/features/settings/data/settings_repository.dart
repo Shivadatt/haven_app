@@ -173,6 +173,12 @@ final class HavenSettingsRepository implements SettingsRepository {
       final res = await Get.find<LocalTables>().resetAll();
       if (res.isErr) return res;
     }
+    final p = _prefs();
+    await p.write(PreferenceKey.onboardingCompleted, 'false');
+    await p.write(PreferenceKey.onboardingStep, '');
+    await p.write(PreferenceKey.onboardingEthicsAcknowledged, 'false');
+    await p.write(PreferenceKey.policyConfig, '');
+    await p.write(PreferenceKey.parentDisplayName, '');
     await signOut();
     return okVoid();
   }

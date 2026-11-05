@@ -9,11 +9,6 @@ import '../data/zones_models.dart';
 import '../data/zones_repository.dart';
 
 /// Editing one named place.
-///
-/// The form is a copy of the row, and the only columns it can change are the five
-/// the captured grant names (`docs/stage1/04-rls-matrix.md:33`): name, position,
-/// radius, and whether the place is in use. Saving sends those and nothing else,
-/// so a refusal points at a field the parent actually touched.
 final class SafeZoneEditorController extends GetxController {
   SafeZoneEditorController({
     required this.zoneId,
@@ -21,16 +16,13 @@ final class SafeZoneEditorController extends GetxController {
     void Function(String route, Object? arg)? replace,
     void Function()? close,
   }) : _repository = repository,
-        _replace =
+       _replace =
            replace ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg)),
        _close = close ?? Get.back;
 
-  /// Empty when the route was opened without a zone id — which this build cannot
-  /// fill in, because it cannot create a place.
   final String zoneId;
-
   final SafeZonesRepository _repository;
   final void Function(String route, Object? arg) _replace;
   final void Function() _close;
@@ -44,12 +36,13 @@ final class SafeZoneEditorController extends GetxController {
   final TextEditingController radiusM = TextEditingController();
   final RxBool active = true.obs;
 
+  final RxBool isManualEntry = false.obs;
+  final RxString associatedChild = 'All Children'.obs;
+  final RxList<String> existingNames = <String>[].obs;
+
   final RxBool isSaving = false.obs;
   final Rx<Result<void>?> saveResult = Rx<Result<void>?>(null);
   final Rx<Result<void>?> deleteResult = Rx<Result<void>?>(null);
-
-  /// Bumped by every field so the page re-reads the validation without the
-  /// widgets holding any logic of their own.
   final RxInt revision = 0.obs;
 
   @override
@@ -59,6 +52,19 @@ final class SafeZoneEditorController extends GetxController {
       field.addListener(_touch);
     }
     load();
+    loadExistingZones();
+  }
+
+  Future<void> loadExistingZones() async {
+    final res = await _repository.load();
+    final ZoneBoard? board = res.valueOrNull;
+    if (board != null) {
+      existingNames.assignAll(
+        board.zones
+            .where((SafeZone z) => z.id != zoneId)
+            .map((SafeZone z) => z.name.trim().toLowerCase()),
+      );
+    }
   }
 
   void _touch() => revision.value++;
@@ -90,6 +96,29 @@ final class SafeZoneEditorController extends GetxController {
     active.value = from.active;
   }
 
+  void setCoordinates(double newLat, double newLng) {
+    lat.text = newLat.toStringAsFixed(6);
+    lng.text = newLng.toStringAsFixed(6);
+    _touch();
+  }
+
+  void stepRadius(double delta) {
+    final cur = double.tryParse(radiusM.text.trim()) ?? 150.0;
+    final next = (cur + delta).clamp(SafeZoneRules.radiusMin, SafeZoneRules.radiusMax);
+    radiusM.text = next.toStringAsFixed(0);
+    _touch();
+  }
+
+  String? get duplicateWarning {
+    revision.value;
+    final trimmed = name.text.trim().toLowerCase();
+    if (trimmed.isEmpty) return null;
+    if (existingNames.contains(trimmed)) {
+      return 'A safe place named "${name.text.trim()}" already exists.';
+    }
+    return null;
+  }
+
   bool get hasZone => zone.value?.valueOrNull != null;
 
   ZoneDraft get draft => ZoneDraft(
@@ -100,20 +129,17 @@ final class SafeZoneEditorController extends GetxController {
     active: active.value,
   );
 
-  /// The schema's own bounds, read live so a parent is told before they save.
   Map<String, String?> get errors {
-    revision
-        .value; // the fields above are listened to, this makes it observable
+    revision.value;
     return draft.errors;
   }
 
-  bool get isValid => SafeZoneRules.isClean(draft.errors);
+  bool get isValid => SafeZoneRules.isClean(draft.errors) && duplicateWarning == null;
 
-  /// What the form holds that the row does not.
   bool get hasChanges {
     final SafeZone? read = zone.value?.valueOrNull;
     if (read == null) return false;
-    revision.value; // typed text is only observable through the revision
+    revision.value;
     return name.text.trim() != read.name ||
         active.value != read.active ||
         _differs(lat.text, read.lat) ||
@@ -136,9 +162,6 @@ final class SafeZoneEditorController extends GetxController {
     if (written.isOk) _close();
   }
 
-  /// The page asks first, so by the time this runs the parent has agreed. A
-  /// screen that never read a place removes nothing — the id it would send is one
-  /// nobody confirmed.
   Future<void> delete() async {
     if (!hasZone) return;
     final Result<void> removed = await _repository.remove(zoneId: zoneId);

@@ -171,9 +171,13 @@ final class LocalPoliciesRepository implements PoliciesRepository {
     final created = await _writer().insert(TableName.devices, <String, Object?>{
       'id': newId,
       'family_id': familyId,
+      'child_user_id': '',
+      'installation_id': 'dev-',
       'display_name': 'Child Device',
-      'device_type': 'android',
-      'status': 'paired',
+      'platform': 'android',
+      'enforcement_mode': 'block',
+      'policy_version': 1,
+      'status': 'active',
       'created_at': DateTime.now().toUtc().toIso8601String(),
     });
     return created.isOk ? newId : null;

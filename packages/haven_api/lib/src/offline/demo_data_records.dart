@@ -38,13 +38,15 @@ final class DemoDataRecords {
     });
     if (famRes.isErr) return famRes;
 
-    await tables.insert(TableName.profiles, <String, Object?>{
-      'id': parentId,
-      'display_name': demoParentName,
-      'role': 'parent',
-      'created_at': _now(),
-      'is_demo': true,
-    });
+    if (parentId == demoParentUserId) {
+      await tables.insert(TableName.profiles, <String, Object?>{
+        'id': demoParentUserId,
+        'display_name': demoParentName,
+        'role': 'parent',
+        'created_at': _now(),
+        'is_demo': true,
+      });
+    }
     await tables.insert(TableName.profiles, <String, Object?>{
       'id': demoChildUserId,
       'display_name': demoChildName,
