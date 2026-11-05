@@ -13,9 +13,10 @@ import '../data/account_repository.dart';
 /// read from the repository rather than hard-coded into the page.
 final class AccountController extends GetxController {
   AccountController({
-    required this._repository,
+    required AccountRepository repository,
     void Function(String route, Object? arg)? goTo,
-  }) : _goTo =
+  }) : _repository = repository,
+        _goTo =
            goTo ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg));
@@ -50,10 +51,13 @@ final class AccountController extends GetxController {
   Future<void> load() async {
     isLoading.value = true;
     final Result<AccountInfo> result = await _repository.load();
-    passwordChange.value = _blocked(await _repository.passwordChange());
-    emailChange.value = _blocked(await _repository.emailChange());
-    accountDeletion.value = _blocked(await _repository.accountDeletion());
+    final BlockedFailure? pw = _blocked(await _repository.passwordChange());
+    final BlockedFailure? em = _blocked(await _repository.emailChange());
+    final BlockedFailure? ac = _blocked(await _repository.accountDeletion());
     if (isClosed) return;
+    passwordChange.value = pw;
+    emailChange.value = em;
+    accountDeletion.value = ac;
     account.value = result;
     final AccountInfo? info = result.valueOrNull;
     if (info?.hasProfile ?? false) {
@@ -65,14 +69,45 @@ final class AccountController extends GetxController {
   bool get canSave =>
       !busy.value && (account.value?.valueOrNull?.hasProfile ?? false);
 
-  /// Writes the name Haven shows everywhere. The row has to exist first —
-  /// there is no approved way for the app to create it.
+  bool get canCreate =>
+      !busy.value && !(account.value?.valueOrNull?.hasProfile ?? true);
+
+  /// Writes the name Haven shows everywhere.
   Future<void> save() async {
     if (!canSave) return;
+    final String trimmed = displayName.text.trim();
+    final String? invalid = validateDisplayName(trimmed);
+    if (invalid != null) {
+      message.value = invalid;
+      return;
+    }
     message.value = null;
     busy.value = true;
     final HavenFailure? failure = (await _repository.rename(
-      displayName: displayName.text,
+      displayName: trimmed,
+    )).failureOrNull;
+    if (isClosed) return;
+    busy.value = false;
+    if (failure == null) {
+      await load();
+      return;
+    }
+    message.value = failure.message;
+  }
+
+  /// Creates the initial parent profile when none exists yet.
+  Future<void> createProfile() async {
+    if (!canCreate) return;
+    message.value = null;
+    final String trimmed = displayName.text.trim();
+    final String? invalid = validateDisplayName(trimmed);
+    if (invalid != null) {
+      message.value = invalid;
+      return;
+    }
+    busy.value = true;
+    final HavenFailure? failure = (await _repository.createProfile(
+      displayName: trimmed,
     )).failureOrNull;
     if (isClosed) return;
     busy.value = false;

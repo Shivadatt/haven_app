@@ -6,11 +6,6 @@ import '../../../../../core/utils/haven_time.dart';
 import '../../data/family_models.dart';
 
 /// A named group of family members, newest info first.
-///
-/// The dashboard and the family screen both list people, so they share this:
-/// the same name, the same reason a name might be missing, and the same rule
-/// that a member is never dropped from view because their profile row was not
-/// provisioned.
 class PeopleCard extends StatelessWidget {
   const PeopleCard({
     super.key,
@@ -18,24 +13,20 @@ class PeopleCard extends StatelessWidget {
     required this.people,
     required this.emptyLine,
     this.onTap,
+    this.trailing,
   });
 
   final String title;
   final List<FamilyPerson> people;
-
-  /// What to say when the group is empty. Left to the caller because the reason
-  /// differs: a family with no children yet is not the same as a dashboard that
-  /// cannot pair one.
   final String emptyLine;
-
-  /// Null when there is nothing to open — parents have no profile screen in this
-  /// build, so they get no chevron and no dead tap target.
   final void Function(String userId)? onTap;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
     return SectionCard(
       title: title,
+      trailing: trailing,
       child: people.isEmpty
           ? Text(emptyLine, style: HavenText.body)
           : Column(
@@ -58,6 +49,9 @@ class PersonRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
+      leading: person.avatar != null
+          ? Text(person.avatar!, style: const TextStyle(fontSize: 24))
+          : null,
       title: Text(person.name, style: HavenText.body),
       subtitle: Text(_subtitle(), style: HavenText.caption),
       trailing: onTap == null ? null : const Icon(Icons.chevron_right_rounded),
@@ -68,6 +62,10 @@ class PersonRow extends StatelessWidget {
   String _subtitle() {
     if (!person.hasProfile) return 'This account has no name on file yet.';
     final String since = havenDay(person.member.createdAt) ?? 'an unknown date';
-    return 'In the family since $since';
+    final String base = 'In the family since $since';
+    if (person.ageBracket != null) {
+      return '$base • Ages ${person.ageBracket}';
+    }
+    return base;
   }
 }

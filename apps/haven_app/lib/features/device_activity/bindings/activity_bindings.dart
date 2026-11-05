@@ -5,6 +5,7 @@ import '../../child_devices/bindings/child_devices_bindings.dart';
 import '../../family/data/family_scope.dart';
 import '../controllers/activity_controller.dart';
 import '../data/activity_repository.dart';
+import '../data/local_activity_repository.dart';
 
 /// DI for the usage screens.
 ///
@@ -14,18 +15,25 @@ import '../data/activity_repository.dart';
 abstract final class ActivityDependencies {
   static ActivityRepository ensureRepository() {
     if (!Get.isRegistered<ActivityRepository>()) {
-      final FamilyScopeReader scope = FamilyScopeReader(
-        auth: () => HavenBackend.auth,
-        rows: () => HavenBackend.rows,
-      );
-      Get.put<ActivityRepository>(
-        HavenActivityRepository(
-          scope: () => scope,
+      if (OfflineHavenBackend.isActive) {
+        Get.put<ActivityRepository>(
+          LocalActivityRepository.live(),
+          permanent: true,
+        );
+      } else {
+        final FamilyScopeReader scope = FamilyScopeReader(
+          auth: () => HavenBackend.auth,
           rows: () => HavenBackend.rows,
-          devices: ChildDevicesDependencies.ensureRepository,
-        ),
-        permanent: true,
-      );
+        );
+        Get.put<ActivityRepository>(
+          HavenActivityRepository(
+            scope: () => scope,
+            rows: () => HavenBackend.rows,
+            devices: ChildDevicesDependencies.ensureRepository,
+          ),
+          permanent: true,
+        );
+      }
     }
     return Get.find<ActivityRepository>();
   }

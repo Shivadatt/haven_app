@@ -32,7 +32,11 @@ abstract interface class AuthRepository {
 }
 
 final class HavenAuthRepository implements AuthRepository {
-  HavenAuthRepository({required this._auth, required this._profiles});
+  HavenAuthRepository({
+    required UserAuth Function() auth,
+    required ProfileStore Function() profiles,
+  }) : _auth = auth,
+       _profiles = profiles;
 
   /// Providers, not values: `HavenBackend.install()` is async, so a client
   /// captured at construction could be the pre-install unconfigured one.

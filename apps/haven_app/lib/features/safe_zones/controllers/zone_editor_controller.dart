@@ -17,10 +17,11 @@ import '../data/zones_repository.dart';
 final class SafeZoneEditorController extends GetxController {
   SafeZoneEditorController({
     required this.zoneId,
-    required this._repository,
+    required SafeZonesRepository repository,
     void Function(String route, Object? arg)? replace,
     void Function()? close,
-  }) : _replace =
+  }) : _repository = repository,
+        _replace =
            replace ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg)),

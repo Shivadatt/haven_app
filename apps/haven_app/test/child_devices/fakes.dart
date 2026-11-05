@@ -2,32 +2,33 @@ import 'package:haven_app/features/child_devices/data/devices_repository.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 
-/// A device row as the model would carry it. `secretHash` is set only because
-/// the real row has the column; no screen renders it, and a test that needs to
-/// prove that says so out loud.
-///
-/// Times are ISO text because a Dart default value has to be a compile-time
-/// constant; `lastSeenAt: ''` is the never-reported state.
-Device device(
+/// A device row as the model would carry it.
+Device fakeDevice(
   String id, {
   String name = 'Ivy phone',
   String status = 'active',
   String lastSeenAt = '2026-11-01T09:00:00.000Z',
   String? revokedAt,
+  String childUserId = 'c1',
+  int? batteryLevel,
+  String installationId = '',
 }) => Device(
   id: id,
   familyId: 'f1',
-  childUserId: 'c1',
-  installationId: 'i-$id',
+  childUserId: childUserId,
+  installationId: installationId.isEmpty ? 'i-$id' : installationId,
   displayName: name,
   platform: 'android',
   enforcementMode: 'block',
   policyVersion: 3,
   status: status,
+  batteryLevel: batteryLevel,
   lastSeenAt: DateTime.tryParse(lastSeenAt),
   credentialRevokedAt: revokedAt == null ? null : DateTime.parse(revokedAt),
   secretHash: 'never-shown',
 );
+
+const device = fakeDevice;
 
 /// The device lane's answers. Every field defaults to the refusal the real
 /// repository gives, so a test that forgets to seed a fake still exercises the
@@ -35,20 +36,22 @@ Device device(
 class FakeDevicesRepository implements DevicesRepository {
   FakeDevicesRepository({this.devices, this.record});
 
-  /// Null means the list read is refused. An empty list is a different answer:
-  /// nothing is paired.
   List<Device>? devices;
-
-  /// The one record this device's screen asks for. Null means refused.
   Device? record;
 
   HavenFailure? listFailWith;
   HavenFailure? recordFailWith;
   HavenFailure? revokeFailWith;
   HavenFailure? recoveryFailWith;
+  HavenFailure? createFailWith;
+  HavenFailure? renameFailWith;
+  HavenFailure? assignFailWith;
 
   final List<String> calls = [];
   final List<String> named = [];
+  String? lastRenamedId;
+  String? lastNewName;
+  String? lastAssignedChildUserId;
 
   @override
   Future<Result<List<Device>>> pairedDevices() async {
@@ -74,10 +77,88 @@ class FakeDevicesRepository implements DevicesRepository {
   }
 
   @override
-  Future<Result<void>> revoke(String deviceId) async {
+  Future<Result<void>> revoke(String deviceId, {bool execute = false}) async {
     calls.add('revoke');
     named.add(deviceId);
     return _refused(revokeFailWith, 'revoking a device');
+  }
+
+  @override
+  Future<Result<void>> unlink(String deviceId) async {
+    calls.add('unlink');
+    named.add(deviceId);
+    if (devices != null) {
+      devices = devices!.where((d) => d.id != deviceId).toList();
+    }
+    return _refused(revokeFailWith, 'unlinking a device');
+  }
+
+  @override
+  Future<Result<Device>> createDevice({
+    required String displayName,
+    required String childUserId,
+    String platform = 'android',
+    int? batteryLevel,
+  }) async {
+    calls.add('createDevice');
+    final HavenFailure? failure = createFailWith;
+    if (failure != null) return Err<Device>(failure);
+    final Device created = fakeDevice(
+      'd-${calls.length}',
+      name: displayName,
+      childUserId: childUserId,
+      batteryLevel: batteryLevel,
+      installationId: 'sim-d-${calls.length}',
+    );
+    if (devices != null) {
+      devices = [...devices!, created];
+    }
+    return Ok<Device>(created);
+  }
+
+  @override
+  Future<Result<void>> rename({
+    required String deviceId,
+    required String name,
+  }) async {
+    calls.add('rename');
+    lastRenamedId = deviceId;
+    lastNewName = name;
+    final HavenFailure? failure = renameFailWith;
+    if (failure != null) return Err<void>(failure);
+    if (record != null && record!.id == deviceId) {
+      record = fakeDevice(
+        deviceId,
+        name: name,
+        childUserId: record!.childUserId,
+        status: record!.status ?? 'active',
+        batteryLevel: record!.batteryLevel,
+        installationId: record!.installationId,
+      );
+    }
+    return okVoid();
+  }
+
+  @override
+  Future<Result<void>> assignChild({
+    required String deviceId,
+    required String childUserId,
+  }) async {
+    calls.add('assignChild');
+    lastAssignedChildUserId = childUserId;
+    final HavenFailure? failure = assignFailWith;
+    if (failure != null) return Err<void>(failure);
+    if (record != null && record!.id == deviceId) {
+      record = fakeDevice(
+        deviceId,
+        name: record!.displayName,
+        childUserId: childUserId,
+        status: record!.status ?? 'active',
+        batteryLevel: record!.batteryLevel,
+        installationId: record!.installationId,
+      );
+    }
+    return okVoid();
   }
 
   @override

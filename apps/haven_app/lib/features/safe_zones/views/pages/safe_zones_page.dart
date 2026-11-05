@@ -17,7 +17,7 @@ final class SafeZonesPage extends GetView<SafeZonesController> {
   Widget build(BuildContext context) {
     return HavenScaffold(
       title: 'Safe places',
-      onRefresh: controller.refresh,
+      onRefresh: controller.reload,
       body: HavenPageBody(
         child: Obx(
           () => StateView<ZoneBoard?>(
@@ -45,9 +45,15 @@ class _Content extends GetView<SafeZonesController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        ZonesCard(board: board, onEdit: controller.goToEditor),
-        const SizedBox(height: HavenSpacing.md),
-        const ZonesLimitsCard(),
+        ZonesCard(
+          board: board,
+          onEdit: controller.goToEditor,
+          onCreate: controller.goToCreate,
+        ),
+        if (!board.isOffline) ...[
+          const SizedBox(height: HavenSpacing.md),
+          const ZonesLimitsCard(),
+        ],
       ],
     ),
   );

@@ -6,6 +6,7 @@ import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/pairing_controller.dart';
 import '../../data/pairing_models.dart';
+import '../widgets/pairing_simulation_card.dart';
 import '../widgets/requests_card.dart';
 
 /// Pairing, as far as this build can take it: the requests the backend will show
@@ -17,7 +18,7 @@ final class PairingPage extends GetView<PairingController> {
   Widget build(BuildContext context) {
     return HavenScaffold(
       title: 'Pairing',
-      onRefresh: controller.refresh,
+      onRefresh: controller.reload,
       body: HavenPageBody(
         child: Obx(
           () => StateView<PairingBoard?>(
@@ -46,6 +47,8 @@ class _Content extends GetView<PairingController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+          PairingSimulationCard(onOpenSimulation: controller.goToSimulation),
+          const SizedBox(height: HavenSpacing.md),
           Obx(
             () => RequestsCard(
               board: board,

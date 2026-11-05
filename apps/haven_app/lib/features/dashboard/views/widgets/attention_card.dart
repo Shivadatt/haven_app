@@ -23,8 +23,9 @@ class AttentionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int unread = data.unreadAlertsCount;
     return SectionCard(
-      title: 'Needs attention',
+      title: unread > 0 ? 'Needs attention ($unread new)' : 'Needs attention',
       subtitle: _subtitle(),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,6 +95,10 @@ class AlertRow extends StatelessWidget {
             ),
           ),
           const SizedBox(width: HavenSpacing.md),
+          if (alert.id.startsWith('demo_')) ...[
+            const StatusChip(label: 'DEMO', tone: StatusTone.warning),
+            const SizedBox(width: HavenSpacing.xs),
+          ],
           StatusChip(label: _label(severity), tone: _tone(severity)),
         ],
       ),

@@ -3,20 +3,16 @@ import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 
 import '../../../app/routes/app_routes.dart';
+import '../data/device_route_args.dart';
 import '../data/devices_repository.dart';
 
 /// The device list.
-///
-/// The read is attempted rather than assumed: the repository answers with the
-/// reason the table is unreachable, and this controller hands that straight to
-/// the screen. Nothing here falls back to an empty list, because an empty list
-/// would tell a parent that nothing is paired when the truth is that Haven
-/// cannot see the shelf.
 final class DevicesController extends GetxController {
   DevicesController({
-    required this._repository,
+    required DevicesRepository repository,
     void Function(String route, Object? arg)? push,
-  }) : _push =
+  }) : _repository = repository,
+        _push =
            push ??
            ((String route, Object? arg) => Get.toNamed(route, arguments: arg));
 
@@ -40,12 +36,33 @@ final class DevicesController extends GetxController {
     isLoading.value = false;
   }
 
-  @override
-  Future<void> refresh() async {
-    devices.value = await _repository.pairedDevices();
+  Future<void> reload() async {
+    final Result<List<Device>> read = await _repository.pairedDevices();
+    if (isClosed) return;
+    devices.value = read;
   }
 
-  /// Pairing is the only way a device gets onto this list, and that screen does
-  /// have something real to show, so the button goes there.
+  Future<Result<Device>> addDevice({
+    required String displayName,
+    required String childUserId,
+    String platform = 'android',
+    int? batteryLevel,
+  }) async {
+    final Result<Device> created = await _repository.createDevice(
+      displayName: displayName,
+      childUserId: childUserId,
+      platform: platform,
+      batteryLevel: batteryLevel,
+    );
+    if (created.isOk) {
+      await reload();
+    }
+    return created;
+  }
+
+  void goToDevice(String deviceId) =>
+      _push(AppRoutes.deviceDetail, DeviceRouteArgs(deviceId: deviceId));
+
+  /// Pairing is the only way a device gets onto this list in cloud mode.
   void goToPairing() => _push(AppRoutes.pairing, null);
 }

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:haven_api/haven_api.dart';
 import 'package:haven_core/haven_core.dart';
 
 import '../../../app/routes/app_routes.dart';
@@ -12,10 +13,11 @@ import '../data/dashboard_repository.dart';
 /// cannot blank the whole page.
 final class DashboardController extends GetxController {
   DashboardController({
-    required this._repository,
+    required DashboardRepository repository,
     void Function(String route, Object? arg)? push,
     void Function(String route, Object? arg)? replace,
-  }) : _push =
+  }) : _repository = repository,
+        _push =
            push ??
            ((String route, Object? arg) => Get.toNamed(route, arguments: arg)),
        _replace =
@@ -54,11 +56,35 @@ final class DashboardController extends GetxController {
 
   /// Pull-to-refresh: the same read, without the spinner that would hide the
   /// numbers already on the page.
-  @override
-  Future<void> refresh() async {
+  Future<void> reload() async {
     final Result<DashboardData> result = await _repository.load();
     if (isClosed) return;
     data.value = result;
+  }
+
+  final RxBool isDemoBusy = false.obs;
+
+  bool get isDemoMode => data.value?.valueOrNull?.isDemo ?? false;
+
+  Future<void> loadDemoData() async {
+    if (!Get.isRegistered<LocalTables>()) return;
+    isDemoBusy.value = true;
+    final tables = Get.find<LocalTables>();
+    final session = (await HavenBackend.auth.currentSession()).valueOrNull;
+    await DemoDataSuite.loadDemoData(tables, parentUserId: session?.userId);
+    if (isClosed) return;
+    await reload();
+    isDemoBusy.value = false;
+  }
+
+  Future<void> removeDemoData() async {
+    if (!Get.isRegistered<LocalTables>()) return;
+    isDemoBusy.value = true;
+    final tables = Get.find<LocalTables>();
+    await DemoDataSuite.clearDemoData(tables);
+    if (isClosed) return;
+    await reload();
+    isDemoBusy.value = false;
   }
 
   bool get needsSetup => data.value?.valueOrNull?.needsSetup ?? false;

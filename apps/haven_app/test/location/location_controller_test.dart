@@ -48,7 +48,7 @@ void main() {
       );
       controller.onInit();
       await pumpEventQueue();
-      await controller.refresh();
+      await controller.reload();
 
       expect(repo.lastDeviceId, 'd1');
       expect(repo.loadCount, 2);
@@ -67,7 +67,7 @@ void main() {
       expect(controller.showsCoordinates.value, isFalse);
       controller.toggleCoordinates();
       expect(controller.showsCoordinates.value, isTrue);
-      await controller.refresh();
+      await controller.reload();
       expect(controller.showsCoordinates.value, isTrue);
     });
 

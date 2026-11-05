@@ -8,10 +8,14 @@ class FakeOnboardingRepository implements OnboardingRepository {
 
   HavenFailure? roleFailWith;
   HavenFailure? familyFailWith;
+  HavenFailure? childFailWith;
   bool profileExists;
 
   final List<String> calls = [];
   String? lastFamilyName;
+  String? lastChildName;
+  String? lastChildAgeGroup;
+  String? lastChildAvatar;
 
   @override
   Future<Result<void>> claimParentRole() async {
@@ -26,6 +30,20 @@ class FakeOnboardingRepository implements OnboardingRepository {
     lastFamilyName = name;
     final HavenFailure? failure = familyFailWith;
     return failure == null ? okVoid() : Err<void>(failure);
+  }
+
+  @override
+  Future<Result<String>> createChild({
+    required String name,
+    required String ageGroup,
+    String? avatar,
+  }) async {
+    calls.add('child');
+    lastChildName = name;
+    lastChildAgeGroup = ageGroup;
+    lastChildAvatar = avatar;
+    final HavenFailure? failure = childFailWith;
+    return failure == null ? const Ok<String>('child-id-1') : Err<String>(failure);
   }
 
   @override

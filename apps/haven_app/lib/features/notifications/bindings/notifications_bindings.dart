@@ -5,6 +5,7 @@ import '../../child_devices/bindings/child_devices_bindings.dart';
 import '../../family/data/family_scope.dart';
 import '../controllers/notifications_controller.dart';
 import '../data/alerts_repository.dart';
+import '../data/local_alerts_repository.dart';
 import '../services/alert_delivery.dart';
 
 /// DI for the reports screen.
@@ -20,11 +21,13 @@ abstract final class NotificationsDependencies {
         rows: () => HavenBackend.rows,
       );
       Get.put<AlertsRepository>(
-        HavenAlertsRepository(
-          scope: () => scope,
-          rows: () => HavenBackend.rows,
-          devices: ChildDevicesDependencies.ensureRepository,
-        ),
+        OfflineHavenBackend.isActive
+            ? LocalAlertsRepository.live()
+            : HavenAlertsRepository(
+                scope: () => scope,
+                rows: () => HavenBackend.rows,
+                devices: ChildDevicesDependencies.ensureRepository,
+              ),
         permanent: true,
       );
     }

@@ -17,12 +17,14 @@ import '../services/alert_delivery.dart';
 /// screen rather than a lost fact, and a pull still works.
 final class NotificationsController extends GetxController {
   NotificationsController({
-    required this._repository,
+    required AlertsRepository repository,
     AlertDelivery? delivery,
-    this._feed,
+    ChangeFeed Function()? feed,
     void Function(String route, Object? arg)? replace,
     void Function(String route, Object? arg)? push,
-  }) : _delivery = delivery ?? const UnregisteredAlertDelivery(),
+  }) : _repository = repository,
+       _feed = feed,
+       _delivery = delivery ?? const UnregisteredAlertDelivery(),
        _replace =
            replace ??
            ((String route, Object? arg) =>
@@ -81,9 +83,61 @@ final class NotificationsController extends GetxController {
     isLoading.value = false;
   }
 
-  @override
-  Future<void> refresh() async {
-    board.value = await _repository.load();
+  Future<void> reload() async {
+    final Result<AlertBoard?> read = await _repository.load();
+    if (isClosed) return;
+    board.value = read;
+  }
+
+  final RxString selectedCategory = 'all'.obs;
+
+  void selectCategory(String cat) => selectedCategory.value = cat;
+
+  List<AlertLine> get filteredLines {
+    final lines = board.value?.valueOrNull?.lines ?? const <AlertLine>[];
+    final cat = selectedCategory.value;
+    if (cat == 'all') return lines;
+    if (cat == 'geofence') {
+      return lines
+          .where((l) => l.alert.type?.contains('geofence') ?? false)
+          .toList();
+    }
+    if (cat == 'battery') {
+      return lines
+          .where((l) => l.alert.type?.contains('battery') ?? false)
+          .toList();
+    }
+    return lines
+        .where((l) =>
+            !(l.alert.type?.contains('geofence') ?? false) &&
+            !(l.alert.type?.contains('battery') ?? false))
+        .toList();
+  }
+
+  Future<void> markAsRead(String alertId) async {
+    final res = await _repository.markAsRead(alertId);
+    if (isClosed || res.isErr) return;
+    await reload();
+  }
+
+  Future<void> markAsUnread(String alertId) async {
+    final res = await _repository.markAsUnread(alertId);
+    if (isClosed || res.isErr) return;
+    await reload();
+  }
+
+  Future<void> toggleRead(AlertLine line) async {
+    if (line.isRead) {
+      await markAsUnread(line.alert.id);
+    } else {
+      await markAsRead(line.alert.id);
+    }
+  }
+
+  Future<void> deleteAlert(String alertId) async {
+    final res = await _repository.deleteAlert(alertId);
+    if (isClosed || res.isErr) return;
+    await reload();
   }
 
   /// False for the whole life of this build: the list is read, not delivered.

@@ -1,3 +1,5 @@
+// ignore_for_file: use_null_aware_elements
+
 import 'dart:async';
 
 import 'package:haven_api/haven_api.dart';
@@ -105,6 +107,22 @@ class FakeProfileStore implements ProfileStore {
     lastDisplayName = displayName;
     final HavenFailure? failure = updateFailWith;
     return failure == null ? okVoid() : Err<void>(failure);
+  }
+
+  @override
+  Future<Result<void>> createProfile({
+    required String userId,
+    required String displayName,
+    String? email,
+    String role = 'parent',
+  }) async {
+    rows[userId] = {
+      'id': userId,
+      'role': role,
+      'display_name': displayName,
+      if (email != null) 'email': email,
+    };
+    return okVoid();
   }
 }
 

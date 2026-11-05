@@ -10,9 +10,10 @@ import '../data/settings_repository.dart';
 /// which is the kind of setting that reads as broken.
 final class ThemePreference extends GetxService {
   ThemePreference({
-    required this._repository,
+    required SettingsRepository repository,
     void Function(ThemeMode mode)? applyTheme,
-  }) : _apply = applyTheme ?? Get.changeThemeMode;
+  }) : _repository = repository,
+        _apply = applyTheme ?? Get.changeThemeMode;
 
   final SettingsRepository _repository;
   final void Function(ThemeMode mode) _apply;

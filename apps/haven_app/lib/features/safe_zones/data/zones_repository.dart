@@ -29,10 +29,12 @@ abstract interface class SafeZonesRepository {
 
 final class HavenSafeZonesRepository implements SafeZonesRepository {
   HavenSafeZonesRepository({
-    required this._scope,
-    required this._rows,
-    required this._writer,
-  });
+    required FamilyScopeReader Function() scope,
+    required RowReader Function() rows,
+    required RowWriter Function() writer,
+  }) : _scope = scope,
+       _rows = rows,
+       _writer = writer;
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final FamilyScopeReader Function() _scope;

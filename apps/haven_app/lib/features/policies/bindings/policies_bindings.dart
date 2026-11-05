@@ -4,6 +4,7 @@ import 'package:haven_api/haven_api.dart';
 import '../../child_devices/bindings/child_devices_bindings.dart';
 import '../../family/data/family_scope.dart';
 import '../controllers/policies_controller.dart';
+import '../data/local_policies_repository.dart';
 import '../data/policies_repository.dart';
 
 /// DI for the rules screens.
@@ -19,11 +20,13 @@ abstract final class PoliciesDependencies {
         rows: () => HavenBackend.rows,
       );
       Get.put<PoliciesRepository>(
-        HavenPoliciesRepository(
-          scope: () => scope,
-          rows: () => HavenBackend.rows,
-          devices: ChildDevicesDependencies.ensureRepository,
-        ),
+        OfflineHavenBackend.isActive
+            ? LocalPoliciesRepository.live()
+            : HavenPoliciesRepository(
+                scope: () => scope,
+                rows: () => HavenBackend.rows,
+                devices: ChildDevicesDependencies.ensureRepository,
+              ),
         permanent: true,
       );
     }

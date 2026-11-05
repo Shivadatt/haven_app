@@ -6,17 +6,14 @@ import '../../../app/routes/app_routes.dart';
 import '../data/family_models.dart';
 import '../data/family_repository.dart';
 
-/// The family screen: who is in it, what the family is called, and the one
-/// membership change the backend actually accepts.
-///
-/// The two gaps are read out of the repository instead of typed into the page, so
-/// the words a parent sees are the words the contract is missing.
+/// The family screen: who is in it, what the family is called, and membership changes.
 final class FamilyController extends GetxController {
   FamilyController({
-    required this._repository,
+    required FamilyRepository repository,
     void Function(String route, Object? arg)? push,
     void Function(String route, Object? arg)? replace,
-  }) : _push =
+  }) : _repository = repository,
+        _push =
            push ??
            ((String route, Object? arg) => Get.toNamed(route, arguments: arg)),
        _replace =
@@ -53,9 +50,11 @@ final class FamilyController extends GetxController {
   Future<void> load() async {
     isLoading.value = true;
     final Result<FamilyBundle?> result = await _repository.load();
-    inviteParent.value = _blocked(await _repository.inviteParent());
-    removeParent.value = _blocked(await _repository.removeParent());
+    final BlockedFailure? inv = _blocked(await _repository.inviteParent());
+    final BlockedFailure? rem = _blocked(await _repository.removeParent());
     if (isClosed) return;
+    inviteParent.value = inv;
+    removeParent.value = rem;
     family.value = result;
     final FamilyBundle? bundle = result.valueOrNull;
     if (bundle != null) familyName.text = bundle.family.name;
@@ -78,6 +77,22 @@ final class FamilyController extends GetxController {
       return;
     }
     message.value = failure.message;
+  }
+
+  Future<Result<FamilyPerson>> addChild({
+    required String name,
+    String? ageBracket,
+    String? avatar,
+  }) async {
+    final Result<FamilyPerson> created = await _repository.addChild(
+      name: name,
+      ageBracket: ageBracket,
+      avatar: avatar,
+    );
+    if (created.isOk) {
+      await load();
+    }
+    return created;
   }
 
   /// Removal lives on a child's own page, where the parent can see who they are

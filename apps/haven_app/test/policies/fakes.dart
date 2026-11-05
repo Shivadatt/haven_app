@@ -1,6 +1,7 @@
 import 'package:haven_api/haven_api.dart';
 import 'package:haven_app/features/policies/data/policies_models.dart';
 import 'package:haven_app/features/policies/data/policies_repository.dart';
+import 'package:haven_app/features/policies/data/policy_config.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 
@@ -93,13 +94,23 @@ PolicyBoard policyBoard({
 /// The rules lane's answers. Nothing seeded is the refusal path, so a test that
 /// forgets to seed cannot pass by reading a fabricated empty list.
 class FakePoliciesRepository implements PoliciesRepository {
-  FakePoliciesRepository({this.board, this.noFamily = false, this.failWith});
+  FakePoliciesRepository({
+    this.board,
+    this.noFamily = false,
+    this.failWith,
+    this.canConfigure = false,
+    PolicyConfig? initialConfig,
+  }) : savedConfig = initialConfig ?? PolicyConfig.defaults();
 
   PolicyBoard? board;
   bool noFamily;
   HavenFailure? failWith;
+  @override
+  bool canConfigure;
 
+  PolicyConfig savedConfig;
   int loadCount = 0;
+  int saveCount = 0;
   String? lastDeviceId;
 
   @override
@@ -113,5 +124,21 @@ class FakePoliciesRepository implements PoliciesRepository {
     return read == null
         ? blocked<PolicyBoard?>('fake: no version read seeded')
         : Ok<PolicyBoard?>(read);
+  }
+
+  @override
+  Future<Result<PolicyConfig>> loadConfig({String? deviceId}) async {
+    final HavenFailure? failure = failWith;
+    if (failure != null) return Err<PolicyConfig>(failure);
+    return Ok<PolicyConfig>(savedConfig);
+  }
+
+  @override
+  Future<Result<void>> saveConfig(PolicyConfig config, {String? deviceId}) async {
+    saveCount++;
+    final HavenFailure? failure = failWith;
+    if (failure != null) return Err<void>(failure);
+    savedConfig = config;
+    return okVoid();
   }
 }

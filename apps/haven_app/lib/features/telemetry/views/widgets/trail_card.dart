@@ -12,8 +12,15 @@ import '../../data/telemetry_models.dart';
 /// Two refusals ride along with the rows — whether a device is online, and whose
 /// device an entry came from — because both are questions this exact card would
 /// otherwise be asked to answer.
-final class TelemetryCard extends GetView<TelemetryController> {
-  const TelemetryCard({super.key});
+final class TelemetryCard extends StatelessWidget {
+  const TelemetryCard({super.key, this.tag});
+
+  final String? tag;
+
+  TelemetryController get controller =>
+      (tag != null && Get.isRegistered<TelemetryController>(tag: tag))
+          ? Get.find<TelemetryController>(tag: tag)
+          : Get.find<TelemetryController>();
 
   @override
   Widget build(BuildContext context) => Obx(

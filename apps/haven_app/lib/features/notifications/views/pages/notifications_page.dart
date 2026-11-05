@@ -15,7 +15,7 @@ final class NotificationsPage extends GetView<NotificationsController> {
   @override
   Widget build(BuildContext context) => HavenScaffold(
     title: 'Reports',
-    onRefresh: controller.refresh,
+    onRefresh: controller.reload,
     body: HavenPageBody(
       child: Obx(
         () => StateView<AlertBoard?>(

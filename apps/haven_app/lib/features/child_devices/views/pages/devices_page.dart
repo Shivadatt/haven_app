@@ -5,14 +5,12 @@ import 'package:haven_models/haven_models.dart';
 
 import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
+import '../../../family/bindings/family_bindings.dart';
 import '../../controllers/devices_controller.dart';
+import '../dialogs/add_device_dialog.dart';
 import '../widgets/device_list_card.dart';
 
 /// Every device the family has paired.
-///
-/// In this build the read is refused, and the refusal is shown in full instead of
-/// an empty list — the difference matters, because "nothing is paired" and "this
-/// app cannot see the shelf" call for completely different actions.
 final class DevicesPage extends GetView<DevicesController> {
   const DevicesPage({super.key});
 
@@ -20,7 +18,7 @@ final class DevicesPage extends GetView<DevicesController> {
   Widget build(BuildContext context) {
     return HavenScaffold(
       title: 'Devices',
-      onRefresh: controller.refresh,
+      onRefresh: controller.reload,
       body: HavenPageBody(
         child: Obx(
           () => StateView<List<Device>>(
@@ -48,7 +46,7 @@ class _Content extends GetView<DevicesController> {
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        DeviceListCard(devices: devices),
+        DeviceListCard(devices: devices, onTap: controller.goToDevice),
         const SizedBox(height: HavenSpacing.md),
         const _PairingCard(),
       ],
@@ -56,7 +54,6 @@ class _Content extends GetView<DevicesController> {
   );
 }
 
-/// Nothing is paired, which is a different fact from the read being refused.
 class _NoDevices extends GetView<DevicesController> {
   const _NoDevices();
 
@@ -81,6 +78,33 @@ class _NoDevices extends GetView<DevicesController> {
 class _PairingCard extends GetView<DevicesController> {
   const _PairingCard();
 
+  Future<void> _openAdd(BuildContext context) async {
+    final familyRepo = FamilyDependencies.ensureRepository();
+    final bundle = (await familyRepo.load()).valueOrNull;
+    final children = (bundle?.children ?? [])
+        .map((c) => ChildOption(userId: c.userId, name: c.name))
+        .toList();
+    if (!context.mounted) return;
+    await AddDeviceDialog.show(
+      context,
+      children: children,
+      onAdd: ({
+        required String displayName,
+        required String childUserId,
+        String platform = 'android',
+        int? batteryLevel,
+      }) async {
+        final res = await controller.addDevice(
+          displayName: displayName,
+          childUserId: childUserId,
+          platform: platform,
+          batteryLevel: batteryLevel,
+        );
+        return res.isOk;
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) => SectionCard(
     title: 'Add a device',
@@ -88,15 +112,25 @@ class _PairingCard extends GetView<DevicesController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'A device joins when a child pairs it from their own phone. Haven '
-          'shows what pairing needs on the pairing screen.',
+          'A device joins when a child pairs it from their own phone, or you can '
+          'register a simulated device for local testing.',
           style: HavenText.body,
         ),
         const SizedBox(height: HavenSpacing.md),
-        HavenButton(
-          label: 'Open pairing',
-          primary: false,
-          onPressed: controller.goToPairing,
+        Wrap(
+          spacing: HavenSpacing.sm,
+          runSpacing: HavenSpacing.sm,
+          children: [
+            HavenButton(
+              label: 'Open pairing',
+              primary: false,
+              onPressed: controller.goToPairing,
+            ),
+            HavenButton(
+              label: 'Add simulated device',
+              onPressed: () => _openAdd(context),
+            ),
+          ],
         ),
       ],
     ),

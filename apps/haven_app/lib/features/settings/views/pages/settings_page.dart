@@ -7,8 +7,11 @@ import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/settings_controller.dart';
 import '../../data/settings_repository.dart';
+import '../widgets/data_management_card.dart';
+import '../widgets/notification_preferences_card.dart';
+import '../widgets/parent_profile_card.dart';
 
-/// Appearance, alerts, and the way to the rest of the settings screens.
+/// Appearance, alerts, parent profile, local preferences, and database controls.
 final class SettingsPage extends GetView<SettingsController> {
   const SettingsPage({super.key});
 
@@ -20,11 +23,26 @@ final class SettingsPage extends GetView<SettingsController> {
         child: Obx(
           () => controller.isLoading.value
               ? const Center(child: CircularProgressIndicator())
-              : ListView(
+              : SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(
                     vertical: HavenSpacing.lg,
                   ),
-                  children: const [_Appearance(), _Alerts(), _AlsoHere()],
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: const [
+                      _Appearance(),
+                      SizedBox(height: HavenSpacing.md),
+                      _Alerts(),
+                      SizedBox(height: HavenSpacing.md),
+                      ParentProfileCard(),
+                      SizedBox(height: HavenSpacing.md),
+                      NotificationPreferencesCard(),
+                      SizedBox(height: HavenSpacing.md),
+                      DataManagementCard(),
+                      SizedBox(height: HavenSpacing.md),
+                      _AlsoHere(),
+                    ],
+                  ),
                 ),
         ),
       ),

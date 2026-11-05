@@ -10,14 +10,15 @@ import 'package:haven_models/haven_models.dart';
 /// into a category Haven invented, and `payload` is only proven to be a JSON
 /// object (`:489`) — its keys are counted, never printed.
 final class AlertLine {
-  const AlertLine(this.alert, {this.deviceName});
+  const AlertLine(this.alert, {this.deviceName, this.isDemo = false});
 
   final SafetyAlert alert;
-
-  /// The device the alert names, when the device lane could be read.
   final String? deviceName;
+  final bool isDemo;
 
   String get whose => deviceName ?? 'a device this build cannot name';
+
+  bool get isRead => alert.isAcknowledged;
 
   /// The backend's own sentence. Nothing here rewrites it into an interpretation.
   String get said => alert.message;
@@ -55,13 +56,14 @@ final class AlertBoard {
     required this.ackGap,
     required this.deliveryGap,
     this.deviceGap,
+    this.isOffline = false,
   });
 
   final String familyId;
   final List<AlertLine> lines;
 
-  /// Acknowledging an alert is a column write that only a service role holds, so
-  /// a "mark as read" control would be refused the moment it was pressed.
+  /// Acknowledging an alert is a column write that only a service role holds in
+  /// cloud mode; kept non-nullable for refusal reporting.
   final BlockedFailure ackGap;
 
   /// Delivery. The token a phone would hand over has nowhere to go: no captured
@@ -70,6 +72,10 @@ final class AlertBoard {
 
   /// The refusal that would otherwise name each alert's device.
   final BlockedFailure? deviceGap;
+
+  final bool isOffline;
+
+  bool get canManage => isOffline;
 
   bool get hasLines => lines.isNotEmpty;
 

@@ -39,10 +39,12 @@ abstract interface class PairingRepository {
 
 final class HavenPairingRepository implements PairingRepository {
   HavenPairingRepository({
-    required this._scope,
-    required this._rows,
-    required this._family,
-  });
+    required FamilyScopeReader Function() scope,
+    required RowReader Function() rows,
+    required FamilyRepository Function() family,
+  }) : _scope = scope,
+       _rows = rows,
+       _family = family;
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final FamilyScopeReader Function() _scope;

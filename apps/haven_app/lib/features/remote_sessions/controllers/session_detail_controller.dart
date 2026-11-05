@@ -16,12 +16,14 @@ import '../services/media_peer.dart';
 /// interface in `services/media_peer.dart`, whose only implementation refuses.
 final class SessionDetailController extends GetxController {
   SessionDetailController({
-    required this._repository,
+    required SessionsRepository repository,
     required this.sessionId,
     SessionMediaPeer? peer,
-    this._feed,
+    ChangeFeed Function()? feed,
     void Function(String route, Object? arg)? replace,
-  }) : _peer = peer ?? const UnspecifiedMediaPeer(),
+  }) : _repository = repository,
+       _feed = feed,
+       _peer = peer ?? const UnspecifiedMediaPeer(),
        _replace =
            replace ??
            ((String route, Object? arg) =>
@@ -87,10 +89,11 @@ final class SessionDetailController extends GetxController {
     isLoading.value = false;
   }
 
-  @override
-  Future<void> refresh() async {
+  Future<void> reload() async {
     if (sessionId.isEmpty) return;
-    detail.value = await _repository.loadDetail(sessionId);
+    final Result<SessionDetail?> read = await _repository.loadDetail(sessionId);
+    if (isClosed) return;
+    detail.value = read;
   }
 
   /// False for the whole life of this build. The screen says so rather than

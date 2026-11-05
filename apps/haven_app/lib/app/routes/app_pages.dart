@@ -21,6 +21,7 @@ import '../../features/device_commands/views/pages/commands_page.dart';
 import '../../features/device_pairing/bindings/device_pairing_bindings.dart';
 import '../../features/device_pairing/views/pages/pairing_code_page.dart';
 import '../../features/device_pairing/views/pages/pairing_page.dart';
+import '../../features/device_pairing/views/pages/pairing_simulation_page.dart';
 import '../../features/family/bindings/family_bindings.dart';
 import '../../features/family/views/pages/child_profile_page.dart';
 import '../../features/family/views/pages/family_page.dart';
@@ -36,6 +37,7 @@ import '../../features/remote_sessions/bindings/sessions_bindings.dart';
 import '../../features/remote_sessions/views/pages/remote_session_detail_page.dart';
 import '../../features/remote_sessions/views/pages/remote_sessions_page.dart';
 import '../../features/safe_zones/bindings/zones_bindings.dart';
+import '../../features/safe_zones/views/pages/safe_zone_create_page.dart';
 import '../../features/safe_zones/views/pages/safe_zone_editor_page.dart';
 import '../../features/safe_zones/views/pages/safe_zones_page.dart';
 import '../../features/settings/bindings/settings_bindings.dart';
@@ -102,6 +104,7 @@ abstract final class AppPages {
       page: () => const PairingCodePage(),
       binding: PairingCodeBindings(),
     ),
+    GetPage(name: AppRoutes.pairingSimulation, page: () => const PairingSimulationPage(), binding: PairingSimulationBindings()),
     GetPage(
       name: AppRoutes.devices,
       page: () => const DevicesPage(),
@@ -142,6 +145,7 @@ abstract final class AppPages {
       page: () => const SafeZoneEditorPage(),
       binding: ZoneEditorBindings(),
     ),
+    GetPage(name: AppRoutes.safeZoneCreate, page: () => const SafeZoneCreatePage(), binding: ZoneCreateBindings()),
     GetPage(
       name: AppRoutes.remoteSessions,
       page: () => const RemoteSessionsPage(),

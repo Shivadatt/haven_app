@@ -51,7 +51,7 @@ void main() {
       controller.onInit();
       await pumpEventQueue();
 
-      await controller.refresh();
+      await controller.reload();
 
       expect(repo.loadCount, 2);
     });

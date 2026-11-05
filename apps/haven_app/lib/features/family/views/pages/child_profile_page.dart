@@ -7,9 +7,9 @@ import '../../../../app/theme/haven_text.dart';
 import '../../../../core/utils/haven_time.dart';
 import '../../controllers/child_profile_controller.dart';
 import '../../data/family_models.dart';
+import '../dialogs/edit_child_dialog.dart';
 
-/// One child: who they are in this family, and the one thing a parent may
-/// change about that.
+/// One child: who they are in this family, and what a parent may change.
 final class ChildProfilePage extends GetView<ChildProfileController> {
   const ChildProfilePage({super.key});
 
@@ -51,32 +51,63 @@ class _Content extends GetView<ChildProfileController> {
                 ? 'In the family since '
                       '${havenDay(person.member.createdAt) ?? 'an unknown date'}'
                 : 'This account has no name on file yet.',
-            trailing: const StatusChip(
-              label: 'Child',
-              tone: StatusTone.neutral,
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (person.avatar != null) ...[
+                  Text(person.avatar!, style: const TextStyle(fontSize: 22)),
+                  const SizedBox(width: HavenSpacing.xs),
+                ],
+                StatusChip(
+                  label: person.ageBracket != null
+                      ? 'Ages ${person.ageBracket}'
+                      : 'Child',
+                  tone: StatusTone.neutral,
+                ),
+              ],
             ),
-            child: Text(
-              'Haven knows this person as a child in your family. Their name '
-              'and their role are set by the service when they are created; '
-              'this screen cannot rewrite either.',
-              style: HavenText.body,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Haven knows this person as a child in your family.',
+                  style: HavenText.body,
+                ),
+                const SizedBox(height: HavenSpacing.md),
+                HavenButton(
+                  label: 'Edit profile',
+                  primary: false,
+                  onPressed: () => EditChildDialog.show(
+                    context,
+                    initialName: person.name,
+                    initialAgeBracket: person.ageBracket,
+                    initialAvatar: person.avatar,
+                    onSave: ({
+                      required String name,
+                      String? ageBracket,
+                      String? avatar,
+                    }) => controller.updateProfile(
+                      name: name,
+                      ageBracket: ageBracket,
+                      avatar: avatar,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: HavenSpacing.md),
           _DeviceGap(),
           const SizedBox(height: HavenSpacing.md),
-          _RemovalGap(person.name),
+          _RemovalCard(person.name),
         ],
       ),
     );
   }
 }
 
-/// §12 says a destructive action is confirmed first — but this build has no
-/// backend path that could carry one out, so the screen says what is missing
-/// instead of offering a button that would only ever fail.
-class _RemovalGap extends GetView<ChildProfileController> {
-  const _RemovalGap(this.name);
+class _RemovalCard extends GetView<ChildProfileController> {
+  const _RemovalCard(this.name);
 
   final String name;
 
@@ -84,11 +115,40 @@ class _RemovalGap extends GetView<ChildProfileController> {
   Widget build(BuildContext context) => SectionCard(
     title: 'Removing $name',
     subtitle: 'Taking a child out of the family stops their reporting.',
-    child: Obx(
-      () => controller.removalGap.value == null
-          ? const SizedBox.shrink()
-          : BlockedNotice.fromFailure(controller.removalGap.value!),
-    ),
+    child: Obx(() {
+      if (controller.removalGap.value != null) {
+        return BlockedNotice.fromFailure(controller.removalGap.value!);
+      }
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Unlinking $name removes their access and clears device assignments.',
+            style: HavenText.body,
+          ),
+          const SizedBox(height: HavenSpacing.md),
+          HavenButton(
+            label: 'Remove $name from family',
+            primary: false,
+            busy: controller.isRemoving.value,
+            onPressed: () async {
+              final bool confirmed = await ConfirmSheet.confirm(
+                context,
+                title: 'Remove $name?',
+                body:
+                    'Taking $name out of the family stops all reporting and '
+                    'unlinks their devices from Haven.',
+                confirmLabel: 'Remove child',
+                destructive: true,
+              );
+              if (confirmed) {
+                await controller.removeChild();
+              }
+            },
+          ),
+        ],
+      );
+    }),
   );
 }
 

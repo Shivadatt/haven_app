@@ -14,9 +14,10 @@ import '../data/pairing_repository.dart';
 final class PairingCodeController extends GetxController {
   PairingCodeController({
     required this.familyId,
-    required this._repository,
+    required PairingRepository repository,
     void Function(String route, Object? arg)? goTo,
-  }) : _goTo =
+  }) : _repository = repository,
+        _goTo =
            goTo ??
            ((String route, Object? arg) => Get.toNamed(route, arguments: arg));
 
@@ -39,9 +40,11 @@ final class PairingCodeController extends GetxController {
   Future<void> load() async {
     isLoading.value = true;
     final Result<PairingBoard?> read = await _repository.load();
-    inviteGap.value = _blocked(await _repository.createInvite());
-    codeGap.value = _blocked(await _repository.redeemCode());
+    final BlockedFailure? inv = _blocked(await _repository.createInvite());
+    final BlockedFailure? code = _blocked(await _repository.redeemCode());
     if (isClosed) return;
+    inviteGap.value = inv;
+    codeGap.value = code;
     board.value = read;
     isLoading.value = false;
   }

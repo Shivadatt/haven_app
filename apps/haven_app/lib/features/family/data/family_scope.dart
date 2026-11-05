@@ -22,7 +22,11 @@ final class FamilyScope {
 /// first-run state that setup exists to fix, so it comes back as a refusal the
 /// screen can route on.
 final class FamilyScopeReader {
-  FamilyScopeReader({required this._auth, required this._rows});
+  FamilyScopeReader({
+    required UserAuth Function() auth,
+    required RowReader Function() rows,
+  }) : _auth = auth,
+       _rows = rows;
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final UserAuth Function() _auth;

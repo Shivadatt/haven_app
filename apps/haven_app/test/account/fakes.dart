@@ -8,6 +8,7 @@ class FakeAccountRepository implements AccountRepository {
   AccountInfo? info;
   HavenFailure? loadFailWith;
   HavenFailure? renameFailWith;
+  HavenFailure? createProfileFailWith;
   HavenFailure? signOutFailWith;
 
   /// What the three abilities without an approved contract answer. A real
@@ -33,8 +34,21 @@ class FakeAccountRepository implements AccountRepository {
   @override
   Future<Result<void>> rename({required String displayName}) async {
     calls.add('rename');
-    lastDisplayName = displayName;
+    final String trimmed = displayName.trim();
+    final String? invalid = validateDisplayName(trimmed);
+    if (invalid != null && renameFailWith == null) {
+      return Err<void>(ValidationFailure(invalid, field: 'display_name'));
+    }
+    lastDisplayName = trimmed;
     final HavenFailure? failure = renameFailWith;
+    return failure == null ? okVoid() : Err<void>(failure);
+  }
+
+  @override
+  Future<Result<void>> createProfile({required String displayName}) async {
+    calls.add('createProfile');
+    lastDisplayName = displayName;
+    final HavenFailure? failure = createProfileFailWith;
     return failure == null ? okVoid() : Err<void>(failure);
   }
 

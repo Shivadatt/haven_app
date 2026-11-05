@@ -104,11 +104,21 @@ void main() {
     await tick(tester);
     await press(tester, 'I understand — continue');
 
-    await tester.enterText(find.byType(TextFormField), 'Rivera household');
+    await tester.enterText(find.byType(TextFormField).first, 'Rivera household');
     await press(tester, 'Create my family');
 
     expect(repository.calls, ['role', 'family']);
     expect(repository.lastFamilyName, 'Rivera household');
+
+    // Step 3: Child creation
+    expect(find.text('Add your child'), findsOneWidget);
+    await tester.enterText(find.byType(TextFormField).first, 'Leo');
+    await press(tester, 'Continue to device setup');
+
+    // Step 4: Device setup walkthrough & completion
+    expect(find.text('Device setup'), findsOneWidget);
+    await press(tester, 'Finish setup');
+
     expect(routes, [AppRoutes.dashboard]);
   });
 

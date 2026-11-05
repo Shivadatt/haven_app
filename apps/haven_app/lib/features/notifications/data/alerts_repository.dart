@@ -19,14 +19,22 @@ import 'alerts_models.dart';
 abstract interface class AlertsRepository {
   /// Null means this account has no family yet, which the screen routes to setup.
   Future<Result<AlertBoard?>> load();
+
+  Future<Result<void>> markAsRead(String alertId, {String? userId});
+
+  Future<Result<void>> markAsUnread(String alertId);
+
+  Future<Result<void>> deleteAlert(String alertId);
 }
 
 final class HavenAlertsRepository implements AlertsRepository {
   HavenAlertsRepository({
-    required this._scope,
-    required this._rows,
-    required this._devices,
-  });
+    required FamilyScopeReader Function() scope,
+    required RowReader Function() rows,
+    required DevicesRepository Function() devices,
+  }) : _scope = scope,
+       _rows = rows,
+       _devices = devices;
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final FamilyScopeReader Function() _scope;
@@ -118,4 +126,16 @@ final class HavenAlertsRepository implements AlertsRepository {
     }
     return null;
   }
+
+  @override
+  Future<Result<void>> markAsRead(String alertId, {String? userId}) async =>
+      Err<void>(ackGap);
+
+  @override
+  Future<Result<void>> markAsUnread(String alertId) async =>
+      Err<void>(ackGap);
+
+  @override
+  Future<Result<void>> deleteAlert(String alertId) async =>
+      Err<void>(ackGap);
 }

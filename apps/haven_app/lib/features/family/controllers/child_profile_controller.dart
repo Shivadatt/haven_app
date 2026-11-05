@@ -7,17 +7,13 @@ import '../data/family_models.dart';
 import '../data/family_repository.dart';
 
 /// One child, as far as a parent may change them.
-///
-/// The read is the family bundle filtered to this child: there is no captured
-/// "give me one member" contract, and inventing a narrower query would be
-/// inventing a backend. Everything the screen cannot do is the repository's own
-/// refusal, read back verbatim.
 final class ChildProfileController extends GetxController {
   ChildProfileController({
     required this.childUserId,
-    required this._repository,
+    required FamilyRepository repository,
     void Function(String route, Object? arg)? goTo,
-  }) : _goTo =
+  }) : _repository = repository,
+        _goTo =
            goTo ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg));
@@ -28,14 +24,15 @@ final class ChildProfileController extends GetxController {
 
   final RxBool isLoading = true.obs;
   final Rx<Result<FamilyPerson?>?> person = Rx<Result<FamilyPerson?>?>(null);
+  final RxBool isRemoving = false.obs;
 
-  /// The device half of a child's page, which this build cannot answer. See
-  /// [CapturedGaps] for why, and for the words the screen shows.
+  /// The device half of a child's page, which this build cannot answer in cloud mode.
   final Rxn<BlockedFailure> deviceGap = Rxn<BlockedFailure>();
 
-  /// Removing a child is the one membership edit a parent would want here, and
-  /// the only screen that can say why it cannot offer it is this one.
+  /// Removing a child is refused in cloud mode (#5), but supported locally.
   final Rxn<BlockedFailure> removalGap = Rxn<BlockedFailure>();
+
+  bool get canRemove => removalGap.value == null;
 
   @override
   void onInit() {
@@ -46,9 +43,13 @@ final class ChildProfileController extends GetxController {
   Future<void> load() async {
     isLoading.value = true;
     final Result<FamilyBundle?> bundle = await _repository.load();
-    deviceGap.value = _blocked(await _deviceGap());
-    removalGap.value = _blocked(await _repository.unlinkChild(childUserId));
+    final BlockedFailure? devGap = _blocked(await _deviceGap());
+    final BlockedFailure? remGap = _blocked(
+      await _repository.unlinkChild(childUserId, execute: false),
+    );
     if (isClosed) return;
+    deviceGap.value = devGap;
+    removalGap.value = remGap;
     final FamilyBundle? value = bundle.valueOrNull;
     if (value == null) {
       final HavenFailure? failure = bundle.failureOrNull;
@@ -69,10 +70,41 @@ final class ChildProfileController extends GetxController {
     return null;
   }
 
+  Future<bool> removeChild() async {
+    isRemoving.value = true;
+    final Result<void> result = await _repository.unlinkChild(
+      childUserId,
+      execute: true,
+    );
+    if (isClosed) return false;
+    isRemoving.value = false;
+    if (result.isOk) {
+      goToFamily();
+      return true;
+    }
+    return false;
+  }
+
+  Future<bool> updateProfile({
+    required String name,
+    String? ageBracket,
+    String? avatar,
+  }) async {
+    final Result<void> result = await _repository.updateChild(
+      childUserId: childUserId,
+      name: name,
+      ageBracket: ageBracket,
+      avatar: avatar,
+    );
+    if (result.isOk) {
+      await load();
+      return true;
+    }
+    return false;
+  }
+
   void goToFamily() => _goTo(AppRoutes.family, null);
 
-  /// Read from the one place the device gap is written down, so a parent reads
-  /// the same sentence on the dashboard and on their child's page.
   Future<Result<void>> _deviceGap() async =>
       CapturedGaps.deviceLaneUnavailable(subject: "this child's");
 

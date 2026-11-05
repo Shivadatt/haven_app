@@ -6,6 +6,7 @@ import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/family_controller.dart';
 import '../../data/family_models.dart';
+import '../dialogs/add_child_dialog.dart';
 import '../widgets/people_card.dart';
 
 /// Who is in this family and what the family is called.
@@ -51,7 +52,26 @@ class _Content extends GetView<FamilyController> {
             people: bundle.children,
             emptyLine:
                 'No children are in this family yet. A child joins when you '
-                'pair their device.',
+                'pair their device or add their profile.',
+            trailing: TextButton.icon(
+              icon: const Icon(Icons.add, size: 18),
+              label: const Text('Add child'),
+              onPressed: () => AddChildDialog.show(
+                context,
+                onAdd: ({
+                  required String name,
+                  String? ageBracket,
+                  String? avatar,
+                }) async {
+                  final result = await controller.addChild(
+                    name: name,
+                    ageBracket: ageBracket,
+                    avatar: avatar,
+                  );
+                  return result.isOk;
+                },
+              ),
+            ),
             onTap: controller.goToChild,
           ),
           const SizedBox(height: HavenSpacing.md),

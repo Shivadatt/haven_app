@@ -14,10 +14,11 @@ import '../data/auth_repository.dart';
 /// status is not something to announce.
 final class SessionWatch extends GetxService {
   SessionWatch({
-    required this._repository,
+    required AuthRepository repository,
     void Function(String route, Object? arg)? onLost,
     String Function()? currentRoute,
-  }) : _onLost =
+  }) : _repository = repository,
+        _onLost =
            onLost ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg)),

@@ -11,6 +11,8 @@ final class Profile {
     required this.id,
     required this.role,
     required this.displayName,
+    this.ageBracket,
+    this.avatar,
     this.createdAt,
     this.updatedAt,
   });
@@ -19,6 +21,8 @@ final class Profile {
     id: asText(row['id']) ?? '',
     role: asText(row['role']),
     displayName: asText(row['display_name']) ?? '',
+    ageBracket: asText(row['age_bracket']),
+    avatar: asText(row['avatar']),
     createdAt: asDate(row['created_at']),
     updatedAt: asDate(row['updated_at']),
   );
@@ -26,6 +30,8 @@ final class Profile {
   final String id;
   final String? role;
   final String displayName;
+  final String? ageBracket;
+  final String? avatar;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -36,6 +42,8 @@ final class Profile {
     'id': id,
     if (role != null) 'role': role,
     'display_name': displayName,
+    if (ageBracket != null) 'age_bracket': ageBracket,
+    if (avatar != null) 'avatar': avatar,
   };
 
   @override

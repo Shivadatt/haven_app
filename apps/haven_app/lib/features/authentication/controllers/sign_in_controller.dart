@@ -15,9 +15,10 @@ import '../data/auth_repository.dart';
 /// exist with no `profiles` row, and that means "set yourself up", not "error".
 final class SignInController extends GetxController {
   SignInController({
-    required this._repository,
+    required AuthRepository repository,
     void Function(String route, Object? arg)? goTo,
-  }) : _goTo =
+  }) : _repository = repository,
+        _goTo =
            goTo ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg));

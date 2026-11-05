@@ -16,6 +16,7 @@ abstract final class AppRoutes {
   static const String childProfile = '/family/child';
   static const String pairing = '/pairing';
   static const String pairingCode = '/pairing/code';
+  static const String pairingSimulation = '/pairing/simulation';
   static const String devices = '/devices';
   static const String deviceDetail = '/devices/detail';
   static const String activity = '/devices/activity';
@@ -24,6 +25,7 @@ abstract final class AppRoutes {
   static const String location = '/devices/location';
   static const String safeZones = '/safe-zones';
   static const String safeZoneEditor = '/safe-zones/editor';
+  static const String safeZoneCreate = '/safe-zones/create';
   static const String remoteSessions = '/remote-sessions';
   static const String remoteSessionDetail = '/remote-session';
   static const String notifications = '/notifications';

@@ -6,6 +6,7 @@ import '../../../core/errors/captured_gaps.dart';
 import '../../child_devices/data/devices_repository.dart';
 import '../../family/data/family_scope.dart';
 import 'policies_models.dart';
+import 'policy_config.dart';
 
 /// The policy versions this family is allowed to read.
 ///
@@ -22,14 +23,25 @@ abstract interface class PoliciesRepository {
   /// [deviceId] narrows the read; the caller's own family id always goes with it,
   /// so a supplied id cannot reach another family's versions.
   Future<Result<PolicyBoard?>> load({String? deviceId});
+
+  /// Whether local policy configuration is supported in this build.
+  bool get canConfigure => false;
+
+  /// Loads current configured policy or returns defaults.
+  Future<Result<PolicyConfig>> loadConfig({String? deviceId});
+
+  /// Persists policy configuration to the local store.
+  Future<Result<void>> saveConfig(PolicyConfig config, {String? deviceId});
 }
 
 final class HavenPoliciesRepository implements PoliciesRepository {
   HavenPoliciesRepository({
-    required this._scope,
-    required this._rows,
-    required this._devices,
-  });
+    required FamilyScopeReader Function() scope,
+    required RowReader Function() rows,
+    required DevicesRepository Function() devices,
+  }) : _scope = scope,
+       _rows = rows,
+       _devices = devices;
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final FamilyScopeReader Function() _scope;
@@ -115,6 +127,19 @@ final class HavenPoliciesRepository implements PoliciesRepository {
       ),
     );
   }
+
+  @override
+  bool get canConfigure => false;
+
+  @override
+  Future<Result<PolicyConfig>> loadConfig({String? deviceId}) async =>
+      Err<PolicyConfig>(ruleShapeGap);
+
+  @override
+  Future<Result<void>> saveConfig(
+    PolicyConfig config, {
+    String? deviceId,
+  }) async => Err<void>(writeGap);
 
   static String? _nameOf(List<Device> devices, String id) {
     if (id.isEmpty) return null;

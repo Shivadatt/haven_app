@@ -12,6 +12,8 @@ final class FamilyPerson {
 
   String get userId => member.userId;
   bool get hasProfile => profile != null;
+  String? get ageBracket => profile?.ageBracket;
+  String? get avatar => profile?.avatar;
 
   /// A member with no name still has to be listed — hiding a child from their
   /// own family would be worse than the placeholder.

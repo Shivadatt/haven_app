@@ -60,7 +60,7 @@ void main() {
     final (subject, _) = build(repo);
     await subject.load();
 
-    await subject.refresh();
+    await subject.reload();
 
     expect(subject.isLoading.value, isFalse);
     expect(repo.calls.where((String c) => c == 'load').length, 2);

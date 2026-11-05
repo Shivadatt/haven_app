@@ -16,7 +16,7 @@ final class LocationPage extends GetView<LocationController> {
   Widget build(BuildContext context) {
     return HavenScaffold(
       title: 'Reported places',
-      onRefresh: controller.refresh,
+      onRefresh: controller.reload,
       body: HavenPageBody(
         child: Obx(
           () => StateView<FixBoard?>(

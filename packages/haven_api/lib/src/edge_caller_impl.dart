@@ -63,10 +63,8 @@ final class SupabaseEdgeCaller implements EdgeCaller {
 ///
 /// NOT VERIFIED against staging: no feature may claim an end-to-end Edge result
 /// from this path while the schema load and function deployments are unsigned.
-Result<Map<String, Object?>> dataFrom(Result<EdgeReply> reply) => reply.map(
-  _payloadFrom,
-  (failure) => Err<Map<String, Object?>>(failure),
-);
+Result<Map<String, Object?>> dataFrom(Result<EdgeReply> reply) =>
+    reply.map(_payloadFrom, (failure) => Err<Map<String, Object?>>(failure));
 
 Result<Map<String, Object?>> _payloadFrom(EdgeReply reply) {
   final Object? error = reply.body['error'];
@@ -74,7 +72,8 @@ Result<Map<String, Object?>> _payloadFrom(EdgeReply reply) {
     return Err<Map<String, Object?>>(
       BackendFailure(
         error is Map
-            ? (asText(asMap(error)['message']) ?? 'The service refused that request.')
+            ? (asText(asMap(error)['message']) ??
+                  'The service refused that request.')
             : (asText(error) ?? 'The service refused that request.'),
         code: reply.errorCode,
       ),

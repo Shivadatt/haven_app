@@ -68,6 +68,12 @@ abstract interface class UserAuth {
 abstract interface class ProfileStore {
   Future<Result<Map<String, Object?>?>> load(String userId);
   Future<Result<void>> updateDisplayName(String userId, String displayName);
+  Future<Result<void>> createProfile({
+    required String userId,
+    required String displayName,
+    String? email,
+    String role,
+  });
 }
 
 /// Device-lane credential: separate from [UserAuth] and never converted into it.

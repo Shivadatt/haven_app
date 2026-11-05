@@ -120,4 +120,14 @@ class FakeActivityRepository implements ActivityRepository {
         ? blocked<UsageBoard?>('fake: no usage read seeded')
         : Ok<UsageBoard?>(read);
   }
+
+  @override
+  Future<Result<void>> logActivityEvent({
+    required String familyId,
+    required String deviceId,
+    required String category,
+    required String title,
+    required String subtitle,
+    Map<String, Object?>? payload,
+  }) async => okVoid();
 }

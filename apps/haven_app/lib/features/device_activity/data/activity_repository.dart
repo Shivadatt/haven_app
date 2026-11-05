@@ -21,14 +21,25 @@ abstract interface class ActivityRepository {
   /// always goes with it, so a made-up device id returns nothing rather than
   /// another family's rows.
   Future<Result<UsageBoard?>> load({String? deviceId});
+
+  Future<Result<void>> logActivityEvent({
+    required String familyId,
+    required String deviceId,
+    required String category,
+    required String title,
+    required String subtitle,
+    Map<String, Object?>? payload,
+  });
 }
 
 final class HavenActivityRepository implements ActivityRepository {
   HavenActivityRepository({
-    required this._scope,
-    required this._rows,
-    required this._devices,
-  });
+    required FamilyScopeReader Function() scope,
+    required RowReader Function() rows,
+    required DevicesRepository Function() devices,
+  }) : _scope = scope,
+       _rows = rows,
+       _devices = devices;
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final FamilyScopeReader Function() _scope;
@@ -96,4 +107,19 @@ final class HavenActivityRepository implements ActivityRepository {
     }
     return null;
   }
+
+  @override
+  Future<Result<void>> logActivityEvent({
+    required String familyId,
+    required String deviceId,
+    required String category,
+    required String title,
+    required String subtitle,
+    Map<String, Object?>? payload,
+  }) async => Err<void>(
+    BlockedFailure(
+      'Activity logging is not available in cloud mode without custom Edge Functions.',
+      missing: 'no custom edge function exists to ingest client-side activity events',
+    ),
+  );
 }

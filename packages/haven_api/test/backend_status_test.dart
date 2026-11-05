@@ -153,10 +153,7 @@ void main() {
           ),
         ),
       );
-      expect(result.valueOrNull, {
-        'role': 'parent',
-        'contact_id_prefix': 'PC',
-      });
+      expect(result.valueOrNull, {'role': 'parent', 'contact_id_prefix': 'PC'});
     });
 
     test('an error object is read as its message, with its code attached', () {
@@ -179,7 +176,10 @@ void main() {
         result.failureOrNull!.message,
         'A role is already set for this account.',
       );
-      expect((result.failureOrNull! as BackendFailure).code, 'role_already_set');
+      expect(
+        (result.failureOrNull! as BackendFailure).code,
+        'role_already_set',
+      );
     });
 
     test('a data payload passes through', () {

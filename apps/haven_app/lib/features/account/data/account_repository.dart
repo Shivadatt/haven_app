@@ -4,11 +4,16 @@ import 'package:haven_models/haven_models.dart' show Profile, ProfileRole;
 
 /// The signed-in parent, as this screen can actually see them.
 final class AccountInfo {
-  const AccountInfo({required this.userId, this.email, this.profile});
+  const AccountInfo({
+    required this.userId,
+    this.email,
+    this.profile,
+    this.isOffline = false,
+  });
 
   final String userId;
 
-  /// From the Supabase session. Displayed; never sent anywhere by this screen.
+  /// From the Supabase or local session. Displayed; never sent anywhere by this screen.
   final String? email;
 
   /// Null when the `profiles` row does not exist yet. Provisioning has no
@@ -16,6 +21,9 @@ final class AccountInfo {
   /// (`docs/stage2/S2-EXEC-08-identity-decision-A13-final.md` §2(4)), so this is
   /// an expected state rather than a fault.
   final Profile? profile;
+
+  /// Explicit flag denoting a local/offline session on this device.
+  final bool isOffline;
 
   bool get hasProfile => profile != null;
   ProfileRole? get role => profile?.profileRole;
@@ -29,6 +37,7 @@ final class AccountInfo {
 abstract interface class AccountRepository {
   Future<Result<AccountInfo>> load();
   Future<Result<void>> rename({required String displayName});
+  Future<Result<void>> createProfile({required String displayName});
   Future<Result<void>> signOut();
   Future<Result<void>> passwordChange();
   Future<Result<void>> emailChange();
@@ -36,7 +45,11 @@ abstract interface class AccountRepository {
 }
 
 final class HavenAccountRepository implements AccountRepository {
-  HavenAccountRepository({required this._auth, required this._profiles});
+  HavenAccountRepository({
+    required UserAuth Function() auth,
+    required ProfileStore Function() profiles,
+  }) : _auth = auth,
+       _profiles = profiles;
 
   /// Providers, not values: `HavenBackend.install()` is async.
   final UserAuth Function() _auth;
@@ -60,11 +73,14 @@ final class HavenAccountRepository implements AccountRepository {
     if (readFailure != null) return Err<AccountInfo>(readFailure);
 
     final Map<String, Object?>? data = row.valueOrNull;
+    final bool isOffline = OfflineHavenBackend.isActive ||
+        session.accessToken.startsWith('local:');
     return Ok<AccountInfo>(
       AccountInfo(
         userId: session.userId,
         email: session.email,
         profile: data == null ? null : Profile.fromRow(data),
+        isOffline: isOffline,
       ),
     );
   }
@@ -80,6 +96,24 @@ final class HavenAccountRepository implements AccountRepository {
     final String? userId = signedIn.valueOrNull?.userId;
     if (userId == null) return Err<void>(signedIn.failureOrNull!);
     return _profiles().updateDisplayName(userId, trimmed);
+  }
+
+  @override
+  Future<Result<void>> createProfile({required String displayName}) async {
+    final String trimmed = displayName.trim();
+    final String? invalid = validateDisplayName(trimmed);
+    if (invalid != null) {
+      return Err<void>(ValidationFailure(invalid, field: 'display_name'));
+    }
+    final Result<AuthSession> signedIn = await _session();
+    final AuthSession? session = signedIn.valueOrNull;
+    if (session == null) return Err<void>(signedIn.failureOrNull!);
+    return _profiles().createProfile(
+      userId: session.userId,
+      displayName: trimmed,
+      email: session.email,
+      role: 'parent',
+    );
   }
 
   @override

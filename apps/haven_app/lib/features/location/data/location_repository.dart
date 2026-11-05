@@ -25,10 +25,12 @@ abstract interface class LocationRepository {
 
 final class HavenLocationRepository implements LocationRepository {
   HavenLocationRepository({
-    required this._scope,
-    required this._rows,
-    required this._devices,
-  });
+    required FamilyScopeReader Function() scope,
+    required RowReader Function() rows,
+    required DevicesRepository Function() devices,
+  }) : _scope = scope,
+       _rows = rows,
+       _devices = devices;
 
   /// Providers, not values: `HavenBackend.install()` is asynchronous.
   final FamilyScopeReader Function() _scope;

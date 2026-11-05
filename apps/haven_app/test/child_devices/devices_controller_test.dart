@@ -45,7 +45,7 @@ void main() {
       await subject.load();
 
       repo.devices = [device('d1')];
-      await subject.refresh();
+      await subject.reload();
 
       expect(subject.devices.value!.valueOrNull!.single.id, 'd1');
       expect(repo.calls.where((String c) => c == 'pairedDevices').length, 2);

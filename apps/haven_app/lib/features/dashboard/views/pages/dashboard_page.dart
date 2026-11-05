@@ -8,8 +8,12 @@ import '../../../family/data/family_models.dart';
 import '../../../family/views/widgets/people_card.dart';
 import '../../controllers/dashboard_controller.dart';
 import '../../data/dashboard_repository.dart';
+import '../widgets/active_policies_card.dart';
 import '../widgets/attention_card.dart';
+import '../widgets/dashboard_devices_card.dart';
+import '../widgets/demo_data_card.dart';
 import '../widgets/device_records_card.dart';
+import '../widgets/recent_activities_card.dart';
 import '../widgets/safe_places_card.dart';
 
 /// The parent's first screen: the family, the children in it, and what has been
@@ -21,7 +25,7 @@ final class DashboardPage extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     return HavenScaffold(
       title: 'Haven',
-      onRefresh: controller.refresh,
+      onRefresh: controller.reload,
       body: HavenPageBody(
         child: Obx(
           () => StateView<DashboardData>(
@@ -42,7 +46,6 @@ class _Content extends GetView<DashboardController> {
 
   final DashboardData data;
 
-  /// Counts the app actually read, said in the order a parent cares about.
   static String _counted(FamilyBundle bundle) {
     final int children = bundle.children.length;
     final int parents = bundle.parents.length;
@@ -66,6 +69,10 @@ class _Content extends GetView<DashboardController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                if (data.isDemo) ...[
+                  const StatusChip(label: 'DEMO FAMILY', tone: StatusTone.warning),
+                  const SizedBox(height: HavenSpacing.sm),
+                ],
                 Text(
                   'Names, who is in the family and what Haven can change about '
                   'it are on one screen.',
@@ -95,13 +102,19 @@ class _Content extends GetView<DashboardController> {
           const SizedBox(height: HavenSpacing.md),
           SafePlacesCard(onOpen: controller.goToSafeZones),
           const SizedBox(height: HavenSpacing.md),
+          ActivePoliciesCard(data: data),
+          const SizedBox(height: HavenSpacing.md),
+          RecentActivitiesCard(data: data),
+          const SizedBox(height: HavenSpacing.md),
+          DashboardDevicesCard(data: data),
+          const SizedBox(height: HavenSpacing.md),
           DeviceRecordsCard(
             onOpenCommands: controller.goToCommands,
             onOpenPolicies: controller.goToPolicies,
             onOpenSessions: controller.goToSessions,
           ),
           const SizedBox(height: HavenSpacing.md),
-          const _DevicesCard(),
+          DemoDataCard(data: data),
           const SizedBox(height: HavenSpacing.md),
           ListTile(
             contentPadding: EdgeInsets.zero,
@@ -118,44 +131,6 @@ class _Content extends GetView<DashboardController> {
       ),
     );
   }
-}
-
-/// The device lane in one card: the refusal that says why no device is listed,
-/// and the two screens that can still read what devices reported.
-class _DevicesCard extends GetView<DashboardController> {
-  const _DevicesCard();
-
-  @override
-  Widget build(BuildContext context) => SectionCard(
-    title: 'Devices',
-    child: Obx(
-      () => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (controller.deviceGap.value != null)
-            BlockedNotice.fromFailure(controller.deviceGap.value!),
-          const SizedBox(height: HavenSpacing.md),
-          HavenButton(
-            label: 'Open devices',
-            primary: false,
-            onPressed: controller.goToDevices,
-          ),
-          const SizedBox(height: HavenSpacing.sm),
-          HavenButton(
-            label: 'See reported app use',
-            primary: false,
-            onPressed: controller.goToActivity,
-          ),
-          const SizedBox(height: HavenSpacing.sm),
-          HavenButton(
-            label: 'See reported places',
-            primary: false,
-            onPressed: controller.goToLocation,
-          ),
-        ],
-      ),
-    ),
-  );
 }
 
 class _NeedsSetup extends GetView<DashboardController> {

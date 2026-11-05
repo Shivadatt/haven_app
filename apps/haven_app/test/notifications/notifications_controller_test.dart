@@ -73,7 +73,7 @@ void main() {
           alertLine(id: 'a2'),
         ],
       );
-      await controller.refresh();
+      await controller.reload();
 
       expect(repo.loadCount, 2);
       expect(controller.board.value!.valueOrNull!.lines, hasLength(2));

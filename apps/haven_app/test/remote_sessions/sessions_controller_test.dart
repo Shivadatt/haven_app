@@ -70,7 +70,7 @@ void main() {
       controller.onInit();
       await pumpEventQueue();
       repo.board = sessionBoard(lines: [sessionLine(), sessionLine()]);
-      await controller.refresh();
+      await controller.reload();
 
       expect(repo.loadCount, 2);
       expect(controller.board.value!.valueOrNull!.lines, hasLength(2));

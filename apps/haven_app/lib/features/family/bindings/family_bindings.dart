@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:haven_api/haven_api.dart';
 
 import '../controllers/child_profile_controller.dart';
 import '../controllers/family_controller.dart';
@@ -8,7 +9,12 @@ import '../data/family_repository.dart';
 abstract final class FamilyDependencies {
   static FamilyRepository ensureRepository() {
     if (!Get.isRegistered<FamilyRepository>()) {
-      Get.put<FamilyRepository>(HavenFamilyRepository.live(), permanent: true);
+      Get.put<FamilyRepository>(
+        OfflineHavenBackend.isActive
+            ? LocalFamilyRepository.live()
+            : HavenFamilyRepository.live(),
+        permanent: true,
+      );
     }
     return Get.find<FamilyRepository>();
   }

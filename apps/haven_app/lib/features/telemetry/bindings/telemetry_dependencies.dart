@@ -33,11 +33,13 @@ abstract final class TelemetryDependencies {
 
   /// The card's controller, scoped to the device the screen was opened for.
   static TelemetryController ensureController(String deviceId) {
-    if (!Get.isRegistered<TelemetryController>()) {
+    final String? tag = deviceId.isEmpty ? null : deviceId;
+    if (!Get.isRegistered<TelemetryController>(tag: tag)) {
       Get.put<TelemetryController>(
         TelemetryController(repository: ensureRepository(), deviceId: deviceId),
+        tag: tag,
       );
     }
-    return Get.find<TelemetryController>();
+    return Get.find<TelemetryController>(tag: tag);
   }
 }

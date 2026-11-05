@@ -12,10 +12,11 @@ import '../data/commands_repository.dart';
 /// button discovers when it is pressed.
 final class CommandsController extends GetxController {
   CommandsController({
-    required this._repository,
+    required CommandsRepository repository,
     this.deviceId = '',
     void Function(String route, Object? arg)? replace,
-  }) : _replace =
+  }) : _repository = repository,
+        _replace =
            replace ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg));
@@ -48,11 +49,12 @@ final class CommandsController extends GetxController {
   /// A pull re-reads. `device_commands` is one of the four tables Realtime is
   /// live on, but no screen claims a subscription here: the read lane for that
   /// has its own unanswered questions.
-  @override
-  Future<void> refresh() async {
-    board.value = await _repository.load(
+  Future<void> reload() async {
+    final Result<CommandBoard?> read = await _repository.load(
       deviceId: deviceId.isEmpty ? null : deviceId,
     );
+    if (isClosed) return;
+    board.value = read;
   }
 
   void goToSetup() => _replace(AppRoutes.onboarding, null);

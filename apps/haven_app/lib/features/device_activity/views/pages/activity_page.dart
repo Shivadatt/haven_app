@@ -6,6 +6,7 @@ import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../controllers/activity_controller.dart';
 import '../../data/activity_models.dart';
+import '../widgets/activity_timeline_card.dart';
 import '../widgets/usage_card.dart';
 
 /// App use the family is permitted to read, and the reason the rows have no
@@ -17,7 +18,7 @@ final class ActivityPage extends GetView<ActivityController> {
   Widget build(BuildContext context) {
     return HavenScaffold(
       title: 'Usage activity',
-      onRefresh: controller.refresh,
+      onRefresh: controller.reload,
       body: HavenPageBody(
         child: Obx(
           () => StateView<UsageBoard?>(
@@ -46,6 +47,10 @@ class _Content extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         UsageCard(board: board),
+        if (board.isOffline || board.hasEvents) ...[
+          const SizedBox(height: HavenSpacing.md),
+          ActivityTimelineCard(board: board),
+        ],
         const SizedBox(height: HavenSpacing.md),
         const UsageLimitsCard(),
       ],

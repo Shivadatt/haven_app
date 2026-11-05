@@ -5,27 +5,36 @@ import 'package:haven_models/haven_models.dart';
 import '../../../core/errors/captured_gaps.dart';
 import '../../family/data/family_models.dart';
 import '../../family/data/family_repository.dart';
+import 'dashboard_activity_item.dart';
 
 /// What the first screen after sign-in can honestly say.
-///
-/// `family` is null when this account has no family yet — the state first-run
-/// setup exists for. `alerts` are the most recent rows the parent is allowed to
-/// read, and `alertsFailure` carries the reason when that one read did not work,
-/// so the children section can still load while the alerts section explains
-/// itself instead of showing an empty list that would read as "all is well".
 final class DashboardData {
   const DashboardData({
     required this.family,
     required this.alerts,
     this.alertsFailure,
+    this.devices = const [],
+    this.safeZones = const [],
+    this.activePoliciesCount = 0,
+    this.recentActivities = const [],
+    this.isDemo = false,
   });
 
   final FamilyBundle? family;
   final List<SafetyAlert> alerts;
   final HavenFailure? alertsFailure;
+  final List<Device> devices;
+  final List<SafeZone> safeZones;
+  final int activePoliciesCount;
+  final List<DashboardActivityItem> recentActivities;
+  final bool isDemo;
 
   bool get needsSetup => family == null;
   bool get hasAlerts => alerts.isNotEmpty;
+  bool get hasDevices => devices.isNotEmpty;
+  bool get hasSafeZones => safeZones.isNotEmpty;
+  int get unreadAlertsCount =>
+      alerts.where((a) => !a.isAcknowledged).length;
 
   static const int alertWindow = 5;
 }
@@ -44,7 +53,11 @@ abstract interface class DashboardRepository {
 final class HavenDashboardRepository implements DashboardRepository {
   /// The family half is read through the family feature's own repository: one
   /// membership read, two screens, and no chance for the two to disagree.
-  HavenDashboardRepository({required this._family, required this._rows});
+  HavenDashboardRepository({
+    required FamilyRepository family,
+    required RowReader Function() rows,
+  }) : _family = family,
+       _rows = rows;
 
   final FamilyRepository _family;
   final RowReader Function() _rows;

@@ -16,7 +16,7 @@ final class CommandsPage extends GetView<CommandsController> {
   Widget build(BuildContext context) {
     return HavenScaffold(
       title: 'Instructions',
-      onRefresh: controller.refresh,
+      onRefresh: controller.reload,
       body: HavenPageBody(
         child: Obx(
           () => StateView<CommandBoard?>(

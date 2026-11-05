@@ -72,13 +72,14 @@ final class ZoneDraft {
   );
 }
 
-/// The places this family owns, and the two things it cannot do with them.
+/// The places this family owns, and the boundaries that come with reading them.
 final class ZoneBoard {
   const ZoneBoard({
     required this.familyId,
     required this.zones,
     required this.createGap,
     required this.presenceGap,
+    this.isOffline = false,
   });
 
   final String familyId;
@@ -94,6 +95,9 @@ final class ZoneBoard {
   /// `core/errors/captured_gaps.dart`), so a zone list can be read but the answer
   /// is not.
   final BlockedFailure presenceGap;
+
+  /// Whether this board is running under local offline mode.
+  final bool isOffline;
 
   bool get hasZones => zones.isNotEmpty;
 

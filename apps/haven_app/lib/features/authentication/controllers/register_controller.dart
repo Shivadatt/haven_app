@@ -15,9 +15,10 @@ import '../data/auth_repository.dart';
 /// promise of its own.
 final class RegisterController extends GetxController {
   RegisterController({
-    required this._repository,
+    required AuthRepository repository,
     void Function(String route, Object? arg)? goTo,
-  }) : _goTo =
+  }) : _repository = repository,
+        _goTo =
            goTo ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg));

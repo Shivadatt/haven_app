@@ -49,4 +49,19 @@ final class SupabaseProfileStore implements ProfileStore {
       return Err(mapSupabaseError(error));
     }
   }
+
+  @override
+  Future<Result<void>> createProfile({
+    required String userId,
+    required String displayName,
+    String? email,
+    String role = 'parent',
+  }) async {
+    return const Err(
+      BlockedFailure(
+        'Cloud profile creation is not supported by the captured backend.',
+        missing: 'cloud profile creation',
+      ),
+    );
+  }
 }

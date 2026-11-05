@@ -12,10 +12,11 @@ import '../data/zones_repository.dart';
 /// screen can say whether a device is inside one (the state table is deny-all).
 final class SafeZonesController extends GetxController {
   SafeZonesController({
-    required this._repository,
+    required SafeZonesRepository repository,
     void Function(String route, Object? arg)? push,
     void Function(String route, Object? arg)? replace,
-  }) : _push =
+  }) : _repository = repository,
+        _push =
            push ??
            ((String route, Object? arg) => Get.toNamed(route, arguments: arg)),
        _replace =
@@ -44,14 +45,18 @@ final class SafeZonesController extends GetxController {
     isLoading.value = false;
   }
 
-  @override
-  Future<void> refresh() async {
-    board.value = await _repository.load();
+  Future<void> reload() async {
+    final Result<ZoneBoard?> read = await _repository.load();
+    if (isClosed) return;
+    board.value = read;
   }
 
   /// Editing an existing place is one of the few writes this build can actually
   /// make, so the control leads somewhere real.
   void goToEditor(String zoneId) => _push(AppRoutes.safeZoneEditor, zoneId);
+
+  /// Creating a new safe place (available in offline mode).
+  void goToCreate() => _push(AppRoutes.safeZoneCreate, null);
 
   void goToSetup() => _replace(AppRoutes.onboarding, null);
 }

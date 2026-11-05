@@ -33,7 +33,7 @@ void main() {
       );
       controller.onInit();
       await pumpEventQueue();
-      await controller.refresh();
+      await controller.reload();
 
       expect(repo.lastDeviceId, 'd1');
       expect(repo.loadCount, 2);

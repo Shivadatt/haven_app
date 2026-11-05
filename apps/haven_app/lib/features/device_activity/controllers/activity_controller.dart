@@ -12,10 +12,11 @@ import '../data/activity_repository.dart';
 /// sees the sentence about the missing grant instead of a paraphrase of it.
 final class ActivityController extends GetxController {
   ActivityController({
-    required this._repository,
+    required ActivityRepository repository,
     this.deviceId = '',
     void Function(String route, Object? arg)? replace,
-  }) : _replace =
+  }) : _repository = repository,
+        _replace =
            replace ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg));
@@ -47,11 +48,12 @@ final class ActivityController extends GetxController {
   }
 
   /// Pull-to-refresh keeps what is already on the page while the re-read happens.
-  @override
-  Future<void> refresh() async {
-    board.value = await _repository.load(
+  Future<void> reload() async {
+    final Result<UsageBoard?> read = await _repository.load(
       deviceId: deviceId.isEmpty ? null : deviceId,
     );
+    if (isClosed) return;
+    board.value = read;
   }
 
   /// Usage belongs to a family. With none, the honest answer is setup, not a

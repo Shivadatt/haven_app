@@ -55,6 +55,24 @@ final class UsageRow extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Expanded(child: Text(line.appLabel, style: HavenText.body)),
+          if (line.isDemo) ...[
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 1),
+              margin: const EdgeInsets.only(right: HavenSpacing.xs),
+              decoration: BoxDecoration(
+                color: Colors.purple.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: const Text(
+                'DEMO',
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.purple,
+                ),
+              ),
+            ),
+          ],
           Text(line.duration, style: HavenText.label),
         ],
       ),

@@ -12,10 +12,11 @@ import '../data/pairing_repository.dart';
 /// reads the sentence the specification is missing, in the repository's words.
 final class PairingController extends GetxController {
   PairingController({
-    required this._repository,
+    required PairingRepository repository,
     void Function(String route, Object? arg)? push,
     void Function(String route, Object? arg)? replace,
-  }) : _push =
+  }) : _repository = repository,
+        _push =
            push ??
            ((String route, Object? arg) => Get.toNamed(route, arguments: arg)),
        _replace =
@@ -51,8 +52,7 @@ final class PairingController extends GetxController {
 
   /// Pull-to-refresh keeps whatever is already on the page while the re-read
   /// happens.
-  @override
-  Future<void> refresh() async {
+  Future<void> reload() async {
     final Result<PairingBoard?> read = await _repository.load();
     if (isClosed) return;
     board.value = read;
@@ -63,12 +63,16 @@ final class PairingController extends GetxController {
   /// that is genuinely waiting on a child, because that is the only moment an id
   /// exists to withdraw.
   Future<void> _readGaps(Result<PairingBoard?> read) async {
-    inviteGap.value = _blocked(await _repository.createInvite());
-    codeGap.value = _blocked(await _repository.redeemCode());
+    final BlockedFailure? invite = _blocked(await _repository.createInvite());
+    final BlockedFailure? code = _blocked(await _repository.redeemCode());
     final PairingLine? waiting = read.valueOrNull?.firstWaiting;
-    cancelGap.value = waiting == null
+    final BlockedFailure? cancel = waiting == null
         ? null
         : _blocked(await _repository.cancel(waiting.request.id));
+    if (isClosed) return;
+    inviteGap.value = invite;
+    codeGap.value = code;
+    cancelGap.value = cancel;
   }
 
   /// The route table fixes `familyId` as this screen's argument, so the family
@@ -78,6 +82,8 @@ final class PairingController extends GetxController {
     if (value == null) return;
     _push(AppRoutes.pairingCode, value.familyId);
   }
+
+  void goToSimulation() => _push(AppRoutes.pairingSimulation, null);
 
   void goToSetup() => _replace(AppRoutes.onboarding, null);
 

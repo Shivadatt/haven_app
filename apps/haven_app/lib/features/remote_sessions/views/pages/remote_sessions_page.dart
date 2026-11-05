@@ -15,7 +15,7 @@ final class RemoteSessionsPage extends GetView<SessionsController> {
   @override
   Widget build(BuildContext context) => HavenScaffold(
     title: 'Sessions',
-    onRefresh: controller.refresh,
+    onRefresh: controller.reload,
     body: HavenPageBody(
       child: Obx(
         () => StateView<SessionBoard?>(

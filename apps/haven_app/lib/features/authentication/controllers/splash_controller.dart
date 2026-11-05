@@ -15,11 +15,14 @@ enum SplashStage { connecting, stalled, away }
 /// the screen says so and stays, rather than opening an empty dashboard.
 final class SplashController extends GetxController {
   SplashController({
-    required this._connect,
-    required this._auth,
-    required this._profiles,
+    required Future<HavenBackendHandle> Function() connect,
+    required UserAuth Function() auth,
+    required ProfileStore Function() profiles,
     void Function(String route)? goTo,
-  }) : _goTo = goTo ?? Get.offAllNamed;
+  }) : _connect = connect,
+       _auth = auth,
+       _profiles = profiles,
+       _goTo = goTo ?? Get.offAllNamed;
 
   /// The seams are read *after* [HavenBackendHandle] resolves, so they are held
   /// as providers: `install()` replaces the unconfigured clients, and a value

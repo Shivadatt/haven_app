@@ -122,7 +122,7 @@ void main() {
       await subject.load();
 
       repo.board = board(lines: [line('r1', 'Ivy')]);
-      await subject.refresh();
+      await subject.reload();
 
       expect(subject.board.value!.valueOrNull!.hasLines, isTrue);
       expect(repo.calls, ['load', 'createInvite', 'redeemCode', 'load']);

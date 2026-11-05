@@ -154,6 +154,16 @@ final class UnconfiguredProfileStore implements ProfileStore {
   ) async => Err(
     NetworkFailure('This build is not connected to a backend.', detail: reason),
   );
+
+  @override
+  Future<Result<void>> createProfile({
+    required String userId,
+    required String displayName,
+    String? email,
+    String role = 'parent',
+  }) async => Err(
+    NetworkFailure('This build is not connected to a backend.', detail: reason),
+  );
 }
 
 final class UnconfiguredPushTransport implements PushTransport {

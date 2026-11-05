@@ -13,10 +13,11 @@ import '../data/location_repository.dart';
 /// people is a choice Haven does not make for them.
 final class LocationController extends GetxController {
   LocationController({
-    required this._repository,
+    required LocationRepository repository,
     this.deviceId = '',
     void Function(String route, Object? arg)? replace,
-  }) : _replace =
+  }) : _repository = repository,
+        _replace =
            replace ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg));
@@ -48,11 +49,12 @@ final class LocationController extends GetxController {
   }
 
   /// Pull-to-refresh keeps the rows on the page while the re-read happens.
-  @override
-  Future<void> refresh() async {
-    board.value = await _repository.load(
+  Future<void> reload() async {
+    final Result<FixBoard?> read = await _repository.load(
       deviceId: deviceId.isEmpty ? null : deviceId,
     );
+    if (isClosed) return;
+    board.value = read;
   }
 
   /// The reveal is the parent's choice and survives a refresh: resetting it on

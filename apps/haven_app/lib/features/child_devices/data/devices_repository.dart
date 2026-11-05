@@ -3,28 +3,37 @@ import 'package:haven_models/haven_models.dart';
 
 import '../../../core/errors/captured_gaps.dart';
 
-/// A paired device, which this build cannot list or act on.
-///
-/// The read is closed twice over: `devices` has a SELECT policy but no SELECT
-/// grant for `authenticated` (F6), and the `device-register` Edge Function that
-/// owns the device lane is a minified bundle whose request contract was never
-/// readable. Revoking and recovery are captured RPCs, and the role this app
-/// signs in as holds no EXECUTE on any of them. So every method here is a typed
-/// refusal — a real device list would need an owner decision about the grant,
-/// not a guess in this file.
+/// A paired device repository interface.
 abstract interface class DevicesRepository {
   Future<Result<List<Device>>> pairedDevices();
 
   Future<Result<Device>> device(String deviceId);
 
-  Future<Result<void>> revoke(String deviceId);
+  Future<Result<void>> revoke(String deviceId, {bool execute = false});
 
   Future<Result<void>> requestRecovery(String deviceId);
+
+  Future<Result<Device>> createDevice({
+    required String displayName,
+    required String childUserId,
+    String platform = 'android',
+    int? batteryLevel,
+  });
+
+  Future<Result<void>> rename({
+    required String deviceId,
+    required String name,
+  });
+
+  Future<Result<void>> unlink(String deviceId);
+
+  Future<Result<void>> assignChild({
+    required String deviceId,
+    required String childUserId,
+  });
 }
 
 final class HavenDevicesRepository implements DevicesRepository {
-  /// Takes no providers: there is nothing in this build it could safely reach
-  /// for. Keeping the type an interface is what lets the screens stay honest.
   HavenDevicesRepository();
 
   @override
@@ -38,7 +47,7 @@ final class HavenDevicesRepository implements DevicesRepository {
   );
 
   @override
-  Future<Result<void>> revoke(String deviceId) async => blocked(
+  Future<Result<void>> revoke(String deviceId, {bool execute = false}) async => blocked(
     '${CapturedGaps.rpcLaneMissing}; and `devices` has no UPDATE or DELETE '
     'grant or policy for any client role '
     '(docs/stage1/04-rls-matrix.md:112-113), so nothing could revoke a device '
@@ -54,4 +63,30 @@ final class HavenDevicesRepository implements DevicesRepository {
     '(docs/stage1/evidence/edge-functions/capture-20261030.json)',
     requirement: 'Haven cannot ask a device to re-check its rules yet.',
   );
+
+  @override
+  Future<Result<Device>> createDevice({
+    required String displayName,
+    required String childUserId,
+    String platform = 'android',
+    int? batteryLevel,
+  }) async =>
+      CapturedGaps.deviceLaneUnavailable<Device>();
+
+  @override
+  Future<Result<void>> rename({
+    required String deviceId,
+    required String name,
+  }) async =>
+      CapturedGaps.deviceLaneUnavailable<void>();
+
+  @override
+  Future<Result<void>> unlink(String deviceId) => revoke(deviceId, execute: true);
+
+  @override
+  Future<Result<void>> assignChild({
+    required String deviceId,
+    required String childUserId,
+  }) async =>
+      CapturedGaps.deviceLaneUnavailable<void>();
 }

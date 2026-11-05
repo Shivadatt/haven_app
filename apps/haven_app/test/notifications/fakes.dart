@@ -106,6 +106,16 @@ class FakeAlertsRepository implements AlertsRepository {
         ? blocked<AlertBoard?>('fake: no report read seeded')
         : Ok<AlertBoard?>(read);
   }
+
+  @override
+  Future<Result<void>> markAsRead(String alertId, {String? userId}) async =>
+      okVoid();
+
+  @override
+  Future<Result<void>> markAsUnread(String alertId) async => okVoid();
+
+  @override
+  Future<Result<void>> deleteAlert(String alertId) async => okVoid();
 }
 
 /// A delivery lane that says it registered, which nothing in this build can.

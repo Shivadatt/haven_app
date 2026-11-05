@@ -1,20 +1,28 @@
 import 'package:get/get.dart';
+import 'package:haven_api/haven_api.dart';
 
 import '../../telemetry/bindings/telemetry_dependencies.dart';
 import '../controllers/device_detail_controller.dart';
 import '../controllers/devices_controller.dart';
 import '../data/device_route_args.dart';
 import '../data/devices_repository.dart';
+import '../data/local_devices_repository.dart';
 
 /// DI for the device screens.
 ///
-/// The repository is registered even though every call it makes is a refusal:
-/// the screens read their own copy from it, so the sentence a parent sees stays
-/// owned by the data layer and cannot drift into a widget.
+/// The repository is registered even though every cloud call it makes is a
+/// refusal: the screens read their own copy from it, so the sentence a parent
+/// sees stays owned by the data layer and cannot drift into a widget. Offline,
+/// the same interface reads and writes `devices` rows on this phone.
 abstract final class ChildDevicesDependencies {
   static DevicesRepository ensureRepository() {
     if (!Get.isRegistered<DevicesRepository>()) {
-      Get.put<DevicesRepository>(HavenDevicesRepository(), permanent: true);
+      Get.put<DevicesRepository>(
+        OfflineHavenBackend.isActive
+            ? LocalDevicesRepository.live()
+            : HavenDevicesRepository(),
+        permanent: true,
+      );
     }
     return Get.find<DevicesRepository>();
   }

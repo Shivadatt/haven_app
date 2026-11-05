@@ -5,13 +5,20 @@ import 'package:haven_models/haven_models.dart' show SafeZone;
 import '../../../../app/theme/haven_spacing.dart';
 import '../../../../app/theme/haven_text.dart';
 import '../../data/zones_models.dart';
+import 'safe_zone_presence_widget.dart';
 
-/// The places the family named, and the boundary that comes with reading them.
+/// The places the family named, and the controls that come with reading them.
 final class ZonesCard extends StatelessWidget {
-  const ZonesCard({required this.board, required this.onEdit, super.key});
+  const ZonesCard({
+    required this.board,
+    required this.onEdit,
+    this.onCreate,
+    super.key,
+  });
 
   final ZoneBoard board;
   final void Function(String zoneId) onEdit;
+  final void Function()? onCreate;
 
   @override
   Widget build(BuildContext context) => SectionCard(
@@ -32,9 +39,20 @@ final class ZonesCard extends StatelessWidget {
             ZoneRow(zone: board.zones[i], onEdit: onEdit),
           ],
         const SizedBox(height: HavenSpacing.md),
-        BlockedNotice.fromFailure(board.createGap),
-        const SizedBox(height: HavenSpacing.sm),
-        BlockedNotice.fromFailure(board.presenceGap),
+        if (board.isOffline) ...[
+          if (onCreate != null)
+            HavenButton(
+              label: 'Add a safe place',
+              primary: true,
+              onPressed: onCreate,
+            ),
+          const SizedBox(height: HavenSpacing.sm),
+          SafeZonePresenceWidget(zones: board.zones),
+        ] else ...[
+          BlockedNotice.fromFailure(board.createGap),
+          const SizedBox(height: HavenSpacing.sm),
+          BlockedNotice.fromFailure(board.presenceGap),
+        ],
       ],
     ),
   );

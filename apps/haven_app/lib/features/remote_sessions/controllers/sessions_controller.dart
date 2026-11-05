@@ -16,11 +16,13 @@ import '../data/sessions_repository.dart';
 /// rather than a lost fact.
 final class SessionsController extends GetxController {
   SessionsController({
-    required this._repository,
-    this._feed,
+    required SessionsRepository repository,
+    ChangeFeed Function()? feed,
     void Function(String route, Object? arg)? replace,
     void Function(String route, Object? arg)? push,
-  }) : _replace =
+  }) : _repository = repository,
+       _feed = feed,
+       _replace =
            replace ??
            ((String route, Object? arg) =>
                Get.offAllNamed(route, arguments: arg)),
@@ -80,9 +82,10 @@ final class SessionsController extends GetxController {
     isLoading.value = false;
   }
 
-  @override
-  Future<void> refresh() async {
-    board.value = await _repository.load();
+  Future<void> reload() async {
+    final Result<SessionBoard?> read = await _repository.load();
+    if (isClosed) return;
+    board.value = read;
   }
 
   void openDetail(String sessionId) =>

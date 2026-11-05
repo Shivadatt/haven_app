@@ -2,8 +2,10 @@ import 'package:get/get.dart';
 import 'package:haven_api/haven_api.dart';
 
 import '../../family/data/family_scope.dart';
+import '../controllers/zone_create_controller.dart';
 import '../controllers/zone_editor_controller.dart';
 import '../controllers/zones_controller.dart';
+import '../data/local_zones_repository.dart';
 import '../data/zones_repository.dart';
 
 /// DI for the safe-place screens.
@@ -21,11 +23,13 @@ abstract final class SafeZonesDependencies {
         rows: () => HavenBackend.rows,
       );
       Get.put<SafeZonesRepository>(
-        HavenSafeZonesRepository(
-          scope: () => scope,
-          rows: () => HavenBackend.rows,
-          writer: () => HavenBackend.writer,
-        ),
+        OfflineHavenBackend.isActive
+            ? LocalSafeZonesRepository.live()
+            : HavenSafeZonesRepository(
+              scope: () => scope,
+              rows: () => HavenBackend.rows,
+              writer: () => HavenBackend.writer,
+            ),
         permanent: true,
       );
     }
@@ -53,6 +57,17 @@ final class ZoneEditorBindings extends Bindings {
     Get.put<SafeZoneEditorController>(
       SafeZoneEditorController(
         zoneId: arg is String ? arg : '',
+        repository: SafeZonesDependencies.ensureRepository(),
+      ),
+    );
+  }
+}
+
+final class ZoneCreateBindings extends Bindings {
+  @override
+  void dependencies() {
+    Get.put<SafeZoneCreateController>(
+      SafeZoneCreateController(
         repository: SafeZonesDependencies.ensureRepository(),
       ),
     );
