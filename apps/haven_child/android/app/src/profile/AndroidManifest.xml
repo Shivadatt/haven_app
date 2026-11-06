@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+      Deliberately empty: no permissions in the profile build either, matching
+      the main and debug manifests (see the Stage 1 note in the main manifest).
+    -->
+</manifest>

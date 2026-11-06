@@ -1,0 +1,9 @@
+_scratch/p3_inspect/agent_git/diff_stat.txt
+_scratch/p3_inspect/agent_git/head_detail.txt
+_scratch/p3_inspect/agent_git/head_sha.txt
+_scratch/p3_inspect/agent_git/log_oneline_15.txt
+_scratch/p3_inspect/agent_git/lsfiles_scratch.txt
+_scratch/p3_inspect/agent_git/scratch_ls.txt
+_scratch/p3_inspect/agent_git/status_porcelain.txt
+_scratch/p3_inspect/agent_git/untracked_all.txt
+docs/implementation/phase_2/FINAL_VERIFICATION_REPORT.md

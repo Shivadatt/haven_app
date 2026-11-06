@@ -1,0 +1,26 @@
+--- build/.dart_tool dirs on disk (ignored) ---
+apps/haven_app/.dart_tool
+apps/haven_app/build
+packages/haven_api/.dart_tool
+packages/haven_api/build
+packages/haven_core/.dart_tool
+packages/haven_core/build
+packages/haven_models/.dart_tool
+packages/haven_models/build
+--- haven_core test file ---
+packages/haven_core/test/haven_core_test.dart
+--- docs phase_2 diff summary ---
+warning: in the working copy of 'docs/implementation/phase_2/DEFERRED_FUNCTIONALITIES.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/KNOWN_LIMITATIONS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/LOCAL_WORKFLOW_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/PHASE_2_FEATURE_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/PHASE_2_IMPLEMENTATION_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/SCREEN_IMPLEMENTATION_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/TEST_RESULTS.md', LF will be replaced by CRLF the next time Git touches it
+2	2	docs/implementation/phase_2/DEFERRED_FUNCTIONALITIES.md
+11	2	docs/implementation/phase_2/KNOWN_LIMITATIONS.md
+2	2	docs/implementation/phase_2/LOCAL_WORKFLOW_REPORT.md
+2	2	docs/implementation/phase_2/PHASE_2_FEATURE_MATRIX.md
+3	3	docs/implementation/phase_2/PHASE_2_IMPLEMENTATION_REPORT.md
+1	1	docs/implementation/phase_2/SCREEN_IMPLEMENTATION_REPORT.md
+28	4	docs/implementation/phase_2/TEST_RESULTS.md

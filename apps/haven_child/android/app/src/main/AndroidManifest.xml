@@ -1,0 +1,48 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+      Stage 1 declares NO permissions. The child app is fully local at this
+      stage: no backend, no network lane, so android.permission.INTERNET is
+      deliberately absent (in main and in the debug/profile manifests too).
+      Later stages must add permissions only with the disclosure copy the
+      Phase 3 brief requires, never preemptively.
+    -->
+    <application
+        android:label="@string/app_name"
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <!-- Specifies an Android theme to apply to this Activity as soon as
+                 the Android process has started. This theme is visible to the user
+                 while the Flutter UI initializes. After that, this theme continues
+                 to determine the Window background behind the Flutter UI. -->
+            <meta-data
+              android:name="io.flutter.embedding.android.NormalTheme"
+              android:resource="@style/NormalTheme"
+              />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- Don't delete the meta-data below.
+             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+    <!--
+      No <queries>, no receivers, no services, no device-admin here: Stage 1 is
+      the app foundation only. The parent app keeps the device-admin receiver
+      probe; the child lane decides its own native surface in later stages,
+      documented before it is declared. The template's PROCESS_TEXT <queries>
+      block was removed with that decision and is not needed by any Stage 1 flow.
+    -->
+</manifest>

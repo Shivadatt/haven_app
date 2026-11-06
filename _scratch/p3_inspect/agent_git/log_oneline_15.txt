@@ -1,0 +1,9 @@
+8e50da0 docs: add phase 2 implementation reports, feature matrix, and workflow documentation
+9ceb6d5 feat: add verify email and contact support pages with corresponding widget tests
+620a80d feature fixes
+d2a3026 features create and issue fix
+df67b02 docs: add backend configuration, setup guides, and Supabase test stubs
+9fb2c05 feat: initialize Haven app with Android native services and Flutter features
+9c15933 feat: initialize haven app, api, core, and models packages with initial features and tests
+63b7793 first commit
+85350c6 first commit

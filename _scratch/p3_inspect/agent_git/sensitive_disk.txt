@@ -1,0 +1,26 @@
+--- haven_local.json anywhere ---
+--- .env files on disk ---
+./.env.example
+--- google-services.json on disk ---
+--- android_native full disk listing ---
+android_native/child_services/communication/CommunicationStateReader.kt
+android_native/child_services/device_admin/DeviceAdminStateReader.kt
+android_native/child_services/device_admin/HavenDeviceAdminReceiver.kt
+android_native/child_services/location/LocationStateReader.kt
+android_native/child_services/monitoring/MonitoringStateReader.kt
+android_native/child_services/permissions/PermissionStateReader.kt
+android_native/child_services/platform_bridge/BridgeContract.kt
+android_native/child_services/platform_bridge/DeviceStateReader.kt
+android_native/child_services/platform_bridge/HavenBridge.kt
+android_native/child_services/platform_bridge/OsAnswers.kt
+--- tracked files in git not matching .gitignore check: pyc ---
+_scratch/__pycache__/build_catalog_base.cpython-313.pyc
+_scratch/__pycache__/modules_a_b_c.cpython-313.pyc
+_scratch/__pycache__/modules_d_e_f.cpython-313.pyc
+_scratch/__pycache__/modules_g_h_i.cpython-313.pyc
+_scratch/__pycache__/modules_j_k_l_m.cpython-313.pyc
+--- appdata dart-tool tracked ---
+_scratch/appdata/.dart-tool/CLIENT_ID
+_scratch/appdata/.dart-tool/dart-flutter-telemetry-dismissed-surveys.json
+_scratch/appdata/.dart-tool/dart-flutter-telemetry-session.json
+_scratch/appdata/.dart-tool/dart-flutter-telemetry.config

@@ -1,0 +1,11 @@
+apps/haven_app/test EXISTS, dart files: 141
+packages/haven_api/test EXISTS, dart files: 9
+packages/haven_core/test EXISTS, dart files: 1
+packages/haven_models/test EXISTS, dart files: 3
+--- lib dart counts ---
+apps/haven_app/lib: 299
+packages/haven_api/lib: 29
+packages/haven_core/lib: 10
+packages/haven_models/lib: 14
+--- all apps/ + packages/ dart under lib ---
+352

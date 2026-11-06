@@ -1,0 +1,4 @@
+line-count rule: max 200 lines per source file
+hand-written source files scanned: 615
+violations: 0
+EXIT: 0

@@ -1,0 +1,34 @@
+name: haven_child
+description: "Haven Child Companion — the child-side Android app (Phase 3, local-first)."
+publish_to: 'none'
+
+# Stage 1 foundation: no cloud dependencies (no supabase/firebase/http) may
+# appear here. Backend lanes arrive only through the haven_api seams in later
+# stages.
+version: 0.1.0
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  get: ^4.7.3
+  path_provider: ^2.1.6
+  flutter_secure_storage: ^11.2.0
+  haven_api:
+    path: ../../packages/haven_api
+  haven_core:
+    path: ../../packages/haven_core
+  haven_models:
+    path: ../../packages/haven_models
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true

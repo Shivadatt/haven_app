@@ -1,0 +1,17 @@
+warning: in the working copy of '_scratch/p2v_agentC/build_log.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/DEFERRED_FUNCTIONALITIES.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/KNOWN_LIMITATIONS.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/LOCAL_WORKFLOW_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/PHASE_2_FEATURE_MATRIX.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/PHASE_2_IMPLEMENTATION_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/SCREEN_IMPLEMENTATION_REPORT.md', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'docs/implementation/phase_2/TEST_RESULTS.md', LF will be replaced by CRLF the next time Git touches it
+ _scratch/p2v_agentC/build_log.txt                  | 15 +++++++++-
+ .../phase_2/DEFERRED_FUNCTIONALITIES.md            |  4 +--
+ docs/implementation/phase_2/KNOWN_LIMITATIONS.md   | 13 +++++++--
+ .../phase_2/LOCAL_WORKFLOW_REPORT.md               |  4 +--
+ .../phase_2/PHASE_2_FEATURE_MATRIX.md              |  4 +--
+ .../phase_2/PHASE_2_IMPLEMENTATION_REPORT.md       |  6 ++--
+ .../phase_2/SCREEN_IMPLEMENTATION_REPORT.md        |  2 +-
+ docs/implementation/phase_2/TEST_RESULTS.md        | 32 +++++++++++++++++++---
+ 8 files changed, 63 insertions(+), 17 deletions(-)

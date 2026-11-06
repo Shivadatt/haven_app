@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+      Deliberately empty: Stage 1 declares no permissions, debug builds
+      included. Flutter's tooling normally adds INTERNET here for hot reload;
+      we removed it on purpose so the local-only promise is visible in the
+      manifest, and debugging stays on the USB/adb transport.
+    -->
+</manifest>

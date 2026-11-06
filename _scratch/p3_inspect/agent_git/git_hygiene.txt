@@ -1,0 +1,33 @@
+--- all tracked Kotlin files ---
+android_native/child_services/communication/CommunicationStateReader.kt
+android_native/child_services/device_admin/DeviceAdminStateReader.kt
+android_native/child_services/device_admin/HavenDeviceAdminReceiver.kt
+android_native/child_services/location/LocationStateReader.kt
+android_native/child_services/monitoring/MonitoringStateReader.kt
+android_native/child_services/permissions/PermissionStateReader.kt
+android_native/child_services/platform_bridge/BridgeContract.kt
+android_native/child_services/platform_bridge/DeviceStateReader.kt
+android_native/child_services/platform_bridge/HavenBridge.kt
+android_native/child_services/platform_bridge/OsAnswers.kt
+apps/haven_app/android/app/src/main/kotlin/com/haven/haven_app/MainActivity.kt
+--- all tracked manifests/gradle ---
+apps/haven_app/android/app/build.gradle.kts
+apps/haven_app/android/app/src/debug/AndroidManifest.xml
+apps/haven_app/android/app/src/main/AndroidManifest.xml
+apps/haven_app/android/app/src/profile/AndroidManifest.xml
+apps/haven_app/android/build.gradle.kts
+apps/haven_app/android/gradle.properties
+apps/haven_app/android/gradle/wrapper/gradle-wrapper.properties
+apps/haven_app/android/settings.gradle.kts
+--- build/ or .dart_tool tracked? ---
+0
+--- apk/aab tracked? ---
+--- largest tracked files ---
+250320 docs/audit/frontend_functionality/MASTER_FUNCTIONALITY_CATALOG.md
+157738 docs/stage2/migrations/A3-staging-load-v1.sql
+106086 docs/audit/frontend_functionality/BUTTON_AND_ACTION_AUDIT.md
+93563 docs/stage2/migrations/A3c-notification-backend.sql
+83908 docs/stage2/S2-A4-edge-functions-audit.md
+80208 docs/stage2/S2-A2-firebase-console-audit.md
+78260 docs/audit/frontend_functionality/FEATURE_STATUS_MATRIX.csv
+75508 docs/stage2/S2-EXEC-04-evidence-and-hash-manifest.md

@@ -1,0 +1,26 @@
+--- tracked under apps/haven_app/android ---
+apps/haven_app/android/.gitignore
+apps/haven_app/android/app/build.gradle.kts
+apps/haven_app/android/app/src/debug/AndroidManifest.xml
+apps/haven_app/android/app/src/main/AndroidManifest.xml
+apps/haven_app/android/app/src/main/kotlin/com/haven/haven_app/MainActivity.kt
+apps/haven_app/android/app/src/main/res/drawable-v21/launch_background.xml
+apps/haven_app/android/app/src/main/res/drawable/launch_background.xml
+apps/haven_app/android/app/src/main/res/mipmap-hdpi/ic_launcher.png
+apps/haven_app/android/app/src/main/res/mipmap-mdpi/ic_launcher.png
+apps/haven_app/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png
+apps/haven_app/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png
+apps/haven_app/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png
+apps/haven_app/android/app/src/main/res/values-night/styles.xml
+apps/haven_app/android/app/src/main/res/values/strings.xml
+apps/haven_app/android/app/src/main/res/values/styles.xml
+apps/haven_app/android/app/src/main/res/xml/haven_device_admin.xml
+apps/haven_app/android/app/src/profile/AndroidManifest.xml
+apps/haven_app/android/build.gradle.kts
+apps/haven_app/android/gradle.properties
+apps/haven_app/android/gradle/wrapper/gradle-wrapper.properties
+apps/haven_app/android/settings.gradle.kts
+--- untracked (excl ignored) there ---
+--- android_native untracked ---
+--- root-level android dirs anywhere ---
+apps/haven_app/android
