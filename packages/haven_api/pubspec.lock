@@ -270,6 +270,13 @@ packages:
       relative: true
     source: path
     version: "0.1.0"
+  haven_offline:
+    dependency: "direct main"
+    description:
+      path: "../haven_offline"
+      relative: true
+    source: path
+    version: "0.1.0"
   http:
     dependency: transitive
     description:

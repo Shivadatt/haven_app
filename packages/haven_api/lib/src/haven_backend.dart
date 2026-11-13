@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:haven_core/haven_core.dart';
+import 'package:haven_offline/haven_offline.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'auth_contracts.dart';
@@ -120,27 +120,6 @@ final class HavenBackend {
   static DeviceIdentity get identity => Get.isRegistered<DeviceIdentity>()
       ? Get.find<DeviceIdentity>()
       : VaultDeviceIdentity(_UnavailableVault());
-}
-
-/// What startup actually resolved, so a screen can explain itself.
-final class HavenBackendHandle {
-  const HavenBackendHandle(this.status);
-
-  final BackendStatus status;
-}
-
-final class EdgeCallerUnavailable implements EdgeCaller {
-  @override
-  Future<Result<EdgeReply>> invoke(
-    String slug,
-    Map<String, Object?> body, {
-    Map<String, String> deviceHeaders = const {},
-  }) async => Err(
-    const NetworkFailure(
-      'This build is not connected to a backend.',
-      detail: 'edge caller unavailable',
-    ),
-  );
 }
 
 final class _UnavailableVault implements SecretVault {

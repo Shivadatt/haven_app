@@ -1,6 +1,6 @@
 import 'package:haven_core/haven_core.dart';
 
-import '../backend_endpoints.dart';
+import 'backend_endpoints.dart';
 import 'local_tables.dart';
 
 /// Predefined deterministic demo records for [DemoDataSuite].

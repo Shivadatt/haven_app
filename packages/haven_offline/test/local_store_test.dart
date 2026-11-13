@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:haven_api/haven_api.dart';
+import 'package:haven_offline/haven_offline.dart';
 import 'package:haven_core/haven_core.dart';
 
 /// A complete database document, shaped exactly as the store persists it.

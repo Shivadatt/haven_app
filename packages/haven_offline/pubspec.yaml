@@ -1,0 +1,22 @@
+name: haven_offline
+description: "Haven: Pure offline storage engine, local database, tables, schema, constraints and contracts."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ^3.12.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.7.3
+  haven_core:
+    path: ../haven_core
+  haven_models:
+    path: ../haven_models
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+

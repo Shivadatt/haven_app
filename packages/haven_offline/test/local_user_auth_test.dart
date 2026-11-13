@@ -1,4 +1,4 @@
-import 'package:haven_api/haven_api.dart';
+import 'package:haven_offline/haven_offline.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:flutter_test/flutter_test.dart';
 

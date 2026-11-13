@@ -1,12 +1,12 @@
 import 'package:get/get.dart';
 import 'package:haven_core/haven_core.dart';
 
-import '../auth_contracts.dart';
-import '../backend_status.dart';
-import '../data_contracts.dart';
-import '../device_identity_impl.dart';
-import '../haven_backend.dart' show HavenBackendHandle, EdgeCallerUnavailable;
-import '../offline_backends.dart';
+import 'auth_contracts.dart';
+import 'backend_handle.dart';
+import 'backend_status.dart';
+import 'data_contracts.dart';
+import 'device_identity_impl.dart';
+import 'offline_backends.dart';
 import 'local_change_feed.dart';
 import 'local_store.dart';
 import 'local_tables.dart';

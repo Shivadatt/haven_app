@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:haven_api/src/offline/local_profile_store.dart';
-import 'package:haven_api/src/offline/local_store.dart';
-import 'package:haven_api/src/offline/local_tables.dart';
+import 'package:haven_offline/haven_offline.dart';
 
 void main() {
   late InMemoryLocalStore store;

@@ -18,6 +18,8 @@ dependencies:
     path: ../haven_core
   haven_models:
     path: ../haven_models
+  haven_offline:
+    path: ../haven_offline
   supabase_flutter: ^2.18.3
 
 dev_dependencies:

@@ -429,6 +429,13 @@ packages:
       relative: true
     source: path
     version: "0.1.0"
+  haven_offline:
+    dependency: transitive
+    description:
+      path: "../../packages/haven_offline"
+      relative: true
+    source: path
+    version: "0.1.0"
   hooks:
     dependency: transitive
     description:

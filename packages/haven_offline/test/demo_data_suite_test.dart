@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:haven_api/haven_api.dart';
+import 'package:haven_offline/haven_offline.dart';
 
 void main() {
   late LocalTables tables;

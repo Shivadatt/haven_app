@@ -1,6 +1,6 @@
 import 'package:haven_core/haven_core.dart';
 
-import '../auth_contracts.dart';
+import 'auth_contracts.dart';
 import 'local_tables.dart';
 
 /// Loads and updates the person's own local `profiles` row.

@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:haven_core/haven_core.dart';
 
-import '../auth_contracts.dart';
+import 'auth_contracts.dart';
 import 'local_ids.dart';
 import 'local_tables.dart';
 

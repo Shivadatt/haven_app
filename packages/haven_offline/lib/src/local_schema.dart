@@ -1,4 +1,4 @@
-import '../backend_endpoints.dart';
+import 'backend_endpoints.dart';
 
 /// Constraint registry for the local tables — the shape of the captured schema,
 /// expressed in the rules the real database enforces.

@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import '../data_contracts.dart';
+import 'data_contracts.dart';
 import 'local_queries.dart';
 
 /// Change notifications for the offline tables.
