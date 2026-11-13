@@ -1,0 +1,972 @@
+Can't load Kernel binary: Invalid kernel binary format version (expected 125, found 130).
+Resolving dependencies...
+Downloading packages...
+  app_links_linux 1.0.4 (1.0.5 available)
+  clock 1.1.2 (1.1.3 available)
+  code_assets 1.2.1 (2.2.0 available)
+  cupertino_icons 1.0.9 (2.0.0 available)
+  geolocator 14.0.1 (14.1.2 available)
+  hooks 2.0.2 (2.2.0 available)
+  jni 1.1.1 (1.1.2 available)
+  matcher 0.12.19 (0.12.20 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.0 (1.19.0 available)
+  objective_c 9.5.0 (9.6.4 available)
+  passkeys_platform_interface 2.10.0 (2.11.0 available)
+  petitparser 7.0.2 (7.1.0 available)
+  record_use 0.6.0 (1.1.1 available)
+  shared_preferences_android 2.5.4 (2.5.5 available)
+  shared_preferences_foundation 2.5.7 (2.6.2 available)
+  stack_trace 1.12.1 (1.12.2 available)
+  test_api 0.7.11 (0.7.15 available)
+  vector_math 2.2.0 (2.4.4 available)
+  web 1.1.1 (1.1.2 available)
+  xml 7.0.1 (7.1.0 available)
+Got dependencies!
+21 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading D:/control/apps/haven_app/test/account/account_controller_test.dart
+00:00 +0: D:/control/apps/haven_app/test/account/account_controller_test.dart: loading fills the name field and reads the three refusals
+00:00 +1: D:/control/apps/haven_app/test/account/account_controller_test.dart: a load that fails is kept as a failure, not cleared
+00:00 +2: D:/control/apps/haven_app/test/account/account_controller_test.dart: an account with no row cannot be renamed from here
+00:00 +3: D:/control/apps/haven_app/test/account/account_controller_test.dart: saving writes the name and reloads what the backend now holds
+00:00 +4: D:/control/apps/haven_app/test/account/account_controller_test.dart: a refused save says so and stays on the screen
+00:00 +5: D:/control/apps/haven_app/test/account/account_controller_test.dart: signing out ends the session and lands on the explanation
+00:00 +6: D:/control/apps/haven_app/test/account/account_controller_test.dart: a sign-out the backend refuses keeps the parent signed in
+00:00 +7: D:/control/apps/haven_app/test/account/account_controller_test.dart: setup is where an account with no record has to go
+00:00 +8: D:/control/apps/haven_app/test/account/account_controller_test.dart: a second save while the first is running does nothing
+00:01 +9: D:/control/apps/haven_app/test/account/account_page_test.dart: the name is shown before it is ever edited
+00:02 +10: D:/control/apps/haven_app/test/account/account_page_test.dart: the name is shown before it is ever edited
+00:02 +11: D:/control/apps/haven_app/test/account/account_page_test.dart: the name is shown before it is ever edited
+00:02 +12: D:/control/apps/haven_app/test/account/account_page_test.dart: the name is shown before it is ever edited
+00:03 +13: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +14: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +15: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +16: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +17: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +18: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +19: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +20: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +21: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +22: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +23: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +24: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +25: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:03 +26: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:04 +27: D:/control/apps/haven_app/test/account/account_profile_edit_test.dart: Offline and local session status display displays local session chip and offline mode indicator
+00:04 +28: D:/control/apps/haven_app/test/account/account_page_test.dart: an account with no record is offered setup, not a dead form
+00:04 +29: D:/control/apps/haven_app/test/account/account_page_test.dart: signing out is confirmed first
+00:04 +30: D:/control/apps/haven_app/test/account/account_page_test.dart: confirming signs out and explains where the parent landed
+00:05 +31: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: AppApprovalsPage Widget Tests renders tabs and sample requests, handles tab switching
+00:06 +32: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: AppApprovalsPage Widget Tests renders tabs and sample requests, handles tab switching
+00:06 +33: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: AppApprovalsPage Widget Tests renders tabs and sample requests, handles tab switching
+00:06 +34: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: AppApprovalsPage Widget Tests renders tabs and sample requests, handles tab switching
+00:06 +35: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: AppApprovalsPage Widget Tests renders tabs and sample requests, handles tab switching
+00:06 +36: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: AppApprovalsPage Widget Tests renders tabs and sample requests, handles tab switching
+00:07 +37: D:/control/apps/haven_app/test/approvals/extension_requests_test.dart: loads extension requests correctly
+00:07 +38: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: ExtensionRequestsPage Widget Tests renders extension requests and history tab
+00:08 +39: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: ExtensionRequestsPage Widget Tests renders extension requests and history tab
+00:08 +40: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: ExtensionRequestsPage Widget Tests renders extension requests and history tab
+00:08 +41: D:/control/apps/haven_app/test/approvals/approvals_pages_widget_test.dart: ExtensionRequestsPage Widget Tests renders extension requests and history tab
+00:09 +42: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +43: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +44: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +45: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +46: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +47: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +48: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +49: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:10 +50: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:11 +51: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests renders recovery form and validates empty email
+00:11 +52: D:/control/apps/haven_app/test/authentication/forgot_password_controller_test.dart: ForgotPasswordController valid email displays offline notice without claiming email sent
+00:11 +53: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests submits email and displays offline recovery note
+00:11 +54: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ForgotPasswordPage Widget Tests submits email and displays offline recovery note
+00:11 +55: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: ResetPasswordPage Widget Tests renders reset password form with mismatch error
+00:12 +56: D:/control/apps/haven_app/test/authentication/auth_pages_widget_test.dart: VerifyEmailPage Widget Tests renders email verification status and offline notice
+00:13 +57: D:/control/apps/haven_app/test/authentication/register_controller_test.dart: every field is checked before a request leaves
+00:13 +58: D:/control/apps/haven_app/test/authentication/register_controller_test.dart: the trimmed name and email are what reach the provider
+00:13 +59: D:/control/apps/haven_app/test/authentication/register_controller_test.dart: a rejected password is shown, not swallowed
+00:13 +60: D:/control/apps/haven_app/test/authentication/register_controller_test.dart: a new account has no profile row, so onboarding is next
+00:13 +61: D:/control/apps/haven_app/test/authentication/register_controller_test.dart: a second tap while the first is running sends nothing
+00:15 +62: D:/control/apps/haven_app/test/authentication/reset_password_controller_test.dart: ResetPasswordController validates password matching
+00:15 +63: D:/control/apps/haven_app/test/authentication/reset_password_controller_test.dart: ResetPasswordController validates short password length
+00:15 +64: D:/control/apps/haven_app/test/authentication/reset_password_controller_test.dart: ResetPasswordController updates local password in vault successfully
+00:15 +65: D:/control/apps/haven_app/test/authentication/reset_password_controller_test.dart: ResetPasswordController fails gracefully when vault is unavailable
+00:16 +66: D:/control/apps/haven_app/test/authentication/session_watch_test.dart: an expired session says so, once
+00:16 +67: D:/control/apps/haven_app/test/authentication/session_watch_test.dart: a signed-out session is reported, not silently bounced
+00:16 +68: D:/control/apps/haven_app/test/authentication/session_watch_test.dart: a missing profile is stated as the provisioning gap it is
+00:16 +69: D:/control/apps/haven_app/test/authentication/session_watch_test.dart: being on the sign-in page already is the answer
+00:16 +70: D:/control/apps/haven_app/test/authentication/session_watch_test.dart: a live session moves nobody
+00:16 +71: D:/control/apps/haven_app/test/authentication/session_watch_test.dart: closing stops the listening
+00:21 +72: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: a blank email is caught locally, before any request
+00:21 +73: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: an incomplete address names what to fix
+00:21 +74: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: a short password is rejected before the network is tried
+00:21 +75: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: the backend answer is what the parent reads
+00:21 +76: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: an existing profile lands on the dashboard
+00:21 +77: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: a signed-in account with no profile row starts onboarding
+00:21 +78: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: a profile read failure still enters the app, on the dashboard
+00:21 +79: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: a second tap while a request is in flight sends nothing
+00:21 +80: D:/control/apps/haven_app/test/authentication/sign_in_controller_test.dart: the password is cleared from the field after a successful sign-in
+00:22 +81: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: email, password, one action — and no unapproved provider
+00:24 +82: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: email, password, one action — and no unapproved provider
+00:24 +83: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: email, password, one action — and no unapproved provider
+00:24 +84: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: email, password, one action — and no unapproved provider
+00:24 +85: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: an empty submit names the field and sends nothing
+00:25 +86: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a successful sign-in leaves the screen
+00:25 +87: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +88: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +89: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +90: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +91: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +92: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +93: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +94: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +95: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +96: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: a rejected sign-in keeps the parent on the form
+00:25 +97: D:/control/apps/haven_app/test/authentication/sign_in_page_test.dart: revealing the password is the parent’s choice
+00:27 +98: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a refused read is the refusal, not an empty shelf
+00:28 +99: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: an empty list is said as an empty list
+00:28 +100: D:/control/apps/haven_app/test/child_devices/devices_repository_test.dart: the list refuses with F6, the policy without a grant
+00:28 +101: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a paired device is named, dated and statused from its row
+00:28 +102: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a paired device is named, dated and statused from its row
+00:28 +103: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a paired device is named, dated and statused from its row
+00:28 +104: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a paired device is named, dated and statused from its row
+00:28 +105: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a paired device is named, dated and statused from its row
+00:28 +106: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a paired device is named, dated and statused from its row
+00:29 +107: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a device the backend has never heard from says so
+00:29 +108: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: a revoked device is history, not a fault
+00:29 +109: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: no secret material from the row reaches the screen
+00:29 +110: D:/control/apps/haven_app/test/child_devices/devices_page_test.dart: open pairing is a route, not a dead button
+00:30 +111: D:/control/apps/haven_app/test/child_devices/device_detail_enhancements_test.dart: DeviceDetailController Enhancements loads assigned child profile information
+00:30 +112: D:/control/apps/haven_app/test/child_devices/device_detail_enhancements_test.dart: DeviceDetailController Enhancements device rename triggers repository and reloads
+00:30 +113: D:/control/apps/haven_app/test/child_devices/device_detail_enhancements_test.dart: DeviceDetailController Enhancements device unlink triggers repository and navigates back
+00:30 +114: D:/control/apps/haven_app/test/child_devices/device_detail_enhancements_test.dart: DeviceDetailController Enhancements reassigns child successfully
+00:32 +115: D:/control/apps/haven_app/test/child_devices/device_detail_page_test.dart: the record and both actions each state their own gap
+00:34 +116: D:/control/apps/haven_app/test/child_devices/device_detail_page_test.dart: the record and both actions each state their own gap
+00:34 +117: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceListCard renders SIMULATED DEVICE chip and battery level
+00:34 +118: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceListCard renders SIMULATED DEVICE chip and battery level
+00:34 +119: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceListCard renders SIMULATED DEVICE chip and battery level
+00:35 +120: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceListCard renders SIMULATED DEVICE chip and battery level
+00:35 +121: D:/control/apps/haven_app/test/child_devices/device_detail_page_test.dart: a refusal the backend would not repeat has no retry button
+00:35 +122: D:/control/apps/haven_app/test/child_devices/device_detail_page_test.dart: a refusal the backend would not repeat has no retry button
+00:35 +123: D:/control/apps/haven_app/test/child_devices/device_detail_page_test.dart: a refusal the backend would not repeat has no retry button
+00:35 +124: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +125: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +126: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +127: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +128: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +129: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +130: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +131: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DevicesPage has Add simulated device button
+00:35 +132: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceDetailPage shows Rename and Assign child buttons
+00:36 +133: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceDetailPage shows Rename and Assign child buttons
+00:36 +134: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceDetailPage shows Rename and Assign child buttons
+00:36 +135: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceDetailPage shows Rename and Assign child buttons
+00:36 +136: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceDetailPage shows Rename and Assign child buttons
+00:36 +137: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceDetailPage shows Rename and Assign child buttons
+00:36 +138: D:/control/apps/haven_app/test/child_devices/device_management_test.dart: Device Management DeviceDetailPage shows Rename and Assign child buttons
+00:36 +139: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:37 +140: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:37 +141: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:37 +142: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:37 +143: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:37 +144: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:37 +145: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:37 +146: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:38 +147: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:38 +148: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:38 +149: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:38 +150: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:38 +151: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:38 +152: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:39 +153: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:39 +154: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:39 +155: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:39 +156: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:39 +157: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:40 +158: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:40 +159: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:40 +160: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:40 +161: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:40 +162: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:40 +163: D:/control/apps/haven_app/test/dashboard/dashboard_alerts_test.dart: reports are listed with the backend's own severity word
+00:40 +164: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +165: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +166: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +167: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +168: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +169: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +170: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +171: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +172: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +173: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +174: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +175: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +176: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +177: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:40 +178: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:41 +179: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the family is described in counts the app actually read
+00:41 +180: D:/control/apps/haven_app/test/dashboard/dashboard_shortcuts_test.dart: renders all quick action shortcuts in the widget
+00:41 +181: D:/control/apps/haven_app/test/dashboard/dashboard_shortcuts_test.dart: renders all quick action shortcuts in the widget
+00:42 +182: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +183: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +184: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +185: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +186: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +187: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +188: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +189: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +190: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +191: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +192: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +193: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +194: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +195: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +196: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:42 +197: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:43 +198: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:43 +199: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:43 +200: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:44 +201: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a refused read is the refusal, not an empty shelf
+00:44 +202: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +203: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +204: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +205: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +206: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +207: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +208: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +209: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +210: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the named places have a way onward, outside the device wall
+00:44 +211: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a family that has reported nothing says so plainly
+00:45 +212: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: a family that has reported nothing says so plainly
+00:45 +213: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +214: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +215: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +216: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +217: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +218: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +219: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +220: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +221: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +222: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:45 +223: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:46 +224: D:/control/apps/haven_app/test/dashboard/dashboard_page_test.dart: the records a parent can read have ways onward
+00:46 +225: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: the device gap is the captured sentence, word for word
+00:46 +226: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: the device gap is the captured sentence, word for word
+00:47 +227: D:/control/apps/haven_app/test/device_activity/activity_page_test.dart: the device gap is the captured sentence, word for word
+00:47 +228: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +229: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +230: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +231: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +232: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +233: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +234: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +235: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +236: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +237: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:47 +238: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:48 +239: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:48 +240: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +241: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +242: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +243: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +244: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +245: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +246: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +247: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +248: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +249: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +250: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a row shows the ask, the state and who it went to
+00:49 +251: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: the log offers no control that could only be refused
+00:49 +252: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: the write refusal is the captured sentence, not a paraphrase
+00:49 +253: D:/control/apps/haven_app/test/device_commands/commands_page_test.dart: a device refusal is shown beside the rows it leaves unnamed
+00:50 +254: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:50 +255: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:50 +256: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +257: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +258: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +259: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +260: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +261: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +262: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +263: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +264: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +265: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +266: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +267: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +268: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +269: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +270: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:51 +271: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +272: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +273: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +274: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +275: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +276: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +277: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +278: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +279: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +280: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +281: D:/control/apps/haven_app/test/device_pairing/demo_capability_labelling_test.dart: DeviceHardwareCard labels the simulated battery it shows
+00:52 +282: D:/control/apps/haven_app/test/device_pairing/pairing_code_page_test.dart: both ways in are explained as refusals
+00:52 +283: D:/control/apps/haven_app/test/device_pairing/pairing_code_page_test.dart: both ways in are explained as refusals
+00:52 +284: D:/control/apps/haven_app/test/device_pairing/pairing_code_page_test.dart: both ways in are explained as refusals
+00:52 +285: D:/control/apps/haven_app/test/device_pairing/pairing_code_page_test.dart: both ways in are explained as refusals
+00:52 +286: D:/control/apps/haven_app/test/device_pairing/pairing_code_page_test.dart: both ways in are explained as refusals
+00:53 +287: D:/control/apps/haven_app/test/device_pairing/pairing_code_page_test.dart: both ways in are explained as refusals
+00:53 +288: D:/control/apps/haven_app/test/device_pairing/pairing_code_page_test.dart: both ways in are explained as refusals
+00:53 +289: D:/control/apps/haven_app/test/device_pairing/pairing_page_test.dart: the requests this family may read are listed
+00:54 +290: D:/control/apps/haven_app/test/device_pairing/pairing_page_test.dart: the requests this family may read are listed
+00:54 +291: D:/control/apps/haven_app/test/device_pairing/pairing_page_test.dart: the requests this family may read are listed
+00:54 +292: D:/control/apps/haven_app/test/device_pairing/pairing_page_test.dart: the requests this family may read are listed
+00:54 +293: D:/control/apps/haven_app/test/device_pairing/pairing_page_test.dart: the requests this family may read are listed
+00:54 +294: D:/control/apps/haven_app/test/device_pairing/pairing_page_test.dart: the requests this family may read are listed
+00:54 +295: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:54 +296: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:54 +297: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +298: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +299: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +300: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +301: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +302: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +303: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +304: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +305: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +306: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +307: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +308: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +309: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +310: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +311: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +312: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +313: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +314: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:55 +315: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:56 +316: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:56 +317: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:56 +318: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:56 +319: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:57 +320: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:57 +321: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:57 +322: D:/control/apps/haven_app/test/device_pairing/pairing_simulation_page_test.dart: PairingSimulationPage displays LOCAL PAIRING SIMULATION and full pairing flow
+00:57 +323: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +324: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +325: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +326: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +327: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +328: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +329: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +330: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +331: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +332: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +333: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+00:58 +334: D:/control/apps/haven_app/test/family/child_profile_management_test.dart: Child Profile Management ChildProfilePage shows avatar, age bracket and edit button
+01:00 +335: D:/control/apps/haven_app/test/family/child_profile_page_test.dart: the child is named and the device gap is shown
+01:00 +336: D:/control/apps/haven_app/test/family/child_profile_page_test.dart: the child is named and the device gap is shown
+01:00 +337: D:/control/apps/haven_app/test/family/child_profile_page_test.dart: the child is named and the device gap is shown
+01:00 +338: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +339: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +340: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +341: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +342: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +343: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +344: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +345: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +346: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +347: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +348: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +349: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:00 +350: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:01 +351: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:01 +352: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:01 +353: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +354: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +355: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +356: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +357: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +358: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +359: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +360: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +361: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +362: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +363: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +364: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +365: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +366: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +367: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +368: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:02 +369: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests renders child create form and validates empty name
+01:03 +370: D:/control/apps/haven_app/test/family/family_page_test.dart: the two abilities with no contract say so
+01:03 +371: D:/control/apps/haven_app/test/family/family_page_test.dart: the two abilities with no contract say so
+01:03 +372: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests fills child name, selects bracket and avatar, then submits
+01:03 +373: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests fills child name, selects bracket and avatar, then submits
+01:03 +374: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests fills child name, selects bracket and avatar, then submits
+01:03 +375: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests fills child name, selects bracket and avatar, then submits
+01:03 +376: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests fills child name, selects bracket and avatar, then submits
+01:03 +377: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests fills child name, selects bracket and avatar, then submits
+01:03 +378: D:/control/apps/haven_app/test/family/family_pages_widget_test.dart: ChildCreatePage Widget Tests fills child name, selects bracket and avatar, then submits
+01:03 +379: D:/control/apps/haven_app/test/family/family_page_test.dart: saving sends the edited name
+01:04 +380: D:/control/apps/haven_app/test/family/family_page_test.dart: saving sends the edited name
+01:04 +381: D:/control/apps/haven_app/test/family/family_page_test.dart: a refused save is read back, not swallowed
+01:04 +382: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:04 +383: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:04 +384: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:04 +385: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:04 +386: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:04 +387: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:04 +388: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +389: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +390: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +391: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +392: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +393: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +394: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +395: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +396: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +397: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +398: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +399: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +400: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +401: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +402: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +403: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +404: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +405: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +406: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +407: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +408: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +409: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +410: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +411: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +412: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +413: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +414: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:05 +415: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +416: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +417: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +418: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +419: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +420: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +421: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +422: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +423: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +424: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +425: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:06 +426: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:07 +427: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:07 +428: D:/control/apps/haven_app/test/help/help_pages_widget_test.dart: HelpCenterPage Widget Tests renders search, category filters, and article cards
+01:07 +429: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +430: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +431: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +432: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +433: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +434: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +435: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +436: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +437: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +438: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +439: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +440: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +441: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +442: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +443: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +444: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:07 +445: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:08 +446: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:08 +447: D:/control/apps/haven_app/test/location/location_page_test.dart: a refused read is the refusal, not an empty shelf
+01:08 +448: D:/control/apps/haven_app/test/notifications/alerts_repository_test.dart: HavenAlertsRepository.load an account with no family reads no board rather than an empty one
+01:08 +449: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +450: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +451: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +452: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +453: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +454: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +455: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +456: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +457: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +458: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +459: D:/control/apps/haven_app/test/location/location_page_test.dart: a family that has reported nothing says so plainly
+01:08 +460: D:/control/apps/haven_app/test/location/location_page_test.dart: a fix shows whose, when, and how wide the device says it is
+01:09 +461: D:/control/apps/haven_app/test/location/location_page_test.dart: coordinates stay hidden until the parent asks
+01:09 +462: D:/control/apps/haven_app/test/location/location_page_test.dart: coordinates stay hidden until the parent asks
+01:09 +463: D:/control/apps/haven_app/test/location/location_page_test.dart: coordinates stay hidden until the parent asks
+01:09 +464: D:/control/apps/haven_app/test/location/location_page_test.dart: coordinates stay hidden until the parent asks
+01:09 +465: D:/control/apps/haven_app/test/location/location_page_test.dart: coordinates stay hidden until the parent asks
+01:09 +466: D:/control/apps/haven_app/test/location/location_page_test.dart: no reveal control is offered when nothing was read
+01:09 +467: D:/control/apps/haven_app/test/location/location_page_test.dart: the presence boundary is stated, not worked around
+01:10 +468: D:/control/apps/haven_app/test/notifications/notifications_controller_test.dart: NotificationsController loads on open and holds what the read gave
+01:10 +469: D:/control/apps/haven_app/test/location/location_page_test.dart: the device gap is the captured sentence, word for word
+01:10 +470: D:/control/apps/haven_app/test/location/location_page_test.dart: the device gap is the captured sentence, word for word
+01:10 +471: D:/control/apps/haven_app/test/location/location_page_test.dart: the device gap is the captured sentence, word for word
+01:10 +472: D:/control/apps/haven_app/test/location/location_page_test.dart: the device gap is the captured sentence, word for word
+01:10 +473: D:/control/apps/haven_app/test/location/location_page_test.dart: the device gap is the captured sentence, word for word
+01:10 +474: D:/control/apps/haven_app/test/location/location_page_test.dart: the device gap is the captured sentence, word for word
+01:10 +475: D:/control/apps/haven_app/test/notifications/notifications_feed_test.dart: NotificationsController watching the reports table a hint is a reason to read, not data to show
+01:10 +476: D:/control/apps/haven_app/test/notifications/notifications_feed_test.dart: NotificationsController watching the reports table a hint is a reason to read, not data to show
+01:10 +477: D:/control/apps/haven_app/test/notifications/notifications_feed_test.dart: NotificationsController watching the reports table a hint is a reason to read, not data to show
+01:10 +478: D:/control/apps/haven_app/test/notifications/notifications_feed_test.dart: NotificationsController watching the reports table a hint is a reason to read, not data to show
+01:10 +479: D:/control/apps/haven_app/test/notifications/notifications_feed_test.dart: NotificationsController watching the reports table a hint is a reason to read, not data to show
+01:10 +480: D:/control/apps/haven_app/test/notifications/notifications_feed_test.dart: NotificationsController watching the reports table a hint is a reason to read, not data to show
+01:10 +481: D:/control/apps/haven_app/test/location/location_page_test.dart: no family routes to setup and replaces the stack
+01:10 +482: D:/control/apps/haven_app/test/location/location_page_test.dart: no family routes to setup and replaces the stack
+01:10 +483: D:/control/apps/haven_app/test/location/location_page_test.dart: no family routes to setup and replaces the stack
+01:10 +484: D:/control/apps/haven_app/test/location/location_page_test.dart: a retryable failure offers a retry and re-reads
+01:10 +485: D:/control/apps/haven_app/test/location/location_page_test.dart: a narrowed read is labelled as narrowed
+01:11 +486: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:12 +487: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:12 +488: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:12 +489: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:12 +490: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:12 +491: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +492: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +493: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +494: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +495: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +496: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +497: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +498: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +499: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +500: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a row shows the sentence the backend wrote, in its own words
+01:13 +501: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:13 +502: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +503: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +504: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +505: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +506: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +507: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +508: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +509: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +510: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +511: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +512: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +513: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:14 +514: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: the addressee stays unnamed and its refusal is on the page
+01:14 +515: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: the list says it is a read, not a delivery
+01:14 +516: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a network failure is retryable, not a specification gap
+01:14 +517: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: a registered device drops the sentence that no longer applies
+01:15 +518: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: no family routes the parent to setup
+01:15 +519: D:/control/apps/haven_app/test/notifications/reports_limits_page_test.dart: the permission question opens the screen that owns it
+01:15 +520: D:/control/apps/haven_app/test/notifications/notifications_page_test.dart: a feed hint re-reads the list in place
+01:15 +521: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +522: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +523: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +524: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +525: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +526: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +527: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +528: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +529: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +530: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +531: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +532: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:16 +533: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:17 +534: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:17 +535: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:17 +536: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:17 +537: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:17 +538: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:17 +539: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:17 +540: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +541: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +542: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +543: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +544: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +545: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +546: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +547: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: the watch list is stated, and the consent gap is admitted
+01:18 +548: D:/control/apps/haven_app/test/permissions/cross_language_key_agreement_test.dart: the Kotlin and Dart sources parse to the shapes this test needs
+01:18 +549: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:18 +550: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:18 +551: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:19 +552: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:19 +553: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:19 +554: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:19 +555: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:19 +556: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:19 +557: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: continuing without reading is refused, not ignored
+01:19 +558: D:/control/apps/haven_app/test/permissions/device_control_states_test.dart: a screen-timeout rule is only reported when the phone sent a number
+01:19 +559: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: reading it moves to the family step
+01:19 +560: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: reading it moves to the family step
+01:19 +561: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: reading it moves to the family step
+01:19 +562: D:/control/apps/haven_app/test/onboarding/onboarding_page_test.dart: reading it moves to the family step
+01:20 +563: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:20 +564: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:20 +565: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:20 +566: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:20 +567: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:20 +568: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:20 +569: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:20 +570: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +571: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +572: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +573: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +574: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +575: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +576: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +577: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:21 +578: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:22 +579: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:22 +580: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card says which phone answered and reads as a report
+01:22 +581: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: an undeclared permission is named as not asked for, not refused
+01:22 +582: D:/control/apps/haven_app/test/policies/app_limits_controller_test.dart: AppLimitsController initializes and loads limits and devices
+01:22 +583: D:/control/apps/haven_app/test/policies/app_limits_controller_test.dart: AppLimitsController initializes and loads limits and devices
+01:23 +584: D:/control/apps/haven_app/test/policies/app_limits_controller_test.dart: AppLimitsController initializes and loads limits and devices
+01:23 +585: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a location the phone would not report is said as withheld
+01:23 +586: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a location the phone would not report is said as withheld
+01:23 +587: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a location the phone would not report is said as withheld
+01:23 +588: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a location the phone would not report is said as withheld
+01:23 +589: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a location the phone would not report is said as withheld
+01:23 +590: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a location the phone would not report is said as withheld
+01:23 +591: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: one failed section is shown as a refusal with the phone's reason
+01:23 +592: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a build with no native lane is not shown as a phone that said no
+01:23 +593: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: the card asks the phone once per load, and never caches
+01:23 +594: D:/control/apps/haven_app/test/permissions/device_state_card_test.dart: a controller with no lane injected still gives the card an answer to show
+01:23 +595: D:/control/apps/haven_app/test/policies/app_rules_controller_test.dart: AppRulesController initializes with allowed and blocked apps
+01:23 +596: D:/control/apps/haven_app/test/policies/app_rules_controller_test.dart: AppRulesController switches tabs and filters apps accordingly
+01:23 +597: D:/control/apps/haven_app/test/policies/app_rules_controller_test.dart: AppRulesController prevents duplicates when switching status from allowed to blocked
+01:23 +598: D:/control/apps/haven_app/test/policies/app_rules_controller_test.dart: AppRulesController toggles app status with toggleAppStatus
+01:23 +599: D:/control/apps/haven_app/test/policies/app_rules_controller_test.dart: AppRulesController removes app rule completely
+01:23 +600: D:/control/apps/haven_app/test/policies/app_rules_controller_test.dart: AppRulesController validates package name before adding rule
+01:23 +601: D:/control/apps/haven_app/test/policies/app_rules_controller_test.dart: AppRulesController filters list by category and search
+01:24 +602: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:24 +603: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:24 +604: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:24 +605: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:24 +606: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:24 +607: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:24 +608: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:24 +609: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +610: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +611: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +612: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +613: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +614: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +615: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +616: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +617: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +618: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:25 +619: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:26 +620: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:26 +621: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:26 +622: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:26 +623: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:26 +624: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:26 +625: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +626: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +627: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +628: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +629: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +630: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +631: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +632: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +633: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +634: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +635: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +636: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +637: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +638: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: AppLimitsPage Widget Tests renders list of catalogue apps with limit details
+01:27 +639: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:28 +640: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:28 +641: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:28 +642: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:28 +643: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:28 +644: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:29 +645: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:29 +646: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:29 +647: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:29 +648: D:/control/apps/haven_app/test/policies/policies_local_persistence_test.dart: Local Policy Persistence and Banner UI renders prominent local configuration banner and cards
+01:29 +649: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +650: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +651: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +652: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +653: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +654: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +655: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +656: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +657: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:29 +658: D:/control/apps/haven_app/test/policies/policies_advanced_widgets_test.dart: WebFilterPage Widget Tests renders SafeSearch switch and domain filter segments
+01:30 +659: D:/control/apps/haven_app/test/policies/policies_page_test.dart: no family routes the parent to setup
+01:30 +660: D:/control/apps/haven_app/test/policies/web_filter_controller_test.dart: WebFilterController initializes and loads blocked and allowed domains
+01:30 +661: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +662: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +663: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +664: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +665: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +666: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +667: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +668: D:/control/apps/haven_app/test/policies/policies_page_test.dart: a device id in the route reaches the read
+01:30 +669: D:/control/apps/haven_app/test/policies/web_filter_controller_test.dart: WebFilterController filters domains by category and query
+01:30 +670: D:/control/apps/haven_app/test/policies/web_filter_models_test.dart: WebFilterModels normalizes URLs into clean domain hostnames
+01:30 +671: D:/control/apps/haven_app/test/policies/web_filter_models_test.dart: WebFilterModels categorizes domains according to presets
+01:30 +672: D:/control/apps/haven_app/test/policies/web_filter_models_test.dart: WebFilterModels presets contain expected categories
+01:31 +673: D:/control/apps/haven_app/test/remote_sessions/media_peer_test.dart: UnspecifiedMediaPeer refuses to open a path, citing the absence the screens show
+01:31 +674: D:/control/apps/haven_app/test/remote_sessions/media_peer_test.dart: UnspecifiedMediaPeer refuses to take a connection down, because none was ever up
+01:31 +675: D:/control/apps/haven_app/test/remote_sessions/media_peer_test.dart: UnspecifiedMediaPeer never reports media flowing, whatever was asked of it
+01:31 +676: D:/control/apps/haven_app/test/remote_sessions/media_peer_test.dart: UnspecifiedMediaPeer the refusal does not depend on what it is asked for
+01:31 +677: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +678: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +679: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +680: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +681: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +682: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +683: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +684: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +685: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +686: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +687: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +688: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +689: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +690: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +691: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +692: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +693: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +694: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +695: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +696: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +697: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +698: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +699: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +700: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +701: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +702: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +703: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +704: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +705: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +706: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +707: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +708: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:33 +709: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: a row says what was asked, where it stands and what is marked
+01:34 +710: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the record is shown in the words of its own columns
+01:34 +711: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the record is shown in the words of its own columns
+01:34 +712: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the record is shown in the words of its own columns
+01:34 +713: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: both refusals are the captured sentences, not paraphrases
+01:34 +714: D:/control/apps/haven_app/test/remote_sessions/session_detail_controller_test.dart: SessionDetailController reads the record the route named
+01:35 +715: D:/control/apps/haven_app/test/remote_sessions/session_detail_controller_test.dart: SessionDetailController reads the record the route named
+01:35 +716: D:/control/apps/haven_app/test/remote_sessions/session_detail_controller_test.dart: SessionDetailController reads the record the route named
+01:35 +717: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the signalling wall is the captured sentence
+01:35 +718: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the signalling wall is the captured sentence
+01:35 +719: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the signalling wall is the captured sentence
+01:35 +720: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the signalling wall is the captured sentence
+01:35 +721: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the signalling wall is the captured sentence
+01:35 +722: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the signalling wall is the captured sentence
+01:35 +723: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: the addressee stays unnamed and its refusal is on the page
+01:35 +724: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: the addressee stays unnamed and its refusal is on the page
+01:35 +725: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: the addressee stays unnamed and its refusal is on the page
+01:35 +726: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: the screen offers no control that could only be refused
+01:35 +727: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: opening a record pushes the detail route with its id
+01:35 +728: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: opening a record pushes the detail route with its id
+01:35 +729: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: opening a record pushes the detail route with its id
+01:35 +730: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: opening a record pushes the detail route with its id
+01:35 +731: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: a network failure is not filed as a specification gap
+01:35 +732: D:/control/apps/haven_app/test/remote_sessions/session_detail_repository_test.dart: HavenSessionsRepository.loadDetail pairs the record with the newest buffer rows it returns
+01:35 +733: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: no family routes the parent to setup
+01:35 +734: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: no family routes the parent to setup
+01:35 +735: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: no family routes the parent to setup
+01:35 +736: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: no family routes the parent to setup
+01:35 +737: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: no family routes the parent to setup
+01:36 +738: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: no family routes the parent to setup
+01:36 +739: D:/control/apps/haven_app/test/remote_sessions/remote_sessions_page_test.dart: no family routes the parent to setup
+01:36 +740: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: no family routes the parent to setup
+01:36 +741: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: no family routes the parent to setup
+01:36 +742: D:/control/apps/haven_app/test/remote_sessions/remote_session_detail_page_test.dart: no family routes the parent to setup
+01:36 +743: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Create Safe Zone (Converts Refusal #12) creates safe zone with valid name, coordinates and radius
+01:36 +744: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Create Safe Zone (Converts Refusal #12) enforces name length constraints (1..60 chars)
+01:36 +745: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Create Safe Zone (Converts Refusal #12) enforces radius constraints (50m..5000m)
+01:36 +746: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Create Safe Zone (Converts Refusal #12) enforces latitude (-90..90) and longitude (-180..180)
+01:36 +747: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Create Safe Zone (Converts Refusal #12) enforces name uniqueness within the family
+01:36 +748: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Read, Edit, Delete load returns ZoneBoard with isOffline true
+01:36 +749: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Read, Edit, Delete save updates existing zone and enforces unique name
+01:36 +750: D:/control/apps/haven_app/test/safe_zones/local_safe_zones_test.dart: LocalSafeZonesRepository - Read, Edit, Delete remove deletes the zone by id
+01:37 +751: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:38 +752: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:38 +753: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:38 +754: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:38 +755: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +756: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +757: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +758: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +759: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +760: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +761: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +762: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +763: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +764: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +765: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +766: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +767: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +768: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +769: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +770: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +771: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +772: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +773: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +774: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +775: D:/control/apps/haven_app/test/safe_zones/safe_zones_page_test.dart: a refused read is the refusal, not an empty shelf
+01:39 +776: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +777: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +778: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +779: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +780: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +781: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +782: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +783: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +784: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +785: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:40 +786: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +787: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +788: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +789: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +790: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +791: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +792: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +793: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +794: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +795: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +796: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +797: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +798: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +799: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +800: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +801: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +802: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +803: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +804: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +805: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:41 +806: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +807: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +808: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +809: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +810: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +811: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +812: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +813: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +814: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +815: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:42 +816: D:/control/apps/haven_app/test/safe_zones/safe_zone_create_page_test.dart: SafeZoneCreatePage allows input, radius stepper/slider and creation
+01:43 +817: D:/control/apps/haven_app/test/safe_zones/zone_editor_controller_test.dart: SafeZoneEditorController load seeds the form from the row it read
+01:43 +818: D:/control/apps/haven_app/test/safe_zones/zone_editor_controller_test.dart: SafeZoneEditorController load a place that is not in this family is kept as a refusal
+01:43 +819: D:/control/apps/haven_app/test/safe_zones/zone_editor_controller_test.dart: SafeZoneEditorController load an editor opened with no id reads that id and gets nothing
+01:43 +820: D:/control/apps/haven_app/test/safe_zones/zone_editor_controller_test.dart: SafeZoneEditorController validation an untouched form is valid and has nothing to send
+01:43 +821: D:/control/apps/haven_app/test/safe_zones/zone_editor_controller_test.dart: SafeZoneEditorController validation a field the parent types into is reported immediately
+01:43 +822: D:/control/apps/haven_app/test/safe_zones/zone_editor_controller_test.dart: SafeZoneEditorController validation a change that only re-types the same number is not a change
+01:43 +823: D:/control/apps/haven_app/test/safe_zones/zone_editor_controller_test.dart: SafeZoneEditorController validation pausing a place is a change even though no text moved
+01:43 +824: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:44 +825: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:44 +826: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:44 +827: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:44 +828: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:44 +829: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:45 +830: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:45 +831: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: a place this account cannot read is a refusal, not a blank form
+01:45 +832: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:45 +833: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:46 +834: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:46 +835: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:46 +836: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:46 +837: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:46 +838: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:46 +839: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:46 +840: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:47 +841: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:47 +842: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:47 +843: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:48 +844: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:48 +845: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:48 +846: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:48 +847: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:48 +848: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:49 +849: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:49 +850: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:49 +851: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:49 +852: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:49 +853: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:50 +854: D:/control/apps/haven_app/test/safe_zones/zone_editor_removal_page_test.dart: removal asks first, and a cancelled ask removes nothing
+01:50 +855: D:/control/apps/haven_app/test/settings/settings_page_test.dart: the stored choice is the chip that reads as chosen
+01:50 +856: D:/control/apps/haven_app/test/settings/settings_page_test.dart: the stored choice is the chip that reads as chosen
+01:50 +857: D:/control/apps/haven_app/test/settings/settings_page_test.dart: the stored choice is the chip that reads as chosen
+01:50 +858: D:/control/apps/haven_app/test/settings/settings_page_test.dart: the stored choice is the chip that reads as chosen
+01:51 +859: D:/control/apps/haven_app/test/settings/settings_page_test.dart: the stored choice is the chip that reads as chosen
+01:51 +860: D:/control/apps/haven_app/test/settings/settings_page_test.dart: the stored choice is the chip that reads as chosen
+01:51 +861: D:/control/apps/haven_app/test/settings/settings_page_test.dart: the stored choice is the chip that reads as chosen
+01:51 +862: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +863: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +864: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +865: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +866: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +867: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +868: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +869: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +870: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +871: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +872: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +873: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +874: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +875: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +876: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:52 +877: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:53 +878: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:53 +879: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:53 +880: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:53 +881: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:53 +882: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:53 +883: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset full data reset requires two-step modal confirmation
+01:54 +884: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: pausing a place is a change the parent can save
+01:54 +885: D:/control/apps/haven_app/test/settings/settings_profile_reset_test.dart: Parent Profile, Local Sign-Out, Demo Reset & Full Reset cancelling step 1 aborts full reset flow
+01:54 +886: D:/control/apps/haven_app/test/safe_zones/zone_editor_page_test.dart: the editor never offers to name a new place
+01:54 +887: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +888: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +889: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +890: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +891: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +892: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +893: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +894: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +895: D:/control/apps/haven_app/test/shell/backend_banner_test.dart: an unconfigured build says so
+01:56 +896: D:/control/apps/haven_app/test/shell/confirm_sheet_test.dart: cancel is a no
+01:56 +897: D:/control/apps/haven_app/test/shell/confirm_sheet_test.dart: cancel is a no
+01:56 +898: D:/control/apps/haven_app/test/shell/confirm_sheet_test.dart: cancel is a no
+01:56 +899: D:/control/apps/haven_app/test/shell/confirm_sheet_test.dart: cancel is a no
+01:57 +900: D:/control/apps/haven_app/test/shell/confirm_sheet_test.dart: cancel is a no
+01:57 +901: D:/control/apps/haven_app/test/shell/confirm_sheet_test.dart: cancel is a no
+01:57 +902: D:/control/apps/haven_app/test/shell/confirm_sheet_test.dart: cancel is a no
+01:58 +903: D:/control/apps/haven_app/test/shell/state_view_test.dart: loading shows progress and no data
+01:58 +904: D:/control/apps/haven_app/test/shell/state_view_test.dart: loading shows progress and no data
+01:58 +905: D:/control/apps/haven_app/test/shell/state_view_test.dart: loading shows progress and no data
+01:58 +906: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +907: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +908: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +909: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +910: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +911: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +912: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +913: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +914: D:/control/apps/haven_app/test/shell/status_chip_test.dart: blocked reads as blocked, and is deliberately not red
+01:58 +915: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:58 +916: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:58 +917: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:58 +918: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:58 +919: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:58 +920: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:59 +921: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:59 +922: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:59 +923: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:59 +924: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an entry is shown in the backend's own words
+01:59 +925: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: a device refusal is shown where a name would have been
+02:00 +926: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: the online question is refused, not guessed at
+02:00 +927: D:/control/apps/haven_app/test/telemetry/telemetry_repository_test.dart: HavenTelemetryRepository.load reads this family's entries and nothing else
+02:00 +928: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +929: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +930: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +931: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +932: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +933: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +934: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +935: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +936: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: an empty trail is a read that found nothing, not a wall
+02:00 +937: D:/control/apps/haven_app/test/telemetry/telemetry_repository_test.dart: row to line an entry with no target reads as a family-level change
+02:00 +938: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: a refused read is reported as a refusal
+02:00 +939: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: a refused read is reported as a refusal
+02:00 +940: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: a refused read is reported as a refusal
+02:00 +941: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: no family says so instead of showing an empty log
+02:00 +942: D:/control/apps/haven_app/test/telemetry/telemetry_card_test.dart: the card states that it is a snapshot, not a live view
+02:00 +943: All tests passed!

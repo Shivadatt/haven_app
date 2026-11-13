@@ -16,6 +16,12 @@ final class DeviceSetupChecklistCard extends GetView<DeviceDetailController> {
     return SectionCard(
       title: 'Setup instructions & health checklist',
       subtitle: 'Required capabilities on the child’s phone for enforcement',
+      // Stage 2 / D-5 R-9: these granted flags are the simulated row written
+      // by `pairing_simulation_service.dart`, never a read of a real device.
+      trailing: const StatusChip(
+        label: 'DEMO — simulated values',
+        tone: StatusTone.warning,
+      ),
       child: Obx(() {
         final Device? dev = controller.device.value?.valueOrNull;
         if (dev == null) return const SizedBox.shrink();

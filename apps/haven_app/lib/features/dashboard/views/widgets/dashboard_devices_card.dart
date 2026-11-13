@@ -90,7 +90,10 @@ class _DeviceRow extends StatelessWidget {
               children: [
                 Text(device.displayName, style: HavenText.body),
                 Text(
-                  '${device.platform} · ${device.batteryLevel ?? 0}% battery',
+                  // Stage 2 / D-5 R-9: the battery number here is the
+                  // simulation's fabricated value, never a phone reading.
+                  '${device.platform} · ${device.batteryLevel ?? 0}% battery '
+                  '(DEMO — simulated values)',
                   style: HavenText.caption,
                 ),
               ],

@@ -1,0 +1,277 @@
+Can't load Kernel binary: Invalid kernel binary format version (expected 125, found 130).
+00:00 +0: loading D:/control/apps/haven_child/test/app/child_app_flow_test.dart
+00:00 +0: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:00 +1: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:00 +2: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:00 +3: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:00 +4: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:00 +5: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:00 +6: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:01 +7: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:01 +8: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:01 +9: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:01 +10: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:01 +11: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:01 +12: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:01 +13: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +14: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +15: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +16: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +17: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +18: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +19: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +20: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +21: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +22: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +23: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +24: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +25: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +26: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +27: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +28: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +29: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +30: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +31: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +32: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +33: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +34: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +35: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +36: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +37: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +38: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +39: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:02 +40: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +41: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +42: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +43: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +44: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +45: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +46: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +47: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +48: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +49: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:03 +50: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +51: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +52: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +53: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +54: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +55: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +56: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +57: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +58: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +59: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +60: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +61: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +62: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+00:04 +63: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: empty profile → Start setup → five steps → profile home
+
+Warning: A call to tap() with finder "Found 1 widget with text "rocket": [
+  Text("rocket", inherit: true, size: 13.0, weight: 400, letterSpacing: 0.1, height: 1.4x, textAlign: center, dependencies: [DefaultSelectionStyle, DefaultTextStyle, MediaQuery, _ScrollableScope]),
+]" derived an Offset (Offset(203.0, 432.0)) that would not hit test on the specified widget.
+Maybe the widget is actually off-screen, or another widget is obscuring it, or the widget cannot receive pointer events.
+The finder corresponds to this RenderBox: RenderParagraph#e6b8a
+The hit test result at that offset is: HitTestResult(RenderPointerListener#f0cb5@Offset(51.0, 18.0), RenderSemanticsAnnotations#282ab@Offset(51.0, 18.0), RenderMouseRegion#9a68d@Offset(51.0, 18.0), RenderSemanticsAnnotations#8fdfd@Offset(51.0, 18.0), _RenderInkFeatures#a3b75@Offset(51.0, 18.0), RenderCustomPaint#b8599@Offset(51.0, 18.0), RenderPhysicalShape#aeab4@Offset(51.0, 18.0), RenderPositionedBox#3a9f6@Offset(51.0, 24.0), RenderSemanticsAnnotations#b4197@Offset(51.0, 24.0), RenderWrap#1bb65@Offset(143.0, 24.0), RenderFlex#9c0ba@Offset(143.0, 278.0), RenderPadding#291cc@Offset(143.0, 294.0), _RenderSingleChildViewport#78a9d@Offset(143.0, 270.0), RenderIgnorePointer#a6ef1@Offset(143.0, 270.0), RenderSemanticsAnnotations#b67ae@Offset(143.0, 270.0), RenderPointerListener#e42b1@Offset(143.0, 270.0), RenderSemanticsGestureHandler#b1477@Offset(143.0, 270.0), RenderPointerListener#54c77@Offset(143.0, 270.0), _RenderScrollSemantics#b3eed@Offset(143.0, 270.0), RenderClipRect#9c6b3@Offset(143.0, 270.0), RenderFlex#5f833@Offset(143.0, 376.0), RenderPadding#421e3@Offset(163.0, 376.0), RenderConstrainedBox#33344@Offset(163.0, 376.0), RenderPositionedBox#789ca@Offset(203.0, 376.0), RenderPadding#c113d@Offset(203.0, 376.0), RenderCustomMultiChildLayoutBox#60994@Offset(203.0, 432.0), _RenderInkFeatures#10167@Offset(203.0, 432.0), RenderPhysicalModel#89c56@Offset(203.0, 432.0), RenderSemanticsAnnotations#237b5@Offset(203.0, 432.0), RenderRepaintBoundary#13c58@Offset(203.0, 432.0), RenderIgnorePointer#e117b@Offset(203.0, 432.0), RenderAnimatedOpacity#7fe01@Offset(203.0, 432.0), RenderAnimatedOpacity#4795e@Offset(203.0, 432.0), _RenderColoredBox#a10b2@Offset(203.0, 432.0), RenderAnimatedOpacity#6f8b3@Offset(203.0, 432.0), RenderIgnorePointer#8faf3@Offset(203.0, 432.0), RenderAnimatedOpacity#895de@Offset(203.0, 432.0), RenderRepaintBoundary#f3787@Offset(203.0, 432.0), RenderSemanticsAnnotations#cc998@Offset(203.0, 432.0), RenderOffstage#54c94@Offset(203.0, 432.0), RenderSemanticsAnnotations#3dbf1@Offset(203.0, 432.0), _RenderTheater#031c9@Offset(203.0, 432.0), RenderAbsorbPointer#d1046@Offset(203.0, 432.0), RenderPointerListener#c7f8a@Offset(203.0, 432.0), RenderSemanticsAnnotations#1db82@Offset(203.0, 432.0), RenderCustomPaint#fa789@Offset(203.0, 432.0), RenderSemanticsAnnotations#bc54c@Offset(203.0, 432.0), RenderSemanticsAnnotations#e6945@Offset(203.0, 432.0), RenderSemanticsAnnotations#2fc50@Offset(203.0, 432.0), RenderTapRegionSurface#216c4@Offset(203.0, 432.0), RenderSemanticsAnnotations#59433@Offset(203.0, 432.0), RenderSemanticsAnnotations#c0a9d@Offset(203.0, 432.0), HitTestEntry<HitTestTarget>#e3a94(_ReusableRenderView#054f4), HitTestEntry<HitTestTarget>#e4287(<AutomatedTestWidgetsFlutterBinding>))
+#0      WidgetController._getElementPoint (package:flutter_test/src/controller.dart:2165:25)
+#1      WidgetController.getCenter (package:flutter_test/src/controller.dart:1947:12)
+#2      WidgetController.tap (package:flutter_test/src/controller.dart:1080:7)
+#3      main.tap (file:///D:/control/apps/haven_child/test/app/child_app_flow_test.dart:59:18)
+<asynchronous suspension>
+#4      main.<anonymous closure> (file:///D:/control/apps/haven_child/test/app/child_app_flow_test.dart:79:5)
+<asynchronous suspension>
+#5      testWidgets.<anonymous closure>.<anonymous closure> (package:flutter_test/src/widget_tester.dart:192:15)
+<asynchronous suspension>
+#6      TestWidgetsFlutterBinding._runTestBody (package:flutter_test/src/binding.dart:1952:5)
+<asynchronous suspension>
+#7      StackZoneSpecification._registerCallback.<anonymous closure> (package:stack_trace/src/stack_zone_specification.dart:114:42)
+<asynchronous suspension>
+To silence this warning, pass "warnIfMissed: false" to "tap()".
+To make this warning fatal, set WidgetController.hitTestWarningShouldBeFatal to true.
+
+00:05 +64: D:/control/apps/haven_child/test/features/device/device_page_test.dart: every declared row is rendered with the fake reader
+00:07 +65: D:/control/apps/haven_child/test/features/device/device_page_test.dart: every declared row is rendered with the fake reader
+00:07 +66: D:/control/apps/haven_child/test/features/device/device_page_test.dart: every declared row is rendered with the fake reader
+00:07 +67: D:/control/apps/haven_child/test/features/device/device_page_test.dart: every declared row is rendered with the fake reader
+00:07 +68: D:/control/apps/haven_child/test/features/device/device_page_test.dart: every declared row is rendered with the fake reader
+00:07 +69: D:/control/apps/haven_child/test/features/device/device_page_test.dart: every declared row is rendered with the fake reader
+00:08 +70: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: re-running the flow after completion cannot create a second profile
+00:08 +71: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +72: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +73: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +74: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +75: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +76: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +77: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +78: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +79: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:08 +80: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +81: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +82: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +83: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +84: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +85: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +86: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +87: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +88: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +89: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +90: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +91: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +92: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +93: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step previews the draft and says it happens once
+00:09 +94: D:/control/apps/haven_child/test/app/child_app_flow_test.dart: an unlisted route lands on the honest unknown page
+00:09 +95: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +96: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +97: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +98: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +99: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +100: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +101: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +102: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:09 +103: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: submit creates once, clears the draft and routes to /profile
+00:10 +104: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: a fast double tap cannot start a second create
+00:10 +105: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: a create-once refusal is shown, never swallowed
+00:10 +106: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: an incomplete resumed draft bounces back to step 2 first
+00:11 +107: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: a half-finished device finishes WITHOUT touching the profile
+00:11 +108: D:/control/apps/haven_child/test/features/onboarding/onboarding_completion_page_test.dart: the finish step survives a 320x568 phone
+00:11 +109: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: step 1 introduces the app with its honest limits
+00:12 +110: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: step 1 introduces the app with its honest limits
+00:12 +111: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: step 1 introduces the app with its honest limits
+00:12 +112: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: step 1 introduces the app with its honest limits
+00:12 +113: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: step 1 introduces the app with its honest limits
+00:12 +114: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: step 1 introduces the app with its honest limits
+00:13 +115: D:/control/apps/haven_child/test/features/onboarding/onboarding_resume_test.dart: a killed app reopens on the saved step with every draft value
+00:14 +116: D:/control/apps/haven_child/test/features/onboarding/onboarding_resume_test.dart: a killed app reopens on the saved step with every draft value
+00:15 +117: D:/control/apps/haven_child/test/features/onboarding/onboarding_resume_test.dart: a killed app reopens on the saved step with every draft value
+00:15 +118: D:/control/apps/haven_child/test/features/onboarding/onboarding_resume_test.dart: a killed app reopens on the saved step with every draft value
+00:15 +119: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:15 +120: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +121: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +122: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +123: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +124: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +125: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +126: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +127: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +128: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +129: D:/control/apps/haven_child/test/features/onboarding/onboarding_page_test.dart: a valid name without an age bracket hits the second gate
+00:16 +130: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +131: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +132: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +133: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +134: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +135: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +136: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +137: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:16 +138: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:17 +139: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:17 +140: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:17 +141: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:18 +142: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:18 +143: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:18 +144: D:/control/apps/haven_child/test/features/profile/profile_page_test.dart: no profile yet is the setup prompt, not an error
+00:18 +145: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:18 +146: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:19 +147: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:19 +148: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:19 +149: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:19 +150: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:20 +151: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:20 +152: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:20 +153: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:20 +154: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a pending boot shows the loading frame, nothing more
+00:20 +155: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +156: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +157: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +158: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +159: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +160: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +161: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +162: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +163: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +164: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:20 +165: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +166: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +167: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +168: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +169: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +170: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +171: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +172: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +173: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +174: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +175: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +176: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +177: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +178: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +179: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +180: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +181: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +182: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +183: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +184: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +185: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +186: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +187: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +188: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +189: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:21 +190: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:22 +191: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:22 +192: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:22 +193: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:22 +194: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:22 +195: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:22 +196: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:22 +197: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: welcome step, long honest sentences and all
+00:23 +198: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a failed boot is honest: the message and a retry, no reset button
+00:23 +199: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: About-you step: chips wrap, field fits
+00:24 +200: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: About-you step: chips wrap, field fits
+00:24 +201: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: About-you step: chips wrap, field fits
+00:24 +202: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: About-you step: chips wrap, field fits
+00:24 +203: D:/control/apps/haven_child/test/narrow/narrow_screens_test.dart: About-you step: chips wrap, field fits
+00:24 +204: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:24 +205: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:24 +206: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +207: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +208: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +209: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +210: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +211: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +212: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +213: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +214: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:25 +215: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:26 +216: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:26 +217: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:26 +218: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a CORRUPT document offers the explicit developer reset
+00:26 +219: D:/control/apps/haven_child/test/registration/registration_controller_test.dart: it mirrors the service and never upgrades BLOCKED to something softer
+00:26 +220: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a failed reset keeps the failure visible and stays off the app
+00:26 +221: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a failed reset keeps the failure visible and stays off the app
+00:26 +222: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a failed reset keeps the failure visible and stays off the app
+00:26 +223: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a failed reset keeps the failure visible and stays off the app
+00:26 +224: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: a failed reset keeps the failure visible and stays off the app
+00:26 +225: D:/control/apps/haven_child/test/registration/registration_repository_test.dart: a snapshot survives the round trip through the real section writer
+00:26 +226: D:/control/apps/haven_child/test/registration/registration_repository_test.dart: a snapshot survives the round trip through the real section writer
+00:26 +227: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +228: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +229: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +230: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +231: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +232: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +233: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +234: D:/control/apps/haven_child/test/features/splash/splash_page_test.dart: the boot frame fits a 320x568 phone
+00:26 +235: D:/control/apps/haven_child/test/registration/registration_repository_test.dart: on the real file lane a damaged DOCUMENT is a typed failure and is never reset
+00:27 +236: D:/control/apps/haven_child/test/registration/registration_repository_test.dart: on the real file lane a write and a read round-trip through the JSON file
+00:27 +237: D:/control/apps/haven_child/test/registration/registration_repository_test.dart: on the real file lane clear removes the section and leaves the document valid
+00:27 +238: D:/control/apps/haven_child/test/registration/no_plaintext_pairing_code_test.dart: no persisted document ever contains a pairing code
+00:27 +239: D:/control/apps/haven_child/test/registration/no_plaintext_pairing_code_test.dart: the audit lane records a digit count and nothing that identifies it
+00:27 +240: D:/control/apps/haven_child/test/registration/no_plaintext_pairing_code_test.dart: the serialized registration section names only status, id and audit
+00:27 +241: D:/control/apps/haven_child/test/registration/no_plaintext_pairing_code_test.dart: on the real file lane the JSON bytes on disk hold no code either
+00:27 +242: D:/control/apps/haven_child/test/registration/no_plaintext_pairing_code_test.dart: a stable local id is not derived from a code, and survives an unpair
+00:27 +243: D:/control/apps/haven_child/test/registration/registration_transitions_reachable_test.dart: reachable() separates "not yet" from "never"
+00:28 +244: D:/control/apps/haven_child/test/registration/registration_transitions_reachable_test.dart: every status persists its kind and nothing else about the code
+00:28 +245: D:/control/apps/haven_child/test/registration/registration_transitions_test.dart: the declared table every state lists its legal moves and nothing else
+00:28 +246: D:/control/apps/haven_child/test/registration/registration_transitions_test.dart: the declared table the legal moves land
+00:28 +247: D:/control/apps/haven_child/test/registration/registration_transitions_test.dart: illegal moves are refused with a typed failure the table names them and the guard agrees
+00:28 +248: D:/control/apps/haven_child/test/registration/registration_transitions_test.dart: illegal moves are refused with a typed failure move() returns a ValidationFailure and never throws
+00:28 +249: D:/control/apps/haven_child/test/registration/registration_transitions_test.dart: illegal moves are refused with a typed failure a skipped step cannot be used to forge a registration
+00:29 +250: D:/control/apps/haven_child/test/widget_test.dart: child app builds and the splash starts booting
+00:31 +251: All tests passed!

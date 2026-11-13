@@ -1,0 +1,87 @@
+Can't load Kernel binary: Invalid kernel binary format version (expected 125, found 130).
+Resolving dependencies...
+Downloading packages...
+  app_links_linux 1.0.4 (1.0.5 available)
+  clock 1.1.2 (1.1.3 available)
+  jni 1.1.1 (1.1.2 available)
+  matcher 0.12.19 (0.12.20 available)
+  material_color_utilities 0.13.0 (0.13.1 available)
+  meta 1.18.0 (1.19.0 available)
+  passkeys_platform_interface 2.10.0 (2.11.0 available)
+  shared_preferences_android 2.5.4 (2.5.5 available)
+  shared_preferences_foundation 2.5.7 (2.6.2 available)
+  stack_trace 1.12.1 (1.12.2 available)
+  test_api 0.7.11 (0.7.15 available)
+  vector_math 2.2.0 (2.4.4 available)
+  web 1.1.1 (1.1.2 available)
+Got dependencies!
+13 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+00:00 +0: loading D:/control/packages/haven_api/test/backend_status_test.dart
+00:00 +0: D:/control/packages/haven_api/test/backend_status_test.dart: BackendStatus an unconfigured build can neither sign in nor load data
+00:00 +1: D:/control/packages/haven_api/test/backend_status_test.dart: BackendStatus firebase alone is not a session to sign into
+00:00 +2: D:/control/packages/haven_api/test/backend_status_test.dart: BackendStatus supabase url yields the non-secret ref for display
+00:00 +3: D:/control/packages/haven_api/test/backend_status_test.dart: captured contract guards only the 19 captured tables are accepted
+00:00 +4: D:/control/packages/haven_api/test/backend_status_test.dart: captured contract guards only the 14 captured RPCs are accepted
+00:00 +5: D:/control/packages/haven_api/test/backend_status_test.dart: captured contract guards the three never-existing function slugs stay unreachable
+00:00 +6: D:/control/packages/haven_api/test/backend_status_test.dart: failure mapping 42501 is reported as a permission refusal, not as missing data
+00:00 +7: D:/control/packages/haven_api/test/backend_status_test.dart: failure mapping an expired JWT signs the user out downstream
+00:00 +8: D:/control/packages/haven_api/test/backend_status_test.dart: failure mapping a network-layer auth error becomes retryable, and a null code cannot throw
+00:00 +9: D:/control/packages/haven_api/test/backend_status_test.dart: failure mapping a timeout is a network failure
+00:00 +10: D:/control/packages/haven_api/test/backend_status_test.dart: Edge envelope a 200 with no data key is not treated as success
+00:00 +11: D:/control/packages/haven_api/test/backend_status_test.dart: Edge envelope a refused reply carries the service message
+00:00 +12: D:/control/packages/haven_api/test/backend_status_test.dart: Edge envelope the {ok:true, ...fields} answer yields its fields
+00:00 +13: D:/control/packages/haven_api/test/backend_status_test.dart: Edge envelope an error object is read as its message, with its code attached
+00:00 +14: D:/control/packages/haven_api/test/backend_status_test.dart: Edge envelope a data payload passes through
+00:00 +15: D:/control/packages/haven_api/test/credential_seams_test.dart: device credential lane refuses to issue when the vault cannot protect the secret
+00:00 +16: D:/control/packages/haven_api/test/credential_seams_test.dart: device credential lane round-trips through an available vault and clears on demand
+00:00 +17: D:/control/packages/haven_api/test/credential_seams_test.dart: device credential lane a corrupt payload is deleted and reported as unpaired
+00:00 +18: D:/control/packages/haven_api/test/credential_seams_test.dart: unconfigured seams every call refuses instead of inventing a row
+00:00 +19: D:/control/packages/haven_api/test/credential_seams_test.dart: unconfigured seams the Firebase bridge is blocked, not silently proxied to passwords
+00:00 +20: D:/control/packages/haven_api/test/credential_seams_test.dart: unconfigured seams install with no endpoints registers the unconfigured clients
+00:00 +21: D:/control/packages/haven_api/test/credential_seams_test.dart: realtime feed rejects a table the baseline does not publish
+00:00 +22: D:/control/packages/haven_api/test/offline/demo_data_suite_test.dart: DemoDataSuite loadDemoData inserts valid deterministic rows respecting constraints
+00:00 +23: D:/control/packages/haven_api/test/offline/demo_data_suite_test.dart: DemoDataSuite clearDemoData removes only demo records and preserves user records
+00:01 +24: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: schema constraints and uniques duplicate ids and missing ids are refused
+00:01 +25: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: schema constraints and uniques safe zones are unique on family + name
+00:01 +26: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: schema constraints and uniques usage daily is unique on device + day + package
+00:01 +27: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: schema constraints and uniques safe zone states are unique on zone + device
+00:01 +28: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: foreign key enforcement a device must name a family that exists
+00:01 +29: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: foreign key enforcement policies, alerts and pairing requests require valid parents
+00:01 +30: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: foreign key enforcement a family or device with children cannot be deleted
+00:01 +31: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: foreign key enforcement delete without a filter is refused
+00:01 +32: D:/control/packages/haven_api/test/offline/local_constraints_test.dart: foreign key enforcement update re-checks constraints and a failed rename changes nothing
+00:01 +33: D:/control/packages/haven_api/test/offline/local_profile_store_test.dart: local profile store load finds the row by id, update renames it
+00:01 +34: D:/control/packages/haven_api/test/offline/local_profile_store_test.dart: local profile store createProfile validates and creates a new profile row
+00:02 +35: D:/control/packages/haven_api/test/offline/local_store_test.dart: LocalStore missing file a missing file loads as an empty database, not a failure
+00:02 +36: D:/control/packages/haven_api/test/offline/local_store_test.dart: LocalStore save + reopen a second store instance over the same temp dir sees saved rows
+00:02 +37: D:/control/packages/haven_api/test/offline/local_store_test.dart: LocalStore save + reopen the in-memory store round-trips the document it is given
+00:02 +38: D:/control/packages/haven_api/test/offline/local_store_test.dart: LocalStore atomic write a stale .tmp artifact is ignored; the original stays loadable
+00:02 +39: D:/control/packages/haven_api/test/offline/local_store_test.dart: LocalStore corrupt document unparseable JSON is a typed failure and the bytes are untouched
+00:02 +40: D:/control/packages/haven_api/test/offline/local_store_test.dart: LocalStore corrupt document a top-level JSON array is refused, not auto-reset
+00:02 +41: D:/control/packages/haven_api/test/offline/local_store_test.dart: LocalStore corrupt document a document from a newer schema version is refused
+00:02 +42: D:/control/packages/haven_api/test/offline/local_tables_test.dart: read semantics match FakeRowReader parity every eq pair must match; unknown table is a typed failure
+00:02 +43: D:/control/packages/haven_api/test/offline/local_tables_test.dart: read semantics match FakeRowReader parity orderDesc is newest-first and limit caps
+00:02 +44: D:/control/packages/haven_api/test/offline/local_tables_test.dart: read semantics match FakeRowReader parity first returns null on no match, not an error
+00:02 +45: D:/control/packages/haven_api/test/offline/local_tables_test.dart: durability across reopen rows written through one store reopen in another
+00:02 +46: D:/control/packages/haven_api/test/offline/local_tables_test.dart: durability across reopen durability across reopen with same in-memory store
+00:02 +47: D:/control/packages/haven_api/test/offline/local_tables_test.dart: durability across reopen a failed flush keeps rows pending and a retry persists them
+00:02 +48: D:/control/packages/haven_api/test/offline/local_tables_test.dart: demo isolation helpers demoRows and userRows partition any row set with demo or is_demo
+00:02 +49: D:/control/packages/haven_api/test/offline/local_tables_test.dart: demo isolation helpers clearDemoData deletes demo rows and keeps user rows across tables
+00:02 +50: D:/control/packages/haven_api/test/offline/local_tables_test.dart: demo isolation helpers removeDemoData and clearDemoRows aliases match clearDemoData
+00:02 +51: D:/control/packages/haven_api/test/offline/local_tables_test.dart: reset all data resetAll safely clears all local tables and persists
+00:02 +52: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account register creates the profile row and signs the session in
+00:03 +53: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account the secret lands in the vault, never in the row
+00:03 +54: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account sign in accepts the right password and rejects the wrong one
+00:03 +55: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account a second account with the same email is refused
+00:03 +56: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account an unavailable vault blocks registration, fail-closed
+00:03 +57: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account validation failures name their field and write nothing
+00:03 +58: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account sign-out keeps the profile and the secret
+00:03 +59: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account the account survives a store reopen into a new auth object
+00:03 +60: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account cloud token sign-in says it is blocked, not proxied
+00:03 +61: D:/control/packages/haven_api/test/offline/local_user_auth_test.dart: local parent account states emits signed-in then signed-out
+00:03 +62: D:/control/packages/haven_api/test/offline/stabilization_regression_test.dart: Stabilization: LocalTables.update forward collision validation updating the first row to conflict with a subsequent row is refused
+00:03 +63: D:/control/packages/haven_api/test/offline/stabilization_regression_test.dart: Stabilization: LocalTables.update forward collision validation updating row to its own current value succeeds without self-collision
+00:03 +64: D:/control/packages/haven_api/test/offline/stabilization_regression_test.dart: Stabilization: familyMembers unique constraint inserting the same user into the same family twice is refused
+00:03 +65: D:/control/packages/haven_api/test/offline/stabilization_regression_test.dart: Stabilization: demo data seeding with active user profile seeding demo data preserves user profile and does not mark it as demo
+00:03 +66: All tests passed!

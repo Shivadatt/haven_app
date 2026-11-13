@@ -1,0 +1,21 @@
+Can't load Kernel binary: Invalid kernel binary format version (expected 125, found 130).
+00:00 +0: loading D:/control/packages/haven_core/test/haven_core_test.dart
+00:00 +0: Result Ok exposes the value and no failure
+00:00 +1: Result Err exposes the failure and no value
+00:00 +2: Result map routes to the matching branch
+00:00 +3: blocked carries the missing specification and never a value
+00:00 +4: blocked isBlocked is false for a real failure
+00:00 +5: validation email accepts shape and rejects the obvious misses
+00:00 +6: validation display name has a bound
+00:00 +7: validation safe-zone radius is positive and metre-scaled
+00:00 +8: validation coordinates stay in range
+00:00 +9: validation uuid check is exact
+00:00 +10: format spans drop the smaller unit once hours appear
+00:00 +11: format relative wording uses an injected clock
+00:00 +12: format distance never claims sub-metre precision
+00:00 +13: format haversine matches a known short baseline
+00:00 +14: RetryPolicy delays grow and stay capped
+00:00 +15: RetryPolicy succeeds after transient failures and stops at the limit
+00:00 +16: RetryPolicy does not retry a rejection
+00:00 +17: Clock FixedClock advances and answers isPast
+00:00 +18: All tests passed!

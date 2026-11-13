@@ -16,6 +16,12 @@ final class DeviceHardwareCard extends GetView<DeviceDetailController> {
     return SectionCard(
       title: 'Hardware & software specs',
       subtitle: 'Technical profile as reported during check-in',
+      // Stage 2 / D-5 R-9: the battery and charging values below come from the
+      // local simulation, not a phone, so the card says so in its header.
+      trailing: const StatusChip(
+        label: 'DEMO — simulated values',
+        tone: StatusTone.warning,
+      ),
       child: Obx(() {
         final Device? dev = controller.device.value?.valueOrNull;
         if (dev == null) return const SizedBox.shrink();

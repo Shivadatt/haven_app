@@ -89,7 +89,7 @@ Stage-1 status" uses: `not implemented` / `genuinely read via channel (parent-si
 | Parent **source** manifest declares exactly one permission | `apps/haven_app/android/app/src/main/AndroidManifest.xml:7` (`INTERNET`) | FACT |
 | The Stage-1 child **merged debug** manifest nonetheless declares `INTERNET`, `WAKE_LOCK`, `ACCESS_NETWORK_STATE`, `POST_NOTIFICATIONS`, `com.google.android.c2dm.permission.RECEIVE`, `...gsf.permission.READ_GSERVICES` and a signature `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` | `apps/haven_child/build/app/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml:11-16`, `:18-22` | FACT (build artifact) |
 | Therefore "the child ships no network lane" is true **of the source manifest and of the Dart code**, and is **not** true of the merged artifact; the transitive plugin AARs add it | INFERRED from the two rows above + the child dependency transit (`apps/haven_child/pubspec.yaml:21-22` → `packages/haven_api/pubspec.yaml:13-15`, `:21`) | INFERRED |
-| Stage 2 must decide whether inventory claims are made against source or merged manifests | see §5 | PROPOSED |
+| ~~Stage 2 must decide~~ — **decided 2026-11-13**: inventory claims cite the **source and merged manifests separately**, and transitive plugin contributions are recorded as a third, distinct layer; source-manifest absence is never evidence of merged-APK absence | `STAGE_2_OWNER_DECISIONS.md` §5 (APPROVED manifest policy); re-measured post-implementation in §7 below | FACT (decision) |
 
 ---
 
@@ -119,3 +119,77 @@ Three handed citations did not verify as written; they were re-located and are c
 | `apps/haven_child/lib/core/device/channel_device_state.dart:7-15` | That file **does not exist**. The Dart half of the bridge is in the **parent**: `apps/haven_app/lib/core/permissions/channel_device_state.dart:13-16` (channel `:14`, method `:15`) | FACT |
 | `apps/haven_child/test/device/channel_device_state_test.dart:21-43` | Path is wrong; file and line range are right in the parent: `apps/haven_app/test/permissions/channel_device_state_test.dart:21-43` | FACT |
 | `backend/supabase/functions/pairing/identifiers.ts:24-25,46-48` | Path is wrong; lines are right in `_shared`: `backend/supabase/functions/_shared/identifiers.ts:24-25` (alphabet + `IDENTIFIER_LENGTH = 8`), `:46-48` (`newPairingCode`) | FACT |
+
+---
+
+## 7. Stage 2 implementation addendum — re-measured 2026-11-13 (Agent 3)
+
+Every row below was re-read by this agent on 2026-11-13 from `D:/control`; nothing here is copied forward from
+§1–§6 without re-opening the file. Gate timings, exit codes and raw logs live in
+`_scratch/p3_stage2/gates.md` + `_scratch/p3_stage2/logs/` (untracked; `_scratch/` is **not** gitignored —
+`git check-ignore -v _scratch/p3_stage2/gates.md` exits 1).
+
+### 7.1 Layer A — source manifests (what the repository declares)
+
+| App | Source-manifest permissions | Verified by | Label |
+| :--- | :--- | :--- | :--- |
+| child `com.haven.child` | **zero** `uses-permission` lines — `grep -n uses-permission apps/haven_child/android/app/src/main/AndroidManifest.xml` returned nothing (exit 1) | this pass | FACT |
+| parent `com.haven.haven_app` | exactly one, `INTERNET` (`apps/haven_app/android/app/src/main/AndroidManifest.xml:7`) | §4 row 3 re-confirmed | FACT |
+
+### 7.2 Layer B — merged debug build manifests (what the APK assembler actually saw)
+
+| App | Artifact | mtime | `uses-permission` set (line numbers verbatim) |
+| :--- | :--- | :--- | :--- |
+| child | `apps/haven_child/build/app/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml` (15,374 B) | 2026-11-06 12:23:57.240 +0530 | `INTERNET` :11, `WAKE_LOCK` :12, `ACCESS_NETWORK_STATE` :13, `POST_NOTIFICATIONS` :14, `com.google.android.c2dm.permission.RECEIVE` :15, `com.google.android.providers.gsf.permission.READ_GSERVICES` :16, `com.haven.child.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` :22 (preceded by its `<permission … protectionLevel="signature">` at :18-20) |
+| parent | `apps/haven_app/build/app/intermediates/merged_manifest/debug/processDebugMainManifest/AndroidManifest.xml` (16,710 B) | 2026-11-04 13:48:50.964 +0530 | `INTERNET` :15, `ACCESS_NETWORK_STATE` :31, `WAKE_LOCK` :32, `POST_NOTIFICATIONS` :33, `c2dm.permission.RECEIVE` :34, `READ_GSERVICES` :35, `com.haven.haven_app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` :41 |
+
+Both merged files **predate Stage 2** and were **not rewritten** by the 2026-11-13 rebuilds — Gradle reported
+`processDebugMainManifest` up-to-date (gates 7/8, `_scratch/p3_stage2/logs/child_build.log`,
+`parent_build.log`). They are still the correct description of today's debug APKs, and that was proved by input
+staleness rather than by assumption: no Android input of the child is newer than its merged file — newest
+non-cache inputs are `apps/haven_child/android/local.properties` 2026-11-06 12:22:01 and the
+debug/profile/main manifests 2026-11-06 09:46:30-31, and no `pubspec.yaml`, `pubspec.lock` or `*.gradle.kts` in
+either app or in `packages/` carries a 2026-11-13 mtime (`git diff -- '*pubspec.yaml' '*pubspec.lock'` empty).
+**Limitation**: an up-to-date task proves the *inputs* are unchanged; it does not re-emit the artifact. If a future
+stage forces `--rerun-tasks`, these two files must be re-read before being cited again.
+
+Absences confirmed in the child merged file by direct grep, all returning **0** matches: `uses-feature`,
+`<queries>`, `FOREGROUND_SERVICE`, `QUERY_ALL_PACKAGES`, `PACKAGE_USAGE_STATS`.
+
+### 7.3 Layer C — transitive plugin contributions (recorded separately, per the manifest policy)
+
+The child's seven merged permissions are **not** in the child source manifest, and four of them are now traced to
+a specific plugin artifact rather than inferred:
+
+| Contributed permission | Plugin artifact that declares it | Evidence read this pass | Label |
+| :--- | :--- | :--- | :--- |
+| `INTERNET`, `WAKE_LOCK`, `ACCESS_NETWORK_STATE`, `POST_NOTIFICATIONS` | `firebase_messaging` (transitive via `haven_api`) | `apps/haven_child/build/firebase_messaging/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml:7-9,11` — and the same four at `…/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml` | FACT (artifact) |
+| `com.google.android.c2dm.permission.RECEIVE`, `…gsf.permission.READ_GSERVICES` | Google Play Services libraries pulled in by the Firebase plugins | **not readable as an extracted manifest in this build tree** — no non-app plugin manifest in `apps/haven_child/build` other than `firebase_messaging` carries `uses-permission`, and the GMS AARs are consumed as compiled dependencies; the merged manifest comments ("Required by older versions of Google Play services to create IID tokens", `:14-15`) point at GMS but do not name a version | INFERRED (attribution), FACT (presence in merged manifest) |
+| `com.haven.child.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` (+ its `signature` `<permission>`) | AndroidX core / Flutter engine dependency, emitted per-applicationId | merged manifest `:18-22`; no source manifest declares it | FACT (artifact); attribution to a specific AAR **UNVERIFIED** |
+
+`apps/haven_child/build/` contains compiled artifacts for `firebase_auth`, `firebase_core`, `firebase_messaging`,
+`flutter_secure_storage`, `jni`, `jni_flutter`, `path_provider`-adjacent `shared_preferences_android`,
+`url_launcher_android`, `app_links`, `native_assets` — i.e. **the child APK is not cloud-dependency-free**, and no
+Stage-2 wording may claim otherwise (`STAGE_2_OWNER_DECISIONS.md` §4.3). `connectivity_plus` is a
+**parent**-only dependency: no `apps/haven_child/build/connectivity_plus` directory exists (this pass), so §3 row 8
+must be read as "declared in `apps/haven_app/pubspec.yaml`, absent from the child".
+
+### 7.4 What Stage 2 changed in the native surface — nothing
+
+| Question | Stage 2 answer | Evidence |
+| :--- | :--- | :--- |
+| New Kotlin compiled into the child? | **No.** The child still has exactly one Kotlin file (`MainActivity.kt`, 5 lines) and no `srcDir` redirect; §1 rows 4-6 are unchanged. | `apps/haven_child/android/app/build.gradle.kts:7-37` re-read; `_scratch/p3_stage2/logs/child_build.log` |
+| New MethodChannel / EventChannel / BasicMessageChannel / Pigeon anywhere? | **No.** D-4 was implemented as a hand-written Dart mirror plus tests that read Kotlin source **read-only**. | `apps/haven_child/lib/core/native/child_native_contract.dart:1-18` ("Nothing here opens a channel"), `apps/haven_app/test/permissions/cross_language_key_agreement_test.dart` |
+| Child APK binary changed by Stage 2? | **No** — the rebuilt child `app-debug.apk` is **byte-identical** to the pre-Stage-2 artifact: 162,458,160 B, sha256 `ae671f4e…47ae` (`_scratch/p3_stage2/gates.md` §2; corroborated by `docs/testing/evidence/real_device_2026_11_13/child/apk_sha256.txt`) | FACT (artifact) |
+| Is the registration feature reachable from the child UI? | **No.** No route, binding or screen references `features/registration`; `RegistrationStatusLabel` is imported only by its own defining file. Stage 2 is contracts + tests only, which is exactly the D-5 §3 "contracts plus labelled simulation" scope. | grep `features/registration\|RegistrationBindings\|RegistrationController` over `apps/haven_child/lib/main.dart`, `lib/app/` → no matches (this pass) |
+| Evidence ladder for everything new in Stage 2 | **level 2 — Flutter logic**, host-mocked, no device | `STAGE_2_OWNER_DECISIONS.md` §6 ceiling |
+
+### 7.5 Remaining work the inventory still names
+
+| Gap | Blocking gate | Note |
+| :--- | :--- | :--- |
+| `Build.MANUFACTURER` / `MODEL` reader | child native lane does not exist; the mirror in `lib/core/native/` names the contract a future lane implements | child renders `Unavailable` deliberately (`apps/haven_child/lib/core/device/real_device_information.dart:33-35`) |
+| Installed-app inventory, `UsageStatsManager` counts, battery level, network state | Stage 3 scope + owner authorization; **not** implemented and **not** simulated as real in Stage 2 | `PHASE_3_MASTER_PLAN.md` §7 B-3/B-4, `STAGE_2_OWNER_DECISIONS.md` §6 out-of-scope list |
+| Real cross-device pairing / any transport | **P-4 BLOCKED** — a local state machine does not satisfy it | `STAGE_2_OWNER_DECISIONS.md` §3.1, §7.2 |
+| Dependency isolation (option a vs b) | must be decided **before** Stage 3; Stage 2 ran under option (c) | `STAGE_2_OWNER_DECISIONS.md` §4.2 |
+| Transitive GMS permission attribution (§7.3 rows 2-3) | needs a `--rerun-tasks` build or dependency-tree inspection to name the contributing artifact and version | recorded as INFERRED/UNVERIFIED rather than upgraded silently |

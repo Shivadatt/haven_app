@@ -89,7 +89,10 @@ final class DeviceRow extends StatelessWidget {
   String _seenAndBattery() {
     final String seen = _seen();
     if (device.batteryLevel != null) {
-      return '$seen • ${device.batteryLevel}% battery';
+      // Stage 2 / D-5 R-9: this percentage is the simulation's fabricated
+      // value (`pairing_simulation_service.dart`, battery 95 on pairing), so
+      // the row that surfaces it labels it.
+      return '$seen • ${device.batteryLevel}% battery (DEMO — simulated values)';
     }
     return seen;
   }

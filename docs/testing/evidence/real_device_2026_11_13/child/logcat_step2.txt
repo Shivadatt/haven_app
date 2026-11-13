@@ -1,0 +1,265 @@
+11-13 10:23:48.921  3373  3373 I adbd    : adbd service requested 'shell,v2,TERM=xterm-256color,raw:am start -W -S -n com.haven.child/.MainActivity'
+11-13 10:23:48.946  1889  3942 I ActivityManager: Force stopping com.haven.child appid=11319 user=0: from pid 25911
+11-13 10:23:49.226  1889  3942 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.haven.child/.MainActivity mCallingUid=2000} from uid 2000
+11-13 10:23:49.241  1889  3942 I OplusScreenSecurityMask: onStackAdded task = Task{1ce04a7 #58 type=standard I=com.haven.child/.MainActivity U=0 visible=false mode=fullscreen translucent=true sz=0} record = null displayId = 0
+11-13 10:23:49.244  1889  3942 E WindowManager: makeSurface ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58} windowType 2
+11-13 10:23:49.245  1077  3339 D SurfaceFlinger: addClientLayer(112): seq(2441) name,ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity#0
+11-13 10:23:49.246  1889  3942 D CompactWindowManagerService: onOriginListAdded child: ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}; parent: Task{1ce04a7 #58 type=standard I=com.haven.child/.MainActivity U=0 visible=true mode=fullscreen translucent=true sz=1}
+11-13 10:23:49.246  1889  3942 I OplusCompactWindowManagerService: supportMultiResume :true in package :com.haven.child
+11-13 10:23:49.247  1889  3942 D TaskExtImpl: add ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58} to mActivityRecordSum = Counter{ com.haven.child/.MainActivity(1) }
+11-13 10:23:49.251  1889  3942 D ActivityTaskManager: getStartingWindowType: newTask=true, taskSwitch=true, processRunning=false, allowTaskSnapshot=true, activityCreated=false, snapshot=null, record:ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}
+11-13 10:23:49.253  1889  3942 D OplusZoomWindowRUSConfigManager: isSupportZoomModeWithPolicyLocked: target = com.haven.child/.MainActivity
+11-13 10:23:49.253  1889  3942 D OplusZoomWindowRUSConfigManager: targetPkg = com.haven.child
+11-13 10:23:49.255  1889  3942 I PowerHalWrapper: <amsBoostResume> last:com.android.launcher, next:com.haven.child 
+11-13 10:23:49.260  1889  3942 D OplusAlwaysAliveManager: process not running, cold launch: ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}, processName: com.haven.child
+11-13 10:23:49.260  2340  2535 D WindowManager: Add to mViews: android.widget.FrameLayout{9d52149 V.E...... ......I. 0,0-0,0},pkg= com.haven.child
+11-13 10:23:49.264  1889  2036 D OplusDisplayPolicy: com.haven.child, no change cutoutMode: 0
+11-13 10:23:49.264  1077  3339 D SurfaceFlinger: addClientLayer(113): seq(2442) name,b9a63f9 Splash Screen com.haven.child#0
+11-13 10:23:49.267  1889  1902 I OplusHansManager : front pkg: com.haven.child, uid: 11319, prev pkg: com.android.launcher, prev uid: 10181
+11-13 10:23:49.272  1889  2359 D Osense-PolicyManager: notifyAppDataToPolicy:IntegratedData{mResId=13, mTime=1794545629268, mInfo=Bundle[{prevPkgName=com.android.launcher, curUid=11319, curPkgName=com.haven.child, prevUid=10181, type=fast, level=1, requestId=70}]}
+11-13 10:23:49.273  1889  2702 I OplusResourcePreloadManager: resume pkg: com.haven.child, uid:11319, prev pkg: com.android.launcher, prev uid: 10181
+11-13 10:23:49.276  1889  1911 I PowerHalWrapper: amsBoostProcessCreate package:com.haven.child 
+11-13 10:23:49.278  1889  2036 D OplusDisplayPolicy: com.haven.child, no change cutoutMode: 0
+11-13 10:23:49.278  1077  3339 I BufferQueueDebug: [Splash Screen com.haven.child#0](this:0xb400007b815eaa40,id:-1,api:0,p:-1,c:-1) BufferQueue core=(1077:/system/bin/surfaceflinger)
+11-13 10:23:49.279  1077  3339 D SurfaceFlinger: addClientLayer(114): seq(2443) name,Splash Screen com.haven.child#0
+11-13 10:23:49.280  1889  1925 I ActivityManager: Start proc 20389:com.haven.child/u0a1319 for pre-top-activity {com.haven.child/com.haven.child.MainActivity}
+11-13 10:23:49.282  1889  2036 D Theia.NoFocusWindow: FocusWindowErrorScene CheckFreezeScreen
+11-13 10:23:49.284  2340  2535 I BLASTBufferQueue: [ViewRootImpl[Splash Screen com.haven.child]#236] constructor()
+11-13 10:23:49.285  2340  3116 I BufferQueueProducer: [ViewRootImpl[Splash Screen com.haven.child]#236(BLAST Consumer)236](id:924000000ec,api:1,p:2340,c:2340) connect: api=1 producerControlledByApp=true
+11-13 10:23:49.289 20389 20389 I com.haven.chil: Late-enabling -Xcheck:jni
+11-13 10:23:49.303  1077  1077 D OplusLayer: setBuffer sequence=2443, name=Splash Screen com.haven.child#0
+11-13 10:23:49.312  1889  1912 D CompactWindowManagerService: updateBackgroundSurface openingApp: ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}
+11-13 10:23:49.324 20389 20389 E com.haven.chil: Unknown bits set in runtime_flags: 0x40000000
+11-13 10:23:49.324 20389 20389 I com.haven.chil: Using generational CollectorTypeCC GC.
+11-13 10:23:49.329  1889  1912 I WindowStateExtImpl: onSurfaceShowChange show = true mPackageName = com.haven.child parentPkgName = com.haven.child
+11-13 10:23:49.343  1889  2631 I OplusAppSwitchManagerService: appswitch hasProcess ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}
+11-13 10:23:49.344  1889  2631 I OplusAppSwitchManagerService: appswitch hasProcess ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}
+11-13 10:23:49.344  1889  2858 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppExit, resuming = com.haven.child, target = com.android.launcher, is ResumingFirstStart =  true, is ResumingMultiApp =  false, extensionInfo =  Bundle[{taskId=58, uid=11319}]
+11-13 10:23:49.344  1889  2631 I PowerHalWrapper: amsBoostNotify pid:20389,activity:com.haven.child.MainActivity, package:com.haven.child, mProcessCreatePackcom.haven.child 
+11-13 10:23:49.344  1889  2631 I InputDispatcher: setFocusedApplication displayId=0 ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}
+11-13 10:23:49.345   998  1071 I libPowerHal: [perfNotifyAppState] foreground:com.haven.child, pid:20389, uid:11319
+11-13 10:23:49.345  1889  6470 D DCSEX-AppLaunchEventRecorder: onAppSwitch from = com.android.launcher to = com.haven.child
+11-13 10:23:49.346   998  1071 I UxUtility: notifyForegroundApp pack:com.haven.child, uid:11319
+11-13 10:23:49.346   998  1071 I TouchUtility: notifyAppState error = NULL
+11-13 10:23:49.346   998  1012 I mtkpower@impl: [notifyAppState] pc:1, com.android.launcher => com.haven.child
+11-13 10:23:49.347  1889  2858 D OplusEapManager: mTargetEnterName :com.haven.child
+11-13 10:23:49.347  2850  3025 W Battery : ThermalControlUtils: mForegroundPkg=com.haven.child
+11-13 10:23:49.348  1889  2858 D OplusLatencyOptimizerManager: enter pkg: com.haven.child isPrevBlackAppTop: false mIsBlackAppTop: false
+11-13 10:23:49.348  1889  1911 D OplusKeepAliveManager: TOP_APP is ProcessRecord{ca811d8 20389:com.haven.child/u0a1319} uid is 11319
+11-13 10:23:49.348  1889  2858 V DCSEX-AppSwitchManager: OnAppSwitchObserver: onAppEnter, launchedFrom =  com.android.shell, target =  com.haven.child, is firstStart =  true, is multiApp =  false, extensionInfo =  Bundle[{taskId=58, pid=20389, uid=11319, versionCode=1}]
+11-13 10:23:49.348  1889  2858 D VRR [OPlusFrontAppManager]: OnAppSwitchObserver: onAppEnter , info.targetName = com.haven.child
+11-13 10:23:49.349  1889  1952 D VRR [OPlusRefreshRateService]: handleFrontAppChange pkgName: com.haven.child
+11-13 10:23:49.349  1889  1952 D VRR [OPlusExternalRefreshRateManager]: setFrontPackageName pkgName: com.haven.child CurPkgName: null
+11-13 10:23:49.373  1889  1902 D OplusAppListInterceptManager: shouldFilterTask::packageName = com.haven.child
+11-13 10:23:49.593  1889  1912 V OplusZoomWindowManagerService: onAnimationFinished:  r = ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}
+11-13 10:23:49.594  1889  1912 I OplusAppSwitchManagerService:  handleAppVisible , r = ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58}
+11-13 10:23:49.605 20389 20389 D nativeloader: Configuring clns-4 for other apk /data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/lib/arm64:/data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.haven.child
+11-13 10:23:49.614 20389 20389 V GraphicsEnvironment: ANGLE Developer option for 'com.haven.child' set to: 'default'
+11-13 10:23:49.659 20389 25940 D libMEOW : applied 1 plugins for [com.haven.child]:
+11-13 10:23:49.689 20389 25941 D FlutterJNI: Beginning load of flutter...
+11-13 10:23:49.706 20389 25941 D nativeloader: Load /data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk!/lib/arm64-v8a/libflutter.so using class loader ns clns-4 (caller=/data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk): ok
+11-13 10:23:49.707 20389 25941 D FlutterJNI: flutter (null) was loaded normally!
+11-13 10:23:49.851  2850  3066 W AuthDialogHelper: checkNotificationSwitchFirst() called with: context = [com.oplus.notification.NotificationCenterService@15f1faa], pkg = [com.haven.child], uid = [11319], userId = [0], init checker
+11-13 10:23:49.852  2850  3066 E AuthDialogHelper: CheckNotificationCanBeSetSecond: check com.haven.child , Notification master switch on, unable to pop dialog
+11-13 10:23:50.244 20389 25942 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/kernel_blob.bin
+11-13 10:23:50.245 20389 25942 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/vm_snapshot_data
+11-13 10:23:50.330 20389 25942 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/isolate_snapshot_data
+11-13 10:23:50.363 20389 25954 D vulkan  : searching for layers in '/data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/lib/arm64'
+11-13 10:23:50.363 20389 25954 D vulkan  : searching for layers in '/data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk!/lib/arm64-v8a'
+11-13 10:23:50.369 20389 25954 D vulkan  : added global layer 'VK_LAYER_KHRONOS_validation' from library '/data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk!/lib/arm64-v8a/libVkLayer_khronos_validation.so'
+11-13 10:23:50.395 20389 25954 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(62)] Using the Impeller rendering backend (Vulkan).
+11-13 10:23:50.501 20389 25981 I flutter : The Dart VM service is listening on http://127.0.0.1:46197/wjVpI-Q8hlg=/
+11-13 10:23:50.769 20389 20389 D nativeloader: Load /data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk!/lib/arm64-v8a/libdartjni.so using class loader ns clns-4 (caller=/data/app/~~k7NzTbpca7hGtRLa7I0JyQ==/com.haven.child-YSgtoh5tWbF8OY4oAGPhNg==/base.apk!classes7.dex): ok
+11-13 10:23:50.786  1077  1133 I SurfaceFlinger: [SF client] NEW(0xb400007b814ea680) for (20389:com.haven.child)
+11-13 10:23:50.824 20389 20389 D FlutterRenderer: Width is zero. 0,0
+11-13 10:23:50.838 20389 20389 I Quality : ActivityThread: activityStart delay 1189 com.haven.child 20389
+11-13 10:23:50.842  1077  1133 I SurfaceFlinger: [SF client] NEW(0xb400007b814ea840) for (20389:com.haven.child)
+11-13 10:23:50.849 20389 20389 D OplusSlideAnimOptHelper: com.haven.child scrollEffectOpt enable = true
+11-13 10:23:50.855 20389 20389 D WindowManager: Add to mViews: DecorView@6246f44[MainActivity],pkg= com.haven.child
+11-13 10:23:50.859 20389 20389 E com.haven.chil: ofbOpen failed with error=No such file or directory
+11-13 10:23:50.859 20389 20389 E com.haven.chil: sysOpen failed with error=No such file or directory
+11-13 10:23:50.865  1889  2631 D OplusDisplayPolicy: com.haven.child, no change cutoutMode: 0
+11-13 10:23:50.867  1077  1133 D SurfaceFlinger: addClientLayer(115): seq(2448) name,ed1e2a0 com.haven.child/com.haven.child.MainActivity#0
+11-13 10:23:50.870 20389 20389 D libMEOW : applied 1 plugins for [com.haven.child]:
+11-13 10:23:50.872 20389 20389 I Quality : ActivityThread: activityLifecycle delay 1225 com.haven.child 20389
+11-13 10:23:50.873 20389 25934 I Quality : Blocked msg = Package name: com.haven.child [ schedGroup: 5 schedPolicy: 0 ] process the message: { when=-1s527ms what=159 target=android.app.ActivityThread$H obj=android.app.servertransaction.ClientTransaction@cbc9f019 } took 1225 ms
+11-13 10:23:50.915  2850  9562 W System.err: java.lang.NoSuchMethodException: android.os.PerformanceManager.getHISchedMiniTask []
+11-13 10:23:52.471 20389 20389 I Quality : Skipped: false 169 cost 2832.0222 refreshRate 0 processName com.haven.child
+11-13 10:23:52.511  2850  9562 W System.err: java.lang.NoSuchMethodException: android.os.PerformanceManager.getHISchedMiniTask []
+11-13 10:23:52.515 20389 20389 D FlutterRenderer: Width is zero. 0,0
+11-13 10:23:52.517  1889  2036 D OplusDisplayPolicy: com.haven.child, no change cutoutMode: 0
+11-13 10:23:52.517  1077  1133 I BufferQueueDebug: [com.haven.child/com.haven.child.MainActivity#0](this:0xb400007b8146da40,id:-1,api:0,p:-1,c:-1) BufferQueue core=(1077:/system/bin/surfaceflinger)
+11-13 10:23:52.517  1077  1133 D SurfaceFlinger: addClientLayer(116): seq(2449) name,com.haven.child/com.haven.child.MainActivity#0
+11-13 10:23:52.518  2850  9562 I Quality-OIDTUtils: Exception type:2; pkgName:com.haven.child;
+11-13 10:23:52.519  2850  9562 D Quality-OIDTUtils: detectExceptionsForOIDT type:2
+11-13 10:23:52.521 12681 12701 I [0]DCS-StrategyManager: isNeedUpload: true, type: 2006, appID: 20161, logTag: 2016101, eventID: exceptionrecord
+11-13 10:23:52.523  1889  2036 W WindowManager: Changing focus from null to Window{ed1e2a0 u0 com.haven.child/com.haven.child.MainActivity} displayId=0 Callers=com.android.server.wm.RootWindowContainer.updateFocusedWindowLocked:492 com.android.server.wm.WindowManagerService.updateFocusedWindowLocked:6016 com.android.server.wm.WindowManagerService.relayoutWindow:2606 com.android.server.wm.Session.relayout:247 
+11-13 10:23:52.523  1889  2036 D CompactWindowManagerService: notifyCompactWindowState task: Task{1ce04a7 #58 type=standard I=com.haven.child/.MainActivity U=0 visible=true mode=fullscreen translucent=false sz=1}; hasFocus: true
+11-13 10:23:52.523  1889  2036 D ActivityTaskManager: onWindowFocusChanged Task{1ce04a7 #58 type=standard I=com.haven.child/.MainActivity U=0 visible=true mode=fullscreen translucent=false sz=1} would transfer to compact
+11-13 10:23:52.527  1889  2036 D Theia.NoFocusWindow: FocusWindowErrorScene cancelCheckFreezeScreen
+11-13 10:23:52.528  1889  2036 I WindowManager: Relayout Window{ed1e2a0 u0 com.haven.child/com.haven.child.MainActivity}: oldVis=4 newVis=0 focusMayChange = true requestedWidth = 1080 requestedHeight = 2400 outFrames = ClientWindowFrames{frame=[0,0][1080,2400] display=[0,0][1080,2400] backdrop=[0,0][1080,2400]} outSurfaceControl = Surface(name=com.haven.child/com.haven.child.MainActivity)/@0xf4b0793
+11-13 10:23:52.532 20389 20389 I BLASTBufferQueue: [ViewRootImpl[com.haven.child/com.haven.child.MainActivity]#0] constructor()
+11-13 10:23:52.535 20389 25938 D libMEOW : applied 1 plugins for [com.haven.child]:
+11-13 10:23:52.537 20389 20389 D FlutterJNI: Sending viewport metrics to the engine.
+11-13 10:23:52.540 20389 25938 I GED     : [GT]_getprocess name(com.haven.child)
+11-13 10:23:52.540 20389 25938 I com.haven.chil: [GT] ret(1) gt_status(00000000) aniso_debug_level(0) gt_aniso_max_level(16) ani so mask(00000001) tri mask(00000002)
+11-13 10:23:52.546 20389 25938 I BufferQueueProducer: [ViewRootImpl[com.haven.child/com.haven.child.MainActivity]#0(BLAST Consumer)0](id:4fa500000000,api:1,p:20389,c:20389) connect: api=1 producerControlledByApp=true
+11-13 10:23:52.548  1077  1133 D SurfaceFlinger: addClientLayer(117): seq(2452) name,Bounds for - com.haven.child/com.haven.child.MainActivity#0
+11-13 10:23:52.549  1077  1133 D SurfaceFlinger: addClientLayer(118): seq(2453) name,SurfaceView[com.haven.child/com.haven.child.MainActivity]#0
+11-13 10:23:52.550  1077  1133 I BufferQueueDebug: [SurfaceView[com.haven.child/com.haven.child.MainActivity](BLAST)#0](this:0xb400007b75c91a40,id:-1,api:0,p:-1,c:-1) BufferQueue core=(1077:/system/bin/surfaceflinger)
+11-13 10:23:52.550  1077  1133 D SurfaceFlinger: addClientLayer(119): seq(2454) name,SurfaceView[com.haven.child/com.haven.child.MainActivity](BLAST)#0
+11-13 10:23:52.551  1077  1133 D SurfaceFlinger: addClientLayer(120): seq(2455) name,Background for SurfaceView[com.haven.child/com.haven.child.MainActivity]#0
+11-13 10:23:52.552 20389 20389 I BLASTBufferQueue: [SurfaceView[com.haven.child/com.haven.child.MainActivity]#1] constructor()
+11-13 10:23:52.553 20389 25954 I BufferQueueProducer: [SurfaceView[com.haven.child/com.haven.child.MainActivity]#1(BLAST Consumer)1](id:4fa500000001,api:1,p:20389,c:20389) connect: api=1 producerControlledByApp=true
+11-13 10:23:52.555 20389 25954 I BufferQueueProducer: [SurfaceView[com.haven.child/com.haven.child.MainActivity]#1(BLAST Consumer)1](id:4fa500000001,api:1,p:20389,c:20389) disconnect: api 1
+11-13 10:23:52.555 20389 25954 I BufferQueueProducer: [SurfaceView[com.haven.child/com.haven.child.MainActivity]#1(BLAST Consumer)1](id:4fa500000001,api:1,p:20389,c:20389) connect: api=1 producerControlledByApp=true
+11-13 10:23:52.980 20389 20389 I Quality : Skipped: false 27 cost 453.51038 refreshRate 0 processName com.haven.child
+11-13 10:23:53.016 20389 20389 I Quality : Skipped: false 1 cost 24.115614 refreshRate 0 processName com.haven.child
+11-13 10:23:53.029 20389 20389 D FlutterJNI: Sending viewport metrics to the engine.
+11-13 10:23:53.038  1077  1077 D OplusLayer: setBuffer sequence=2454, name=SurfaceView[com.haven.child/com.haven.child.MainActivity](BLAST)#0
+11-13 10:23:53.048 20389 26001 E BLASTBufferQueue: [SurfaceView[com.haven.child/com.haven.child.MainActivity]#1](f:0,a:2) isEGL=1, mPendingRelease.size()=1, mMaxAcquiredBuffers=4, currentMaxAcquiredBufferCount=2
+11-13 10:23:53.101 20389 25938 E OpenGLRenderer: fbcNotifyFrameComplete error: undefined symbol: fbcNotifyFrameComplete
+11-13 10:23:53.101 20389 25938 E OpenGLRenderer: fbcNotifyNoRender error: undefined symbol: fbcNotifyNoRender
+11-13 10:23:53.110  1077  1077 D OplusLayer: setBuffer sequence=2449, name=com.haven.child/com.haven.child.MainActivity#0
+11-13 10:23:53.145  1889  1912 D OplusStartingWindowManager: interceptRemoveStartingWindow activity.packageName=com.haven.child isSnapshot=false mStartingSurfaceRunnable=null
+11-13 10:23:53.146  1077  1133 D SurfaceFlinger: addClientLayer(121): seq(2456) name,Surface(name=ed1e2a0 com.haven.child/com.haven.child.MainActivity)/@0xdf333d0 - animation-leash of starting_reveal#0
+11-13 10:23:53.148  1889  1912 I Quality : LaunchTime2.0: com.haven.child/.MainActivity 1 3886 NULL, OPEN FILE ERROR...
+11-13 10:23:53.153  1889  1908 I ActivityTaskManager: Displayed com.haven.child/.MainActivity: +3s927ms
+11-13 10:23:53.155  1889  1908 I ActivityTaskManager: Fully drawn com.haven.child/.MainActivity: +3s927ms
+11-13 10:23:53.158  1889  2631 I PowerHalWrapper: amsBoostNotify pid:24708,activity:com.android.launcher.Launcher, package:com.android.launcher, mProcessCreatePackcom.haven.child 
+11-13 10:23:53.162  1889  2631 I FocusResolver: updateFocusedWindow, ed1e2a0 com.haven.child/com.haven.child.MainActivity on display 0, reason: Window became focusable. Previous reason: NOT_VISIBLE, result:   FocusedWindows:
+11-13 10:23:53.162  1889  2631 I FocusResolver:     displayId=0, name='ed1e2a0 com.haven.child/com.haven.child.MainActivity'
+11-13 10:23:53.167  1889  2631 D InputMethodManagerService: isSecurity: attribute.packageName=com.haven.child mCurMethodId=com.google.android.inputmethod.latin/com.android.inputmethod.latin.LatinIME
+11-13 10:23:53.185  3777  3777 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1552 onStartInput(EditorInfo{EditorInfo{packageName=com.haven.child, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=-1, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-13 10:23:53.185 20389 25924 E BLASTBufferQueue: [SurfaceView[com.haven.child/com.haven.child.MainActivity]#1](f:0,a:3) isEGL=1, mPendingRelease.size()=2, mMaxAcquiredBuffers=4, currentMaxAcquiredBufferCount=2
+11-13 10:23:53.185  2340 22601 E BLASTBufferQueue: [ViewRootImpl[Splash Screen com.haven.child]#236](f:0,a:3) isEGL=1, mPendingRelease.size()=1, mMaxAcquiredBuffers=4, currentMaxAcquiredBufferCount=2
+11-13 10:23:53.201  2340 22601 E BLASTBufferQueue: [ViewRootImpl[Splash Screen com.haven.child]#236](f:0,a:4) isEGL=1, mPendingRelease.size()=2, mMaxAcquiredBuffers=4, currentMaxAcquiredBufferCount=2
+11-13 10:23:53.428  2340  3116 I BufferQueueProducer: [ViewRootImpl[Splash Screen com.haven.child]#236(BLAST Consumer)236](id:924000000ec,api:1,p:2340,c:2340) disconnect: api 1
+11-13 10:23:53.433  1077  3339 D SurfaceFlinger: addClientLayer(120): seq(2458) name,Surface(name=b9a63f9 Splash Screen com.haven.child)/@0x8a30e8f - animation-leash of window_animation#0
+11-13 10:23:53.442  2340  2535 D OplusScrollToTopManager: java.lang.IllegalArgumentException: Receiver not registered: android.view.OplusScrollToTopManager$2@c9ab081
+11-13 10:23:53.446  1889  2631 W InputManager-JNI: Input channel object 'b9a63f9 Splash Screen com.haven.child (client)' was disposed without first being removed with the input manager!
+11-13 10:23:53.452  2340 22601 I BLASTBufferQueue: [ViewRootImpl[Splash Screen com.haven.child]#236] destructor()
+11-13 10:23:53.452  2340 22601 I BufferQueueConsumer: [ViewRootImpl[Splash Screen com.haven.child]#236(BLAST Consumer)236](id:924000000ec,api:0,p:-1,c:2340) disconnect
+11-13 10:23:53.460  1077  1077 D Layer   : reparent to null sequence=2456, seq[33], name=Surface(name=ed1e2a0 com.haven.child/com.haven.child.MainActivity)/@0xdf333d0 - animation-leash of starting_reveal#0
+11-13 10:23:53.611  1889  1912 I WindowStateExtImpl: onSurfaceShowChange show = false mPackageName = com.haven.child parentPkgName = com.haven.child
+11-13 10:23:53.612  1889  1912 D WindowManager: setParent old=ActivityRecord{fb3c966 u0 com.haven.child/.MainActivity t58},new=null,this window=Window{b9a63f9 u0 Splash Screen com.haven.child},callers=com.android.server.wm.WindowContainer.removeChild:627 com.android.server.wm.ActivityRecord.removeChild:4174 com.android.server.wm.ActivityRecord.removeChild:394 com.android.server.wm.WindowContainer.removeImmediately:683 com.android.server.wm.WindowState.removeImmediately:2543 com.android.server.wm.WindowState.destroySurface:3737 
+11-13 10:23:53.626  1077  1077 D Layer   : reparent to null sequence=2443, seq[4], name=Splash Screen com.haven.child#0
+11-13 10:23:53.626  1077  1077 D Layer   : reparent to null sequence=2442, seq[3], name=b9a63f9 Splash Screen com.haven.child#0
+11-13 10:23:53.626  1077  1077 D Layer   : reparent to null sequence=2458, seq[24], name=Surface(name=b9a63f9 Splash Screen com.haven.child)/@0x8a30e8f - animation-leash of window_animation#0
+11-13 10:23:53.628  1077  1077 D OplusLayer: ~Layer() sequence=2458, name=Surface(name=b9a63f9 Splash Screen com.haven.child)/@0x8a30e8f - animation-leash of window_animation#0 0xb400007b75cb5000
+11-13 10:23:53.628  1077  1077 D OplusLayer: ~Layer() sequence=2442, name=b9a63f9 Splash Screen com.haven.child#0 0xb400007b815dc000
+11-13 10:23:53.634  1077  1077 I BufferQueueDebug: [Splash Screen com.haven.child#0](this:0xb400007b815eaa40,id:-1,api:0,p:-1,c:1077) onDestructor()
+11-13 10:23:53.634  1077  1077 D OplusLayer: ~Layer() sequence=2443, name=Splash Screen com.haven.child#0 0xb400007b815e8000
+11-13 10:23:53.659  2340  2340 D SystemUi--: getDebugState, e = android.provider.Settings$SettingNotFoundException: systemui_internal_debug
+11-13 10:23:54.570  2850  4204 D AppSwitchObserverHelper: packageName: com.haven.child,com.android.launcher
+11-13 10:23:54.642  2850  4204 E Battery : AppStats: com.haven.childfirst la
+11-13 10:23:54.642  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; CpuFgTime = 0 ms; CpuBgTime = 0 ms.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; CpuKernelFgTime = 0 ms; CpuKernelBgTime = 0 ms.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; CpuUserFgTime = 0 ms ; CpuUserBgTime = 0 ms.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; CpuFgPower = 0.0 mAh.; CpuBgPower = 0.0 mAh.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; AlarmFgWakeupCount = 0; AlarmBgWakeupCount = 0
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; JobFgCount = 0; JobBgCount = 0; JobFgTime = 0; JobBgTime = 0
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; SyncFgCount = 0; SyncBgCount = 0; SyncFgTime = 0; SyncBgTime = 0
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; WakeLockFgTime = 0 ms; WakeLockFgPower = 0.0 mAh.; WakeLockBgTime = 0 ms; WakeLockBgPower = 0.0 mAh.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; ScreenFgTime = 0 ms; ScreenFgPower = 0.0 mAh.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgWifiRxBytes = 0 Bytes; BgWifiRxBytes = 0 Bytes; FgWifiTxBytes = 0 Bytes; BgWifiTxBytes = 0 Bytes; FgWifiRxPackets = 0 ; BgWifiRxPackets = 0 ; FgWifiTxPackets = 0 ; BgWifiTxPackets = 0 ; FgWiFiScanTimeMs = 0 ; BgWiFiScanTimeMs = 0 ; FgWiFiBatchScanTimeMs = 0 ; BgWiFiBatchScanTimeMs = 0 
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgWifiRxPacketsPower = 0.0 mAh; BgWifiRxPacketsPower = 0.0 mAh; FgWifiTxPacketsPower = 0.0 mAh; BgWifiTxPacketsPower = 0.0 mAh; FgWifiScanPower = 0.0 mAh; BgWifiScanPower = 0.0 mAh; FgWifiBatchScanPower = 0.0 mAh; BgWifiBatchScanPower = 0.0 mAh; FgWiFiTotalPower = 0.0 mAh; BgWiFiTotalPower = 0.0 mAh.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgGpsTime = 0 ms; BgGpsTime = 0 ms.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgGpsPower = 0.0 mAh; BgGpsPower = 0.0 mAh.
+11-13 10:23:54.643  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgSensorTime = 0 ms; BgSensorTime = 0 ms.
+11-13 10:23:54.644  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgSensorPower = 0.0 mAh; BgSensorPower = 0.0 mAh.
+11-13 10:23:54.644  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgCameraTime = 0 ms; BgCameraTime = 0 ms
+11-13 10:23:54.644  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgCameraPower = 0.0 mAh; BgCameraPower = 0.0 mAh
+11-13 10:23:54.644  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgFlashLightTime = 0 ms; BgFlashLightTime = 0 ms
+11-13 10:23:54.644  2850  4204 E Battery : AppStats: Uid = 11319; pkgName = com.haven.child; FgFlashLightPower = 0.0 mAh; BgFlashLightPower = 0.0 mAh
+11-13 10:23:56.617 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.mainline.primary.libs' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:56.762 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.tzdata3' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:56.814 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.permission' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:57.647 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.media.swcodec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:57.657 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.art' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:57.833 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.mediaprovider' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:57.906 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.adbd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:57.910 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.resolv' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.052 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.conscrypt' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.054 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.media' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.173 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.neuralnetworks' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.231 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.ipsec' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.324 20389 26027 D ProfileInstaller: Installing profile for com.haven.child
+11-13 10:23:58.613 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.sdkext' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.694 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.tethering' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.739 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.extservices' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.925 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.os.statsd' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:58.990 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.cellbroadcast' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:23:59.078 26140 26140 W Finsky  : [2] STU: Failed to get storage stats for package 'com.google.android.scheduling' (1601: Error getting stats: android.content.pm.PackageManager.NameNotFoundException)
+11-13 10:24:02.177 24504 24530 E FileStrategy: java.io.IOException: Read-only file system
+11-13 10:24:13.175 20389 20389 W FinalizerDaemon: type=1400 audit(0.0:4619): avc: denied { getopt } for path="/dev/socket/usap_pool_primary" scontext=u:r:untrusted_app:s0:c39,c261,c512,c768 tcontext=u:r:zygote:s0 tclass=unix_stream_socket permissive=0 app=com.haven.child
+11-13 10:24:14.906  2850 26034 E Battery : HighPowerHelper: ; pkgName = com.haven.child; mCpuTimeMsPerHourWhileScreenOn = 0 ms; mWakeLockTimeMsPerHourWhileScreenOn = 0 ms; mWakeLockTimeMsPerHourWhileScreenOff = 0 ms; mJobTimeMsPerHourWhileScreenOn = 0 ms; mJobTimeMsPerTwoHoursWhileScreenOn = 0 ms; mWiFiScanTimeMsPerHourWhileScreenOn = 0 ms; mCameraTimeMsPerHourWhileScreenOn = 0 ms; mFlashLightTimeMsPerHourWhileScreenOn = 0 ms; mGpsTimeMsPerHourWhileScreenOn = 0 ms; mAlarmCountPerHourWhileScreenOn = 0 ms
+11-13 10:24:20.929  2850  2850 I Quality-UserEventsCenter: Send jank info: Event{id=54, type=BLOCK, cost=1225, time=1794545630873, subject=com.haven.child/.MainActivity, pid=20389, jankInfo=dc01d26030fd}
+11-13 10:24:48.227  1889  2090 E OplusArpPeer_euclid_psw: ARP read failure: android.system.ErrnoException: read failed: EAGAIN (Try again)
+11-13 10:24:48.375  1889  2090 E OplusArpPeer_euclid_psw: ARP read failure: android.system.ErrnoException: read failed: EAGAIN (Try again)
+11-13 10:24:48.441 25546 25905 W FeatureFlagsImplExport: java.lang.NoClassDefFoundError: Class not found using the boot class loader; no stack trace available
+11-13 10:24:53.964  2340  2340 D SystemUi--: getDebugState, e = android.provider.Settings$SettingNotFoundException: systemui_internal_debug
+11-13 10:24:59.455  1889  2090 E OplusArpPeer_euclid_psw: ARP read failure: android.system.ErrnoException: read failed: EAGAIN (Try again)
+11-13 10:25:44.357 20389 20389 I Quality : Skipped: false 1 cost 31.879 refreshRate 0 processName com.haven.child
+11-13 10:25:45.241   998  1071 I UxUtility: notifyForegroundApp pack:com.haven.child, uid:11319
+11-13 10:25:45.241   998  1071 I TouchUtility: notifyAppState error = NULL
+11-13 10:25:46.242   998  1071 I UxUtility: notifyForegroundApp pack:com.haven.child, uid:11319
+11-13 10:25:46.242   998  1071 I TouchUtility: notifyAppState error = NULL
+11-13 10:25:48.848 26195 26265 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.860 26195 26273 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.874 26195 26283 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.875 26195 26284 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.880 26195 26287 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.880 26195 26265 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.889 26195 26273 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.890 26195 26283 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.893 26195 26284 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.894 26195 26265 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.894 26195 26287 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.913 26195 26273 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.914 26195 26283 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.916 26195 26265 E MSP-LOG-SDK-: MspSdkException{code=3014,message=com.heytap.mspsdk.ratelimit.MspRateLimitExceededException: ipc rate limit exceeded in time window}
+11-13 10:25:48.932 21576 21651 E FileStrategy: java.io.IOException: Read-only file system
+11-13 10:25:48.932 21694 21747 E FileStrategy: java.io.IOException: Read-only file system
+11-13 10:25:48.941  2606  2606 E ModemAciService: CatchException getIcdIntFromStringArray():java.lang.NumberFormatException: s == null
+11-13 10:25:48.941  2606  2606 E ModemAciService: CatchException getIcdIntFromStringArray():java.lang.NumberFormatException: s == null
+11-13 10:25:49.283 26195 26259 W FeatureFlagsImplExport: java.lang.NoClassDefFoundError: Class not found using the boot class loader; no stack trace available
+11-13 10:25:55.075  1889  4473 E AppOps  : java.lang.SecurityException: Specified package com.oplus.internal.telephony under uid 1001 but it is not
+11-13 10:25:56.281 26302 26363 D AlarmManager: java.lang.RuntimeException
+11-13 10:25:56.284  1889  3890 D AlarmManager: java.lang.RuntimeException
+11-13 10:25:58.890  1889  3892 W Bundle  : Attempt to cast generated internal exception:
+11-13 10:25:58.890  1889  3892 W Bundle  : java.lang.ClassCastException: android.text.SpannableString cannot be cast to java.lang.String
+11-13 10:25:58.987  1889  3892 W Bundle  : Attempt to cast generated internal exception:
+11-13 10:25:58.987  1889  3892 W Bundle  : java.lang.ClassCastException: android.text.SpannableString cannot be cast to java.lang.String
+11-13 10:25:59.129  2688  3027 E DatabaseUtils: Writing exception to parcel
+11-13 10:25:59.129  2688  3027 E DatabaseUtils: java.lang.SecurityException: No permission to access APN settings
+11-13 10:25:59.130 26140 26218 E RequestContextBuilder: java.lang.SecurityException: No permission to access APN settings
+11-13 10:25:59.130 26140 26218 E RequestContextBuilder: 	at android.os.Parcel.createExceptionOrNull(Parcel.java:2472)
+11-13 10:25:59.130 26140 26218 E RequestContextBuilder: 	at android.os.Parcel.createException(Parcel.java:2456)
+11-13 10:25:59.130 26140 26218 E RequestContextBuilder: 	at android.os.Parcel.readException(Parcel.java:2439)
+11-13 10:25:59.130 26140 26218 E RequestContextBuilder: 	at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:190)
+11-13 10:25:59.130 26140 26218 E RequestContextBuilder: 	at android.database.DatabaseUtils.readExceptionFromParcel(DatabaseUtils.java:142)
+11-13 10:25:59.192  1235 14467 E libasf-parse: asf_parse_header: error object size 3954160472831295488 (< 30 or >= file_size 30112)
+11-13 10:25:59.866   962  6130 E AudioALSAPlaybackHandlerBase: -getHardwareBufferInfo(), pcm_get_htimestamp fail, ret = -1, pcm_get_error =  flag = 0x2
+11-13 10:26:00.511  1889  2090 E OplusArpPeer_euclid_psw: ARP read failure: android.system.ErrnoException: read failed: EAGAIN (Try again)
+11-13 10:26:02.179 24504 24530 E FileStrategy: java.io.IOException: Read-only file system
+11-13 10:26:15.425  2340  2340 D SystemUi--: getDebugState, e = android.provider.Settings$SettingNotFoundException: systemui_internal_debug
+11-13 10:26:18.718  1889  1924 W AES     : Exception Log handling...
+11-13 10:26:18.718  1889  1924 D AES     : ExceptionLog: notify aed, process:system_server pid:1889 cause:system_server_wtf 
+11-13 10:26:18.740  1889  1924 W AES     : Exception Log handling...
+11-13 10:26:18.740  1889  1924 D AES     : ExceptionLog: notify aed, process:system_server pid:1889 cause:system_server_wtf 
+11-13 10:26:48.899  1314  1314 V thermal_src: TA_DAEMON_CMD_GET_TPCB:ERROR ret=-1
+11-13 10:26:48.899  1314  1314 E thermal_src: get_tpcb_from_kernel:error -1. retry...
+11-13 10:26:48.899  1314  1314 V thermal_src: TA_DAEMON_CMD_SET_TTJ:ERROR ret=-1
+11-13 10:26:48.899  1314  1314 E thermal_src: set_ttj_to_kernel 1:error -1
+11-13 10:26:51.818 21390 26499 W FeatureFlagsImplExport: java.lang.NoClassDefFoundError: Class not found using the boot class loader; no stack trace available
+11-13 10:26:55.985  1235  2365 E libasf-parse: asf_parse_header: error object size 3954160472831295488 (< 30 or >= file_size 30112)
+11-13 10:26:56.057  1077  1077 D OplusLayer: ~Layer() sequence=2456, name=Surface(name=ed1e2a0 com.haven.child/com.haven.child.MainActivity)/@0xdf333d0 - animation-leash of starting_reveal#0 0xb400007b75c82000
+11-13 10:26:56.095 20389 20389 I Quality : Skipped: false 10 cost 180.5151 refreshRate 0 processName com.haven.child
+11-13 10:26:56.600   998  1071 I UxUtility: notifyForegroundApp pack:com.haven.child, uid:11319
+11-13 10:26:56.600   998  1071 I TouchUtility: notifyAppState error = NULL
+11-13 10:26:57.600   998  1071 I UxUtility: notifyForegroundApp pack:com.haven.child, uid:11319
+11-13 10:26:57.601   998  1071 I TouchUtility: notifyAppState error = NULL
+11-13 10:27:01.567  1889  2090 E OplusArpPeer_euclid_psw: ARP read failure: android.system.ErrnoException: read failed: EAGAIN (Try again)
+11-13 10:27:02.228 24504 24530 E FileStrategy: java.io.IOException: Read-only file system
+11-13 10:27:15.787  2340  2340 D SystemUi--: getDebugState, e = android.provider.Settings$SettingNotFoundException: systemui_internal_debug

@@ -1,0 +1,15 @@
+Can't load Kernel binary: Invalid kernel binary format version (expected 125, found 130).
+00:00 +0: loading D:/control/packages/haven_models/test/enums_test.dart
+00:00 +0: D:/control/packages/haven_models/test/enums_test.dart: enum labels wire tokens map to parent wording
+00:00 +1: D:/control/packages/haven_models/test/enums_test.dart: enum labels every enum round-trips its own values
+00:00 +2: D:/control/packages/haven_models/test/models_test.dart: Device reads every captured column
+00:00 +3: D:/control/packages/haven_models/test/models_test.dart: Device an unknown status token is null, never a guess
+00:00 +4: D:/control/packages/haven_models/test/models_test.dart: Device a revoked device with a null secret is not usable
+00:00 +5: D:/control/packages/haven_models/test/models_test.dart: Device missing nullable columns do not throw
+00:00 +6: D:/control/packages/haven_models/test/models_test.dart: RPC params names match the captured signatures exactly
+00:00 +7: D:/control/packages/haven_models/test/models_test.dart: RPC params timestamps are written as ISO-8601 UTC and dates round-trip
+00:00 +8: D:/control/packages/haven_models/test/round_trips_test.dart: round trips SafeZone survives toRow/fromRow on the columns that matter
+00:00 +9: D:/control/packages/haven_models/test/round_trips_test.dart: round trips SafeZoneState writes a UTC ISO timestamp and round-trips
+00:00 +10: D:/control/packages/haven_models/test/round_trips_test.dart: round trips LocationEvent keeps accuracy as reported
+00:00 +11: D:/control/packages/haven_models/test/round_trips_test.dart: round trips RemoteSession consent is a single boolean
+00:00 +12: All tests passed!

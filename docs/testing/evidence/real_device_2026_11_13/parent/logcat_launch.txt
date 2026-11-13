@@ -1,0 +1,40 @@
+11-13 10:22:41.770 26149 26167 D nativeloader: Load /data/app/~~5F0K2sh9YYniVffkEOhlGw==/com.haven.haven_app-vKx_bqARx5QH1175kiy5tQ==/base.apk!/lib/x86_64/libflutter.so using class loader ns clns-9 (caller=/data/app/~~5F0K2sh9YYniVffkEOhlGw==/com.haven.haven_app-vKx_bqARx5QH1175kiy5tQ==/base.apk): ok
+11-13 10:22:41.781 26149 26167 D FlutterJNI: flutter (null) was loaded normally!
+11-13 10:22:43.922 26149 26168 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/kernel_blob.bin
+11-13 10:22:43.925 26149 26168 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/vm_snapshot_data
+11-13 10:22:44.110 26149 26168 I ResourceExtractor: Extracted baseline resource assets/flutter_assets/isolate_snapshot_data
+11-13 10:22:44.237 26149 26149 W haven.haven_app: type=1400 audit(0.0:130): avc:  denied  { read } for  name="max_map_count" dev="proc" ino=29383 scontext=u:r:untrusted_app_34:s0:c236,c256,c512,c768 tcontext=u:object_r:proc_max_map_count:s0 tclass=file permissive=0 app=com.haven.haven_app
+11-13 10:22:44.375 26149 26170 I flutter : [IMPORTANT:flutter/shell/platform/android/android_context_gl_impeller.cc(104)] Using the Impeller rendering backend (OpenGLES).
+11-13 10:22:44.622 26149 26176 I flutter : The Dart VM service is listening on http://127.0.0.1:41571/ZF_dgZDdvjA=/
+11-13 10:22:46.473 26149 26149 D FlutterGeolocator: Attaching Geolocator to activity
+11-13 10:22:46.483 26149 26149 D nativeloader: Load /data/app/~~5F0K2sh9YYniVffkEOhlGw==/com.haven.haven_app-vKx_bqARx5QH1175kiy5tQ==/base.apk!/lib/x86_64/libdartjni.so using class loader ns clns-9 (caller=/data/app/~~5F0K2sh9YYniVffkEOhlGw==/com.haven.haven_app-vKx_bqARx5QH1175kiy5tQ==/base.apk!classes9.dex): ok
+11-13 10:22:46.832 26149 26149 I haven.haven_app: hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityNodeInfo;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported,test-api) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+11-13 10:22:46.834 26149 26149 I haven.haven_app: hiddenapi: Accessing hidden method Landroid/view/accessibility/AccessibilityRecord;->getSourceNodeId()J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+11-13 10:22:46.834 26149 26149 I haven.haven_app: hiddenapi: Accessing hidden field Landroid/view/accessibility/AccessibilityNodeInfo;->mChildNodeIds:Landroid/util/LongArray; (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+11-13 10:22:46.836 26149 26149 I haven.haven_app: hiddenapi: Accessing hidden method Landroid/util/LongArray;->get(I)J (runtime_flags=0, domain=platform, api=unsupported) from Lio/flutter/view/AccessibilityViewEmbedder$ReflectionAccessors; (domain=app, TargetSdkVersion=36) using reflection: allowed
+11-13 10:22:46.952 26149 26149 D FlutterRenderer: Width is zero. 0,0
+11-13 10:22:48.159 26149 26149 I flutter : haven: missing defines HAVEN_SUPABASE_URL, HAVEN_SUPABASE_ANON_KEY, HAVEN_FIREBASE_PROJECT_ID, HAVEN_FIREBASE_APP_ID, HAVEN_FIREBASE_API_KEY
+11-13 10:22:51.886 26149 26189 D ProfileInstaller: Installing profile for com.haven.haven_app
+11-13 10:22:51.890 26149 26149 D FlutterGeolocator: Creating service.
+11-13 10:22:51.892 26149 26149 D FlutterGeolocator: Binding to location service.
+11-13 10:22:52.027   686   797 D CoreBackPreview: Window{f9f1128 u0 com.haven.haven_app/com.haven.haven_app.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@c2e1969, mPriority=-1, mIsAnimationCallback=false, mOverrideBehavior=0}
+11-13 10:22:52.084 26149 26155 I haven.haven_app: Compiler allocated 5250KB to compile void android.view.ViewRootImpl.performTraversals(long)
+11-13 10:22:52.400 26149 26149 D FlutterRenderer: Width is zero. 0,0
+11-13 10:22:52.414   686  1255 D WindowManager: setClientSurface Surface(name=VRI-com.haven.haven_app/com.haven.haven_app.MainActivity#436)/@0x9d52cfa for f9f1128 com.haven.haven_app/com.haven.haven_app.MainActivity
+11-13 10:22:52.449 26149 26149 D FlutterJNI: Sending viewport metrics to the engine.
+11-13 10:22:52.487 26149 26149 I Surface : Creating surface for consumer bd06c05 SurfaceView[com.haven.haven_app/com.haven.haven_app.MainActivity]#1(BLAST Consumer)1 with slotExpansion=1 for 64 slots
+11-13 10:22:54.127 26149 26149 D WindowOnBackDispatcher: setTopOnBackInvokedCallback (unwrapped): io.flutter.embedding.android.FlutterActivity$1@dd161b9
+11-13 10:22:54.130   686  1255 D CoreBackPreview: Window{f9f1128 u0 com.haven.haven_app/com.haven.haven_app.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@1569e87, mPriority=0, mIsAnimationCallback=true, mOverrideBehavior=0}
+11-13 10:22:54.134 26149 26149 D FlutterGeolocator: Geolocator foreground service connected
+11-13 10:22:54.134 26149 26149 D FlutterGeolocator: Initializing Geolocator services
+11-13 10:22:54.135 26149 26149 D FlutterGeolocator: Flutter engine connected. Connected engine count 1
+11-13 10:22:54.137   686  1255 D CoreBackPreview: Window{f9f1128 u0 com.haven.haven_app/com.haven.haven_app.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@998d1b4, mPriority=-1, mIsAnimationCallback=false, mOverrideBehavior=0}
+11-13 10:22:54.202 26149 26156 I haven.haven_app: Background concurrent mark compact GC freed 3464KB AllocSpace bytes, 4(124KB) LOS objects, 49% free, 2816KB/5633KB, paused 5.890ms,9.642ms total 113.777ms
+11-13 10:22:54.269 26149 26149 D WindowLayoutComponentImpl: Register WindowLayoutInfoListener on Context=com.haven.haven_app.MainActivity@f253368, of which baseContext=android.app.ContextImpl@91d6075
+11-13 10:22:54.290 26149 26149 D FlutterJNI: Sending viewport metrics to the engine.
+11-13 10:22:54.613   686   715 I ActivityTaskManager: Displayed com.haven.haven_app/.MainActivity for user 0: +15s100ms
+11-13 10:22:54.613   686   715 I ActivityTaskManager: Fully drawn com.haven.haven_app/.MainActivity: +15s100ms
+11-13 10:22:54.660   686   840 I ImeTracker: com.haven.haven_app:63535953: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false userId 0 displayId 0
+11-13 10:22:54.674 26149 26149 I ImeTracker: com.haven.haven_app:63535953: onCancelled at PHASE_CLIENT_ALREADY_HIDDEN
+11-13 10:22:54.716  8264  8264 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1446 onStartInput(EditorInfo{EditorInfo{packageName=com.haven.haven_app, inputType=0, inputTypeString=NULL, enableLearning=false, autoCorrection=false, autoComplete=false, imeOptions=0, privateImeOptions=null, actionName=UNSPECIFIED, actionLabel=null, initialSelStart=-1, initialSelEnd=-1, initialCapsMode=0, label=null, fieldId=0, fieldName=null, extras=null, hintText=null, hintLocales=[]}}, false)
+11-13 10:22:54.758   686  1255 W PackageConfigPersister: App-specific configuration not found for packageName: com.haven.haven_app and userId: 0
