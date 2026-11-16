@@ -11,7 +11,7 @@ import '../storage/child_local_state.dart';
 ///
 /// What it is NOT — stated exactly once here because every later screen leans
 /// on it: it is NOT a verified, parent-linked account. There is no credential,
-/// no token, no server check, no family row. `haven_api`'s `LocalUserAuth`
+/// no token, no server check, no family row. `haven_offline`'s `LocalUserAuth`
 /// hard-codes the parent role and is deliberately unused in this lane; the
 /// child app keeps its own honest session abstraction instead. Until Stage-2
 /// pairing exists there is no parent link at all, which is why the UI text is

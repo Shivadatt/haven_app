@@ -441,6 +441,7 @@ Step 12: Full Regression & Emulator Verification (P-1)
   - `cd apps/haven_child/android && ./gradlew :app:testDebugUnitTest` (executes cleanly).
 
 ### Step 5: Authoritative Usage Channel Contract (D-4)
+- **Status**: COMPLETE & VERIFIED (2026-11-16)
 - **Can complete independently**: No (depends on Step 4).
 - **Dependencies**: Step 4.
 - **Files Created**:
@@ -452,6 +453,7 @@ Step 12: Full Regression & Emulator Verification (P-1)
   - Mutation test proving drift detection fails on altered constant.
 
 ### Step 6: Native Implementation & JVM Tests (D-4 / P-5)
+- **Status**: COMPLETE & VERIFIED (2026-11-16)
 - **Can complete independently**: No (depends on Step 5).
 - **Dependencies**: Step 5.
 - **Files Created**:
@@ -472,48 +474,93 @@ Step 12: Full Regression & Emulator Verification (P-1)
   - `dart scripts/check_line_counts.dart` (all `.kt` files ≤200 lines).
 
 ### Step 7: Dart MethodChannel Wrapper & Agreement Tests
+- **Status**: COMPLETE & VERIFIED (Step 7 implementation finished)
 - **Can complete independently**: No (depends on Step 5 & 6).
 - **Dependencies**: Step 5, Step 6.
 - **Files Created**:
-  - `apps/haven_child/lib/core/native/usage_channel.dart`
-  - `apps/haven_child/lib/core/native/usage_envelope_models.dart`
-  - `apps/haven_child/test/native/usage_channel_mock_test.dart`
+  - `apps/haven_child/lib/core/native/usage_envelope_models.dart` (96 lines)
+  - `apps/haven_child/lib/core/native/usage_channel_failures.dart` (40 lines)
+  - `apps/haven_child/lib/core/native/usage_channel_parser.dart` (149 lines)
+  - `apps/haven_child/lib/core/native/usage_channel.dart` (148 lines)
+  - `apps/haven_child/test/native/usage_channel_mock_test.dart` (172 lines)
+  - `apps/haven_child/test/native/usage_channel_query_test.dart` (152 lines)
 - **Automated Verification**:
-  - `fvm flutter test apps/haven_child/test/native` (all channel mock tests pass).
+  - `fvm flutter test` in `apps/haven_child` (278/278 passed, including mock & query suites).
+  - Cross-language agreement tests pass (9/9).
+  - Line count check: 773 files scanned, 0 violations.
+  - Parent tests: 943/943 passed.
+  - Package tests: 96/96 passed (`haven_offline`: 44, `haven_api`: 22, `haven_core`: 18, `haven_models`: 12).
+  - Kotlin tests: 35/35 passed.
+  - Child debug & release APK builds succeed.
+  - Analyzers (Child, Parent, Root): 0 issues.
 
 ### Step 8: Child Feature Domain & Repository Layer
+- **Status**: COMPLETE & VERIFIED (Step 8 implementation finished)
 - **Can complete independently**: No (depends on Step 7).
 - **Dependencies**: Step 7.
 - **Files Created**:
-  - `apps/haven_child/lib/features/child_usage/domain/usage_freshness_status.dart`
-  - `apps/haven_child/lib/features/child_usage/data/child_usage_repository.dart`
-  - `apps/haven_child/test/features/child_usage/child_usage_repository_test.dart`
+  - `apps/haven_child/lib/features/child_usage/domain/usage_freshness_status.dart` (54 lines)
+  - `apps/haven_child/lib/features/child_usage/data/child_usage_repository.dart` (84 lines)
+  - `apps/haven_child/test/features/child_usage/fake_usage_channel.dart` (82 lines)
+  - `apps/haven_child/test/features/child_usage/child_usage_repository_test.dart` (187 lines)
 - **Automated Verification**:
-  - `fvm flutter test apps/haven_child/test/features/child_usage/child_usage_repository_test.dart`.
+  - `fvm flutter test apps/haven_child/test/features/child_usage/child_usage_repository_test.dart` (11/11 passed).
+  - `fvm flutter test apps/haven_child` (289/289 passed).
+  - Step 5 cross-language agreement tests (9/9 passed).
+  - Step 7 channel tests (15/15 passed).
+  - Parent tests: 943/943 passed.
+  - Package tests: 96/96 passed (`haven_offline`: 44, `haven_api`: 22, `haven_core`: 18, `haven_models`: 12).
+  - Kotlin JVM tests: 35/35 passed.
+  - Child debug & release APK builds succeed.
+  - Analyzers (Child, Parent, Root): 0 issues.
+  - Line count audit: 777 files scanned, 0 violations.
 
 ### Step 9: GetX Controller & Lifecycle Handler (Transient In-Memory)
+- **Status**: COMPLETE & VERIFIED (Step 9 implementation finished)
 - **Can complete independently**: No (depends on Step 8).
 - **Dependencies**: Step 8.
 - **Files Created**:
-  - `apps/haven_child/lib/features/child_usage/controllers/child_usage_controller.dart`
-  - `apps/haven_child/lib/features/child_usage/bindings/child_usage_bindings.dart`
-  - `apps/haven_child/test/features/child_usage/child_usage_controller_test.dart`
+  - `apps/haven_child/lib/features/child_usage/controllers/child_usage_controller.dart` (187 lines)
+  - `apps/haven_child/lib/features/child_usage/bindings/child_usage_bindings.dart` (31 lines)
+  - `apps/haven_child/test/features/child_usage/fake_child_usage_repository.dart` (99 lines)
+  - `apps/haven_child/test/features/child_usage/child_usage_controller_test.dart` (190 lines)
 - **Automated Verification**:
-  - Controller state tests verify loading, permission-required, loaded, and lifecycle resume re-queries.
-  - Tests verify that on permission revocation, in-memory statistics are immediately cleared.
+  - `fvm flutter test apps/haven_child/test/features/child_usage/child_usage_controller_test.dart` (11/11 passed).
+  - `fvm flutter test apps/haven_child` (300/300 passed).
+  - Step 8 repository tests (11/11 passed).
+  - Step 7 channel tests (15/15 passed).
+  - Step 5 cross-language agreement tests (9/9 passed).
+  - Parent tests: 943/943 passed.
+  - Package tests: 96/96 passed (`haven_offline`: 44, `haven_api`: 22, `haven_core`: 18, `haven_models`: 12).
+  - Kotlin JVM tests: 35/35 passed.
+  - Child debug & release APK builds succeed.
+  - Analyzers (Child, Parent, Root): 0 issues.
+  - Line count audit: 781 files scanned, 0 violations.
 
 ### Step 10: UI Layer (Explainer, Dashboard, Permission States)
+- **Status**: COMPLETE & VERIFIED (Step 10 implementation finished)
 - **Can complete independently**: No (depends on Step 9).
 - **Dependencies**: Step 9.
 - **Files Created**:
-  - `apps/haven_child/lib/features/child_usage/views/child_usage_page.dart`
-  - `apps/haven_child/lib/features/child_usage/views/widgets/usage_access_explainer_card.dart`
-  - `apps/haven_child/lib/features/child_usage/views/widgets/daily_screen_time_card.dart`
-  - `apps/haven_child/lib/features/child_usage/views/widgets/app_usage_list_card.dart`
-  - `apps/haven_child/lib/features/child_usage/views/widgets/usage_permission_denied_card.dart`
-  - Widget tests in `apps/haven_child/test/features/child_usage/`
+  - `apps/haven_child/lib/features/child_usage/views/child_usage_page.dart` (187 lines)
+  - `apps/haven_child/lib/features/child_usage/views/widgets/usage_access_explainer_card.dart` (99 lines)
+  - `apps/haven_child/lib/features/child_usage/views/widgets/daily_screen_time_card.dart` (132 lines)
+  - `apps/haven_child/lib/features/child_usage/views/widgets/app_usage_list_card.dart` (141 lines)
+  - `apps/haven_child/lib/features/child_usage/views/widgets/usage_permission_denied_card.dart` (97 lines)
+  - `apps/haven_child/test/features/child_usage/child_usage_cards_test.dart` (142 lines)
+  - `apps/haven_child/test/features/child_usage/child_usage_widget_state_test.dart` (168 lines)
+  - `apps/haven_child/test/features/child_usage/child_usage_responsive_test.dart` (97 lines)
 - **Automated Verification**:
-  - Widget test suite renders every permission state without error or overflow.
+  - `fvm flutter test apps/haven_child/test/features/child_usage/` (44/44 passed).
+  - `fvm flutter test apps/haven_child` (322/322 passed).
+  - Parent tests: 943/943 passed.
+  - Package tests: 96/96 passed (`haven_offline`: 44, `haven_api`: 22, `haven_core`: 18, `haven_models`: 12).
+  - Kotlin JVM tests: 35/35 passed.
+  - Step 7 channel tests (15/15 passed).
+  - Step 5 cross-language agreement tests (9/9 passed).
+  - Child debug & release APK builds succeed.
+  - Analyzers (Child, Parent, Root): 0 issues.
+  - Line count audit: 789 files scanned, 0 violations.
 
 ### Step 11: Route & Navigation Integration
 - **Can complete independently**: No (depends on Step 10).

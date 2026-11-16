@@ -18,8 +18,8 @@ dependencies:
   get: ^4.7.3
   path_provider: ^2.1.6
   flutter_secure_storage: ^11.2.0
-  haven_api:
-    path: ../../packages/haven_api
+  haven_offline:
+    path: ../../packages/haven_offline
   haven_core:
     path: ../../packages/haven_core
   haven_models:

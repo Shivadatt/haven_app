@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:haven_api/haven_api.dart';
 import 'package:haven_models/haven_models.dart';
+import 'package:haven_offline/haven_offline.dart';
 
 /// Filesystem helpers for the storage unit lanes.
 ///

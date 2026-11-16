@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:haven_api/haven_api.dart';
 import 'package:haven_core/haven_core.dart';
+import 'package:haven_offline/haven_offline.dart';
 import 'package:haven_child/core/storage/child_local_state.dart';
 import 'package:haven_child/features/registration/data/demo_registration_policy.dart';
 import 'package:haven_child/features/registration/data/demo_registration_service.dart';
@@ -13,7 +13,7 @@ import 'package:haven_child/features/registration/domain/registration_status.dar
 /// `docs/implementation/00-app-contract.md` ("Test conventions").
 ///
 /// The storage side is the REAL child lane (`ChildLocalStateStore` over
-/// `haven_api`'s in-memory document), because a contract test that faked its
+/// `haven_offline`'s in-memory document), because a contract test that faked its
 /// own persistence would prove nothing about what reaches
 /// `haven_local.json`. The clock is `haven_core`'s `FixedClock`, so expiry is
 /// arithmetic rather than a sleep.

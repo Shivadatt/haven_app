@@ -4,7 +4,7 @@
 /// `HAVEN_CHILD_ENV` value, no endpoint strings, and nothing that could carry
 /// a secret. Client identifiers arrive only via `--dart-define`, never from
 /// files or the network (contract rule 4). Cloud configuration lanes, if a
-/// later stage ever needs them, grow here through `haven_api` types — not by
+/// later stage ever needs them, grow here through typed contracts — not by
 /// restating transport strings in the app.
 final class ChildConfig {
   const ChildConfig({this.environment = defaultEnvironment});

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:haven_api/haven_api.dart' show isCorruptLocalDatabase;
+import 'package:haven_offline/haven_offline.dart' show isCorruptLocalDatabase;
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 

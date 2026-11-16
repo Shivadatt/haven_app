@@ -1,5 +1,5 @@
-import 'package:haven_api/haven_api.dart';
 import 'package:haven_core/haven_core.dart';
+import 'package:haven_offline/haven_offline.dart';
 
 import 'child_local_state.dart';
 import 'child_storage_paths.dart';
@@ -8,7 +8,7 @@ import 'child_storage_paths.dart';
 ///
 /// REUSE DECISION (required documentation at the store facade): the child app
 /// does NOT invent a competing persistence abstraction. It reuses the
-/// `haven_api` offline engine exactly as the parent app does —
+/// `haven_offline` local engine exactly as the parent app does —
 /// * [FileLocalStore]: one JSON document, atomic tmp+rename writes, typed
 ///   corrupt-file failures (`local_database_corrupt`), never a silent reset;
 /// * [LocalTables]: the `{schemaVersion, tables}` conventions plus the

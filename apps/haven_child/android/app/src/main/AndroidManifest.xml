@@ -1,4 +1,15 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+      Stage 3 declares android.permission.PACKAGE_USAGE_STATS.
+      This is a special-access permission required by Android framework so the
+      application appears in Settings > Special App Access > Usage Access.
+      It does NOT grant permission automatically; the user must grant it in OS settings.
+    -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
     <!--
       Stage 1 declares NO permissions. The child app is fully local at this
       stage: no backend, no network lane, so android.permission.INTERNET is

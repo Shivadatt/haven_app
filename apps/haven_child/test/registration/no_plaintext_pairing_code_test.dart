@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:haven_api/haven_api.dart';
+import 'package:haven_offline/haven_offline.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_child/core/storage/child_local_state.dart';
 import 'package:haven_child/features/registration/data/demo_registration_service.dart';

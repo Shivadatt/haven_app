@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:haven_api/haven_api.dart' show LocalIds;
+import 'package:haven_offline/haven_offline.dart' show LocalIds;
 import 'package:haven_core/haven_core.dart';
 
 import '../domain/registration_audit.dart';
