@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../features/child_usage/bindings/child_usage_bindings.dart';
+import '../../features/child_usage/views/child_usage_page.dart';
 import '../../features/device/bindings/device_bindings.dart';
 import '../../features/device/views/pages/device_page.dart';
 import '../../features/onboarding/bindings/onboarding_bindings.dart';
@@ -45,8 +47,16 @@ abstract final class ChildPages {
       page: () => const PermissionsPage(),
       binding: PermissionsBindings(),
     ),
+    GetPage(
+      name: ChildRoutes.childUsage,
+      page: () => const ChildUsagePage(),
+      binding: ChildUsageBindings(),
+    ),
   ];
 
   static GetPage<dynamic> get unknown =>
       GetPage(name: ChildRoutes.unknown, page: () => const UnknownPage());
 }
+
+/// Alias for [ChildPages] supporting the standard [AppPages] convention.
+typedef AppPages = ChildPages;

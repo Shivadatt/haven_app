@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:haven_core/haven_core.dart';
 
+import '../../../../app/routes/child_routes.dart';
 import '../../../../app/theme/child_spacing.dart';
 import '../../../../app/theme/child_text.dart';
 import '../../../../shared/components/status_chip.dart';
+import '../../../../core/permissions/child_permission.dart';
 import '../../../../core/permissions/permission_status_source.dart';
 import '../../../../core/permissions/unconfigured_permission_status_source.dart';
 import '../../controllers/permissions_controller.dart';
@@ -22,47 +25,58 @@ final class PermissionCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final permission = state.permission;
     final Result<PermissionStatus> answer = state.status;
+    final bool isUsageAccess = permission == ChildPermission.usageAccess;
+
     return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(ChildSpacing.md),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Icon(
-                  permission.icon,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                const SizedBox(width: ChildSpacing.sm),
-                Expanded(
-                  child: Text(permission.label, style: ChildText.headline),
-                ),
-              ],
-            ),
-            const SizedBox(height: ChildSpacing.sm),
-            _StatusLine(answer: answer),
-            const SizedBox(height: ChildSpacing.md),
-            Text(permission.why, style: ChildText.body),
-            const SizedBox(height: ChildSpacing.sm),
-            Text(
-              'User action required: No',
-              style: ChildText.label.copyWith(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: isUsageAccess ? () => Get.toNamed(ChildRoutes.childUsage) : null,
+        child: Padding(
+          padding: const EdgeInsets.all(ChildSpacing.md),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Icon(
+                    permission.icon,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  const SizedBox(width: ChildSpacing.sm),
+                  Expanded(
+                    child: Text(permission.label, style: ChildText.headline),
+                  ),
+                  if (isUsageAccess)
+                    Icon(
+                      Icons.chevron_right,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                ],
               ),
-            ),
-            const SizedBox(height: ChildSpacing.md),
-            OutlinedButton.icon(
-              onPressed: null,
-              icon: const Icon(Icons.settings_outlined),
-              label: const Text('Open device settings'),
-            ),
-            const SizedBox(height: ChildSpacing.xs),
-            const Text(
-              UnconfiguredPermissionStatusSource.settingsActionNote,
-              style: ChildText.caption,
-            ),
-          ],
+              const SizedBox(height: ChildSpacing.sm),
+              _StatusLine(answer: answer),
+              const SizedBox(height: ChildSpacing.md),
+              Text(permission.why, style: ChildText.body),
+              const SizedBox(height: ChildSpacing.sm),
+              Text(
+                'User action required: No',
+                style: ChildText.label.copyWith(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+              ),
+              const SizedBox(height: ChildSpacing.md),
+              OutlinedButton.icon(
+                onPressed: null,
+                icon: const Icon(Icons.settings_outlined),
+                label: const Text('Open device settings'),
+              ),
+              const SizedBox(height: ChildSpacing.xs),
+              const Text(
+                UnconfiguredPermissionStatusSource.settingsActionNote,
+                style: ChildText.caption,
+              ),
+            ],
+          ),
         ),
       ),
     );

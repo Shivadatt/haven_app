@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:haven_child/app/routes/child_pages.dart';
 import 'package:haven_child/app/routes/child_routes.dart';
 import 'package:haven_child/app/routes/unknown_page.dart';
+import 'package:haven_child/features/child_usage/views/child_usage_page.dart';
 import 'package:haven_child/features/device/views/pages/device_page.dart';
 import 'package:haven_child/features/onboarding/views/pages/onboarding_page.dart';
 import 'package:haven_child/features/permissions/views/pages/permissions_page.dart';
@@ -76,6 +77,7 @@ void main() {
       ChildRoutes.profile: ProfilePage,
       ChildRoutes.device: DevicePage,
       ChildRoutes.permissions: PermissionsPage,
+      ChildRoutes.childUsage: ChildUsagePage,
     };
 
     test('every named route has exactly one GetPage with a real builder', () {

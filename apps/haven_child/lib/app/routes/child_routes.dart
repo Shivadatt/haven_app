@@ -9,5 +9,10 @@ abstract final class ChildRoutes {
   static const String profile = '/profile';
   static const String device = '/device';
   static const String permissions = '/permissions';
+  static const String usage = '/usage';
+  static const String childUsage = usage;
   static const String unknown = '/unknown';
 }
+
+/// Alias for [ChildRoutes] supporting the standard [AppRoutes] convention.
+typedef AppRoutes = ChildRoutes;

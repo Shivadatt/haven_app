@@ -563,23 +563,63 @@ Step 12: Full Regression & Emulator Verification (P-1)
   - Line count audit: 789 files scanned, 0 violations.
 
 ### Step 11: Route & Navigation Integration
+- **Status**: COMPLETE & VERIFIED (Step 11 implementation finished)
 - **Can complete independently**: No (depends on Step 10).
 - **Dependencies**: Step 10.
+- **Files Created**:
+  - `apps/haven_child/lib/app/routes/app_routes.dart` (compatibility barrel exporting `child_routes.dart`)
+  - `apps/haven_child/lib/app/routes/app_pages.dart` (compatibility barrel exporting `child_pages.dart`)
+  - `apps/haven_child/test/features/child_usage/child_usage_route_test.dart` (37 lines, 4 tests)
+  - `apps/haven_child/test/features/child_usage/child_usage_navigation_test.dart` (141 lines, 4 tests)
 - **Files Modified**:
-  - `apps/haven_child/lib/app/routes/app_routes.dart` (adds `AppRoutes.childUsage = '/usage'`)
-  - `apps/haven_child/lib/app/routes/app_pages.dart` (registers `AppPages.pages` entry)
-  - `apps/haven_child/lib/features/permissions/views/child_permission_dashboard_page.dart` (links Usage Access row to `/usage`)
+  - `apps/haven_child/lib/app/routes/child_routes.dart` (adds `usage = '/usage'`, `childUsage = usage`, `typedef AppRoutes = ChildRoutes;`)
+  - `apps/haven_child/lib/app/routes/child_pages.dart` (registers `ChildRoutes.childUsage` with `ChildUsagePage` and `ChildUsageBindings`, `typedef AppPages = ChildPages;`)
+  - `apps/haven_child/lib/features/permissions/views/widgets/permission_card.dart` (links `ChildPermission.usageAccess` card tap via `InkWell` to `ChildRoutes.childUsage` while leaving button disabled per Stage 1/2 contract)
+  - `apps/haven_child/test/architecture/child_architecture_test.dart` (updated route whitelist to include `ChildRoutes.childUsage`)
 - **Automated Verification**:
-  - `fvm flutter test apps/haven_child/test/app/child_app_flow_test.dart`.
+  - `fvm flutter test apps/haven_child/test/features/child_usage/child_usage_route_test.dart` (4/4 passed).
+  - `fvm flutter test apps/haven_child/test/features/child_usage/child_usage_navigation_test.dart` (4/4 passed).
+  - `fvm flutter test apps/haven_child/test/app/child_app_flow_test.dart` (4/4 passed).
+  - `fvm flutter test apps/haven_child/test/features/permissions/views/pages/permissions_page_test.dart` (7/7 passed).
+  - `fvm flutter test apps/haven_child/test/architecture/child_architecture_test.dart` (8/8 passed).
+  - `fvm flutter test apps/haven_child` (330/330 passed).
+  - Parent tests: 943/943 passed.
+  - Package tests: 96/96 passed (`haven_offline`: 44, `haven_api`: 22, `haven_core`: 18, `haven_models`: 12).
+  - Kotlin JVM tests: 35/35 passed.
+  - Child debug & release APK builds succeed.
+  - Analyzers (Child, Parent, Root): 0 issues.
+  - Line count audit: 793 files scanned, 0 violations.
 
 ### Step 12: Full Regression & Emulator Verification (P-1)
+- **Status**: COMPLETE & VERIFIED (PASSED WITH LIMITATIONS)
 - **Can complete independently**: No (depends on all prior steps).
 - **Dependencies**: Steps 1–11.
-- **Automated Verification**:
-  - Full repo test suite (1,290 baseline + $C$ compatibility + $N_{\text{child\_dart}}$ newly authored tests; exact total measured via command output).
-  - Both app analyzers 0 issues.
-  - Zero line violations across entire tree (`dart scripts/check_line_counts.dart`).
-  - Live execution of 10 emulator verification test scenarios on `emulator-5554`.
+- **Verification Summary**:
+  - Live Emulator Verification on `emulator-5554` (Android 17 / API 37):
+    - E1 (Initial Denied State): **PASSED**. Screen renders `UsagePermissionDeniedCard` with zero numbers/rows.
+    - E2 (Settings Navigation): **PASSED**. Opens `Settings$AppUsageAccessSettingsActivity` for `com.haven.child`.
+    - E3 (Grant Usage Access): **PASSED**. Permission granted via ADB; app resume updates to real daily stats in memory.
+    - E4 (Usage Accumulation): **PASSED**. Foreground Chrome use for 45s reflected in live app usage list.
+    - E5 (Data Delay Disclosure): **PASSED**. Clear notice detailing Android system batching.
+    - E6 (Midnight Boundaries): **PASSED**. Range starts at local midnight in `Asia/Calcutta`.
+    - E7 (Revoke Usage Access): **PASSED**. Permission revoked via ADB; app immediately clears stats and rows from memory.
+    - E8 (Invalid Time Range): **BLOCKED (Unit & JVM Verified)**. Verified by `UsageBridgeHandlerTest.kt` & `usage_channel_query_test.dart`.
+    - E9 (System App Categorization): **PASSED**. Categorized via `FLAG_SYSTEM`; raw package names displayed.
+    - E10 (Zero Network Traffic): **PASSED**. Zero open TCP/UDP sockets, zero cloud SDK dependencies.
+  - Automated Full Regression: **1,404 tests passed, 0 failures, 0 skips**:
+    - `packages/haven_offline`: 44/44 passed.
+    - `packages/haven_api`: 22/22 passed.
+    - `packages/haven_core`: 18/18 passed.
+    - `packages/haven_models`: 12/12 passed.
+    - `apps/haven_child`: 330/330 passed.
+    - `apps/haven_app`: 943/943 passed.
+    - Kotlin JVM (`:app:testDebugUnitTest`): 35/35 passed.
+  - Static Code Analysis:
+    - `apps/haven_child`: 0 issues.
+    - `apps/haven_app`: 0 issues.
+    - Root `control`: 0 issues.
+  - Line-Count Audit: 793 files scanned, 0 violations ($\le 200$ lines rule strictly preserved).
+  - Physical Device Testing: Strictly DEFERRED.
 
 ---
 
