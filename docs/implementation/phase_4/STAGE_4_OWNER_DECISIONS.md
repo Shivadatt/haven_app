@@ -73,7 +73,39 @@ The owner is requested to review and decide upon the following four proposals be
 
 ---
 
-## 5. Execution Authorization Gates
+## 5. Stage 4 Step 2 Confirmed Owner Decisions (Decisions 2.28 & 2.29)
+
+The owner has formally confirmed the following architectural decisions for Stage 4 Step 2 Sub-step 2.4:
+
+### Decision 2.28: Emergency Package vs Per-App Limits — APPROVED OPTION A
+- **Contract:**
+  1. The five immutable emergency packages (`com.android.phone`, `com.google.android.dialer`, `com.samsung.android.dialer`, `com.android.emergency`, `com.google.android.apps.safetyhub`) are exempt from active schedule restrictions.
+  2. They are exempt from global daily quota restrictions.
+  3. They are also exempt from explicit per-app time limits configured through `PolicyConfig.appLimits`.
+  4. Parent `blockedApps` remains the highest-priority hard veto. An emergency package present in the parent blocklist must be evaluated as `blockedByParent`.
+  5. Unknown packages must not receive emergency exemptions.
+  6. No configurable emergency package injection or additional emergency package identifiers may be introduced.
+- **Precedence:** Parent blocklist first; emergency exemption immediately afterward.
+- **Conflict Matrix (C-09):** Emergency package wins over per-app limit unless parent-blocklisted.
+
+### Decision 2.29: Snapshot Date Mismatch — APPROVED OPTION A
+- **Contract:**
+  When `PolicyUsageSnapshot.isSameLocalDate(context.evaluationTime, usage.snapshotDate)` is false:
+  1. Global daily usage is unavailable for evaluation.
+  2. Per-app usage is also unavailable for evaluation.
+  3. `DailyQuotaEvaluation.isUnavailable` must reflect unavailable global usage when a finite quota requires usage measurement.
+  4. `DailyQuotaEvaluation.usedMinutes` must be null when global usage is invalidated by the date mismatch.
+  5. Per-app usage lookups must resolve to null rather than using stale usage from the previous date.
+  6. Neither global nor per-app limits may be falsely reached using stale previous-day measurements (fail-safe unblocked).
+  7. Do not convert unavailable usage to zero.
+  8. Preserve existing Decision 2.16 missing-usage semantics.
+  9. Preserve telemetry completeness, permission, and freshness disclosures.
+  10. Do not add per-package timestamps, intervals, or schema fields. Such metadata is outside this approved decision and Sub-step 2.4 scope.
+- **Reason:** `totalForegroundMillis` and `appForegroundMillis` share the same observation interval, while per-package usage has no independent date or interval metadata. Evaluating previous-day app usage against the current day's quota could falsely restrict an application.
+
+---
+
+## 6. Execution Authorization Gates
 
 Stage 4 implementation will proceed only under explicit, granular owner authorization:
 
@@ -84,7 +116,7 @@ Stage 4 implementation will proceed only under explicit, granular owner authoriz
 
 ---
 
-## 6. Strict Stop Statement
+## 7. Strict Stop Statement
 
 > [!IMPORTANT]
 > **NO WORK HAS COMMENCED ON STAGE 4.**  
