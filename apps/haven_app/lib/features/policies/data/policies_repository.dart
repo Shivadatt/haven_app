@@ -6,7 +6,6 @@ import '../../../core/errors/captured_gaps.dart';
 import '../../child_devices/data/devices_repository.dart';
 import '../../family/data/family_scope.dart';
 import 'policies_models.dart';
-import 'policy_config.dart';
 
 /// The policy versions this family is allowed to read.
 ///

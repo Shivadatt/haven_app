@@ -1,7 +1,6 @@
 import 'package:haven_api/haven_api.dart';
 import 'package:haven_app/features/policies/data/policies_models.dart';
 import 'package:haven_app/features/policies/data/policies_repository.dart';
-import 'package:haven_app/features/policies/data/policy_config.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 

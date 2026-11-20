@@ -3,8 +3,6 @@ import 'package:haven_models/haven_models.dart';
 
 import '../../child_devices/data/devices_repository.dart';
 import '../data/policies_repository.dart';
-import '../data/policy_config.dart';
-import '../data/policy_rules.dart';
 import '../data/web_filter_models.dart';
 
 final class WebFilterController extends GetxController {

@@ -4,8 +4,6 @@ import 'package:haven_models/haven_models.dart';
 import '../../child_devices/data/devices_repository.dart';
 import '../data/app_catalogue.dart';
 import '../data/policies_repository.dart';
-import '../data/policy_config.dart';
-import '../data/policy_rules.dart';
 
 final class AppLimitsController extends GetxController {
   AppLimitsController({
