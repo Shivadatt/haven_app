@@ -13,6 +13,10 @@ import '../../core/storage/child_database.dart';
 import '../../core/storage/child_profile_repository.dart';
 import '../../core/storage/local_child_profile_repository.dart';
 import '../../core/storage/onboarding_state_store.dart';
+import '../../features/child_usage/data/child_usage_repository.dart';
+import '../../features/policies/controllers/child_policy_controller.dart';
+import '../../features/policies/data/child_policy_repository.dart';
+import '../../features/policies/data/local_child_policy_repository.dart';
 
 /// Startup bindings: the build configuration, the honest no-op platform
 /// readers, and the one local-storage lane — mirroring the parent's
@@ -57,10 +61,10 @@ final class ChildInitialBindings extends Bindings {
     return attempt;
   }
 
-  static Future<Result<ChildDatabase>> _openAndRegister(String? directory) async {
-    final opened = directory == null
+  static Future<Result<ChildDatabase>> _openAndRegister(String? dir) async {
+    final opened = dir == null
         ? await ChildDatabase.open()
-        : await ChildDatabase.openAt(directory);
+        : await ChildDatabase.openAt(dir);
     if (opened case Ok<ChildDatabase>(:final value)) {
       Get.put<ChildDatabase>(value, permanent: true);
       Get.put<ChildProfileRepository>(
@@ -73,6 +77,17 @@ final class ChildInitialBindings extends Bindings {
       );
       Get.put<ChildSessionStore>(
         LocalChildSessionStore(value.localState),
+        permanent: true,
+      );
+      final usageRepository = ChildUsageRepositoryImpl();
+      final policyRepository = LocalChildPolicyRepository.fromDatabase(value);
+      Get.put<ChildUsageRepository>(usageRepository, permanent: true);
+      Get.put<ChildPolicyRepository>(policyRepository, permanent: true);
+      Get.put<ChildPolicyController>(
+        ChildPolicyController(
+          policyRepository: policyRepository,
+          usageRepository: usageRepository,
+        ),
         permanent: true,
       );
     }
@@ -93,6 +108,15 @@ final class ChildInitialBindings extends Bindings {
   /// one stale write behind; tests that assert on the store afterwards call
   /// this after a `pump()` as well.
   static void unregisterStorageSeams() {
+    if (Get.isRegistered<ChildPolicyController>()) {
+      Get.delete<ChildPolicyController>(force: true);
+    }
+    if (Get.isRegistered<ChildPolicyRepository>()) {
+      Get.delete<ChildPolicyRepository>(force: true);
+    }
+    if (Get.isRegistered<ChildUsageRepository>()) {
+      Get.delete<ChildUsageRepository>(force: true);
+    }
     if (Get.isRegistered<ChildDatabase>()) {
       Get.delete<ChildDatabase>(force: true);
     }
