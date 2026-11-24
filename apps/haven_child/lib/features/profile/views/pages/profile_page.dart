@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:haven_core/haven_core.dart';
 import 'package:haven_models/haven_models.dart';
 
+import '../../../../app/routes/child_routes.dart';
 import '../../../../app/theme/child_spacing.dart';
 import '../../../../app/theme/child_text.dart';
 import '../../../../shared/components/child_scaffold.dart';
@@ -54,10 +55,7 @@ class _SetupPrompt extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       const SizedBox(height: ChildSpacing.lg),
-      Text(
-        'Setup is not finished on this device.',
-        style: ChildText.headline,
-      ),
+      Text('Setup is not finished on this device.', style: ChildText.headline),
       const SizedBox(height: ChildSpacing.md),
       FilledButton(
         onPressed: controller.startSetup,
@@ -131,6 +129,13 @@ class _ProfileBody extends StatelessWidget {
             key: ValueKey('profile-nothing-monitored'),
             label: 'Nothing is monitored yet',
             tone: StatusTone.neutral,
+          ),
+          const SizedBox(height: ChildSpacing.lg),
+          Text('Rules & Limits', style: ChildText.headline),
+          const SizedBox(height: ChildSpacing.xs),
+          OutlinedButton(
+            onPressed: () => Get.toNamed(ChildRoutes.policy),
+            child: const Text('Rules & Limits'),
           ),
           const SizedBox(height: ChildSpacing.lg),
           Text('This device', style: ChildText.headline),

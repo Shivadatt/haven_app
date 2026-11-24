@@ -8,6 +8,7 @@ import '../../features/onboarding/bindings/onboarding_bindings.dart';
 import '../../features/onboarding/views/pages/onboarding_page.dart';
 import '../../features/permissions/bindings/permissions_bindings.dart';
 import '../../features/permissions/views/pages/permissions_page.dart';
+import '../../features/policies/views/child_policy_page.dart';
 import '../../features/profile/bindings/profile_bindings.dart';
 import '../../features/profile/views/pages/profile_page.dart';
 import '../../features/splash/bindings/splash_bindings.dart';
@@ -52,6 +53,7 @@ abstract final class ChildPages {
       page: () => const ChildUsagePage(),
       binding: ChildUsageBindings(),
     ),
+    GetPage(name: ChildRoutes.policy, page: () => const ChildPolicyPage()),
   ];
 
   static GetPage<dynamic> get unknown =>

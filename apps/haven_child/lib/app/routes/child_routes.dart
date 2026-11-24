@@ -11,6 +11,7 @@ abstract final class ChildRoutes {
   static const String permissions = '/permissions';
   static const String usage = '/usage';
   static const String childUsage = usage;
+  static const String policy = '/policy';
   static const String unknown = '/unknown';
 }
 

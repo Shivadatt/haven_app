@@ -10,6 +10,7 @@ import 'package:haven_child/features/child_usage/views/child_usage_page.dart';
 import 'package:haven_child/features/device/views/pages/device_page.dart';
 import 'package:haven_child/features/onboarding/views/pages/onboarding_page.dart';
 import 'package:haven_child/features/permissions/views/pages/permissions_page.dart';
+import 'package:haven_child/features/policies/views/child_policy_page.dart';
 import 'package:haven_child/features/profile/views/pages/profile_page.dart';
 import 'package:haven_child/features/splash/views/pages/splash_page.dart';
 
@@ -33,7 +34,8 @@ void main() {
         if (!file.path.endsWith('.dart')) continue;
         for (final line in file.readAsLinesSync()) {
           final trimmed = line.trim();
-          final isDirective = trimmed.startsWith('import ') ||
+          final isDirective =
+              trimmed.startsWith('import ') ||
               trimmed.startsWith('export ') ||
               trimmed.startsWith('part ');
           if (isDirective && trimmed.contains('haven_app')) {
@@ -78,6 +80,7 @@ void main() {
       ChildRoutes.device: DevicePage,
       ChildRoutes.permissions: PermissionsPage,
       ChildRoutes.childUsage: ChildUsagePage,
+      ChildRoutes.policy: ChildPolicyPage,
     };
 
     test('every named route has exactly one GetPage with a real builder', () {
@@ -108,23 +111,24 @@ void main() {
     });
   });
 
-  testWidgets('the splash route builds honestly with no storage seam registered', (
-    tester,
-  ) async {
-    // No override here: path_provider's missing channel must land as the
-    // typed storage failure frame, never as an exception. The platform
-    // lane completes on the REAL event loop, so the pumps go through
-    // settleIo (Agent 2's handoff rule), not pumpAndSettle.
-    await tester.runAsync(() async {
-      await tester.pumpWidget(childAppHost(initialRoute: ChildRoutes.splash));
-    });
-    await settleIo(tester);
-    expect(find.text('The app could not start'), findsOneWidget);
-    expect(
-      find.text('Local storage is not available on this device.'),
-      findsOneWidget,
-    );
-    expect(tester.takeException(), isNull);
-    Get.reset();
-  });
+  testWidgets(
+    'the splash route builds honestly with no storage seam registered',
+    (tester) async {
+      // No override here: path_provider's missing channel must land as the
+      // typed storage failure frame, never as an exception. The platform
+      // lane completes on the REAL event loop, so the pumps go through
+      // settleIo (Agent 2's handoff rule), not pumpAndSettle.
+      await tester.runAsync(() async {
+        await tester.pumpWidget(childAppHost(initialRoute: ChildRoutes.splash));
+      });
+      await settleIo(tester);
+      expect(find.text('The app could not start'), findsOneWidget);
+      expect(
+        find.text('Local storage is not available on this device.'),
+        findsOneWidget,
+      );
+      expect(tester.takeException(), isNull);
+      Get.reset();
+    },
+  );
 }
