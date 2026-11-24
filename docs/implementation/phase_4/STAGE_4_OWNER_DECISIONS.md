@@ -105,19 +105,76 @@ The owner has formally confirmed the following architectural decisions for Stage
 
 ---
 
-## 6. Execution Authorization Gates
+## 6. Stage 4 Step 5 Confirmed Owner Decisions (Decisions 5.1–5.4)
 
-Stage 4 implementation will proceed only under explicit, granular owner authorization:
+The project owner formally approved and ratified all Option A decisions on **November 24, 2026** against checkpoint `6ae46f567de4772d3252215b19e5302a3d255071`:
 
-- **Gate 4-A:** Approval of Decisions 4.1–4.4 $\rightarrow$ Authorizes Step 1 (Canonical Models Extraction).
-- **Gate 4-B:** Review of Step 1 Deliverables $\rightarrow$ Authorizes Steps 2–5 (Deterministic Evaluator & Precedence).
-- **Gate 4-C:** Review of Evaluator Tests $\rightarrow$ Authorizes Steps 6–9 (Repository, Controller & UI).
-- **Gate 4-D:** Review of UI & Routes $\rightarrow$ Authorizes Step 10 (Full Regression & Verification).
+### Decision 5.1: Dedicated `WebPolicyEvaluator` — APPROVED OPTION A
+- **Contract:**
+  1. Web domain filtering is encapsulated within a dedicated, standalone pure-Dart `WebPolicyEvaluator` engine.
+  2. Produces separate, defensively immutable `WebEvaluationResult` and `DomainEvaluation` models.
+  3. Zero coupling to Android `USAGE_STATS` foreground telemetry or application policy evaluation.
+  4. Zero breaking changes to `PolicyEvaluator.evaluate()` or `PolicyEvaluationResult`.
+  5. Every handwritten source and test file must strictly remain $\le 200$ physical lines.
+
+### Decision 5.1-S1: Blocked-Domain Absolute Hard Veto — APPROVED OPTION A
+- **Contract:**
+  1. `blockedDomains` takes absolute precedence over `allowedDomains`.
+  2. If a domain is listed or matched in both `blockedDomains` and `allowedDomains`, it resolves strictly as `DomainPolicyStatus.blockedByParent` with reason `'Blocked by parent'`.
+  3. Parent web blocklist acts as an unconditional hard veto, mirroring Level 1 `blockedApps`.
+
+### Decision 5.1-S2: DNS-Label-Boundary Subdomain Inheritance — APPROVED OPTION A
+- **Contract:**
+  1. A configured domain rule matches the exact domain and any subdomains adhering to strict DNS label boundaries (e.g. `example.com` matches `example.com` and `sub.example.com`, but strictly rejects substring collisions like `badexample.com`).
+  2. Allowing `sub.example.com` does not implicitly allow the root domain `example.com`.
+  3. Hostnames must be normalized prior to evaluation (trimmed, lowercased, stripped of trailing dots, URI schemes, paths, and port numbers).
+
+### Decision 5.2-1: Additive Screen-Time Extensions — APPROVED OPTION A
+- **Contract:**
+  1. The effective daily screen-time quota is the base daily quota plus the sum of all valid, granted extensions for the child's local calendar day:
+     $$effectiveDailyLimit = dailyScreenTimeMinutes + \sum grantedMinutes$$
+  2. Multiple extensions granted on the same calendar day accumulate additively.
+
+### Decision 5.2-2: Bedtime Absolute Supremacy — APPROVED OPTION A
+- **Contract:**
+  1. Bedtime schedule restrictions maintain absolute supremacy over screen-time extensions (Level 3 schedule vs Level 5 quota modifier).
+  2. Active Bedtime locks down non-emergency applications regardless of remaining extension minutes. Extensions modify quota only and cannot punch through schedule restrictions.
+
+### Decision 5.2-3: Local-Midnight Expiration — APPROVED OPTION A
+- **Contract:**
+  1. All screen-time extensions strictly expire at the child device's exclusive local calendar-day boundary (`00:00:00` of the next local day).
+  2. Extensions do not carry over across midnight. At the start of the next local calendar day, the effective quota resets to the new day's base quota.
+
+### Decision 5.2-4: Global Daily Quota-Only Scope — APPROVED OPTION A
+- **Contract:**
+  1. Screen-time extensions apply exclusively to the global daily screen-time quota.
+  2. Extensions do not modify explicit per-app limits configured in `PolicyConfig.appLimits`.
+
+### Decision 5.3: Defer Category Limits to Stage 6 — APPROVED OPTION A
+- **Contract:**
+  1. `PolicyConfig.appLimits` remains strictly concrete package-based (`Map<String, int>`).
+  2. Application category limits, category taxonomies, and multi-package usage aggregation are formally deferred to Stage 6 Advanced Filtering.
+
+### Decision 5.4: Single Primary Application Status — APPROVED OPTION A
+- **Contract:**
+  1. `AppEvaluation` preserves exactly one authoritative application status (`status`) and reason (`reason`) determined by the 7-level waterfall cascade.
+  2. Device-wide coexisting warnings remain exposed through `PolicyEvaluationResult.secondaryReasons`. No secondary reason collections are added to individual app records.
 
 ---
 
-## 7. Strict Stop Statement
+## 7. Execution Authorization Gates
+
+Stage 4 implementation proceeds only under explicit, granular owner authorization:
+
+- **Gate 4-A:** Approval of Decisions 4.1–4.4 $\rightarrow$ Authorizes Step 1 (Canonical Models Extraction) [CLOSED].
+- **Gate 4-B:** Review of Step 1 Deliverables $\rightarrow$ Authorizes Steps 2–4 (Deterministic Evaluator & Policy UI) [CLOSED].
+- **Gate 4-C:** Approval of Decisions 5.1–5.4 $\rightarrow$ Authorizes Step 5 Sub-Step 5.2 (Specification Synchronization) [ACTIVE].
+- **Gate 4-D:** Review of Step 5 Specifications $\rightarrow$ Authorizes Step 5 Sub-Step 5.3+ (Precedence Engine & Tests) [PENDING OWNER APPROVAL].
+
+---
+
+## 8. Strict Stop Statement
 
 > [!IMPORTANT]
-> **NO WORK HAS COMMENCED ON STAGE 4.**  
-> Awaiting owner review, selection of options for Decisions 4.1–4.4, and explicit authorization for Step 1.
+> **SUB-STEP 5.2 SPECIFICATION AUTHORIZATION ONLY.**  
+> Zero production implementation, test creation, database migrations, cloud configuration, or Git mutations are authorized. Implementation will commence only after formal owner review and sign-off on Sub-Step 5.2 specifications.
