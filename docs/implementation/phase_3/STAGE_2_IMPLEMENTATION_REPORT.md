@@ -450,9 +450,10 @@ than smoothed over.
 
 **State at the moment this report was finished** (read-only again): HEAD still `50b4425`; `git status --short` still
 **76** paths; `git diff --cached --shortstat` still **76 files / 7,166 insertions / 14 deletions**, but the worktree
-now differs from the index for the files Agent 3 edited **after** 13:50 — the two documentation re-writes
-(`STAGE_2_ANDROID_CAPABILITY_INVENTORY.md`, `PHASE_3_MASTER_PLAN.md`) and the additions to this report. Those show as
-unstaged ` M` on already-staged paths; **no agent staged or committed them**. Post-staging re-verification was run to
+now differs from the index for exactly the two files Agent 3 edited **after** 13:50: `PHASE_3_MASTER_PLAN.md` and
+this report. Both show as unstaged ` M` on already-staged paths (`MM` for the plan, `AM` for this report);
+`STAGE_2_ANDROID_CAPABILITY_INVENTORY.md` was last edited **before** 13:50, so its staged copy already matches the
+worktree (`M `), and **no agent staged or committed anything**. Post-staging re-verification was run to
 keep sections 16–19 honest about the tree as finished, not as received: child **251**, parent **943**,
 `haven_api` **66**, `haven_core` **18**, `haven_models` **12**, `test/device_pairing` **59**, root-level
 `fvm flutter analyze` and both app analyzers **`No issues found!`**, line-count **740 / 0 violations**, and both APK
